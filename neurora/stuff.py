@@ -215,7 +215,7 @@ def fdr_correct(p, p_threshold):
 
 ' a function for Cluster-wise FWE-correction for fMRI RSA results '
 
-def cluster_fwe_correct(p, p_threshold):
+def cluster_fwe_correct(p, p_threshold1, p_threshold2):
 
     """
     Cluster-wise FWE correction for fMRI RSA results
@@ -224,8 +224,10 @@ def cluster_fwe_correct(p, p_threshold):
     ----------
     p : array
         The p-value map (3-D).
-    p_threshold: string
-        The p threshold.
+    p_threshold1: string
+        The voxel-wise p threshold.
+    p_threshold2: string
+        The cluster-wise p threshold
 
     Returns
     -------
@@ -237,41 +239,50 @@ def cluster_fwe_correct(p, p_threshold):
     py = np.shape(p)[1]
     pz = np.shape(p)[2]
 
-    n = 0
-
     p01 = np.zeros([px, py, pz])
 
     for i in range(px):
         for j in range(py):
             for k in range(pz):
-
-                if (math.isnan(p[i, j, k]) == False):
-                    n = n + 1
-                if p[i, j, k] < p_threshold:
+                if p[i, j, k] < p_threshold1:
                     p01[i, j, k] = 1
+
+    print("Cluster-wise FWE correction")
 
     permutation_voxels = np.zeros([1000])
     for k in range(1000):
-        print(k)
+
+        # show the progressbar
+        percent = (k+1) / 1000 * 100
+        show_progressbar("Correcting", percent)
+
         pi = np.copy(p01)
         pi = np.reshape(pi, [px * py * pz])
-        np.random.shuffle(pi)
-        labels = label(np.reshape(pi, [px, py, pz]), connectivity=1)
+        indexk = np.arange(0, px * py * pz)
+        np.random.shuffle(indexk)
+        pi = pi[indexk]
+        pi = np.reshape(pi, [px, py, pz])
+        labels = label(pi, connectivity=1)
         nclusters = int(np.max(labels))
-        voxelsinluster = np.zeros([nclusters], dtype=int)
-        labels_str = str(labels.tolist())
-        for i in range(nclusters):
-            voxelsinluster[i] = labels_str.count(str(i + 1))
-        permutation_voxels[k] = max(voxelsinluster)
+        voxelsinluster = np.zeros([nclusters + 1], dtype=int)
+        labels = np.reshape(labels, [px * py * pz])
+        for i in range(px * py * pz):
+            voxelsinluster[labels[i]] = voxelsinluster[labels[i]] + 1
+        permutation_voxels[k] = max(voxelsinluster[1:])
+
+    print("\n")
 
     permutation_voxels = np.sort(permutation_voxels)
-    voxels_threshold = permutation_voxels[int(1000*(1-p_threshold))]
+    voxels_threshold = permutation_voxels[int(1000*(1-p_threshold2))]
 
     labels = label(p01, connectivity=1)
     nclusters = int(np.max(labels))
-    voxelsinluster = np.zeros([nclusters], dtype=int)
-    for i in range(nclusters):
-        voxelsinluster[i] = str(labels.tolist()).count(str(i+1))
+    voxelsinluster = np.zeros([nclusters + 1], dtype=int)
+    labels = np.reshape(labels, [px * py * pz])
+    for i in range(px * py * pz):
+        voxelsinluster[labels[i]] = voxelsinluster[labels[i]] + 1
+    voxelsinluster = voxelsinluster[1:]
+    labels = np.reshape(labels, [px, py, pz])
 
     clusterp = np.zeros([nclusters])
     for i in range(nclusters):
@@ -286,17 +297,17 @@ def cluster_fwe_correct(p, p_threshold):
             for k in range(pz):
 
                 if (math.isnan(p[i, j, k]) == False) and labels[i, j, k] != 0\
-                        and clusterp[labels[i, j, k]-1] < p_threshold and voxelsinluster[labels[i, j, k]-1] >= voxels_threshold:
-                    clusterfwep[i, j, k] = clusterp[labels[i, j, k]]
+                        and clusterp[labels[i, j, k]-1] < p_threshold1 and voxelsinluster[labels[i, j, k]-1] >= voxels_threshold:
+                    clusterfwep[i, j, k] = clusterp[labels[i, j, k]-1]
 
-    print("finished Cluster-wise FWE correct")
+    print("finished Cluster-wise FWE correction")
 
     return clusterfwep
 
 
 ' a function for Cluster-wise FDR-correction for fMRI RSA results '
 
-def cluster_fdr_correct(p, p_threshold):
+def cluster_fdr_correct(p, p_threshold1, p_threshold2):
 
     """
     Cluster-wise FDR correction for fMRI RSA results
@@ -305,8 +316,10 @@ def cluster_fdr_correct(p, p_threshold):
     ----------
     p : array
         The p-value map (3-D).
-    p_threshold: string
-        The p threshold.
+    p_threshold1: string
+        The voxel-wise p threshold.
+    p_threshold2: string
+        The cluster-wise p threshold
 
     Returns
     -------
@@ -318,44 +331,50 @@ def cluster_fdr_correct(p, p_threshold):
     py = np.shape(p)[1]
     pz = np.shape(p)[2]
 
-    n = 0
-
     p01 = np.zeros([px, py, pz])
 
     for i in range(px):
         for j in range(py):
             for k in range(pz):
-
-                if (math.isnan(p[i, j, k]) == False):
-                    n = n + 1
-                if p[i, j, k] < p_threshold:
+                if p[i, j, k] < p_threshold1:
                     p01[i, j, k] = 1
+
+    print("Cluster-wise FDR correction")
 
     permutation_voxels = np.zeros([1000])
     for k in range(1000):
-        print(k)
+
+        # show the progressbar
+        percent = (k+1) / 1000 * 100
+        show_progressbar("Correcting", percent)
+
         pi = np.copy(p01)
         pi = np.reshape(pi, [px * py * pz])
-        np.random.shuffle(pi)
-        labels = label(np.reshape(pi, [px, py, pz]), connectivity=1)
+        indexk = np.arange(0, px * py * pz)
+        np.random.shuffle(indexk)
+        pi = pi[indexk]
+        pi = np.reshape(pi, [px, py, pz])
+        labels = label(pi, connectivity=1)
         nclusters = int(np.max(labels))
-        voxelsinluster = np.zeros([nclusters], dtype=int)
-        labels_str = str(labels.tolist())
-        for i in range(nclusters):
-            voxelsinluster[i] = labels_str.count(str(i + 1))
-        permutation_voxels[k] = max(voxelsinluster)
+        voxelsinluster = np.zeros([nclusters+1], dtype=int)
+        labels = np.reshape(labels, [px*py*pz])
+        for i in range(px*py*pz):
+            voxelsinluster[labels[i]] = voxelsinluster[labels[i]] + 1
+        permutation_voxels[k] = max(voxelsinluster[1:])
+
+    print("\n")
 
     permutation_voxels = np.sort(permutation_voxels)
-    print(permutation_voxels)
-    voxels_threshold = permutation_voxels[int(1000*(1-p_threshold))]
-
-    print(voxels_threshold)
+    voxels_threshold = permutation_voxels[int(1000*(1-p_threshold2))]
 
     labels = label(p01, connectivity=1)
     nclusters = int(np.max(labels))
-    voxelsinluster = np.zeros([nclusters], dtype=int)
-    for i in range(nclusters):
-        voxelsinluster[i] = str(labels.tolist()).count(str(i+1))
+    voxelsinluster = np.zeros([nclusters+1], dtype=int)
+    labels = np.reshape(labels, [px*py*pz])
+    for i in range(px*py*pz):
+        voxelsinluster[labels[i]] = voxelsinluster[labels[i]] + 1
+    voxelsinluster = voxelsinluster[1:]
+    labels = np.reshape(labels, [px, py, pz])
 
     clusterp = np.zeros([nclusters])
     for i in range(nclusters):
@@ -373,10 +392,10 @@ def cluster_fdr_correct(p, p_threshold):
             for k in range(pz):
 
                 if (math.isnan(p[i, j, k]) == False) and labels[i, j, k] != 0\
-                        and clusterp[labels[i, j, k]-1] < p_threshold and voxelsinluster[labels[i, j, k]-1] >= voxels_threshold:
-                    clusterfdrp[i, j, k] = clusterp[labels[i, j, k]]
+                        and clusterp[labels[i, j, k]-1] < p_threshold1 and voxelsinluster[labels[i, j, k]-1] >= voxels_threshold:
+                    clusterfdrp[i, j, k] = clusterp[labels[i, j, k]-1]
 
-    print("finished Cluster-wise FDR correct")
+    print("finished Cluster-wise FDR correction")
 
     return clusterfdrp
 

@@ -15,7 +15,7 @@ from neurora.rsa_plot import plot_brainrsa_rlts
 
 ' a function for saving the searchlight correlation coefficients as a NIfTI file for fMRI '
 
-def corr_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60, 60, 60], ksize=[3, 3, 3], strides=[1, 1, 1], p=1, r=0, correct_method=None, smooth=True, plotrlt=True, img_background=None):
+def corr_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60, 60, 60], ksize=[3, 3, 3], strides=[1, 1, 1], p=1, r=0, correct_method=None, clusterp=0.05, smooth=True, plotrlt=True, img_background=None):
 
     """
     Save the searchlight correlation coefficients as a NIfTI file for fMRI
@@ -53,6 +53,9 @@ def corr_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60
         If correct_method='FWE', here the FWE-correction will be used. If correct_methd='FDR', here the FDR-correction
         will be used. If correct_method=None, no correction.
         Only when p<1, correct_method works.
+    clusterp : float. Default is 0.05.
+        The threshold of p-value for cluster-wise correction.
+        Only when correct_method='Cluster-FDR' or 'Cluster-FWE', clusterp works.
     smooth : bool True or False. Default is True.
         Smooth the RSA result or not.
     plotrlt : bool True or False.
@@ -87,6 +90,10 @@ def corr_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60
     ky = ksize[1]
     kz = ksize[2]
 
+    rx = int((kx-1)/2)
+    ry = int((ky-1)/2)
+    rz = int((kz-1)/2)
+
     # strides for calculating along the x, y, z axis
     sx = strides[0]
     sy = strides[1]
@@ -99,28 +106,8 @@ def corr_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60
 
     corrsr = corrs[:, :, :, 0]
 
-    # initialize the indexes to record the number of valid values for each voxel
-    index = np.zeros([nx, ny, nz], dtype=np.int)
-
     # initialize the img array to save the sum-r-value for each voxel
     img_nii = np.zeros([nx, ny, nz], dtype=np.float64)
-
-    # iterate through all the calculation units
-
-    # calculate the indexs
-    for i in range(n_x):
-        for j in range(n_y):
-            for k in range(n_z):
-                x = i*sx
-                y = j*sy
-                z = k*sz
-
-                if (math.isnan(corrsr[i, j, k]) == False):
-
-                    for k1 in range(kx):
-                        for k2 in range(ky):
-                            for k3 in range(kz):
-                                index[x+k1, y+k2, z+k3] = index[x+k1, y+k2, z+k3] + 1
 
     # initialize a mask in order to record valid voxels (have qualified results)
     mask = np.zeros([nx, ny, nz], dtype=np.int)
@@ -153,17 +140,11 @@ def corr_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60
                 # p-values<threshold-p & r-values>threshold-r
                 if (corrsp[i, j, k] < p) and (corrsr[i, j, k] > r):
 
-                    for k1 in range(kx):
-                        for k2 in range(ky):
-                            for k3 in range(kz):
-                                mask[x + k1, y + k2, z + k3] = 1
+                    mask[x + rx, y + ry, z + rz] = 1
 
                 if (math.isnan(corrsr[i, j, k]) == False):
 
-                    for k1 in range(kx):
-                        for k2 in range(ky):
-                            for k3 in range(kz):
-                                img_nii[x+k1, y+k2, z+k3] = img_nii[x+k1, y+k2, z+k3] + corrsr[i, j, k]
+                    img_nii[x+rx, y+ry, z+rz] = img_nii[x+rx, y+ry, z+rz] + corrsr[i, j, k]
 
     # initialize the newimg array to calculate the avg-r-value for each voxel
     newimg_nii = np.full([nx, ny, nz], np.nan)
@@ -176,7 +157,7 @@ def corr_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60
                 # valid voxel
                 if mask[i, j, k] == 1:
                     # sum-r-value/index
-                    newimg_nii[i, j, k] = float(img_nii[i, j, k]/index[i, j, k])
+                    newimg_nii[i, j, k] = img_nii[i, j, k]
 
 
     # set filename for result .nii file
@@ -213,6 +194,7 @@ def corr_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60
 
     print(filename)
 
+    print("Save RSA results.")
 
     # save the .nii file for RSA results
     file = nib.Nifti1Image(newimg_nii, affine)
@@ -229,13 +211,15 @@ def corr_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60
     # determine if it has results
     norlt = np.isnan(newimg_nii).all()
     if norlt == True:
-        print("No RSA result.")
+        print("No RSA results.")
+
+    print("File("+filename+") saves successfully!")
 
     # determine plot the results or not
     if norlt == False and plotrlt == True:
-        plot_brainrsa_rlts(filename, background=img_background, type='r')
 
-    print("File("+filename+") saves successfully!")
+        print("Plot RSA results.")
+        plot_brainrsa_rlts(filename, background=img_background, type='r')
 
     return newimg_nii
 
@@ -281,6 +265,9 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
         correct_methd='Cluster-FDR', here the Cluster-wise FDR-correction will be used. If correct_method=None, no
         correction.
         Only when p<1, correct_method works.
+    clusterp : float. Default is 0.05.
+        The threshold of p-value for cluster-wise correction.
+        Only when correct_method='Cluster-FDR' or 'Cluster-FWE', clusterp works.
     smooth : bool True or False.  Default is False.
         Smooth the RSA result or not.
     plotrlt : bool True or False.  Default is True.
@@ -315,6 +302,10 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
     ky = ksize[1]
     kz = ksize[2]
 
+    rx = int((kx-1)/2)
+    ry = int((ky-1)/2)
+    rz = int((kz-1)/2)
+
     # strides for calculating along the x, y, z axis
     sx = strides[0]
     sy = strides[1]
@@ -325,10 +316,6 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
     n_y = np.shape(corrs)[1]
     n_z = np.shape(corrs)[2]
 
-    # initialize the indexes to record the number of valid values for each voxel
-    index = np.zeros([nx, ny, nz], dtype=np.int)
-
-    # initialize the img array to save the sum-r-value for each voxel
     img_nii = np.zeros([nx, ny, nz], dtype=np.float64)
 
     # initialize a mask in order to record valid voxels (have qualified results)
@@ -336,7 +323,7 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
 
     # get the p-values
     corrsp = corrs[:, :, :, 1]
-    corrsr = corrs[:, :, :, 0]
+    corrst = corrs[:, :, :, 0]
 
     # calculate the number of voxels for correction
     fadeimg = np.zeros([nx, ny, nz], dtype=np.int)
@@ -345,7 +332,6 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
 
     # calculate the indexs
     for i in range(n_x):
-        print(i)
         for j in range(n_y):
             for k in range(n_z):
 
@@ -354,16 +340,9 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
                 z = k*sz
 
                 if corrsp[i, j, k] < 1:
-                    for k1 in range(kx):
-                        for k2 in range(ky):
-                            for k3 in range(kz):
-                                index[x+k1, y+k2, z+k3] = index[x+k1, y+k2, z+k3] + 1
-                                img_nii[x + k1, y + k2, z + k3] = img_nii[x + k1, y + k2, z + k3] + corrsr[i, j, k]
+                    img_nii[x + rx, y + ry, z + rz] = corrst[i, j, k]
                 if corrsp[i, j, k] < p:
-                    for k1 in range(kx):
-                        for k2 in range(ky):
-                            for k3 in range(kz):
-                                fadeimg[x + k1, y + k2, z + k3] = 1
+                    fadeimg[x + rx, y + ry, z + rz] = 1
 
     n_corrected = 0
     for i in range(nx):
@@ -372,7 +351,7 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
                 if fadeimg[i, j, k] == 1:
                     n_corrected = n_corrected + 1
 
-    print(str(n_corrected)+" voxels corrected")
+    print(str(n_corrected)+" voxels will be corrected.")
 
     # do the correction
     if p < 1:
@@ -387,18 +366,17 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
 
         # Cluster-wise FDR-correction
         if correct_method == "Cluster-FDR":
-            corrsp = cluster_fdr_correct(corrsp, p_threshold=clusterp)
+            corrsp = cluster_fdr_correct(corrsp, p_threshold1=p, p_threshold2=clusterp)
 
         # Cluster-wise FWE-correction
         if correct_method == "Cluster-FWE":
-            corrsp = cluster_fwe_correct(corrsp, p_threshold=clusterp)
+            corrsp = cluster_fwe_correct(corrsp, p_threshold1=p, p_threshold2=clusterp)
 
     # iterate through all the calculation units again
 
-    print("record the valid voxels")
+    print("Record the valid voxels.")
 
     for i in range(n_x):
-        print(i)
         for j in range(n_y):
             for k in range(n_z):
 
@@ -407,17 +385,13 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
                 z = k * sz
 
                 if corrsp[i, j, k] < p:
-
-                    for k1 in range(kx):
-                        for k2 in range(ky):
-                            for k3 in range(kz):
-                                mask[x + k1, y + k2, z + k3] = 1
+                    mask[x + rx, y + ry, z + rz] = 1
 
     # initialize the newimg array to calculate the avg-r-value for each voxel
     newimg_nii = np.full([nx, ny, nz], np.nan)
 
     t_threshold = t.isf(p, df)
-    print(t_threshold)
+    print("t threshold: " + str(t_threshold))
 
     # set filename for result .nii file
     if filename == None:
@@ -450,22 +424,22 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
                 # valid voxel
                 if (math.isnan(cmask[i, j, k]) == False) and cmask[i, j, k] != 0 and mask[i, j, k] == 1:
                     # sum-r-value/index
-                    newimg_nii[i, j, k] = float(img_nii[i, j, k]/index[i, j, k])
+                    newimg_nii[i, j, k] = img_nii[i, j, k]
                     if newimg_nii[i, j, k] < t_threshold:
                         newimg_nii[i, j, k] = np.nan
 
-    print("get RSA results")
+    print("Get RSA results.")
 
     print(filename)
 
-    print("save RSA results")
+    print("Save RSA results.")
 
     # save the .nii file for RSA results
     file = nib.Nifti1Image(newimg_nii, affine)
 
 
     if smooth == True:
-        print("smooth the results")
+        print("Smooth the results.")
         # smooth the img data of the .nii file
         file = smooth_img(file, fwhm='fast')
 
@@ -475,12 +449,14 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
     # determine if it has results
     norlt = np.isnan(newimg_nii).all()
     if norlt == True:
-        print("No RSA result.")
+        print("No RSA results.")
+
+    print("File("+filename+") saves successfully!")
 
     # determine plot the results or not
     if norlt == False and plotrlt == True:
-        plot_brainrsa_rlts(filename, background=img_background, type='t')
 
-    print("File("+filename+") saves successfully!")
+        print("Plot RSA results.")
+        plot_brainrsa_rlts(filename, background=img_background, type='t')
 
     return newimg_nii
