@@ -242,7 +242,7 @@ def corr_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60
 
 ' a function for saving the searchlight statistical results as a NIfTI file for fMRI '
 
-def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60, 60, 60], ksize=[3, 3, 3], strides=[1, 1, 1], p=0.05, df=20, correct_method=None, smooth=False, plotrlt=True, img_background=None):
+def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60, 60, 60], ksize=[3, 3, 3], strides=[1, 1, 1], p=0.05, df=20, correct_method=None, clusterp=0.05, smooth=False, plotrlt=True, img_background=None):
 
     """
     Save the searchlight RSA statistical results as a NIfTI file for fMRI
@@ -387,11 +387,11 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
 
         # Cluster-wise FDR-correction
         if correct_method == "Cluster-FDR":
-            corrsp = cluster_fdr_correct(corrsp, p_threshold=p)
+            corrsp = cluster_fdr_correct(corrsp, p_threshold=clusterp)
 
         # Cluster-wise FWE-correction
         if correct_method == "Cluster-FWE":
-            corrsp = cluster_fwe_correct(corrsp, p_threshold=p)
+            corrsp = cluster_fwe_correct(corrsp, p_threshold=clusterp)
 
     # iterate through all the calculation units again
 
