@@ -1,0 +1,1155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6f96de87-b4a9-466e-9c57-851a40404f91" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/neurora/nii_save.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/nii_save.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$corr_cal_by_rdm.coverage" NAME="corr_cal_by_rdm Coverage Results" MODIFIED="1602989663463" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neurora" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$test01.coverage" NAME="test01 Coverage Results" MODIFIED="1621680288232" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$syr_04.coverage" NAME="syr_04 Coverage Results" MODIFIED="1557728518196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NeuroRA" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$test001.coverage" NAME="test001 Coverage Results" MODIFIED="1557981615432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NeuroRA" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rdm_corr_test_rdm_corr.coverage" NAME="pytest for t_rdm_corr.test_rdm_corr Coverage Results" MODIFIED="1602990692253" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$demo2.coverage" NAME="demo2 Coverage Results" MODIFIED="1608626769705" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$setup.coverage" NAME="setup Coverage Results" MODIFIED="1585821627756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$hyt_test02.coverage" NAME="hyt_test02 Coverage Results" MODIFIED="1556799933686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rsa_plot_test_rsa_plot_test_plot_tbytsim_withstats.coverage" NAME="pytest for t_rsa_plot.test_rsa_plot.test_plot_tbytsim_withstats Coverage Results" MODIFIED="1602997626707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$test02__1_.coverage" NAME="test02 (1) Coverage Results" MODIFIED="1555317147805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_stats_cal_test_stats_cal_test_stats_fmri.coverage" NAME="pytest for t_stats_cal.test_stats_cal.test_stats_fmri Coverage Results" MODIFIED="1603004586164" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$demo2new.coverage" NAME="demo2new Coverage Results" MODIFIED="1594570936363" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_corr_cal_test_corr_cal_test_bhvANDeeg_corr.coverage" NAME="pytest for t_corr_cal.test_corr_cal.test_bhvANDeeg_corr Coverage Results" MODIFIED="1602949602243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_nii_save_test_nii_save_test_corr_save_nii.coverage" NAME="pytest for t_nii_save.test_nii_save.test_corr_save_nii Coverage Results" MODIFIED="1602992108211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_stuff_test_stuff_test_position_to_mni.coverage" NAME="pytest for t_stuff.test_stuff.test_position_to_mni Coverage Results" MODIFIED="1603001199579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$syr_03.coverage" NAME="syr_03 Coverage Results" MODIFIED="1557543052481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NeuroRA" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_isc_cal_test_isc_cal_test_isc_fmri_roi.coverage" NAME="pytest for t_isc_cal.test_isc_cal.test_isc_fmri_roi Coverage Results" MODIFIED="1619092934731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_stps_cal_test_stps_cal_test_stps_fmri_roi.coverage" NAME="pytest for t_stps_cal.test_stps_cal.test_stps_fmri_roi Coverage Results" MODIFIED="1602987430850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_stats_cal_test_stats_cal_test_stats.coverage" NAME="pytest for t_stats_cal.test_stats_cal.test_stats Coverage Results" MODIFIED="1603004729650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_corr_cal_test_corr_cal_test_bhvANDfmri_corr.coverage" NAME="pytest for t_corr_cal.test_corr_cal.test_bhvANDfmri_corr Coverage Results" MODIFIED="1619082530948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRStoolbox$bhv_rdm_unequal.coverage" NAME="bhv_rdm_unequal Coverage Results" MODIFIED="1554785130615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_corr_cal_by_rdm_test_corr_cal_by_rdm_test_rdms_corr.coverage" NAME="pytest for t_corr_cal_by_rdm.test_corr_cal_by_rdm.test_rdms_corr Coverage Results" MODIFIED="1602989836599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRStoolbox$eeg_rdm.coverage" NAME="eeg_rdm Coverage Results" MODIFIED="1554782784289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$hyt_test03.coverage" NAME="hyt_test03 Coverage Results" MODIFIED="1556799900332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_stuff_test_stuff_test_limtozero.coverage" NAME="pytest for t_stuff.test_stuff.test_limtozero Coverage Results" MODIFIED="1602999829436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rdm_corr_test_rdm_corr_test_rdm_similarity.coverage" NAME="pytest for t_rdm_corr.test_rdm_corr.test_rdm_similarity Coverage Results" MODIFIED="1602991395696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$demo1.coverage" NAME="demo1 Coverage Results" MODIFIED="1608624296623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_in_t_stps_cal_py.coverage" NAME="pytest in t_stps_cal.py Coverage Results" MODIFIED="1619095971188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$hyt_test01.coverage" NAME="hyt_test01 Coverage Results" MODIFIED="1556799950122" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_in_t_rdm_cal_py.coverage" NAME="pytest in t_rdm_cal.py Coverage Results" MODIFIED="1619079540274" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$test.coverage" NAME="test Coverage Results" MODIFIED="1619182810846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neurora" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$decoding.coverage" NAME="decoding Coverage Results" MODIFIED="1619631847612" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neurora" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$hyt_test04.coverage" NAME="hyt_test04 Coverage Results" MODIFIED="1556800165657" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_stuff_test_stuff_test_mask_to.coverage" NAME="pytest for t_stuff.test_stuff.test_mask_to Coverage Results" MODIFIED="1603001813339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$syr_test03.coverage" NAME="syr_test03 Coverage Results" MODIFIED="1556787696922" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$demo3.coverage" NAME="demo3 Coverage Results" MODIFIED="1608626691473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/NeuroRStoolbox$bhvANDseeg_rsa.coverage" NAME="bhvANDseeg_rsa Coverage Results" MODIFIED="1554989099253" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rsa_plot_test_rsa_plot.coverage" NAME="pytest for t_rsa_plot.test_rsa_plot Coverage Results" MODIFIED="1602999539668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$stuff.coverage" NAME="stuff Coverage Results" MODIFIED="1619938030950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neurora" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$test02.coverage" NAME="test02 Coverage Results" MODIFIED="1555430779751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$isc_cal.coverage" NAME="isc_cal Coverage Results" MODIFIED="1617808253658" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neurora" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$demo1new.coverage" NAME="demo1new Coverage Results" MODIFIED="1594570940789" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$nii_save1.coverage" NAME="nii_save1、 Coverage Results" MODIFIED="1621698863824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neurora" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_isc_cal_test_isc_cal.coverage" NAME="pytest for t_isc_cal.test_isc_cal Coverage Results" MODIFIED="1602988280848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rdm_cal_test_rdm_cal_test_eegRDM.coverage" NAME="pytest for t_rdm_cal.test_rdm_cal.test_eegRDM Coverage Results" MODIFIED="1619080269353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRStoolbox$test02.coverage" NAME="test02 Coverage Results" MODIFIED="1555251944145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_stats_cal_test_stats_cal_test_stats_stps.coverage" NAME="pytest for t_stats_cal.test_stats_cal.test_stats_stps Coverage Results" MODIFIED="1603004701421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_stats_cal_test_stats_cal_test_stats_iscfmri.coverage" NAME="pytest for t_stats_cal.test_stats_cal.test_stats_iscfmri Coverage Results" MODIFIED="1603004602242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$rdm_cal.coverage" NAME="rdm_cal Coverage Results" MODIFIED="1606268806423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neurora" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_nps_cal_test_nps_cal_test_nps_fmri.coverage" NAME="pytest for t_nps_cal.test_nps_cal.test_nps_fmri Coverage Results" MODIFIED="1619093766949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$syr_01.coverage" NAME="syr_01 Coverage Results" MODIFIED="1557503218445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NeuroRA" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$eegANDfmri_corr_cal.coverage" NAME="eegANDfmri_corr_cal Coverage Results" MODIFIED="1556595190095" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_stuff_test_stuff_test_correct_by_threshold.coverage" NAME="pytest for t_stuff.test_stuff.test_correct_by_threshold Coverage Results" MODIFIED="1603000532799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_corr_cal_test_bhvANDeeg_corr.coverage" NAME="pytest for t_corr_cal.test_bhvANDeeg_corr Coverage Results" MODIFIED="1602943002582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$test04.coverage" NAME="test04 Coverage Results" MODIFIED="1555846700636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rsa_plot_test_rsa_plot_test_plot_rdm.coverage" NAME="pytest for t_rsa_plot.test_rsa_plot.test_plot_rdm Coverage Results" MODIFIED="1602997073114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_nps_cal_test_nps_cal_test_nps_fmri_roi.coverage" NAME="pytest for t_nps_cal.test_nps_cal.test_nps_fmri_roi Coverage Results" MODIFIED="1602954610268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$rsa_plot.coverage" NAME="rsa_plot Coverage Results" MODIFIED="1602999285028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neurora" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$stats_cal.coverage" NAME="stats_cal Coverage Results" MODIFIED="1618981921127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neurora" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$hyt01.coverage" NAME="hyt01 Coverage Results" MODIFIED="1556529030596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$stps_cal.coverage" NAME="stps_cal Coverage Results" MODIFIED="1602987397850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neurora" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rdm_cal_test_rdm_cal_test_fmriRDM_roi.coverage" NAME="pytest for t_rdm_cal.test_rdm_cal.test_fmriRDM_roi Coverage Results" MODIFIED="1619079428503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRStoolbox$bhvANDeeg_rsa.coverage" NAME="bhvANDeeg_rsa Coverage Results" MODIFIED="1554989104709" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_stats_cal_test_stats_cal.coverage" NAME="pytest for t_stats_cal.test_stats_cal Coverage Results" MODIFIED="1603004715587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_stuff_test_stuff_test_fdr_correct.coverage" NAME="pytest for t_stuff.test_stuff.test_fdr_correct Coverage Results" MODIFIED="1603000416935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rsa_plot_test_rsa_plot_test_plot_stats_hotmap.coverage" NAME="pytest for t_rsa_plot.test_rsa_plot.test_plot_stats_hotmap Coverage Results" MODIFIED="1602999087685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRStoolbox$bhv_rdm.coverage" NAME="bhv_rdm Coverage Results" MODIFIED="1554972532555" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rdm_corr_test_rdm_corr_test_rdm_rdm_distance.coverage" NAME="pytest for t_rdm_corr.test_rdm_corr.test_rdm_rdm_distance Coverage Results" MODIFIED="1602991330355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$syr_test02.coverage" NAME="syr_test02 Coverage Results" MODIFIED="1556787686165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$corr_cal.coverage" NAME="corr_cal Coverage Results" MODIFIED="1602954243309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neurora" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$nii_save.coverage" NAME="nii_save Coverage Results" MODIFIED="1621777076195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neurora" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_in_t_nii_save_py.coverage" NAME="pytest in t_nii_save.py Coverage Results" MODIFIED="1602991756106" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rsa_plot_test_rsa_plot_test_plot_brainrsa_regions.coverage" NAME="pytest for t_rsa_plot.test_rsa_plot.test_plot_brainrsa_regions Coverage Results" MODIFIED="1602999498068" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_in_t_corr_cal_py.coverage" NAME="pytest in t_corr_cal.py Coverage Results" MODIFIED="1619081881850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$rsa_corr.coverage" NAME="rsa_corr Coverage Results" MODIFIED="1565779997712" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neurora" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_in_t_nps_cal_py.coverage" NAME="pytest in t_nps_cal.py Coverage Results" MODIFIED="1619093683150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$syr_test01.coverage" NAME="syr_test01 Coverage Results" MODIFIED="1556849277613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NeuroRA" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_stuff_test_stuff.coverage" NAME="pytest for t_stuff.test_stuff Coverage Results" MODIFIED="1603001944639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rdm_cal_test_rdm_cal_test_bhvRDM.coverage" NAME="pytest for t_rdm_cal.test_rdm_cal.test_bhvRDM Coverage Results" MODIFIED="1619080489118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rdm_cal_test_rdm_cal_test_fmriRDM.coverage" NAME="pytest for t_rdm_cal.test_rdm_cal.test_fmriRDM Coverage Results" MODIFIED="1602950543812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_corr_cal_by_rdm_test_corr_cal_by_rdm.coverage" NAME="pytest for t_corr_cal_by_rdm.test_corr_cal_by_rdm Coverage Results" MODIFIED="1619081608160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rsa_plot_test_rsa_plot_test_plot_corrs_hotmap_stats.coverage" NAME="pytest for t_rsa_plot.test_rsa_plot.test_plot_corrs_hotmap_stats Coverage Results" MODIFIED="1602997867939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$corr_to_nii.coverage" NAME="corr_to_nii Coverage Results" MODIFIED="1585730720468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neurora" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_nii_save_test_nii_save.coverage" NAME="pytest for t_nii_save.test_nii_save Coverage Results" MODIFIED="1602992070881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rdm_cal_test_rdm_cal.coverage" NAME="pytest for t_rdm_cal.test_rdm_cal Coverage Results" MODIFIED="1619080418934" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRStoolbox$corr_plot_time.coverage" NAME="corr_plot_time Coverage Results" MODIFIED="1555250650819" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_stps_cal_test_stps_cal.coverage" NAME="pytest for t_stps_cal.test_stps_cal Coverage Results" MODIFIED="1602987012125" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$rdm_corr.coverage" NAME="rdm_corr Coverage Results" MODIFIED="1602991302522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neurora" />
+    <SUITE FILE_PATH="coverage/NeuroRStoolbox$fmri_rdm.coverage" NAME="fmri_rdm Coverage Results" MODIFIED="1554860463353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$syr_02.coverage" NAME="syr_02 Coverage Results" MODIFIED="1557735792281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NeuroRA" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rsa_plot_test_rsa_plot_test_plot_corrs_by_time.coverage" NAME="pytest for t_rsa_plot.test_rsa_plot.test_plot_corrs_by_time Coverage Results" MODIFIED="1602997330780" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$syr_05.coverage" NAME="syr_05 Coverage Results" MODIFIED="1557810420747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NeuroRA" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$test01__1_.coverage" NAME="test01 (1) Coverage Results" MODIFIED="1555515425147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rsa_plot_test_rsa_plot_test_plot_nps_hotmap.coverage" NAME="pytest for t_rsa_plot.test_rsa_plot.test_plot_nps_hotmap Coverage Results" MODIFIED="1602997923329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_isc_cal_test_isc_cal_test_isc_fmri.coverage" NAME="pytest for t_isc_cal.test_isc_cal.test_isc_fmri Coverage Results" MODIFIED="1602988365891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_corr_cal_test_corr_cal_test_eegANDfmri_corr.coverage" NAME="pytest for t_corr_cal.test_corr_cal.test_eegANDfmri_corr Coverage Results" MODIFIED="1619082330562" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$hyt02.coverage" NAME="hyt02 Coverage Results" MODIFIED="1556529335858" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_stps_cal_test_stps_cal_test_stps.coverage" NAME="pytest for t_stps_cal.test_stps_cal.test_stps Coverage Results" MODIFIED="1619096497256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$test03.coverage" NAME="test03 Coverage Results" MODIFIED="1555507061782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRStoolbox$test01.coverage" NAME="test01 Coverage Results" MODIFIED="1555250839432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rdm_corr_test_rdm_corr_test_rdm_correlation_pearson.coverage" NAME="pytest for t_rdm_corr.test_rdm_corr.test_rdm_correlation_pearson Coverage Results" MODIFIED="1619080527952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rsa_plot_test_rsa_plot_test_plot_brainrsa_montage.coverage" NAME="pytest for t_rsa_plot.test_rsa_plot.test_plot_brainrsa_montage Coverage Results" MODIFIED="1602999359876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_corr_cal_test_corr_cal.coverage" NAME="pytest for t_corr_cal.test_corr_cal Coverage Results" MODIFIED="1619082225655" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_stuff_test_stuff_test_get_affine.coverage" NAME="pytest for t_stuff.test_stuff.test_get_affine Coverage Results" MODIFIED="1603000073460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/neurora/nii_save.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="240" lean-forward="true" selection-start-line="240" selection-end-line="240" />
+              <folding>
+                <element signature="e#116#134#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/neurora/stuff.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-16455">
+              <caret line="223" column="14" selection-start-line="223" selection-start-column="14" selection-end-line="223" selection-end-column="14" />
+              <folding>
+                <element signature="e#105#126#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/setup.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/neurora/rsa_plot.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="576" column="25" selection-start-line="576" selection-start-column="25" selection-end-line="578" selection-end-column="115" />
+              <folding>
+                <element signature="e#98#116#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/neurora/stats_cal.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="89" column="37" lean-forward="true" selection-start-line="89" selection-start-column="37" selection-end-line="89" selection-end-column="37" />
+              <folding>
+                <element signature="e#105#123#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/neurora/corr_cal.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="437" column="85" selection-start-line="437" selection-start-column="85" selection-end-line="437" selection-end-column="85" />
+              <folding>
+                <element signature="e#131#149#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/neurora/rdm_cal.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-384">
+              <caret line="733" column="91" selection-start-line="733" selection-start-column="91" selection-end-line="733" selection-end-column="91" />
+              <folding>
+                <element signature="e#120#138#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/neurora/decoding.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="423">
+              <caret line="152" column="50" selection-start-line="152" selection-start-column="50" selection-end-line="152" selection-end-column="50" />
+              <folding>
+                <element signature="e#106#124#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/neurora/isc_cal.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="27" column="31" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="31" />
+              <folding>
+                <element signature="e#132#150#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>_sources</find>
+      <find>_static</find>
+      <find>get_data</find>
+      <find>ttest_1samp</find>
+      <find>ttest</find>
+      <find>ttest_rel</find>
+      <find>fisherz</find>
+      <find>low</find>
+      <find>== False</find>
+      <find>mask_data</find>
+      <find>is False</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>sources</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/docs/source/cal_stps.rst" />
+        <option value="$PROJECT_DIR$/docs/source/neurora.rdm_cal.rst" />
+        <option value="$PROJECT_DIR$/docs/source/visualization.rst" />
+        <option value="$PROJECT_DIR$/docs/source/nii_save.rst" />
+        <option value="$PROJECT_DIR$/docs/source/nps_cal.rst" />
+        <option value="$PROJECT_DIR$/docs/build/html/index.html" />
+        <option value="$PROJECT_DIR$/docs/source/stats_cal.rst" />
+        <option value="$PROJECT_DIR$/docs/source/rsa_plot.rst" />
+        <option value="$PROJECT_DIR$/docs/source/stuff.rst" />
+        <option value="$PROJECT_DIR$/docs/source/rdm_cal.rst" />
+        <option value="$PROJECT_DIR$/docs/source/stps_cal.rst" />
+        <option value="$PROJECT_DIR$/docs/source/rsa.rst" />
+        <option value="$PROJECT_DIR$/docs/source/isc_cal.rst" />
+        <option value="$PROJECT_DIR$/docs/source/overview.rst" />
+        <option value="$PROJECT_DIR$/docs/source/index.rst" />
+        <option value="$PROJECT_DIR$/test/test_corr_cal.py" />
+        <option value="$PROJECT_DIR$/test/t_nps_cal.py" />
+        <option value="$PROJECT_DIR$/test/t_stps_cal.py" />
+        <option value="$PROJECT_DIR$/test/t_isc_cal.py" />
+        <option value="$PROJECT_DIR$/test/t_corr_cal_by_rdm.py" />
+        <option value="$PROJECT_DIR$/test/t_rdm_corr.py" />
+        <option value="$PROJECT_DIR$/test/t_nii_save.py" />
+        <option value="$PROJECT_DIR$/test/t_rsa_plot.py" />
+        <option value="$PROJECT_DIR$/test/t_stuff.py" />
+        <option value="$PROJECT_DIR$/test/t_stats_cal.py" />
+        <option value="$PROJECT_DIR$/demo/demo3.py" />
+        <option value="$PROJECT_DIR$/demo/demo2.py" />
+        <option value="$PROJECT_DIR$/docs/build/html/py-modindex.html" />
+        <option value="$PROJECT_DIR$/docs/source/conf.py" />
+        <option value="$PROJECT_DIR$/neurora/classification_cal.py" />
+        <option value="$PROJECT_DIR$/index.md" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/demo/demo1.py" />
+        <option value="$PROJECT_DIR$/neurora/rdm_corr.py" />
+        <option value="$PROJECT_DIR$/test/t_rdm_cal.py" />
+        <option value="$PROJECT_DIR$/neurora/corr_cal_by_rdm.py" />
+        <option value="$PROJECT_DIR$/test/t_corr_cal.py" />
+        <option value="$PROJECT_DIR$/neurora/corr_cal.py" />
+        <option value="$PROJECT_DIR$/neurora/isc_cal.py" />
+        <option value="$PROJECT_DIR$/neurora/nps_cal.py" />
+        <option value="$PROJECT_DIR$/neurora/test.py" />
+        <option value="$PROJECT_DIR$/neurora/rdm_cal.py" />
+        <option value="$PROJECT_DIR$/neurora/stats_cal.py" />
+        <option value="$PROJECT_DIR$/neurora/stps_cal.py" />
+        <option value="$PROJECT_DIR$/neurora/rsa_plot.py" />
+        <option value="$PROJECT_DIR$/neurora/decoding.py" />
+        <option value="$PROJECT_DIR$/test01.py" />
+        <option value="$PROJECT_DIR$/neurora/nii_save1、.py" />
+        <option value="$PROJECT_DIR$/neurora/stuff.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/neurora/nii_save.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1812" />
+    <option name="y" value="96" />
+    <option name="width" value="1736" />
+    <option name="height" value="777" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="NeuroRAtoolbox" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NeuroRA-master" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NeuroRAtoolbox" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NeuroRA-master" type="462c0819:PsiDirectoryNode" />
+              <item name="neurora" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NeuroRAtoolbox" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/neurora" />
+      <recent name="$PROJECT_DIR$/test" />
+      <recent name="$PROJECT_DIR$/neurora/test" />
+      <recent name="$PROJECT_DIR$/docs/source" />
+      <recent name="$PROJECT_DIR$/neurora/template" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/neurora" />
+      <recent name="$PROJECT_DIR$/neurora/template" />
+      <recent name="$PROJECT_DIR$/demo" />
+      <recent name="$PROJECT_DIR$/NeuroRA" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.nii_save">
+    <configuration name="decoding" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="NeuroRA-master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neurora" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neurora/decoding.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="nii_save" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="NeuroRA-master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neurora" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neurora/nii_save.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="nii_save1、" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="NeuroRA-master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neurora" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neurora/nii_save1、.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="stuff" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="NeuroRA-master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neurora" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neurora/stuff.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test01" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="NeuroRA-master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test01.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.nii_save" />
+        <item itemvalue="Python.nii_save1、" />
+        <item itemvalue="Python.test01" />
+        <item itemvalue="Python.stuff" />
+        <item itemvalue="Python.decoding" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6f96de87-b4a9-466e-9c57-851a40404f91" name="Default Changelist" comment="" />
+      <created>1554619470441</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1554619470441</updated>
+      <workItem from="1554619486721" duration="42404000" />
+      <workItem from="1554968437579" duration="58897000" />
+      <workItem from="1555385147599" duration="1810000" />
+      <workItem from="1555414804127" duration="10524000" />
+      <workItem from="1555827299631" duration="1191000" />
+      <workItem from="1555832456738" duration="1000" />
+      <workItem from="1555844726370" duration="22602000" />
+      <workItem from="1556501907303" duration="8856000" />
+      <workItem from="1556696282678" duration="19790000" />
+      <workItem from="1557131416054" duration="4616000" />
+      <workItem from="1557411505808" duration="23119000" />
+      <workItem from="1557722913452" duration="757000" />
+      <workItem from="1557727415314" duration="1439000" />
+      <workItem from="1557729607122" duration="8909000" />
+      <workItem from="1557981431129" duration="811000" />
+      <workItem from="1558336156131" duration="2446000" />
+      <workItem from="1558506342960" duration="12000" />
+      <workItem from="1558603853692" duration="2141000" />
+      <workItem from="1558960993010" duration="656000" />
+      <workItem from="1559188532707" duration="9979000" />
+      <workItem from="1560081249762" duration="3616000" />
+      <workItem from="1560156089210" duration="596000" />
+      <workItem from="1560314391032" duration="17000" />
+      <workItem from="1562321032393" duration="12600000" />
+      <workItem from="1562948803392" duration="657000" />
+      <workItem from="1565061334856" duration="1747000" />
+      <workItem from="1565130022439" duration="1435000" />
+      <workItem from="1565778472263" duration="2621000" />
+      <workItem from="1566389742194" duration="507000" />
+      <workItem from="1580901329402" duration="668000" />
+      <workItem from="1581065207172" duration="5133000" />
+      <workItem from="1581234477321" duration="566000" />
+      <workItem from="1581348076166" duration="564000" />
+      <workItem from="1582717851803" duration="29000" />
+      <workItem from="1583246290828" duration="18000" />
+      <workItem from="1583286574087" duration="30352000" />
+      <workItem from="1583835173200" duration="823000" />
+      <workItem from="1585367145200" duration="19558000" />
+      <workItem from="1585666150384" duration="586000" />
+      <workItem from="1585681731087" duration="3647000" />
+      <workItem from="1585730636052" duration="1562000" />
+      <workItem from="1585735977655" duration="25643000" />
+      <workItem from="1586091921235" duration="19270000" />
+      <workItem from="1586249887877" duration="16664000" />
+      <workItem from="1586340963449" duration="1462000" />
+      <workItem from="1586342679969" duration="20831000" />
+      <workItem from="1586523197739" duration="18901000" />
+      <workItem from="1586690005598" duration="13297000" />
+      <workItem from="1586760105047" duration="20834000" />
+      <workItem from="1586862298887" duration="3908000" />
+      <workItem from="1586888617152" duration="12027000" />
+      <workItem from="1587038605258" duration="66957000" />
+      <workItem from="1587790383263" duration="60261000" />
+      <workItem from="1587974597166" duration="741000" />
+      <workItem from="1588005773105" duration="12591000" />
+      <workItem from="1588413895295" duration="232000" />
+      <workItem from="1588482867456" duration="496000" />
+      <workItem from="1588505436972" duration="2210000" />
+      <workItem from="1588577257479" duration="4693000" />
+      <workItem from="1588613171917" duration="6651000" />
+      <workItem from="1589096163057" duration="485000" />
+      <workItem from="1589163913807" duration="16144000" />
+      <workItem from="1589853855556" duration="5608000" />
+      <workItem from="1589940390969" duration="6093000" />
+      <workItem from="1590155175159" duration="7057000" />
+      <workItem from="1590307548087" duration="8000" />
+      <workItem from="1590311034155" duration="3969000" />
+      <workItem from="1590427615977" duration="4045000" />
+      <workItem from="1590547769840" duration="194000" />
+      <workItem from="1590639502582" duration="7497000" />
+      <workItem from="1591027603192" duration="6785000" />
+      <workItem from="1591204832194" duration="2833000" />
+      <workItem from="1591497492862" duration="271000" />
+      <workItem from="1591498010387" duration="336000" />
+      <workItem from="1591498395375" duration="461000" />
+      <workItem from="1591498927182" duration="785000" />
+      <workItem from="1591768958973" duration="1299000" />
+      <workItem from="1591968662331" duration="20000" />
+      <workItem from="1592030544598" duration="14163000" />
+      <workItem from="1592143832771" duration="6010000" />
+      <workItem from="1592429028811" duration="1000" />
+      <workItem from="1592431857098" duration="230000" />
+      <workItem from="1592579073261" duration="1019000" />
+      <workItem from="1593703459402" duration="10000" />
+      <workItem from="1593767563824" duration="1343000" />
+      <workItem from="1594137706278" duration="22410000" />
+      <workItem from="1594651695260" duration="2000" />
+      <workItem from="1594713508956" duration="647000" />
+      <workItem from="1594781465354" duration="1000000" />
+      <workItem from="1594996835077" duration="586000" />
+      <workItem from="1595250328368" duration="1611000" />
+      <workItem from="1595517702993" duration="5931000" />
+      <workItem from="1595750640820" duration="1604000" />
+      <workItem from="1595841522493" duration="7685000" />
+      <workItem from="1596161310057" duration="2314000" />
+      <workItem from="1596198180180" duration="574000" />
+      <workItem from="1596207237114" duration="611000" />
+      <workItem from="1596212976437" duration="2134000" />
+      <workItem from="1596341920502" duration="266000" />
+      <workItem from="1596342582222" duration="4149000" />
+      <workItem from="1597131375474" duration="15000" />
+      <workItem from="1599027691193" duration="463000" />
+      <workItem from="1599125430155" duration="1376000" />
+      <workItem from="1599552858563" duration="3002000" />
+      <workItem from="1600580413917" duration="4000" />
+      <workItem from="1600740140345" duration="654000" />
+      <workItem from="1600759951872" duration="75000" />
+      <workItem from="1601205595670" duration="588000" />
+      <workItem from="1602060798294" duration="41275000" />
+      <workItem from="1602430577216" duration="7994000" />
+      <workItem from="1602743008097" duration="18524000" />
+      <workItem from="1602947447861" duration="14556000" />
+      <workItem from="1602996573252" duration="49000" />
+      <workItem from="1602996657070" duration="2096000" />
+      <workItem from="1602998822953" duration="14250000" />
+      <workItem from="1603242721967" duration="7896000" />
+      <workItem from="1604626721721" duration="62000" />
+      <workItem from="1604626970381" duration="1024000" />
+      <workItem from="1604922525266" duration="79000" />
+      <workItem from="1605062302748" duration="5056000" />
+      <workItem from="1605233483480" duration="847000" />
+      <workItem from="1605421735636" duration="665000" />
+      <workItem from="1606120029961" duration="5000" />
+      <workItem from="1606267506421" duration="6583000" />
+      <workItem from="1606392854190" duration="390000" />
+      <workItem from="1606749834727" duration="4724000" />
+      <workItem from="1608304586167" duration="6494000" />
+      <workItem from="1608623998385" duration="86000" />
+      <workItem from="1608624282036" duration="10001000" />
+      <workItem from="1610763501412" duration="992000" />
+      <workItem from="1612618920404" duration="16000" />
+      <workItem from="1613313104001" duration="2439000" />
+      <workItem from="1613720441387" duration="6538000" />
+      <workItem from="1615725277069" duration="11750000" />
+      <workItem from="1617784324511" duration="53578000" />
+      <workItem from="1618204446716" duration="145746000" />
+      <workItem from="1621410244813" duration="46496000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="pytest_in_t_corr_cal_py - 2021.04.22 at 16h 54m 30s.xml">
+      <configuration name="pytest in t_corr_cal.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_t_corr_cal_py - 2021.04.22 at 16h 58m 07s.xml">
+      <configuration name="pytest in t_corr_cal.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_t_corr_cal_test_corr_cal - 2021.04.22 at 17h 04m 52s.xml">
+      <configuration name="pytest for t_corr_cal.test_corr_cal" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_t_corr_cal_test_corr_cal_test_eegANDfmri_corr - 2021.04.22 at 17h 05m 34s.xml">
+      <configuration name="pytest for t_corr_cal.test_corr_cal.test_eegANDfmri_corr" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_t_corr_cal_test_corr_cal_test_bhvANDfmri_corr - 2021.04.22 at 17h 09m 45s.xml">
+      <configuration name="pytest for t_corr_cal.test_corr_cal.test_bhvANDfmri_corr" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_t_isc_cal_test_isc_cal_test_isc_fmri_roi - 2021.04.22 at 20h 02m 18s.xml">
+      <configuration name="pytest for t_isc_cal.test_isc_cal.test_isc_fmri_roi" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_t_nps_cal_py - 2021.04.22 at 20h 14m 47s.xml">
+      <configuration name="pytest in t_nps_cal.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_t_nps_cal_test_nps_cal_test_nps_fmri - 2021.04.22 at 20h 16m 12s.xml">
+      <configuration name="pytest for t_nps_cal.test_nps_cal.test_nps_fmri" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_t_stps_cal_py - 2021.04.22 at 20h 59m 09s.xml">
+      <configuration name="pytest in t_stps_cal.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_t_stps_cal_test_stps_cal_test_stps - 2021.04.22 at 21h 02m 11s.xml">
+      <configuration name="pytest for t_stps_cal.test_stps_cal.test_stps" configurationId="tests" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1170509000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-1812" y="96" width="1736" height="777" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1475797" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32884902" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49916527" visible="true" weight="0.38540146" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39854014" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32884902" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5008347" side_tool="true" weight="0.24087591" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.4160584" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.329927" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.76682407" />
+      <window_info anchor="right" id="Database" order="4" weight="0.45281458" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24237429" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32884902" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3810219" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39854014" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32884902" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.329927" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.329927" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.6586379" />
+      <window_info anchor="right" id="Database" order="4" weight="0.45281458" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/scipy/stats/stats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="927">
+          <caret line="3506" selection-start-line="3506" selection-end-line="3506" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/t_stuff.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+          <folding>
+            <element signature="e#98#104#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/t_rsa_plot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-141">
+          <caret line="115" column="8" selection-start-line="115" selection-start-column="8" selection-end-line="115" selection-end-column="46" />
+          <folding>
+            <element signature="e#101#107#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/t_nii_save.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#101#119#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/t_stats_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#102#120#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/rdm1.txt" />
+    <entry file="file://$PROJECT_DIR$/docs/source/rsa.rst">
+      <provider selected="true" editor-type-id="restructured-text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/source/index.rst">
+      <provider selected="true" editor-type-id="restructured-text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../registration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="56" column="44" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/syr-eeg/eeg_decoding/classification_long_2cue.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-524" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/build/html/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/build/html/download.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/build/html/searchindex.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/build/html/py-modindex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="76" selection-start-line="32" selection-start-column="76" selection-end-line="32" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/build/html/.buildinfo">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/make.bat">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/source/conf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#232#241#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/classification_cal.py" />
+    <entry file="file://$PROJECT_DIR$/demo/demo2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
+          <folding>
+            <element signature="e#160#198#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="-355">
+            <caret line="28" column="94" selection-start-line="28" selection-start-column="94" selection-end-line="28" selection-end-column="94" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="97">
+            <caret line="29" column="133" selection-start-line="29" selection-start-column="133" selection-end-line="30" selection-end-column="93" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/demo1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="160" column="110" selection-start-line="160" selection-start-column="110" selection-end-line="160" selection-end-column="110" />
+          <folding>
+            <element signature="e#186#204#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/t_rdm_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-612">
+          <caret line="14" column="44" lean-forward="true" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
+          <folding>
+            <element signature="e#99#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/t_rdm_corr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="74" column="2" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
+          <folding>
+            <element signature="e#101#119#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/t_corr_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="50" lean-forward="true" selection-start-line="42" selection-start-column="50" selection-end-line="42" selection-end-column="50" />
+          <folding>
+            <element signature="e#101#119#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/t_corr_cal_by_rdm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="33" column="50" lean-forward="true" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+          <folding>
+            <element signature="e#108#126#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/t_isc_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="669">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#100#118#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/t_nps_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+          <folding>
+            <element signature="e#100#118#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/t_stps_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="23" column="41" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="47" />
+          <folding>
+            <element signature="e#101#119#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/nilearn/plotting/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/test.py" />
+    <entry file="file://$PROJECT_DIR$/neurora/stps_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="443" column="97" selection-start-line="443" selection-start-column="89" selection-end-line="443" selection-end-column="97" />
+          <folding>
+            <element signature="e#140#158#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/rdm_corr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="145" column="50" selection-start-line="145" selection-start-column="42" selection-end-line="145" selection-end-column="50" />
+          <folding>
+            <element signature="e#137#155#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/nps_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1574">
+          <caret line="140" column="39" selection-start-line="140" selection-start-column="39" selection-end-line="140" selection-end-column="39" />
+          <folding>
+            <element signature="e#132#150#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/demo3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="66" selection-start-line="3" selection-start-column="66" selection-end-line="3" selection-end-column="66" />
+          <folding>
+            <element signature="e#182#191#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/corr_cal_by_rdm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#152#170#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/corr_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="437" column="85" selection-start-line="437" selection-start-column="85" selection-end-line="437" selection-end-column="85" />
+          <folding>
+            <element signature="e#131#149#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/isc_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="27" column="31" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="31" />
+          <folding>
+            <element signature="e#132#150#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/rsa_plot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="576" column="25" selection-start-line="576" selection-start-column="25" selection-end-line="578" selection-end-column="115" />
+          <folding>
+            <element signature="e#98#116#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/decoding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="152" column="50" selection-start-line="152" selection-start-column="50" selection-end-line="152" selection-end-column="50" />
+          <folding>
+            <element signature="e#106#124#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test01.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="16" column="36" lean-forward="true" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/rdm_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-384">
+          <caret line="733" column="91" selection-start-line="733" selection-start-column="91" selection-end-line="733" selection-end-column="91" />
+          <folding>
+            <element signature="e#120#138#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/numpy/ma/core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="5082" selection-start-line="5082" selection-end-line="5082" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/nilearn/_utils/niimg.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4015">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/nibabel/loadsave.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/nii_save1、.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="656">
+          <caret line="69" column="47" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/stuff.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16455">
+          <caret line="223" column="14" selection-start-line="223" selection-start-column="14" selection-end-line="223" selection-end-column="14" />
+          <folding>
+            <element signature="e#105#126#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/stats_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="89" column="37" lean-forward="true" selection-start-line="89" selection-start-column="37" selection-end-line="89" selection-end-column="37" />
+          <folding>
+            <element signature="e#105#123#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/nii_save.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="240" lean-forward="true" selection-start-line="240" selection-end-line="240" />
+          <folding>
+            <element signature="e#116#134#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
