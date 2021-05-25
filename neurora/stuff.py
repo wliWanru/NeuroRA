@@ -634,9 +634,9 @@ def mniposition_to(mnipoint, affine):
         The position in matrix coordinate system.
     """
 
-    mx = int(float((mnipoint[0] - affine[0, 3])/affine[0, 0]) + 1)
-    my = int(float((mnipoint[1] - affine[1, 3])/affine[1, 1]) + 1)
-    mz = int(float((mnipoint[2] - affine[2, 3])/affine[2, 2]) + 1)
+    mx = int(float((mnipoint[0] - affine[0, 3])/affine[0, 0]))
+    my = int(float((mnipoint[1] - affine[1, 3])/affine[1, 1]))
+    mz = int(float((mnipoint[2] - affine[2, 3])/affine[2, 2]))
 
     return mx, my, mz
 
@@ -681,9 +681,9 @@ def mask_to(mask, size, affine, filename=None):
                     mx = maskaffine[0, 3]+(i-1)*maskaffine[0, 0]
                     my = maskaffine[1, 3]+(j-1)*maskaffine[1, 1]
                     mz = maskaffine[2, 3]+(k-1)*maskaffine[2, 2]
-                    x = int(float((mx-affine[0, 3])/affine[0, 0]))+1
-                    y = int(float((my-affine[1, 3])/affine[1, 1]))+1
-                    z = int(float((mz-affine[2, 3])/affine[2, 2]))+1
+                    x = int(float((mx-affine[0, 3])/affine[0, 0]))
+                    y = int(float((my-affine[1, 3])/affine[1, 1]))
+                    z = int(float((mz-affine[2, 3])/affine[2, 2]))
                     if x < size[0] and y < size[1] and z < size[2]:
                         newdata[x, y, z] = data[i, j, k]
 

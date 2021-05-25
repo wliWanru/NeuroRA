@@ -132,7 +132,7 @@ def stats_fmri(corrs, fisherz=True, permutation=False, iter=5000):
 
     if fisherz is True:
 
-        zs = 0.5 * np.log(1+rs)/(1-rs)
+        zs = 0.5 * np.log((1+rs)/(1-rs))
 
     # calculate the statistical results
     for i in range(n_x):
