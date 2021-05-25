@@ -605,7 +605,7 @@ def position_to_mni(point, affine):
     j = point[1]
     k = point[2]
 
-    x = affine[0, 3] + i * affine[0, 0] - affine[0, 0]
+    x = -affine[0, 3] + i * affine[0, 0] - affine[0, 0]
     y = affine[1, 3] + j * affine[1, 1] - affine[1, 1]
     z = affine[2, 3] + k * affine[2, 2] - affine[2, 2]
 
@@ -614,7 +614,34 @@ def position_to_mni(point, affine):
     return newpoint
 
 
-' a function for convert data of MNI template to your data template '
+' a function for project the position in MNI coordinate system to the position of a point in matrix coordinate system '
+
+def mniposition_to(mnipoint, affine):
+
+    """
+    project the position in MNI coordinate system to the position of a point in matrix coordinate system
+
+    Parameters
+    ----------
+    point : list or array
+        The position in MNI coordinate system.
+    affine : array or list
+        The position information of the fMRI-image array data in a reference space.
+
+    Returns
+    -------
+    newpoint : array
+        The position in matrix coordinate system.
+    """
+
+    mx = int(float((mnipoint[0] - affine[0, 3])/affine[0, 0]) + 1)
+    my = int(float((mnipoint[1] - affine[1, 3])/affine[1, 1]) + 1)
+    mz = int(float((mnipoint[2] - affine[2, 3])/affine[2, 2]) + 1)
+
+    return mx, my, mz
+
+
+' a function for convert data of the mask template to your data template '
 
 def mask_to(mask, size, affine, filename=None):
 
