@@ -135,14 +135,6 @@ def nps_fmri(fmri_data, ksize=[3, 3, 3], strides=[1, 1, 1]):
 
         return "Invalid input!"
 
-    if kx+ky+kz < 9:
-
-        print("\nThe size of the calculation units is too small.\n")
-
-        return "Invalid size of ksize!"
-
-    print("\nComputing NPS")
-
     # get the number of subjects and the size of the fMRI-img
     nsubs, nx, ny, nz = np.shape(fmri_data)[1:]
 
@@ -150,6 +142,14 @@ def nps_fmri(fmri_data, ksize=[3, 3, 3], strides=[1, 1, 1]):
     kx = ksize[0]
     ky = ksize[1]
     kz = ksize[2]
+
+    if kx+ky+kz < 9:
+
+        print("\nThe size of the calculation units is too small.\n")
+
+        return "Invalid size of ksize!"
+
+    print("\nComputing NPS")
 
     # strides for calculating along the x, y, z axis
     sx = strides[0]
