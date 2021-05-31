@@ -300,7 +300,7 @@ def stats_fmri_compare_betweengroups(corrs1, corrs2, fisherz=True, permutation=F
                 if permutation == True:
                     stats[i, j, k, 1] = permutation_test(zs1[:, i, j, k], zs2[:, i, j, k], iter = iter)
 
-                    return stats
+    return stats
 
 
 ' a function for conducting the statistical analysis for results of fMRI data (ISC searchlight) '
