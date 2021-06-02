@@ -46,13 +46,13 @@ You can read the [Documentation here](https://neurora.github.io/documentation/in
 
 - One-Step Realize Representational Similarity Analysis (RSA)
 
-- Statistical Analysis
+- Conduct Classification-based EEG decoding
+
+- Conduct Statistical Analysis
 
 - Save the RSA result as a NIfTI file for fMRI
 
-- Classification-based EEG decoding
-
-- Visualization results of representational analysis
+- Plot the results
 
 ## Demos
 There are several demos for NeuroRA, and you can see them in /demos/.. path (both .py files and .ipynb files are provided).
@@ -62,10 +62,6 @@ There are several demos for NeuroRA, and you can see them in /demos/.. path (bot
 | Demo 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ZitongLu1996/NeuroRA/blob/master/demo/NeuroRA_Demo1_colab.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/ZitongLu1996/NeuroRA/blob/master/demo/NeuroRA_Demo1.ipynb) |
 | Demo 2 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ZitongLu1996/NeuroRA/blob/master/demo/NeuroRA_Demo2_colab.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/ZitongLu1996/NeuroRA/blob/master/demo/NeuroRA_Demo2.ipynb) |
 | Demo 3 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ZitongLu1996/NeuroRA/blob/master/demo/NeuroRA_Demo3_colab.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/ZitongLu1996/NeuroRA/blob/master/demo/NeuroRA_Demo3.ipynb) |
-
-## Road-Map of NeuroRA
-
-![ ](img/road-map.png " ")
 
 ## About NeuroRA
 **Noteworthily**, this toolbox is currently only a **test version**. 

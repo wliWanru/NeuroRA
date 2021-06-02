@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculate the Neural Pattern Similarity (NPS) &#8212; NeuroRA 1.1.4.8 documentation</title>
+    <title>Calculate the Neural Pattern Similarity (NPS) &#8212; NeuroRA 1.1.5.0 documentation</title>
     <link rel="stylesheet" href="static/classic.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     
@@ -35,7 +35,7 @@
         <li class="right" >
           <a href="download.html" title="Download"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.4.8 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Calculate the Neural Pattern Similarity (NPS)</a></li> 
       </ul>
     </div>  
@@ -52,7 +52,7 @@
 <p>a module for calculating the neural pattern similarity based on neural data</p>
 <dl class="py function">
 <dt id="neurora.nps_cal.nps">
-<code class="sig-prename descclassname">neurora.nps_cal.</code><code class="sig-name descname">nps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">sub_opt</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.nps_cal.nps" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.nps_cal.</code><code class="sig-name descname">nps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">sub_opt</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.nps_cal.nps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the Neural Representational Similarity (NPS) for EEG-like data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -64,7 +64,7 @@ the number of trials, the number of channels &amp; the number of time-points, re
 <li><p><strong>time_win</strong> (<em>int. Default is 5.</em>) – Set a time-window for calculating the NPS for different time-points.
 If time_win=5, that means each calculation process based on 5 time-points.</p></li>
 <li><p><strong>time_step</strong> (<em>int. Default is 5.</em>) – The time step size for each time of calculating.</p></li>
-<li><p><strong>sub_opt</strong> (<em>int 0</em><em> or </em><em>1. Default is 0.</em>) – Calculate the NPS for each subject or not.
+<li><p><strong>sub_opt</strong> (<em>int 0</em><em> or </em><em>1. Default is 1.</em>) – Calculate the NPS for each subject or not.
 If sub_opt=0, calculate the NPS based on all data.
 If sub_opt=1, calculate the NPS based on each subject’s data</p></li>
 </ul>
@@ -92,7 +92,8 @@ If sub_opt=1, the shape of NPS is [n_subs, n_chls, int((n_ts-time_win)/time_step
 The shape of fmri_data must be [2, n_subs, nx, ny, nz].
 2 presents 2 different conditions. nx, ny, nz represent the size of fMRI-img, respectively.</p></li>
 <li><p><strong>ksize</strong> (<em>array</em><em> or </em><em>list</em><em> [</em><em>kx</em><em>, </em><em>ky</em><em>, </em><em>kz</em><em>]</em><em> Default is</em><em> [</em><em>3</em><em>, </em><em>3</em><em>, </em><em>3</em><em>]</em><em></em>) – The size of the calculation unit for searchlight.
-kx, ky, kz represent the number of voxels along the x, y, z axis.</p></li>
+kx, ky, kz represent the number of voxels along the x, y, z axis.
+kx, ky, kz should be odd.</p></li>
 <li><p><strong>strides</strong> (<em>array</em><em> or </em><em>list</em><em> [</em><em>sx</em><em>, </em><em>sy</em><em>, </em><em>sz</em><em>]</em><em> Default is</em><em> [</em><em>1</em><em>, </em><em>1</em><em>, </em><em>1</em><em>]</em><em></em>) – The strides for calculating along the x, y, z axis.</p></li>
 </ul>
 </dd>
@@ -196,7 +197,7 @@ The shape of NPS is [n_subs, 2]. n_subs represents the number of subjects. 2 rep
         <li class="right" >
           <a href="download.html" title="Download"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.4.8 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Calculate the Neural Pattern Similarity (NPS)</a></li> 
       </ul>
     </div>

@@ -80,7 +80,7 @@ def isc(data, time_win=5, time_step=5):
                     for l in range(ts):
 
                         # show the progressbar
-                        percent = (nindex * chls * ts + k * ts + l) / total * 100
+                        percent = (nindex * chls * ts + k * ts + l + 1) / total * 100
                         show_progressbar("Calculating", percent)
 
                         rp = pearsonr(data[i, k, l*time_step:l*time_step+time_win],
@@ -204,8 +204,7 @@ def isc_fmri(fmri_data, ksize=[3, 3, 3], strides=[1, 1, 1]):
                             for z in range(n_z):
 
                                 # show the progressbar
-                                percent = (t * n * n_x * n_y * n_z,
-                                           nindex * n_x * n_y * n_z, x * n_y * n_z + y * n_z + z) / total * 100
+                                percent = (t * n * n_x * n_y * n_z + nindex * n_x * n_y * n_z + x * n_y * n_z + y * n_z + z + 1) / total * 100
                                 show_progressbar("Calculating", percent)
 
                                 # no NaN

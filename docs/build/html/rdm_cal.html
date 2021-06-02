@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculate the RDM &#8212; NeuroRA 1.1.4.8 documentation</title>
+    <title>Calculate the RDM &#8212; NeuroRA 1.1.5.0 documentation</title>
     <link rel="stylesheet" href="static/classic.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     
@@ -35,7 +35,7 @@
         <li class="right" >
           <a href="stps_cal.html" title="Calculate the Spatiotemporal Pattern Similarity (STPS)"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.4.8 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Calculate the RDM</a></li> 
       </ul>
     </div>  
@@ -52,7 +52,7 @@
 <p>a module for calculating the RDM based on multimode neural data</p>
 <dl class="py function">
 <dt id="neurora.rdm_cal.bhvRDM">
-<code class="sig-prename descclassname">neurora.rdm_cal.</code><code class="sig-name descname">bhvRDM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bhv_data</span></em>, <em class="sig-param"><span class="n">sub_opt</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'correlation'</span></em>, <em class="sig-param"><span class="n">abs</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.rdm_cal.bhvRDM" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.rdm_cal.</code><code class="sig-name descname">bhvRDM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bhv_data</span></em>, <em class="sig-param"><span class="n">sub_opt</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'correlation'</span></em>, <em class="sig-param"><span class="n">abs</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.rdm_cal.bhvRDM" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the Representational Dissimilarity Matrix(Matrices) - RDM(s) for behavioral data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -61,9 +61,9 @@
 The shape of bhv_data must be [n_cons, n_subs, n_trials].
 n_cons, n_subs &amp; n_trials represent the number of conidtions, the number of subjects &amp; the number of trials,
 respectively.</p></li>
-<li><p><strong>sub_opt</strong> (<em>int 0</em><em> or </em><em>1. Default is 1.</em>) – Return the subject-result or average-result.
-If sub_opt=0, return the average result.
-If sub_opt=1, return the results of each subject.</p></li>
+<li><p><strong>sub_opt</strong> (<em>int 0</em><em> or </em><em>1. Default is 1.</em>) – Return the results for each subject or after averaging.
+If sub_opt=1, return the results of each subject.
+If sub_opt=0, return the average result.</p></li>
 <li><p><strong>method</strong> (<em>string 'correlation'</em><em> or </em><em>'euclidean'</em><em> or </em><em>'mahalanobis'. Default is 'correlation'.</em>) – The method to calculate the dissimilarities.
 If method=’correlation’, the dissimilarity is calculated by Pearson Correlation.
 If method=’euclidean’, the dissimilarity is calculated by Euclidean Distance, the results will be normalized.
@@ -73,20 +73,25 @@ If method=’mahalanobis’, the dissimilarity is calculated by Mahalanobis Dist
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>RDM(s)</strong> – The behavioral RDM.
-If sub_opt=0, return only one RDM. The shape is [n_cons, n_cons].
-If sub_opt=1, return n_subs RDMs. The shape is [n_subs, n_cons, n_cons].</p>
+If sub_opt=1, return n_subs RDMs. The shape is [n_subs, n_cons, n_cons].
+If sub_opt=0, return only one RDM. The shape is [n_cons, n_cons].</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>array</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>This function can also be used to calculate the RDM for computational simulation data</p>
+<dl class="simple">
+<dt>This function can also be used to calculate the RDM for computational simulation data.</dt><dd><p>For example, users can extract the activations for a certain layer i which includes Nn nodes in a deep
+convolutional neural network (DCNN) corresponding to Ni images. Thus, the input could be a [Ni, 1, Nn] matrix, M.
+Using “bhvRDM(M, sub_opt=0)”, users can obtain the DCNN RDM for layer i.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="neurora.rdm_cal.eegRDM">
-<code class="sig-prename descclassname">neurora.rdm_cal.</code><code class="sig-name descname">eegRDM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">EEG_data</span></em>, <em class="sig-param"><span class="n">sub_opt</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">chl_opt</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">time_opt</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'correlation'</span></em>, <em class="sig-param"><span class="n">abs</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.rdm_cal.eegRDM" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.rdm_cal.</code><code class="sig-name descname">eegRDM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">EEG_data</span></em>, <em class="sig-param"><span class="n">sub_opt</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">chl_opt</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">time_opt</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'correlation'</span></em>, <em class="sig-param"><span class="n">abs</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.rdm_cal.eegRDM" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the Representational Dissimilarity Matrix(Matrices) - RDM(s) based on EEG-like data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -144,6 +149,10 @@ If sub_opt=0 &amp; chl_opt=0 &amp; time_opt=0, return only one RDM.</p>
 <dd class="field-odd"><p>array</p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Sometimes, the numbers of trials under different conditions are not same. In NeuroRA, we recommend users to average
+the trials under a same condition firstly in this situation. Thus, the shape of input (EEG_data) should be
+[n_cons, n_subs, 1, n_chls, n_ts].</p>
 </dd></dl>
 
 <dl class="py function">
@@ -157,7 +166,8 @@ If sub_opt=0 &amp; chl_opt=0 &amp; time_opt=0, return only one RDM.</p>
 The shape of fmri_data must be [n_cons, n_subs, nx, ny, nz]. n_cons, nx, ny, nz represent the number of
 conditions, the number of subs &amp; the size of fMRI-img, respectively.</p></li>
 <li><p><strong>ksize</strong> (<em>array</em><em> or </em><em>list</em><em> [</em><em>kx</em><em>, </em><em>ky</em><em>, </em><em>kz</em><em>]</em><em> Default is</em><em> [</em><em>3</em><em>, </em><em>3</em><em>, </em><em>3</em><em>]</em><em></em>) – The size of the calculation unit for searchlight.
-kx, ky, kz represent the number of voxels along the x, y, z axis.</p></li>
+kx, ky, kz represent the number of voxels along the x, y, z axis.
+kx, ky, kz should be odd.</p></li>
 <li><p><strong>strides</strong> (<em>array</em><em> or </em><em>list</em><em> [</em><em>sx</em><em>, </em><em>sy</em><em>, </em><em>sz</em><em>]</em><em> Default is</em><em> [</em><em>1</em><em>, </em><em>1</em><em>, </em><em>1</em><em>]</em><em></em>) – The strides for calculating along the x, y, z axis.</p></li>
 <li><p><strong>sub_opt</strong> (<em>int 0</em><em> or </em><em>1. Default is 1.</em>) – Return the subject-result or average-result.
 If sub_opt=0, return the average result.
@@ -213,6 +223,8 @@ If sub_opt=1, the shape of RDM is [n_subs, n_cons, n_cons].</p>
 <dd class="field-odd"><p>array</p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>The sizes (nx, ny, nz) of fmri_data and mask_data should be same.</p>
 </dd></dl>
 
 </div>
@@ -275,7 +287,7 @@ If sub_opt=1, the shape of RDM is [n_subs, n_cons, n_cons].</p>
         <li class="right" >
           <a href="stps_cal.html" title="Calculate the Spatiotemporal Pattern Similarity (STPS)"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.4.8 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Calculate the RDM</a></li> 
       </ul>
     </div>

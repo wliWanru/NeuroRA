@@ -11,7 +11,7 @@ from neurora.stuff import permutation_test
 
 ' a function for conducting the statistical analysis for results of EEG-like data '
 
-def stats(corrs, fisherz=True, permutation=True, iter=5000):
+def stats(corrs, fisherz=True, permutation=True, iter=1000):
 
     """
     Conduct the statistical analysis for results of EEG-like data
@@ -26,7 +26,7 @@ def stats(corrs, fisherz=True, permutation=True, iter=5000):
         Conduct Fisher-Z transform.
     permutation : bool True or False. Default is False.
         Use permutation test or not.
-    iter : int. Default is 5000.
+    iter : int. Default is 1000.
         The times for iteration.
 
     Returns
@@ -60,7 +60,7 @@ def stats(corrs, fisherz=True, permutation=True, iter=5000):
     rs = corrs[:, :, :, 0]
 
     if fisherz == True:
-        zs = 0.5 * np.log((1 + rs) / (1 - rs))
+        rs = 0.5 * np.log((1 + rs) / (1 - rs))
     #print(zs)
 
     # calculate the statistical results
@@ -68,18 +68,18 @@ def stats(corrs, fisherz=True, permutation=True, iter=5000):
         for j in range(ts):
 
             # t test
-            stats[i, j] = ttest_1samp(zs[:, i, j], 0, alternative="greater")
+            stats[i, j] = ttest_1samp(rs[:, i, j], 0, alternative="greater")
 
             if permutation == True:
 
-                stats[i, j, 1] = permutation_test(zs[:, i, j], np.zeros([subs]), iter=iter)
+                stats[i, j, 1] = permutation_test(rs[:, i, j], np.zeros([subs]), iter=iter)
 
     return stats
 
 
 ' a function for conducting the statistical analysis for results of fMRI data (searchlight) '
 
-def stats_fmri(corrs, fisherz=True, permutation=False, iter=5000):
+def stats_fmri(corrs, fisherz=True, permutation=False, iter=1000):
 
     """
     Conduct the statistical analysis for results of fMRI data (searchlight)
@@ -94,7 +94,7 @@ def stats_fmri(corrs, fisherz=True, permutation=False, iter=5000):
         Conduct Fisher-Z transform.
     permutation : bool True or False. Default is False.
         Use permutation test or not.
-    iter : int. Default is 5000.
+    iter : int. Default is 1000.
         The times for iteration.
 
     Returns
@@ -132,7 +132,7 @@ def stats_fmri(corrs, fisherz=True, permutation=False, iter=5000):
 
     if fisherz is True:
 
-        zs = 0.5 * np.log((1+rs)/(1-rs))
+        rs = 0.5 * np.log((1+rs)/(1-rs))
 
     # calculate the statistical results
     for i in range(n_x):
@@ -140,18 +140,18 @@ def stats_fmri(corrs, fisherz=True, permutation=False, iter=5000):
             for k in range(n_z):
 
                 # t test
-                stats[i, j, k] = ttest_1samp(zs[:, i, j, k], 0, alternative="greater")
+                stats[i, j, k] = ttest_1samp(rs[:, i, j, k], 0, alternative="greater")
 
                 if permutation == True:
 
-                    stats[i, j, k, 1] = permutation_test(zs[:, i, j, k], np.zeros([subs]), iter=iter)
+                    stats[i, j, k, 1] = permutation_test(rs[:, i, j, k], np.zeros([subs]), iter=iter)
 
     return stats
 
 
 ' a function for conducting the statistical analysis for results of fMRI data (searchlight) within group '
 
-def stats_fmri_compare_withingroup(corrs1, corrs2, fisherz=True, permutation=False, iter=5000):
+def stats_fmri_compare_withingroup(corrs1, corrs2, fisherz=True, permutation=False, iter=1000):
 
     """
     Conduct the statistical analysis for results of fMRI data (searchlight) (within group: corrs1 > corrs2)
@@ -170,7 +170,7 @@ def stats_fmri_compare_withingroup(corrs1, corrs2, fisherz=True, permutation=Fal
         Conduct Fisher-Z transform.
     permutation : bool True or False. Default is False.
         Use permutation test or not.
-    iter : int. Default is 5000.
+    iter : int. Default is 1000.
         The times for iteration.
 
     Returns
@@ -209,8 +209,8 @@ def stats_fmri_compare_withingroup(corrs1, corrs2, fisherz=True, permutation=Fal
 
     if fisherz is True:
 
-        zs1 = 0.5 * np.log((1+rs1)/(1-rs1))
-        zs2 = 0.5 * np.log((1+rs2)/(1-rs2))
+        rs1 = 0.5 * np.log((1+rs1)/(1-rs1))
+        rs2 = 0.5 * np.log((1+rs2)/(1-rs2))
 
     # calculate the statistical results
     for i in range(n_x):
@@ -218,11 +218,11 @@ def stats_fmri_compare_withingroup(corrs1, corrs2, fisherz=True, permutation=Fal
             for k in range(n_z):
 
                 # t test
-                stats[i, j, k] = ttest_rel(zs1[:, i, j, k], zs2[:, i, j, k], alternative="greater")
+                stats[i, j, k] = ttest_rel(rs1[:, i, j, k], rs2[:, i, j, k], alternative="greater")
 
                 if permutation == True:
 
-                    stats[i, j, k, 1] = permutation_test(zs1[:, i, j, k], zs2[:, i, j, k], iter=iter)
+                    stats[i, j, k, 1] = permutation_test(rs1[:, i, j, k], rs2[:, i, j, k], iter=iter)
 
     return stats
 
@@ -286,8 +286,8 @@ def stats_fmri_compare_betweengroups(corrs1, corrs2, fisherz=True, permutation=F
     rs2 = corrs2[:, :, :, :, 0]
 
     if fisherz is True:
-        zs1 = 0.5 * np.log((1 + rs1) / (1 - rs1))
-        zs2 = 0.5 * np.log((1 + rs2) / (1 - rs2))
+        rs1 = 0.5 * np.log((1 + rs1) / (1 - rs1))
+        rs2 = 0.5 * np.log((1 + rs2) / (1 - rs2))
 
     # calculate the statistical results
     for i in range(n_x):
@@ -295,17 +295,17 @@ def stats_fmri_compare_betweengroups(corrs1, corrs2, fisherz=True, permutation=F
             for k in range(n_z):
 
                 # t test
-                stats[i, j, k] = ttest_ind(zs1[:, i, j, k], zs2[:, i, j, k], alternative="greater")
+                stats[i, j, k] = ttest_ind(rs1[:, i, j, k], rs2[:, i, j, k], alternative="greater")
 
                 if permutation == True:
-                    stats[i, j, k, 1] = permutation_test(zs1[:, i, j, k], zs2[:, i, j, k], iter = iter)
+                    stats[i, j, k, 1] = permutation_test(rs1[:, i, j, k], rs2[:, i, j, k], iter = iter)
 
     return stats
 
 
 ' a function for conducting the statistical analysis for results of fMRI data (ISC searchlight) '
 
-def stats_iscfmri(corrs, fisherz=True, permutation=False, iter=5000):
+def stats_iscfmri(corrs, fisherz=True, permutation=False, iter=1000):
 
     """
     Conduct the statistical analysis for results of fMRI data (ISC searchlight)
@@ -321,7 +321,7 @@ def stats_iscfmri(corrs, fisherz=True, permutation=False, iter=5000):
         Conduct Fisher-Z transform.
     permutation : bool True or False. Default is False.
         Use permutation test or not.
-    iter : int. Default is 5000.
+    iter : int. Default is 1000.
         The times for iteration.
 
     Returns
@@ -358,7 +358,7 @@ def stats_iscfmri(corrs, fisherz=True, permutation=False, iter=5000):
 
     if fisherz is True:
         # Fisher r to z
-        zs = 0.5 * np.log((1 + rs) / (1 - rs))
+        rs = 0.5 * np.log((1 + rs) / (1 - rs))
 
     # calculate the statistical results
     for t in range(ts):
@@ -367,18 +367,18 @@ def stats_iscfmri(corrs, fisherz=True, permutation=False, iter=5000):
                 for k in range(n_z):
 
                     # t test
-                    stats[t, i, j, k] = ttest_1samp(zs[t, :, i, j, k], 0, alternative="greater")
+                    stats[t, i, j, k] = ttest_1samp(rs[t, :, i, j, k], 0, alternative="greater")
 
                     if permutation == True:
 
-                        stats[t, i, j, k, 1] = permutation_test(zs[t, :, i, j, k], np.zeros([npairs]), iter=iter)
+                        stats[t, i, j, k, 1] = permutation_test(rs[t, :, i, j, k], np.zeros([npairs]), iter=iter)
 
     return stats
 
 
 ' a function for conducting the statistical analysis for results of EEG-like data (for STPS) '
 
-def stats_stps(corrs1, corrs2, fisherz=True, permutation=True, iter=5000):
+def stats_stps(corrs1, corrs2, fisherz=True, permutation=True, iter=1000):
 
     """
     Conduct the statistical analysis for results of EEG-like data（for STPS）
@@ -397,7 +397,7 @@ def stats_stps(corrs1, corrs2, fisherz=True, permutation=True, iter=5000):
         Conduct Fisher-Z transform.
     permutation : bool True or False. Default is False.
         Use permutation test or not.
-    iter : int. Default is 5000.
+    iter : int. Default is 1000.
         The times for iteration.
 
     Returns
@@ -433,26 +433,26 @@ def stats_stps(corrs1, corrs2, fisherz=True, permutation=True, iter=5000):
 
     if fisherz is True:
         # Fisher r to z
-        zs1 = 0.5 * np.log((1 + rs1) / (1 - rs1))
-        zs2 = 0.5 * np.log((1 + rs2) / (1 - rs2))
+        rs1 = 0.5 * np.log((1 + rs1) / (1 - rs1))
+        rs2 = 0.5 * np.log((1 + rs2) / (1 - rs2))
 
     # calculate the statistical results
     for i in range(chls):
         for j in range(ts):
 
             # t test
-            stats[i, j] = ttest_rel(zs1[:, i, j], zs2[:, i, j])
+            stats[i, j] = ttest_rel(rs1[:, i, j], rs2[:, i, j])
 
             if permutation == True:
 
-                stats[i, j, 1] = permutation_test(zs1[:, i, j], zs2[:, i, j], iter=iter)
+                stats[i, j, 1] = permutation_test(rs1[:, i, j], rs2[:, i, j], iter=iter)
 
     return stats
 
 
 ' a function for conducting the statistical analysis for results of fMRI data (STPS searchlight) '
 
-def stats_stpsfmri(corrs1, corrs2, fisherz=True, permutation=False, iter=5000):
+def stats_stpsfmri(corrs1, corrs2, fisherz=True, permutation=False, iter=1000):
 
     """
     Conduct the statistical analysis for results of fMRI data (STPS searchlight)
@@ -471,7 +471,7 @@ def stats_stpsfmri(corrs1, corrs2, fisherz=True, permutation=False, iter=5000):
         Conduct Fisher-Z transform.
     permutation : bool True or False. Default is False.
         Use permutation test or not.
-    iter : int. Default is 5000.
+    iter : int. Default is 1000.
         The times for iteration.
 
     Returns
@@ -510,8 +510,8 @@ def stats_stpsfmri(corrs1, corrs2, fisherz=True, permutation=False, iter=5000):
 
     if fisherz == True:
         # Fisher r to z
-        zs1 = 0.5 * np.log((1 + rs1) / (1 - rs1))
-        zs2 = 0.5 * np.log((1 + rs2) / (1 - rs2))
+        rs1 = 0.5 * np.log((1 + rs1) / (1 - rs1))
+        rs2 = 0.5 * np.log((1 + rs2) / (1 - rs2))
 
     # calculate the statistical results
     for i in range(n_x):
@@ -519,9 +519,9 @@ def stats_stpsfmri(corrs1, corrs2, fisherz=True, permutation=False, iter=5000):
             for k in range(n_z):
 
                 # t test
-                stats[i, j, k] = ttest_rel(zs1[:, i, j, k], zs2[:, i, j, k])
+                stats[i, j, k] = ttest_rel(rs1[:, i, j, k], rs2[:, i, j, k])
 
                 if permutation == True:
-                    stats[i, j, k, 1] = permutation_test(zs1[:, i, j, k], zs2[:, i, j, k], iter=iter)
+                    stats[i, j, k, 1] = permutation_test(rs1[:, i, j, k], rs2[:, i, j, k], iter=iter)
 
     return stats

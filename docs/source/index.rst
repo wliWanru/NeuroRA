@@ -1,5 +1,5 @@
 .. NeuroRA documentation master file, created by
-   sphinx-quickstart on Thu Oct  8 13:31:40 2020.
+   sphinx-quickstart on Wed Jun  2 18:03:32 2021.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
@@ -27,10 +27,13 @@ Documentation of NeuroRA!
    stps_cal.rst
    rdm_cal.rst
    rsa.rst
+   decoding.rst
    stats_cal.rst
    nii_save.rst
    rsa_plot.rst
    stuff.rst
+
+
 
 Indices and tables
 ==================

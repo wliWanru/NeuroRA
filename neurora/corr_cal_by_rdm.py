@@ -85,7 +85,7 @@ def rdms_corr(demo_rdm, eeg_rdms, method="spearman", rescale=False, permutation=
                 for k in range(n3):
 
                     # show the progressbar
-                    percent = (i * n1 * n2 + j * n3 + k) / total * 100
+                    percent = (i * n2 * n2 + j * n3 + k + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
                     if method == "spearman":
@@ -261,7 +261,7 @@ def fmrirdms_corr(demo_rdm, fmri_rdms, method="spearman", rescale=False, permuta
             for k in range(n_z):
 
                 # show the progressbar
-                percent = (i * n_y * n_z + j * n_z + k) / total * 100
+                percent = (i * n_y * n_z + j * n_z + k + 1) / total * 100
                 show_progressbar("Calculating", percent)
 
                 if method == "spearman":

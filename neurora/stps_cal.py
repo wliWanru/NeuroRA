@@ -75,7 +75,7 @@ def stps(data, label_item, label_rf, time_win=20, time_step=1):
             for j in range(ts):
 
                 # show the progressbar
-                percent = (sub * chls * ts + i * ts + j) / total * 100
+                percent = (sub * chls * ts + i * ts + j + 1) / total * 100
                 show_progressbar("Calculating", percent)
 
                 trials_data = data[sub, :, i, ts*time_step:ts*time_step+time_win]
@@ -263,7 +263,7 @@ def stps_fmri(fmri_data, label_item, label_rf, ksize=[3, 3, 3], strides=[1, 1, 1
                 for z in range(n_z):
 
                     # show the progressbar
-                    percent = (sub * n_x * n_y * n_z + x * n_y * n_z + y * n_z + z) / total * 100
+                    percent = (sub * n_x * n_y * n_z + x * n_y * n_z + y * n_z + z + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
                     trials_data = fmri_data[sub, :, x*sx:x*sx+kx, y*sy:y*sy+ky, z*sz:z*sz+kz]

@@ -65,41 +65,6 @@ def get_affine(file_name):
     return img.affine
 
 
-' a function for Fisher-Z transform of a RDM'
-
-def fisherz_rdm(rdm):
-
-    """
-    Fisher-Z transform of a RDM
-
-    Parameters
-    ----------
-    rdm : array or list [n_cons, n_cons]
-        A representational dissimilarity matrix.
-
-    Returns
-    -------
-    newrdm : array or list [n_cons, n_cons]
-        A representational dissimilarity matrix after Fisher-Z transform.
-    """
-
-    if len(np.shape(rdm)) != 2 or np.shape(rdm)[0] != np.shape(rdm)[1]:
-
-        return "Invalid input!"
-
-    ncons = np.shape(rdm)[0]
-
-    newrdm = np.zeros([ncons, ncons], dtype=np.float)
-
-    # ignore the diagonal
-    for i in range(ncons):
-        for j in range(ncons):
-            if i != j:
-                newrdm[i, j] = 0.5*np.log((1+rdm[i, j])/(1-rdm[i, j]))
-
-    return newrdm
-
-
 ' a function for FWE-correction for fMRI RSA results '
 
 def fwe_correct(p, p_threshold):
@@ -133,7 +98,16 @@ def fwe_correct(p, p_threshold):
                 if (math.isnan(p[i, j, k]) == False):
                     n = n + 1
 
-    fwep = p*n
+    p = p*n
+
+    fwep = np.full([px, py, pz], np.nan)
+
+    for i in range(px):
+        for j in range(py):
+            for k in range(pz):
+
+                if p[i, j, k] < p_threshold:
+                        fwep[i, j, k] = p[i, j, k]
 
     print("finished FWE correct")
 
@@ -400,99 +374,6 @@ def cluster_fdr_correct(p, p_threshold1, p_threshold2):
     return clusterfdrp
 
 
-' a function for fMRI RSA results correction by threshold '
-
-def correct_by_threshold(img, threshold):
-
-    """
-    correct the fMRI RSA results by threshold
-
-    Parameters
-    ----------
-    img : array
-        A 3-D array of the fMRI RSA results.
-        The shape of img should be [nx, ny, nz]. nx, ny, nz represent the shape of the fMRI-img.
-    threshold : int
-        The number of voxels used in correction.
-        If threshold=n, only the similarity clusters consisting more than n voxels will be visualized.
-
-    Returns
-    -------
-    img : array
-        A 3-D array of the fMRI RSA results after correction.
-        The shape of img should be [nx, ny, nz]. nx, ny, nz represent the shape of the fMRI-img.
-    """
-
-    if len(np.shape(img)) != 3:
-
-        return "Invalid input"
-
-    sx = np.shape(img)[0]
-    sy = np.shape(img)[1]
-    sz = np.shape(img)[2]
-
-    nsmall = 1
-
-    while nsmall*nsmall*nsmall < threshold:
-        nsmall = nsmall + 1
-
-    nlarge = nsmall + 2
-
-    for i in range(sx-nlarge+1):
-        for j in range(sy-nlarge+1):
-            for k in range(sz-nlarge+1):
-
-                listlarge = list(np.reshape(img[i:i+nlarge, j:j+nlarge, k:k+nlarge], [nlarge*nlarge*nlarge]))
-
-                if listlarge.count(0) < nlarge*nlarge*nlarge:
-
-                    index1 = 0
-
-                    for l in range(nlarge):
-                        for m in range(nlarge):
-
-                            if img[i + l, j + m, k] == 0:
-                                index1 = index1 + 1
-
-                            if img[i + l, j + m, k + nlarge - 1] == 0:
-                                index1 = index1 + 1
-
-                    for l in range(nlarge-1):
-                        for m in range(nlarge-2):
-
-                            if img[i + l, j, k + m] == 0:
-                                index1 = index1 + 1
-
-                            if img[i, j + l + 1, k + m] == 0:
-                                index1 = index1 + 1
-
-                            if img[i + nlarge - 1, j + l, k + m] == 0:
-                                index1 = index1 + 1
-
-                            if img[i + l + 1, j + nlarge - 1, k + m] == 0:
-                                index1 = index1 + 1
-
-                    nex = nlarge * nlarge * nlarge - nsmall * nsmall * nsmall
-
-                    if index1 == nex:
-                        unit = img[i+1:i+1+nsmall, j+1:j+1+nsmall, k+1:k+1+nsmall]
-                        unit = np.reshape(unit, [nsmall*nsmall*nsmall])
-                        list_internal = list(unit)
-                        index2 = nsmall*nsmall*nsmall-list_internal.count(0)
-
-                        if index2 < threshold:
-                            img[i+1:i+1+nsmall, j]
-
-                            for l in range(nsmall):
-                                for m in range(nsmall):
-                                    for p in range(nsmall):
-                                        img[i+1:i+1+nsmall, j+1:j+1+nsmall, k+1:k+1+nsmall] = np.zeros([nsmall, nsmall, nsmall])
-
-    print("finished correction")
-
-    return img
-
-
 ' a function for getting ch2.nii.gz '
 
 def get_bg_ch2():
@@ -581,7 +462,7 @@ def datamask(fmri_data, mask_data):
     return newfmri_data
 
 
-' a function for project the position of a point in matrix coordinate system to the position in MNI coordinate system '
+' a function for projecting the position of a point in matrix coordinate system to the position in MNI coordinate system '
 
 def position_to_mni(point, affine):
 
@@ -641,7 +522,7 @@ def mniposition_to(mnipoint, affine):
     return mx, my, mz
 
 
-' a function for convert data of the mask template to your data template '
+' a function for converting data of the mask template to your data template '
 
 def mask_to(mask, size, affine, filename=None):
 
@@ -706,7 +587,7 @@ def mask_to(mask, size, affine, filename=None):
 
 ' a function for permutation test '
 
-def permutation_test(v1, v2, iter=5000):
+def permutation_test(v1, v2, iter=1000):
 
     """
     Conduct Permutation test
@@ -717,7 +598,7 @@ def permutation_test(v1, v2, iter=5000):
         Vector 1.
     v2 : array
         Vector 2.
-    iter : int. Default is 5000.
+    iter : int. Default is 1000.
         The times for iteration.
 
     Returns
@@ -754,7 +635,7 @@ def permutation_test(v1, v2, iter=5000):
 
 ' a function for permutation test for correlation coefficients '
 
-def permutation_corr(v1, v2, method="spearman", iter=5000):
+def permutation_corr(v1, v2, method="spearman", iter=1000):
 
     """
     Conduct Permutation test for correlation coefficients
@@ -765,7 +646,12 @@ def permutation_corr(v1, v2, method="spearman", iter=5000):
         Vector 1.
     v2 : array
         Vector 2.
-    iter : int. Default is 5000.
+    method : string 'spearman' or 'pearson' or 'kendall' or 'similarity' or 'distance'. Default is 'spearman'.
+        The method to calculate the similarities.
+        If method='spearman', calculate the Spearman Correlations. If method='pearson', calculate the Pearson
+        Correlations. If methd='kendall', calculate the Kendall tau Correlations. If method='similarity', calculate the
+        Cosine Similarities. If method='distance', calculate the Euclidean Distances.
+    iter : int. Default is 1000.
         The times for iteration.
 
     Returns
@@ -1107,7 +993,7 @@ def get_cluster_index_2d_2sided(m):
 
 ' a function for 1-sample & 1-sided cluster based permutation test for 1-D results '
 
-def clusterbased_permutation_1d_1samp_1sided(results, level=0, p_threshold=0.05, iter=5000):
+def clusterbased_permutation_1d_1samp_1sided(results, level=0, p_threshold=0.05, iter=1000):
 
     """
     1-sample & 1-sided cluster based permutation test for 2-D results
@@ -1118,10 +1004,10 @@ def clusterbased_permutation_1d_1samp_1sided(results, level=0, p_threshold=0.05,
         A result matrix.
         The shape of results should be [n_subs, x]. n_subs represents the number of subjects.
     level : float. Default is 0.
-        A expected value in null hypothesis. (Here, results > level)
+        An expected value in null hypothesis. (Here, results > level)
     p_threshold : float. Default is 0.05.
         The threshold of p-values.
-    iter : int. Default is 5000.
+    iter : int. Default is 1000.
         The times for iteration.
 
     Returns
@@ -1187,7 +1073,7 @@ def clusterbased_permutation_1d_1samp_1sided(results, level=0, p_threshold=0.05,
 
 ' a function for 1-sample & 2-sided cluster based permutation test for 1-D results '
 
-def clusterbased_permutation_1d_1samp_2sided(results, level=0, p_threshold=0.05, iter=5000):
+def clusterbased_permutation_1d_1samp_2sided(results, level=0, p_threshold=0.05, iter=1000):
 
     """
     1-sample & 2-sided cluster based permutation test for 2-D results
@@ -1198,10 +1084,10 @@ def clusterbased_permutation_1d_1samp_2sided(results, level=0, p_threshold=0.05,
         A result matrix.
         The shape of results should be [n_subs, x]. n_subs represents the number of subjects.
     level : float. Default is 0.
-        A expected value in null hypothesis. (Here, results > level)
+        An expected value in null hypothesis. (Here, results > level)
     p_threshold : float. Default is 0.05.
         The threshold of p-values.
-    iter : int. Default is 5000.
+    iter : int. Default is 1000.
         The times for iteration.
 
     Returns
@@ -1306,7 +1192,7 @@ def clusterbased_permutation_1d_1samp_2sided(results, level=0, p_threshold=0.05,
 
 ' a function for 1-sample & 1-sided cluster based permutation test for 2-D results '
 
-def clusterbased_permutation_2d_1samp_1sided(results, level=0, p_threshold=0.05, iter=5000):
+def clusterbased_permutation_2d_1samp_1sided(results, level=0, p_threshold=0.05, iter=1000):
 
     """
     1-sample & 1-sided cluster based permutation test for 2-D results
@@ -1317,10 +1203,10 @@ def clusterbased_permutation_2d_1samp_1sided(results, level=0, p_threshold=0.05,
         A result matrix.
         The shape of results should be [n_subs, x1, x2]. n_subs represents the number of subjects.
     level : float. Default is 0.
-        A expected value in null hypothesis. (Here, results > level)
+        An expected value in null hypothesis. (Here, results > level)
     p_threshold : float. Default is 0.05.
         The threshold of p-values.
-    iter : int. Default is 5000.
+    iter : int. Default is 1000.
         The times for iteration.
 
     Returns
@@ -1390,7 +1276,7 @@ def clusterbased_permutation_2d_1samp_1sided(results, level=0, p_threshold=0.05,
 
 ' a function for 1-sample & 2-sided cluster based permutation test for 2-D results '
 
-def clusterbased_permutation_2d_1samp_2sided(results, level=0, p_threshold=0.05, iter=5000):
+def clusterbased_permutation_2d_1samp_2sided(results, level=0, p_threshold=0.05, iter=1000):
 
     """
     1-sample & 2-sided cluster based permutation test for 2-D results
@@ -1404,7 +1290,7 @@ def clusterbased_permutation_2d_1samp_2sided(results, level=0, p_threshold=0.05,
         A expected value in null hypothesis. (Here, results > level)
     p_threshold : float. Default is 0.05.
         The threshold of p-values.
-    iter : int. Default is 5000.
+    iter : int. Default is 1000.
         The times for iteration.
 
     Returns
@@ -1514,7 +1400,7 @@ def clusterbased_permutation_2d_1samp_2sided(results, level=0, p_threshold=0.05,
 
 ' a function for 1-sided cluster based permutation test for 2-D results '
 
-def clusterbased_permutation_2d_1sided(results1, results2, p_threshold=0.05, iter=5000):
+def clusterbased_permutation_2d_1sided(results1, results2, p_threshold=0.05, iter=1000):
 
     """
     1-sided cluster based permutation test for 2-D results
@@ -1529,7 +1415,7 @@ def clusterbased_permutation_2d_1sided(results1, results2, p_threshold=0.05, ite
         The shape of results should be [n_subs, x1, x2]. n_subs represents the number of subjects. (results1 > results2)
     p_threshold : float. Default is 0.05.
         The threshold of p-values.
-    iter : int. Default is 5000.
+    iter : int. Default is 1000.
         The times for iteration.
 
     Returns
@@ -1607,7 +1493,7 @@ def clusterbased_permutation_2d_1sided(results1, results2, p_threshold=0.05, ite
 
 ' a function for 2-sided cluster based permutation test for 2-D results '
 
-def clusterbased_permutation_2d_2sided(results1, results2, p_threshold=0.05, iter=5000):
+def clusterbased_permutation_2d_2sided(results1, results2, p_threshold=0.05, iter=1000):
 
     """
     2-sided cluster based permutation test for 2-D results
@@ -1622,7 +1508,7 @@ def clusterbased_permutation_2d_2sided(results1, results2, p_threshold=0.05, ite
         The shape of results should be [n_subs, x1, x2]. n_subs represents the number of subjects. (results1 > results2)
     p_threshold : float. Default is 0.05.
         The threshold of p-values.
-    iter : int. Default is 5000.
+    iter : int. Default is 1000.
         The times for iteration.
 
     Returns

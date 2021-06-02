@@ -60,28 +60,22 @@ You can read the **[Documentation here](https://neurora.github.io/documentation/
 
     > for each subject / for each channel / for each time-point / searchlight / for ROI / all in
 
-- Statistical Analysis
+- Conduct Statistical Analysis
 
-- Save the RSA results as a NIfTI file for fMRI
+- Save the RSA result as a NIfTI file for fMRI
 
-- Classification-based EEG Decoding
+- Plot the results
 
-- Visualization results of representational analysis
+## Typical schematic diagrams
 
-## Typical Visualization Demos
-
-- Representational Dissimilarity Matrix
-
-    ![ ](img/01.png)
-
-- Representational Similarities by time sequence
-
-    ![ ](img/02.png)
-
-- RSA-result for fMRI
-
-    ![ ](img/03.png)
-    ![ ](img/04.png)
+-
+    ![ ](img/01.jpg)
+-    
+    ![ ](img/02.jpg)
+-    
+    ![ ](img/03.jpg)
+-
+    ![ ](img/04.jpg)
 
 ## Script Demos to Know How to Use
 
@@ -141,7 +135,7 @@ There are two demos in Tutorial to let you know how to use NeuroRA to conduct re
     
     > **Section 5**: Plotting the RSA-based decoding results
 
-Users can see more details in [Tutorial](https://zitonglu1996.github.io/NeuroRA/neurora/Tutorial.pdf) and [Demo Codes](https://github.com/zitonglu1996/NeuroRA/tree/master/demo).
+Users can see more details from [Demo Codes](https://github.com/zitonglu1996/NeuroRA/tree/master/demo).
 
 ## About NeuroRA
 

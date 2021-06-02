@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Save the Results as a NIfTI file (for fMRI) &#8212; NeuroRA 1.1.4.8 documentation</title>
+    <title>Save the Results as a NIfTI file (for fMRI) &#8212; NeuroRA 1.1.5.0 documentation</title>
     <link rel="stylesheet" href="static/classic.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     
@@ -35,7 +35,7 @@
         <li class="right" >
           <a href="stats_cal.html" title="Statistical Analysis"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.4.8 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Save the Results as a NIfTI file (for fMRI)</a></li> 
       </ul>
     </div>  
@@ -52,7 +52,7 @@
 <p>a module for saving the RSA results in a .nii file for fMRI</p>
 <dl class="py function">
 <dt id="neurora.nii_save.corr_save_nii">
-<code class="sig-prename descclassname">neurora.nii_save.</code><code class="sig-name descname">corr_save_nii</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">corrs</span></em>, <em class="sig-param"><span class="n">affine</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">corr_mask</span><span class="o">=</span><span class="default_value">'/Users/zitonglu/anaconda3/lib/python3.7/site-packages/neurora/template/HarvardOxford-cort-maxprob-thr0-1mm.nii.gz'</span></em>, <em class="sig-param"><span class="n">size</span><span class="o">=</span><span class="default_value">[60, 60, 60]</span></em>, <em class="sig-param"><span class="n">ksize</span><span class="o">=</span><span class="default_value">[3, 3, 3]</span></em>, <em class="sig-param"><span class="n">strides</span><span class="o">=</span><span class="default_value">[1, 1, 1]</span></em>, <em class="sig-param"><span class="n">p</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">r</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">correct_method</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">smooth</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">plotrlt</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">img_background</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.nii_save.corr_save_nii" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.nii_save.</code><code class="sig-name descname">corr_save_nii</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">corrs</span></em>, <em class="sig-param"><span class="n">affine</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">corr_mask</span><span class="o">=</span><span class="default_value">'/Users/zitonglu/anaconda3/lib/python3.7/site-packages/neurora/template/HarvardOxford-cort-maxprob-thr0-1mm.nii.gz'</span></em>, <em class="sig-param"><span class="n">size</span><span class="o">=</span><span class="default_value">[60, 60, 60]</span></em>, <em class="sig-param"><span class="n">ksize</span><span class="o">=</span><span class="default_value">[3, 3, 3]</span></em>, <em class="sig-param"><span class="n">strides</span><span class="o">=</span><span class="default_value">[1, 1, 1]</span></em>, <em class="sig-param"><span class="n">p</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">r</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">correct_method</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">clusterp</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="n">smooth</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">plotrlt</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">img_background</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.nii_save.corr_save_nii" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save the searchlight correlation coefficients as a NIfTI file for fMRI</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -78,7 +78,9 @@ Only the results those r-values are higher than this value will be visible.</p><
 If correct_method=’FWE’, here the FWE-correction will be used. If correct_methd=’FDR’, here the FDR-correction
 will be used. If correct_method=None, no correction.
 Only when p&lt;1, correct_method works.</p></li>
-<li><p><strong>smooth</strong> (<em>bool True</em><em> or </em><em>False</em>) – Smooth the RSA result or not.</p></li>
+<li><p><strong>clusterp</strong> (<em>float. Default is 0.05.</em>) – The threshold of p-value for cluster-wise correction.
+Only when correct_method=’Cluster-FDR’ or ‘Cluster-FWE’, clusterp works.</p></li>
+<li><p><strong>smooth</strong> (<em>bool True</em><em> or </em><em>False. Default is True.</em>) – Smooth the RSA result or not.</p></li>
 <li><p><strong>plotrlt</strong> (<em>bool True</em><em> or </em><em>False.</em>) – Plot the RSA result automatically or not.</p></li>
 <li><p><strong>img_background</strong> (<em>None</em><em> or </em><em>string. Default if None.</em>) – The filename of a background image that the RSA results will be plotted on the top of it.
 If img_background=None, the background will be ch2.nii.gz.
@@ -99,7 +101,7 @@ The shape is [nx, ny, nz]. nx, ny, nz represent the size of the fMRI-img.</p>
 
 <dl class="py function">
 <dt id="neurora.nii_save.stats_save_nii">
-<code class="sig-prename descclassname">neurora.nii_save.</code><code class="sig-name descname">stats_save_nii</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">corrs</span></em>, <em class="sig-param"><span class="n">affine</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">corr_mask</span><span class="o">=</span><span class="default_value">'/Users/zitonglu/anaconda3/lib/python3.7/site-packages/neurora/template/HarvardOxford-cort-maxprob-thr0-1mm.nii.gz'</span></em>, <em class="sig-param"><span class="n">size</span><span class="o">=</span><span class="default_value">[60, 60, 60]</span></em>, <em class="sig-param"><span class="n">ksize</span><span class="o">=</span><span class="default_value">[3, 3, 3]</span></em>, <em class="sig-param"><span class="n">strides</span><span class="o">=</span><span class="default_value">[1, 1, 1]</span></em>, <em class="sig-param"><span class="n">p</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="n">df</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">correct_method</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">smooth</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">plotrlt</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">img_background</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.nii_save.stats_save_nii" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.nii_save.</code><code class="sig-name descname">stats_save_nii</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">corrs</span></em>, <em class="sig-param"><span class="n">affine</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">corr_mask</span><span class="o">=</span><span class="default_value">'/Users/zitonglu/anaconda3/lib/python3.7/site-packages/neurora/template/HarvardOxford-cort-maxprob-thr0-1mm.nii.gz'</span></em>, <em class="sig-param"><span class="n">size</span><span class="o">=</span><span class="default_value">[60, 60, 60]</span></em>, <em class="sig-param"><span class="n">ksize</span><span class="o">=</span><span class="default_value">[3, 3, 3]</span></em>, <em class="sig-param"><span class="n">strides</span><span class="o">=</span><span class="default_value">[1, 1, 1]</span></em>, <em class="sig-param"><span class="n">p</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="n">df</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">correct_method</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">clusterp</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="n">smooth</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">plotrlt</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">img_background</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.nii_save.stats_save_nii" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save the searchlight RSA statistical results as a NIfTI file for fMRI</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -120,10 +122,14 @@ kx, ky, kz represent the number of voxels along the x, y, z axis.</p></li>
 <li><p><strong>p</strong> (<em>float. Default is 0.05.</em>) – The threshold of p-values.
 Only the results those p-values are lower than this value will be visible.</p></li>
 <li><p><strong>df</strong> (<em>int. Default is 20.</em>) – The degree of freedom.</p></li>
-<li><p><strong>correct_method</strong> (<em>None</em><em> or </em><em>string 'FWE'</em><em> or </em><em>'FDR'. Default is None.</em>) – The method for correcting the RSA results.
+<li><p><strong>correct_method</strong> (<em>None</em><em> or </em><em>string 'FWE'</em><em> or </em><em>'FDR'</em><em> or </em><em>'Cluster-FWE'</em><em> or </em><em>'Cluster-FDR'. Default is None.</em>) – The method for correcting the RSA results.
 If correct_method=’FWE’, here the FWE-correction will be used. If correct_methd=’FDR’, here the FDR-correction
-will be used. If correct_method=None, no correction.
+will be used. If correct_method=’Cluster-FWE’, here the Cluster-wise FWE-correction will be used. If
+correct_methd=’Cluster-FDR’, here the Cluster-wise FDR-correction will be used. If correct_method=None, no
+correction.
 Only when p&lt;1, correct_method works.</p></li>
+<li><p><strong>clusterp</strong> (<em>float. Default is 0.05.</em>) – The threshold of p-value for cluster-wise correction.
+Only when correct_method=’Cluster-FDR’ or ‘Cluster-FWE’, clusterp works.</p></li>
 <li><p><strong>smooth</strong> (<em>bool True</em><em> or </em><em>False.  Default is False.</em>) – Smooth the RSA result or not.</p></li>
 <li><p><strong>plotrlt</strong> (<em>bool True</em><em> or </em><em>False.  Default is True.</em>) – Plot the RSA result automatically or not.</p></li>
 <li><p><strong>img_background</strong> (<em>None</em><em> or </em><em>string. Default if None.</em>) – The filename of a background image that the RSA results will be plotted on the top of it.
@@ -203,7 +209,7 @@ The shape is [nx, ny, nz]. nx, ny, nz represent the size of the fMRI-img.</p>
         <li class="right" >
           <a href="stats_cal.html" title="Statistical Analysis"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.4.8 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Save the Results as a NIfTI file (for fMRI)</a></li> 
       </ul>
     </div>

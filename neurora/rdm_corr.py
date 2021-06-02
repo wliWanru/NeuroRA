@@ -41,10 +41,6 @@ def rdm_correlation_spearman(RDM1, RDM2, rescale=False, permutation=False, iter=
     corr : array [r, p].
         The Spearman Correlation result.
         The shape of corr is [2], including a r-value and a p-value.
-
-    Notes
-    -----
-    Don't set both fisherz=True and rescale=True.
     """
 
     if len(np.shape(RDM1)) != 2 or len(np.shape(RDM2)) != 2 or np.shape(RDM1)[0] != np.shape(RDM1)[1] or \
@@ -156,10 +152,6 @@ def rdm_correlation_pearson(RDM1, RDM2, rescale=False, permutation=False, iter=1
     corr : array [r, p].
         The Pearson Correlation result.
         The shape of corr is [2], including a r-value and a p-value.
-
-    Notes
-    -----
-    Don't set both fisherz=True and rescale=True.
     """
 
     if len(np.shape(RDM1)) != 2 or len(np.shape(RDM2)) != 2 or np.shape(RDM1)[0] != np.shape(RDM1)[1] or \
@@ -270,10 +262,6 @@ def rdm_correlation_kendall(RDM1, RDM2, rescale=False, permutation=False, iter=1
     corr : array [r, p].
         The Kendalls tau Correlation result.
         The shape of corr is [2], including a r-value and a p-value.
-
-    Notes
-    -----
-    Don't set both fisherz=True and rescale=True.
     """
 
     if len(np.shape(RDM1)) != 2 or len(np.shape(RDM2)) != 2 or np.shape(RDM1)[0] != np.shape(RDM1)[1] or \

@@ -171,7 +171,7 @@ def bhvRDM(bhv_data, sub_opt=1, method="correlation", abs=False):
     return rdm
 
 
-' a function for calculating the RDM(s) based on EEG/MEG/fNIRS data '
+' a function for calculating the RDM(s) based on EEG/MEG/fNIRS & other EEG-like data '
 
 def eegRDM(EEG_data, sub_opt=1, chl_opt=0, time_opt=0, time_win=5, time_step=5, method="correlation", abs=False):
 
@@ -215,7 +215,7 @@ def eegRDM(EEG_data, sub_opt=1, chl_opt=0, time_opt=0, time_win=5, time_step=5, 
     Returns
     -------
     RDM(s) : array
-        The EEG/MEG/fNIR RDM.
+        The EEG/MEG/fNIR/other EEG-like RDM.
         If sub_opt=0 & chl_opt=0 & time_opt=0, return only one RDM.
             The shape is [n_cons, n_cons].
         If sub_opt=0 & chl_opt=0 & time_opt=1, return int((n_ts-time_win)/time_step)+1 RDM.
@@ -281,7 +281,7 @@ def eegRDM(EEG_data, sub_opt=1, chl_opt=0, time_opt=0, time_win=5, time_step=5, 
                     for k in range(ts):
 
                         # show the progressbar
-                        percent = (i*chls*ts+j*ts+k) / total * 100
+                        percent = (i * chls * ts + j * ts + k + 1) / total * 100
                         show_progressbar("Calculating", percent)
 
                         for l in range(cons):
@@ -335,7 +335,7 @@ def eegRDM(EEG_data, sub_opt=1, chl_opt=0, time_opt=0, time_win=5, time_step=5, 
             for k in range(ts):
 
                 # show the progressbar
-                percent = (i * ts + j) / total * 100
+                percent = (i * ts + k + 1) / total * 100
                 show_progressbar("Calculating", percent)
 
                 for l in range(cons):
@@ -395,7 +395,7 @@ def eegRDM(EEG_data, sub_opt=1, chl_opt=0, time_opt=0, time_win=5, time_step=5, 
             for j in range(chls):
 
                 # show the progressbar
-                percent = (i * chls + j) / total * 100
+                percent = (i * chls + j + 1) / total * 100
                 show_progressbar("Calculating", percent)
 
                 for k in range(cons):
@@ -596,7 +596,7 @@ def fmriRDM(fmri_data, ksize=[3, 3, 3], strides=[1, 1, 1], sub_opt=1, method="co
                 for z in range(n_z):
 
                     # show the progressbar
-                    percent = (sub * n_x * n_y * n_z + x * n_y * n_z + y * n_z + z) / total * 100
+                    percent = (sub * n_x * n_y * n_z + x * n_y * n_z + y * n_z + z + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
                     for i in range(cons):
@@ -638,7 +638,7 @@ def fmriRDM(fmri_data, ksize=[3, 3, 3], strides=[1, 1, 1], sub_opt=1, method="co
         return subrdms
 
 
-' a function for calculating the RDM based on fMRI data of a ROI '
+' a function for calculating the RDM based on fMRI data of an ROI '
 
 def fmriRDM_roi(fmri_data, mask_data, sub_opt=1, method="correlation", abs=False):
 

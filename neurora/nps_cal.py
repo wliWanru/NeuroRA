@@ -71,7 +71,7 @@ def nps(data, time_win=5, time_step=5, sub_opt=1):
             for j in range(ts):
 
                 # show the progressbar
-                percent = (sub * nchls * ts + i * ts + j) / total * 100
+                percent = (sub * nchls * ts + i * ts + j + 1) / total * 100
                 show_progressbar("Calculating", percent)
 
                 data1 = data[0, sub, :, i, j * time_step:j * time_step + time_win]
@@ -200,7 +200,7 @@ def nps_fmri(fmri_data, ksize=[3, 3, 3], strides=[1, 1, 1]):
                 for z in range(n_z):
 
                     # show the progressbar
-                    percent = (sub * n_x * n_y * n_z + x * n_y * n_z + y * n_z + z) / total * 100
+                    percent = (sub * n_x * n_y * n_z + x * n_y * n_z + y * n_z + z + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
                     # no NaN

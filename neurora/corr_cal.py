@@ -16,7 +16,7 @@ np.seterr(divide='ignore', invalid='ignore')
 ' a function for calculating the similarity between behavioral data and EEG-like data'
 
 def bhvANDeeg_corr(bhv_data, eeg_data, sub_opt=1, chl_opt=0, time_opt=0, time_win=5, time_step=5, method="spearman",
-                   rescale=False, permutation=False, iter=5000):
+                   rescale=False, permutation=False, iter=1000):
 
     """
     Calculate the Similarities between behavioral data and EEG/MEG/fNIRS data
@@ -63,7 +63,7 @@ def bhvANDeeg_corr(bhv_data, eeg_data, sub_opt=1, chl_opt=0, time_opt=0, time_wi
         values on the diagonal.
     permutation : bool True or False. Default is False.
         Use permutation test or not.
-    iter : int. Default is 5000.
+    iter : int. Default is 1000.
         The times for iteration.
 
     Returns
@@ -403,7 +403,7 @@ def bhvANDeeg_corr(bhv_data, eeg_data, sub_opt=1, chl_opt=0, time_opt=0, time_wi
 ' a function for calculating the similarity between behavioral data and fMRI data (searchlight) '
 
 def bhvANDfmri_corr(bhv_data, fmri_data, ksize=[3, 3, 3], strides=[1, 1, 1], sub_opt=1, method="spearman",
-                    rescale=False, permutation=False, iter=5000):
+                    rescale=False, permutation=False, iter=1000):
 
     """
     Calculate the Similarities between behavioral data and fMRI data for searchlight
@@ -440,7 +440,7 @@ def bhvANDfmri_corr(bhv_data, fmri_data, ksize=[3, 3, 3], strides=[1, 1, 1], sub
         values on the diagonal.
     permutation : bool True or False. Default is False.
         Use permutation test or not.
-    iter : int. Default is 5000.
+    iter : int. Default is 1000.
         The times for iteration.
 
     Returns
@@ -690,7 +690,7 @@ def eegANDfmri_corr(eeg_data, fmri_data, chl_opt=0, ksize=[3, 3, 3], strides=[1,
                             for i in range(chls):
 
                                 # show the progressbar
-                                percent = (sub * n_x * n_y * n_z + i * n_y * n_z + j * n_z + k) / total * 100
+                                percent = (sub * n_x * n_y * n_z * chls + j * n_y * n_z * chls + k * n_z * chls + l * chls + i + 1) / total * 100
                                 show_progressbar("Calculating", percent)
 
                                 if method == "spearman":
@@ -737,7 +737,7 @@ def eegANDfmri_corr(eeg_data, fmri_data, chl_opt=0, ksize=[3, 3, 3], strides=[1,
                     for i in range(chls):
 
                         # show the progressbar
-                        percent = (i * n_y * n_z + j * n_z + k) / total * 100
+                        percent = (j * n_y * n_z * chls + k * n_z * chls + l * chls + i + 1) / total * 100
                         show_progressbar("Calculating", percent)
 
                         if method == "spearman":
@@ -783,7 +783,7 @@ def eegANDfmri_corr(eeg_data, fmri_data, chl_opt=0, ksize=[3, 3, 3], strides=[1,
                     for l in range(n_z):
 
                         # show the progressbar
-                        percent = (i * n_x * n_y * n_z + j * n_y * n_z + k * n_z + l) / total * 100
+                        percent = (i * n_x * n_y * n_z + j * n_y * n_z + k * n_z + l + 1) / total * 100
                         show_progressbar("Calculating", percent)
 
                         if method == "spearman":
@@ -824,7 +824,7 @@ def eegANDfmri_corr(eeg_data, fmri_data, chl_opt=0, ksize=[3, 3, 3], strides=[1,
             for k in range(n_z):
 
                 # show the progressbar
-                percent = (i * n_y * n_z + j * n_z + k) / total * 100
+                percent = (i * n_y * n_z + j * n_z + k + 1) / total * 100
                 show_progressbar("Calculating", percent)
 
                 if method == "spearman":

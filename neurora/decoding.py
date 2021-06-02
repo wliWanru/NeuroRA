@@ -14,7 +14,8 @@ np.seterr(divide='ignore', invalid='ignore')
 
 ' a function for time-by-time decoding for EEG-like data (cross validation) '
 
-def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, nfolds=5, nrepeats=2, smooth=True):
+def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, nfolds=5, nrepeats=2,
+                        smooth=True):
 
     """
     Conduct time-by-time decoding for EEG-like data (cross validation)
@@ -26,7 +27,7 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
         The shape of data must be [n_subs, n_trials, n_chls, n_ts]. n_subs, n_trials, n_chls and n_ts represent the
         number of subjects, the number of trails, the number of channels and the number of time-points.
     labels : array
-        The labels of each trials.
+        The labels of each trial.
         The shape of labels must be [n_subs, n_trials]. n_subs and n_trials represent the number of subjects and the
         number of trials.
     n : int. Default is 2.
@@ -43,7 +44,7 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
     time_step : int. Default is 5.
         The time step size for each time of decoding.
     nfolds : int. Default is 5.
-        Number of folds.
+        The number of folds.
         k should be at least 2.
     nrepeats : int. Default is 2.
         The times for iteration.
@@ -156,8 +157,7 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
                         svm.fit(x_train, y[train_index])
                         subacc[i, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
 
-                        percent = (
-                                              sub * nrepeats * newnts * nfolds + i * newnts * nfolds + t * nfolds + fold_index) / total * 100
+                        percent = (sub * nrepeats * newnts * nfolds + i * newnts * nfolds + t * nfolds + fold_index + 1) / total * 100
                         show_progressbar("Calculating", percent)
 
                         if sub == (nsubs - 1) and i == (nrepeats - 1) and t == (newnts - 1) and fold_index == (
@@ -236,7 +236,7 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
                         svm.fit(x_train, y[train_index])
                         subacc[i, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
 
-                        percent = (sub * nrepeats * newnts * nfolds + i * newnts * nfolds + t * nfolds + fold_index) / total * 100
+                        percent = (sub * nrepeats * newnts * nfolds + i * newnts * nfolds + t * nfolds + fold_index + 1) / total * 100
                         show_progressbar("Calculating", percent)
 
                         if sub == (nsubs - 1) and i == (nrepeats - 1) and t == (newnts - 1) and fold_index == (
@@ -269,7 +269,8 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
 
 ' a function for time-by-time decoding for EEG-like data (hold out) '
 
-def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, iter=10, test_size=0.3, smooth=True):
+def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, iter=10,
+                          test_size=0.3, smooth=True):
 
     """
     Conduct time-by-time decoding for EEG-like data (hold out)
@@ -281,7 +282,7 @@ def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_wi
         The shape of data must be [n_subs, n_trials, n_chls, n_ts]. n_subs, n_trials, n_chls and n_ts represent the
         number of subjects, the number of trails, the number of channels and the number of time-points.
     labels : array
-        The labels of each trials.
+        The labels of each trial.
         The shape of labels must be [n_subs, n_trials]. n_subs and n_trials represent the number of subjects and the
         number of trials.
     n : int. Default is 2.
@@ -400,7 +401,7 @@ def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_wi
 
                 for t in range(newnts):
 
-                    percent = (sub * iter * newnts + i * newnts + t) / total * 100
+                    percent = (sub * iter * newnts + i * newnts + t + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
                     state = np.random.randint(0, 100)
@@ -474,7 +475,7 @@ def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_wi
 
                 for t in range(newnts):
 
-                    percent = (sub * iter * newnts + i * newnts + t) / total * 100
+                    percent = (sub * iter * newnts + i * newnts + t + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
                     state = np.random.randint(0, 100)
@@ -525,7 +526,7 @@ def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5,
         The shape of data must be [n_subs, n_trials, n_chls, n_ts]. n_subs, n_trials, n_chls and n_ts represent the
         number of subjects, the number of trails, the number of channels and the number of time-points.
     labels : array
-        The labels of each trials.
+        The labels of each trial.
         The shape of labels must be [n_subs, n_trials]. n_subs and n_trials represent the number of subjects and the
         number of trials.
     n : int. Default is 2.
@@ -542,7 +543,7 @@ def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5,
     time_step : int. Default is 5.
         The time step size for each time of decoding.
     nfolds : int. Default is 5.
-        Number of folds.
+        The number of folds.
         nfolds should be at least 2.
     nrepeats : int. Default is 2.
         The times for iteration.
@@ -657,8 +658,7 @@ def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5,
                         svm.fit(x_train, y[train_index])
                         subacc[i, t, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
 
-                        percent = (
-                                              sub * nrepeats * newnts * nfolds + i * newnts * nfolds + t * nfolds + fold_index) / total * 100
+                        percent = (sub * nrepeats * newnts * nfolds + i * newnts * nfolds + t * nfolds + fold_index + 1) / total * 100
                         show_progressbar("Calculating", percent)
 
                         for tt in range(newnts - 1):
@@ -749,8 +749,7 @@ def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5,
                         svm.fit(x_train, y[train_index])
                         subacc[i, t, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
 
-                        percent = (
-                                              sub * nrepeats * newnts * nfolds + i * newnts * nfolds + t * nfolds + fold_index) / total * 100
+                        percent = (sub * nrepeats * newnts * nfolds + i * newnts * nfolds + t * nfolds + fold_index + 1) / total * 100
                         show_progressbar("Calculating", percent)
 
                         for tt in range(newnts - 1):
@@ -818,7 +817,7 @@ def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=
         The shape of data must be [n_subs, n_trials, n_chls, n_ts]. n_subs, n_trials, n_chls and n_ts represent the
         number of subjects, the number of trails, the number of channels and the number of time-points.
     labels : array
-        The labels of each trials.
+        The labels of each trial.
         The shape of labels must be [n_subs, n_trials]. n_subs and n_trials represent the number of subjects and the
         number of trials.
     n : int. Default is 2.
@@ -937,7 +936,7 @@ def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=
 
                 for t in range(newnts):
 
-                    percent = (sub * iter * newnts + i * newnts + t) / total * 100
+                    percent = (sub * iter * newnts + i * newnts + t + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
                     state = np.random.randint(0, 100)
@@ -1022,7 +1021,7 @@ def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=
 
                 for t in range(newnts):
 
-                    percent = (sub * iter * newnts + i * newnts + t) / total * 100
+                    percent = (sub * iter * newnts + i * newnts + t + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
                     state = np.random.randint(0, 100)
@@ -1085,8 +1084,8 @@ def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=
 
 ' a function for unidirectional transfer decoding for EEG-like data '
 
-def unidirectional_transfer_decoding_holdout(data1, labels1, data2, labels2, n=2, navg=5, time_opt="average",
-                                             time_win=5, time_step=5, iter=10, smooth=True):
+def unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5, time_opt="average", time_win=5,
+                                     time_step=5, iter=10, smooth=True):
 
     """
     Conduct unidirectional transfer decoding for EEG-like data
@@ -1098,13 +1097,13 @@ def unidirectional_transfer_decoding_holdout(data1, labels1, data2, labels2, n=2
         The shape of data must be [n_subs, n_trials, n_chls, n_ts]. n_subs, n_trials, n_chls and n_ts represent the
         number of subjects, the number of trails, the number of channels and the number of time-points.
     labels1 : array
-        The labels of each trials under condition1.
+        The labels of each trial under condition1.
         The shape of labels must be [n_subs, n_trials]. n_subs and n_trials represent the number of subjects and the
         number of trials.
     data2 : array
         The neural data under condition2.
     labels2 : array
-        The labels of each trials under condition2.
+        The labels of each trial under condition2.
     n : int. Default is 2.
         The number of categories for classification.
     navg : int. Default is 5.
@@ -1296,7 +1295,7 @@ def unidirectional_transfer_decoding_holdout(data1, labels1, data2, labels2, n=2
 
                 for t in range(newnts1):
 
-                    percent = (sub * iter * newnts1 + i * newnts1 + t) / total * 100
+                    percent = (sub * iter * newnts1 + i * newnts1 + t + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
                     scaler = StandardScaler()
@@ -1402,7 +1401,7 @@ def unidirectional_transfer_decoding_holdout(data1, labels1, data2, labels2, n=2
 
                 for t in range(newnts1):
 
-                    percent = (sub * iter * newnts1 + i * newnts1 + t) / total * 100
+                    percent = (sub * iter * newnts1 + i * newnts1 + t + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
                     scaler = StandardScaler()
@@ -1451,7 +1450,7 @@ def unidirectional_transfer_decoding_holdout(data1, labels1, data2, labels2, n=2
         return acc
 
 
-' a function for conducting bidirectional transfer decoding for EEG-like data '
+' a function for bidirectional transfer decoding for EEG-like data '
 
 def bidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5, time_opt="average", time_win=5,
                                     time_step=5, iter=10, smooth=True):
@@ -1501,9 +1500,9 @@ def bidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5,
         The shape of accuracies is [n_subs, int((n_ts2-time_win)/time_step)+1, int((n_ts1-time_win)/time_step)+1].
     """
 
-    Con1toCon2_accuracies, Con2toCon1_accuracies = unidirectional_transfer_decoding_holdout(data1, labels1, data2,
+    Con1toCon2_accuracies, Con2toCon1_accuracies = unidirectional_transfer_decoding(data1, labels1, data2,
                                     labels2, n=n, navg=navg, time_opt=time_opt, time_win=time_win, time_step=time_step,
-                                    iter=iter, smooth=smooth), unidirectional_transfer_decoding_holdout(data1, labels1,
+                                    iter=iter, smooth=smooth), unidirectional_transfer_decoding(data1, labels1,
                                     data2, labels2, n=n, navg=navg, time_opt=time_opt, time_win=time_win,
                                     time_step=time_step, iter=iter, smooth=smooth)
 

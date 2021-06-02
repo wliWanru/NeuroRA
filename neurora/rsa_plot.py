@@ -341,8 +341,9 @@ def plot_corrs_by_time(corrs, labels=None, time_unit=[0, 0.1]):
 
 ' a function for plotting the time-by-time Similarities with statistical results'
 
-def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, smooth=True, p=0.05, cbpt=True, color='r',
-                           lim=[-0.1, 0.8], figsize=[6.4, 3.6], x0=0, fontsize=16):
+def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval=0.01, smooth=True, p=0.05, cbpt=True,
+                           stats_time=[0, 1], color='r', xlim=[0, 1], ylim=[-0.1, 0.8], figsize=[6.4, 3.6], x0=0,
+                           fontsize=16, avgshow=False):
 
     """
     Plot the time-by-time Similarities with statistical results
@@ -357,22 +358,32 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, smooth=True, 
         The start time.
     end_time : int or float. Default is 1.
         The end time.
+    time_interval : float. Default is 0.01.
+        The time interval between two time samples.
     smooth : bool True or False. Default is True.
         Smooth the results or not.
+    chance : float. Default is 0.5.
+        The chance level.
     p : float. Default is 0.05.
         The threshold of p-values.
     cbpt : bool True or False. Default is True.
         Conduct cluster-based permutation test or not.
+    stats_time : array or list [stats_time1, stats_time2]. Default os [0, 1].
+        Time period for statistical analysis.
     color : matplotlib color or None. Default is 'r'.
         The color for the curve.
-    lim : array or list [min, max]. Default is [-0.1, 0.8].
-        The corrs view lims.
+    xlim : array or list [xmin, xmax]. Default is [0, 1].
+        The x-axis (time) view lims.
+    ylim : array or list [ymin, ymax]. Default is [0.4, 0.8].
+        The y-axis (decoding accuracy) view lims.
     figsize : array or list, [size_X, size_Y]. Default is [6.4, 3.6].
         The size of the figure.
     x0 : float. Default is 0.
         The Y-axis is at x=x0.
     fontsize : int or float. Default is 16.
         The fontsize of the labels.
+    avgshow : boolen True or False. Default is False.
+        Show the averaging decoding accuracies or not.
     """
 
     if len(np.shape(similarities)) < 2 or len(np.shape(similarities)) > 3:
@@ -381,16 +392,28 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, smooth=True, 
 
     n = len(np.shape(similarities))
 
-    minlim = lim[0]
-    maxlim = lim[1]
+    yminlim = ylim[0]
+    ymaxlim = ylim[1]
 
     if n == 3:
         similarities = similarities[:, :, 0]
 
-    nsubs = np.shape(similarities)[0]
-    nts = np.shape(similarities)[1]
+    nsubs, nts = np.shape(similarities)
+    tstep = float(Decimal((end_time - start_time) / nts).quantize(Decimal(str(time_interval))))
 
-    tstep = float((end_time-start_time)/nts)
+    if tstep != time_interval:
+        return "Invalid input!"
+
+    delta1 = (stats_time[0] - start_time) / tstep - int((stats_time[0] - start_time) / tstep)
+    delta2 = (stats_time[1] - start_time) / tstep - int((stats_time[1] - start_time) / tstep)
+    if delta1 == 0:
+        stats_time1 = int((stats_time[0] - start_time) / tstep)
+    else:
+        stats_time1 = int((stats_time[0] - start_time) / tstep) + 1
+    if delta2 == 0:
+        stats_time2 = int((stats_time[1] - start_time) / tstep)
+    else:
+        stats_time2 = int((stats_time[1] - start_time) / tstep) + 1
 
     if smooth is True:
         for sub in range(nsubs):
@@ -410,7 +433,9 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, smooth=True, 
         err[t] = np.std(similarities[:, t], ddof=1)/np.sqrt(nsubs)
 
     if cbpt == True:
-        ps = clusterbased_permutation_1d_1samp_1sided(similarities, level=0, p_threshold=p)
+        ps_stats = clusterbased_permutation_1d_1samp_1sided(similarities, level=0, p_threshold=p)
+        ps = np.zeros([nts])
+        ps[stats_time1:stats_time2] = ps_stats
     else:
         ps = np.zeros([nts])
         for t in range(nts):
@@ -422,7 +447,7 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, smooth=True, 
 
     for t in range(nts):
         if ps[t] == 1:
-            plt.plot(t*tstep+start_time, (maxlim-minlim)*0.9+minlim, 's', color=color, alpha=1)
+            plt.plot(t*tstep+start_time, (ymaxlim-yminlim)*0.9+yminlim, 's', color=color, alpha=1)
             xi = [t*tstep+start_time, t*tstep+tstep+start_time]
             ymin = [0]
             ymax = [avg[t]-err[t]]
@@ -438,11 +463,12 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, smooth=True, 
     ax.spines["left"].set_position(("data", x0))
     ax.spines["bottom"].set_linewidth(3)
     ax.spines['bottom'].set_position(('data', 0))
-
     x = np.arange(start_time+0.5*tstep, end_time+0.5*tstep, tstep)
+    if avgshow is True:
+        plt.plot(x, avg, color=color, alpha=0.9)
     plt.fill_between(x, avg + err, avg - err, facecolor=color, alpha=0.8)
-    plt.ylim(minlim, maxlim)
-    plt.xlim(start_time, end_time)
+    plt.ylim(yminlim, ymaxlim)
+    plt.xlim(xlim[0], xlim[1])
     plt.tick_params(labelsize=12)
     plt.xlabel("Time (s)", fontsize=fontsize)
     plt.ylabel("Representational Similarity", fontsize=fontsize)
@@ -853,7 +879,8 @@ def plot_corrs_hotmap(corrs, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], smo
 
 ' a function for plotting the hotmap of correlations coefficients for channels/regions by time sequence with the significant outline '
 
-def plot_corrs_hotmap_stats(corrs, stats, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], p_threshold=0.05, time_threshold=5, smooth=False, figsize=None, cmap=None):
+def plot_corrs_hotmap_stats(corrs, stats, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], p_threshold=0.05,
+                            time_threshold=5, smooth=False, figsize=None, cmap=None):
 
     """
     plot the hotmap of correlation coefficients for channels/regions by time sequence with the significant outline
@@ -1056,7 +1083,8 @@ def plot_corrs_hotmap_stats(corrs, stats, chllabels=None, time_unit=[0, 0.1], li
 
 ' a function for plotting the hotmap of neural pattern similarities for channels/regions by time sequence '
 
-def plot_nps_hotmap(similarities, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], abs=False, smooth=False, figsize=None, cmap=None):
+def plot_nps_hotmap(similarities, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], abs=False, smooth=False, figsize=None,
+                    cmap=None):
 
     """
     plot the hotmap of neural pattern similarities for channels/regions by time sequence
@@ -1157,7 +1185,7 @@ def plot_nps_hotmap(similarities, chllabels=None, time_unit=[0, 0.1], lim=[0, 1]
     if cmap == None:
         plt.imshow(rlts, extent=(start_t, end_t, 0, nchls*0.16), clim=(limmin, limmax), origin='lower')
     else:
-        plt.imshow(rlts, extent=(start_t, end_t, 0, nchls * 0.16), clim=(limmin, limmax), origin='lower', cmap=cmap)
+        plt.imshow(rlts, extent=(start_t, end_t, 0, nchls*0.16), clim=(limmin, limmax), origin='lower', cmap=cmap)
 
     fig = plt.gcf()
     size = fig.get_size_inches()
@@ -1195,7 +1223,8 @@ def plot_nps_hotmap(similarities, chllabels=None, time_unit=[0, 0.1], lim=[0, 1]
 
 ' a function for plotting the hotmap of statistical results for channels/regions by time sequence '
 
-def plot_stats_hotmap(stats, chllabels=None, time_unit=[0, 0.1], lim=[-7, 7], smooth=False, figsize=None, cmap=None, outline=False, p_threshold=0.05, time_threshold=5):
+def plot_stats_hotmap(stats, chllabels=None, time_unit=[0, 0.1], lim=[-7, 7], smooth=False, figsize=None, cmap=None,
+                      outline=False, p_threshold=0.05, time_threshold=5):
 
     """
     plot the hotmap of statistical results for channels/regions by time sequence

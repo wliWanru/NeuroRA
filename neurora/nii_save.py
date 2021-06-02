@@ -8,14 +8,15 @@ import numpy as np
 import nibabel as nib
 from nilearn.image import smooth_img
 import math
-from scipy.stats import t
 from neurora.stuff import fwe_correct, fdr_correct, cluster_fwe_correct, cluster_fdr_correct, get_HOcort, get_bg_ch2bet,\
     mask_to
 from neurora.rsa_plot import plot_brainrsa_rlts
 
 ' a function for saving the searchlight correlation coefficients as a NIfTI file for fMRI '
 
-def corr_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60, 60, 60], ksize=[3, 3, 3], strides=[1, 1, 1], p=1, r=0, correct_method=None, clusterp=0.05, smooth=True, plotrlt=True, img_background=None):
+def corr_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60, 60, 60], ksize=[3, 3, 3],
+                  strides=[1, 1, 1], p=1, r=0, correct_method=None, clusterp=0.05, smooth=True, plotrlt=True,
+                  img_background=None):
 
     """
     Save the searchlight correlation coefficients as a NIfTI file for fMRI
@@ -48,10 +49,12 @@ def corr_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60
     r : float. Default is 0.
         The threshold of r-values.
         Only the results those r-values are higher than this value will be visible.
-    correct_method : None or string 'FWE' or 'FDR'. Default is None.
+    correct_method : None or string 'FWE' or 'FDR' or 'Cluster-FWE' or 'Cluster-FDR'. Default is None.
         The method for correcting the RSA results.
         If correct_method='FWE', here the FWE-correction will be used. If correct_methd='FDR', here the FDR-correction
-        will be used. If correct_method=None, no correction.
+        will be used. If correct_method='Cluster-FWE', here the Cluster-wise FWE-correction will be used. If
+        correct_methd='Cluster-FDR', here the Cluster-wise FDR-correction will be used. If correct_method=None, no
+        correction. If correct_method=None, no correction.
         Only when p<1, correct_method works.
     clusterp : float. Default is 0.05.
         The threshold of p-value for cluster-wise correction.
@@ -73,7 +76,8 @@ def corr_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60
 
     Notes
     -----
-    A result .nii file of searchlight correlation coefficients will be generated at the corresponding address of filename.
+    A result .nii file of searchlight correlation coefficients will be generated at the corresponding address of
+    filename.
     """
 
     if len(np.shape(corrs)) != 4 or len(np.shape(affine)) != 2 or np.shape(affine)[0] != 4 or np.shape(affine)[1] != 4:
@@ -125,6 +129,14 @@ def corr_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60
         # FWE-correction
         if correct_method == "FWE":
             corrsp = fwe_correct(corrsp, p_threshold=p)
+
+        # Cluster-wise FDR-correction
+        if correct_method == "Cluster-FDR":
+            corrsp = cluster_fdr_correct(corrsp, p_threshold1=p, p_threshold2=clusterp)
+
+        # Cluster-wise FWE-correction
+        if correct_method == "Cluster-FWE":
+            corrsp = cluster_fwe_correct(corrsp, p_threshold1=p, p_threshold2=clusterp)
 
     # iterate through all the calculation units again
 
@@ -226,14 +238,16 @@ def corr_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60
 
 ' a function for saving the searchlight statistical results as a NIfTI file for fMRI '
 
-def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[60, 60, 60], ksize=[3, 3, 3], strides=[1, 1, 1], p=0.05, df=20, correct_method=None, clusterp=0.05, smooth=False, plotrlt=True, img_background=None):
+def stats_save_nii(stats, affine, filename=None, corr_mask=get_HOcort(), size=[60, 60, 60], ksize=[3, 3, 3],
+                   strides=[1, 1, 1], p=0.05, correct_method=None, clusterp=0.05, smooth=False, plotrlt=True,
+                   img_background=None):
 
     """
     Save the searchlight RSA statistical results as a NIfTI file for fMRI
 
     Parameters
     ----------
-    corrs : array
+    stats : array
         The statistical results between behavioral data and fMRI data for searchlight.
         The shape of RDMs is [n_x, n_y, n_z, 2]. n_x, n_y, n_z represent the number of calculation units for searchlight
         along the x, y, z axis and 2 represents a t-value and a p-value.
@@ -256,8 +270,6 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
     p : float. Default is 0.05.
         The threshold of p-values.
         Only the results those p-values are lower than this value will be visible.
-    df : int. Default is 20.
-        The degree of freedom.
     correct_method : None or string 'FWE' or 'FDR' or 'Cluster-FWE' or 'Cluster-FDR'. Default is None.
         The method for correcting the RSA results.
         If correct_method='FWE', here the FWE-correction will be used. If correct_methd='FDR', here the FDR-correction
@@ -289,7 +301,7 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
     """
 
 
-    if len(np.shape(corrs)) != 4 or len(np.shape(affine)) != 2 or np.shape(affine)[0] != 4 or np.shape(affine)[1] != 4:
+    if len(np.shape(stats)) != 4 or len(np.shape(affine)) != 2 or np.shape(affine)[0] != 4 or np.shape(affine)[1] != 4:
 
         return "Invalid input!"
 
@@ -313,9 +325,9 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
     sz = strides[2]
 
     # calculate the number of the calculation units in the x, y, z directions
-    n_x = np.shape(corrs)[0]
-    n_y = np.shape(corrs)[1]
-    n_z = np.shape(corrs)[2]
+    n_x = np.shape(stats)[0]
+    n_y = np.shape(stats)[1]
+    n_z = np.shape(stats)[2]
 
     img_nii = np.zeros([nx, ny, nz], dtype=np.float64)
 
@@ -323,8 +335,8 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
     mask = np.zeros([nx, ny, nz], dtype=np.int)
 
     # get the p-values
-    corrsp = corrs[:, :, :, 1]
-    corrst = corrs[:, :, :, 0]
+    statsp = stats[:, :, :, 1]
+    statst = stats[:, :, :, 0]
 
     # calculate the number of voxels for correction
     fadeimg = np.zeros([nx, ny, nz], dtype=np.int)
@@ -340,9 +352,9 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
                 y = j*sy
                 z = k*sz
 
-                if corrsp[i, j, k] < 1:
-                    img_nii[x + rx, y + ry, z + rz] = corrst[i, j, k]
-                if corrsp[i, j, k] < p:
+                if statsp[i, j, k] < 1:
+                    img_nii[x + rx, y + ry, z + rz] = statst[i, j, k]
+                if statsp[i, j, k] < p:
                     fadeimg[x + rx, y + ry, z + rz] = 1
 
     n_corrected = 0
@@ -359,19 +371,19 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
 
         # FDR-correction
         if correct_method == "FDR":
-            corrsp = fdr_correct(corrsp, p_threshold=p)
+            statsp = fdr_correct(statsp, p_threshold=p)
 
         # FWE-correction
         if correct_method == "FWE":
-            corrsp = fwe_correct(corrsp, p_threshold=p)
+            statsp = fwe_correct(statsp, p_threshold=p)
 
         # Cluster-wise FDR-correction
         if correct_method == "Cluster-FDR":
-            corrsp = cluster_fdr_correct(corrsp, p_threshold1=p, p_threshold2=clusterp)
+            statsp = cluster_fdr_correct(statsp, p_threshold1=p, p_threshold2=clusterp)
 
         # Cluster-wise FWE-correction
         if correct_method == "Cluster-FWE":
-            corrsp = cluster_fwe_correct(corrsp, p_threshold1=p, p_threshold2=clusterp)
+            statsp = cluster_fwe_correct(statsp, p_threshold1=p, p_threshold2=clusterp)
 
     # iterate through all the calculation units again
 
@@ -385,14 +397,11 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
                 y = j * sy
                 z = k * sz
 
-                if corrsp[i, j, k] < p:
+                if statsp[i, j, k] < p:
                     mask[x + rx, y + ry, z + rz] = 1
 
     # initialize the newimg array to calculate the avg-r-value for each voxel
     newimg_nii = np.full([nx, ny, nz], np.nan)
-
-    t_threshold = t.isf(p, df)
-    print("t threshold: " + str(t_threshold))
 
     # set filename for result .nii file
     if filename == None:
@@ -426,8 +435,6 @@ def stats_save_nii(corrs, affine, filename=None, corr_mask=get_HOcort(), size=[6
                 if (math.isnan(cmask[i, j, k]) == False) and cmask[i, j, k] != 0 and mask[i, j, k] == 1:
                     # sum-r-value/index
                     newimg_nii[i, j, k] = img_nii[i, j, k]
-                    if newimg_nii[i, j, k] < t_threshold:
-                        newimg_nii[i, j, k] = np.nan
 
     print("Get RSA results.")
 
@@ -468,7 +475,7 @@ affine = get_affine("/Users/zitonglu/Downloads/isc_results_p0.001_fdr1.nii")
 
 import h5py
 
-stats = np.array(h5py.File("/Users/zitonglu/Downloads/All_tom.h5", "r")["stats"])
+stats = np.array(h5py.File("/Users/zitonglu/Downloads/all_tom1.h5", "r")["stats"])
 
-stats_save_nii(stats, affine, filename="all_0.05", corr_mask=get_HOcort(), size=[79, 95, 68], ksize=[3, 3, 3], strides=[1, 1, 1], p=0.05, df=23, correct_method="Cluster-FDR", clusterp=0.05, smooth=False, plotrlt=True, img_background=None)"""
+stats_save_nii(stats, affine, filename="all_0.05", corr_mask=get_HOcort(), size=[79, 95, 68], ksize=[3, 3, 3], strides=[1, 1, 1], p=0.05, correct_method="Cluster-FDR", clusterp=0.05, smooth=False, plotrlt=True, img_background=None)"""
 

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Others &#8212; NeuroRA 1.1.4.8 documentation</title>
+    <title>Others &#8212; NeuroRA 1.1.5.0 documentation</title>
     <link rel="stylesheet" href="static/classic.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     
@@ -31,7 +31,7 @@
         <li class="right" >
           <a href="rsa_plot.html" title="Visualization for Results"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.4.8 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Others</a></li> 
       </ul>
     </div>  
@@ -46,6 +46,200 @@
 <div class="section" id="module-neurora.stuff">
 <span id="neurora-stuff-module"></span><h2>neurora.stuff module<a class="headerlink" href="#module-neurora.stuff" title="Permalink to this headline">¶</a></h2>
 <p>a module for some simple but important processes</p>
+<dl class="py function">
+<dt id="neurora.stuff.cluster_fdr_correct">
+<code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">cluster_fdr_correct</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">p_threshold1</span></em>, <em class="sig-param"><span class="n">p_threshold2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.cluster_fdr_correct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cluster-wise FDR correction for fMRI RSA results</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<em>array</em>) – The p-value map (3-D).</p></li>
+<li><p><strong>p_threshold1</strong> (<em>string</em>) – The voxel-wise p threshold.</p></li>
+<li><p><strong>p_threshold2</strong> (<em>string</em>) – The cluster-wise p threshold</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>clusterfdrp</strong> – The Cluster-wise FDR corrected p-value map.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="neurora.stuff.cluster_fwe_correct">
+<code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">cluster_fwe_correct</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">p_threshold1</span></em>, <em class="sig-param"><span class="n">p_threshold2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.cluster_fwe_correct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cluster-wise FWE correction for fMRI RSA results</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<em>array</em>) – The p-value map (3-D).</p></li>
+<li><p><strong>p_threshold1</strong> (<em>string</em>) – The voxel-wise p threshold.</p></li>
+<li><p><strong>p_threshold2</strong> (<em>string</em>) – The cluster-wise p threshold</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>clusterfwep</strong> – The Cluster-wise FWE corrected p-value map.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="neurora.stuff.clusterbased_permutation_1d_1samp_1sided">
+<code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">clusterbased_permutation_1d_1samp_1sided</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">results</span></em>, <em class="sig-param"><span class="n">level</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">p_threshold</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">5000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.clusterbased_permutation_1d_1samp_1sided" title="Permalink to this definition">¶</a></dt>
+<dd><p>1-sample &amp; 1-sided cluster based permutation test for 2-D results</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<em>array</em>) – A result matrix.
+The shape of results should be [n_subs, x]. n_subs represents the number of subjects.</p></li>
+<li><p><strong>level</strong> (<em>float. Default is 0.</em>) – A expected value in null hypothesis. (Here, results &gt; level)</p></li>
+<li><p><strong>p_threshold</strong> (<em>float. Default is 0.05.</em>) – The threshold of p-values.</p></li>
+<li><p><strong>iter</strong> (<em>int. Default is 5000.</em>) – The times for iteration.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ps</strong> – The permutation test resultz, p-values.
+The shape of ps is [x]. The values in ps should be 0 or 1, which represent not significant point or significant
+point after cluster-based permutation test, respectively.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="neurora.stuff.clusterbased_permutation_1d_1samp_2sided">
+<code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">clusterbased_permutation_1d_1samp_2sided</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">results</span></em>, <em class="sig-param"><span class="n">level</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">p_threshold</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">5000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.clusterbased_permutation_1d_1samp_2sided" title="Permalink to this definition">¶</a></dt>
+<dd><p>1-sample &amp; 2-sided cluster based permutation test for 2-D results</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<em>array</em>) – A result matrix.
+The shape of results should be [n_subs, x]. n_subs represents the number of subjects.</p></li>
+<li><p><strong>level</strong> (<em>float. Default is 0.</em>) – A expected value in null hypothesis. (Here, results &gt; level)</p></li>
+<li><p><strong>p_threshold</strong> (<em>float. Default is 0.05.</em>) – The threshold of p-values.</p></li>
+<li><p><strong>iter</strong> (<em>int. Default is 5000.</em>) – The times for iteration.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ps</strong> – The permutation test resultz, p-values.
+The shape of ps is [x]. The values in ps should be 0 or 1 or -1, which represent not significant point or
+significantly greater point or significantly less point after cluster-based permutation test, respectively.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="neurora.stuff.clusterbased_permutation_2d_1samp_1sided">
+<code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">clusterbased_permutation_2d_1samp_1sided</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">results</span></em>, <em class="sig-param"><span class="n">level</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">p_threshold</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">5000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.clusterbased_permutation_2d_1samp_1sided" title="Permalink to this definition">¶</a></dt>
+<dd><p>1-sample &amp; 1-sided cluster based permutation test for 2-D results</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<em>array</em>) – A result matrix.
+The shape of results should be [n_subs, x1, x2]. n_subs represents the number of subjects.</p></li>
+<li><p><strong>level</strong> (<em>float. Default is 0.</em>) – A expected value in null hypothesis. (Here, results &gt; level)</p></li>
+<li><p><strong>p_threshold</strong> (<em>float. Default is 0.05.</em>) – The threshold of p-values.</p></li>
+<li><p><strong>iter</strong> (<em>int. Default is 5000.</em>) – The times for iteration.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>p</strong> – The permutation test result, p-value.
+The shape of p is [x1, x2]. The values in ps should be 0 or 1, which represent not significant point or
+significant point after cluster-based permutation test, respectively.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="neurora.stuff.clusterbased_permutation_2d_1samp_2sided">
+<code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">clusterbased_permutation_2d_1samp_2sided</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">results</span></em>, <em class="sig-param"><span class="n">level</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">p_threshold</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">5000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.clusterbased_permutation_2d_1samp_2sided" title="Permalink to this definition">¶</a></dt>
+<dd><p>1-sample &amp; 2-sided cluster based permutation test for 2-D results</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<em>array</em>) – A result matrix.
+The shape of results should be [n_subs, x1, x2]. n_subs represents the number of subjects.</p></li>
+<li><p><strong>level</strong> (<em>float. Default is 0.</em>) – A expected value in null hypothesis. (Here, results &gt; level)</p></li>
+<li><p><strong>p_threshold</strong> (<em>float. Default is 0.05.</em>) – The threshold of p-values.</p></li>
+<li><p><strong>iter</strong> (<em>int. Default is 5000.</em>) – The times for iteration.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>p</strong> – The permutation test result, p-value.
+The shape of p is [x1, x2]. The values in ps should be 0 or 1 or -1, which represent not significant point or
+significantly greater point or significantly less point after cluster-based permutation test, respectively.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="neurora.stuff.clusterbased_permutation_2d_1sided">
+<code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">clusterbased_permutation_2d_1sided</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">results1</span></em>, <em class="sig-param"><span class="n">results2</span></em>, <em class="sig-param"><span class="n">p_threshold</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">5000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.clusterbased_permutation_2d_1sided" title="Permalink to this definition">¶</a></dt>
+<dd><p>1-sided cluster based permutation test for 2-D results</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results1</strong> (<em>array</em>) – A result matrix under condition1.
+The shape of results should be [n_subs, x1, x2]. n_subs represents the number of subjects.</p></li>
+<li><p><strong>results2</strong> (<em>array</em>) – A result matrix under condition2.
+The shape of results should be [n_subs, x1, x2]. n_subs represents the number of subjects. (results1 &gt; results2)</p></li>
+<li><p><strong>p_threshold</strong> (<em>float. Default is 0.05.</em>) – The threshold of p-values.</p></li>
+<li><p><strong>iter</strong> (<em>int. Default is 5000.</em>) – The times for iteration.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>p</strong> – The permutation test result, p-value.
+The shape of p is [x1, x2]. The values in ps should be 0 or 1, which represent not significant point or
+significant point after cluster-based permutation test.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="neurora.stuff.clusterbased_permutation_2d_2sided">
+<code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">clusterbased_permutation_2d_2sided</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">results1</span></em>, <em class="sig-param"><span class="n">results2</span></em>, <em class="sig-param"><span class="n">p_threshold</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">5000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.clusterbased_permutation_2d_2sided" title="Permalink to this definition">¶</a></dt>
+<dd><p>2-sided cluster based permutation test for 2-D results</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results1</strong> (<em>array</em>) – A result matrix under condition1.
+The shape of results should be [n_subs, x1, x2]. n_subs represents the number of subjects.</p></li>
+<li><p><strong>results2</strong> (<em>array</em>) – A result matrix under condition2.
+The shape of results should be [n_subs, x1, x2]. n_subs represents the number of subjects. (results1 &gt; results2)</p></li>
+<li><p><strong>p_threshold</strong> (<em>float. Default is 0.05.</em>) – The threshold of p-values.</p></li>
+<li><p><strong>iter</strong> (<em>int. Default is 5000.</em>) – The times for iteration.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>p</strong> – The permutation test result, p-value.
+The shape of p is [x1, x2]. The values in ps should be 0 or 1 or -1, which represent not significant point or
+significantly greater point or significantly less point after cluster-based permutation test.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt id="neurora.stuff.correct_by_threshold">
 <code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">correct_by_threshold</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">img</span></em>, <em class="sig-param"><span class="n">threshold</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.correct_by_threshold" title="Permalink to this definition">¶</a></dt>
@@ -104,7 +298,7 @@ The shape of newfmri_data is [nx, ny, nz]. nx, ny, nz represent the size of the 
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>correctp</strong> – The FDR corrected p-value map.</p>
+<dd class="field-even"><p><strong>fdrp</strong> – The FDR corrected p-value map.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>array.</p>
@@ -141,7 +335,7 @@ The shape of newfmri_data is [nx, ny, nz]. nx, ny, nz represent the size of the 
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>correctp</strong> – The FDR corrected p-value map.</p>
+<dd class="field-even"><p><strong>fwep</strong> – The FWE corrected p-value map.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>array.</p>
@@ -209,6 +403,88 @@ The shape of newfmri_data is [nx, ny, nz]. nx, ny, nz represent the size of the 
 </dd></dl>
 
 <dl class="py function">
+<dt id="neurora.stuff.get_cluster_index_1d_1sided">
+<code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">get_cluster_index_1d_1sided</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.get_cluster_index_1d_1sided" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get 1-D &amp; 1-sided cluster-index information from a vector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>m</strong> (<em>array</em>) – A significant vector.
+The values in m should be 0 or 1, which represent not significant point or significant point, respectively.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>index_v</strong> (<em>array</em>) – The cluster-index vector.</p></li>
+<li><p><strong>index_n</strong> (<em>int</em>) – The number of clusters.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="neurora.stuff.get_cluster_index_1d_2sided">
+<code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">get_cluster_index_1d_2sided</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.get_cluster_index_1d_2sided" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get 1-D &amp; 2-sided cluster-index information from a vector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>m</strong> (<em>array</em>) – A significant vector.
+The values in m should be 0 or 1 or -1, which represent not significant point or significantly higher point or
+significantly less point, respectively.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>index_v1</strong> (<em>array</em>) – The “greater” cluster-index vector.</p></li>
+<li><p><strong>index_n1</strong> (<em>int</em>) – The number of “greater” clusters.</p></li>
+<li><p><strong>index_v2</strong> (<em>array</em>) – The “less” cluster-index vector.</p></li>
+<li><p><strong>index_n2</strong> (<em>int</em>) – The number of “less” clusters.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="neurora.stuff.get_cluster_index_2d_1sided">
+<code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">get_cluster_index_2d_1sided</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.get_cluster_index_2d_1sided" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get 2-D &amp; 1-sided cluster-index information from a matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>m</strong> (<em>array</em>) – A significant matrix.
+The values in m should be 0 or 1, which represent not significant point or significant point, respectively.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>index_m</strong> (<em>array</em>) – The cluster-index matrix.</p></li>
+<li><p><strong>index_n</strong> (<em>int</em>) – The number of clusters.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="neurora.stuff.get_cluster_index_2d_2sided">
+<code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">get_cluster_index_2d_2sided</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.get_cluster_index_2d_2sided" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get 2-D &amp; 2-sided cluster-index information from a matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>m</strong> (<em>array</em>) – A significant matrix.
+The values in m should be 0 or 1 or -1, which represent not significant point or significantly higher point or
+significantly less point, respectively.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>index_m1</strong> (<em>array</em>) – The “greater” cluster-index matrix.</p></li>
+<li><p><strong>index_n1</strong> (<em>int</em>) – The “greater” number of clusters.</p></li>
+<li><p><strong>index_m2</strong> (<em>array</em>) – The “less” cluster-index matrix.</p></li>
+<li><p><strong>index_n2</strong> (<em>int</em>) – The “less” number of clusters.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt id="neurora.stuff.limtozero">
 <code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">limtozero</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.limtozero" title="Permalink to this definition">¶</a></dt>
 <dd><p>zero the value close to zero</p>
@@ -241,6 +517,26 @@ The shape of newfmri_data is [nx, ny, nz]. nx, ny, nz represent the size of the 
 </dl>
 <p class="rubric">Notes</p>
 <p>A result .nii file of new mask will be generated at the corresponding address of filename.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="neurora.stuff.mniposition_to">
+<code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">mniposition_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mnipoint</span></em>, <em class="sig-param"><span class="n">affine</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.mniposition_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>project the position in MNI coordinate system to the position of a point in matrix coordinate system</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>point</strong> (<em>list</em><em> or </em><em>array</em>) – The position in MNI coordinate system.</p></li>
+<li><p><strong>affine</strong> (<em>array</em><em> or </em><em>list</em>) – The position information of the fMRI-image array data in a reference space.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>newpoint</strong> – The position in matrix coordinate system.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py data">
@@ -311,6 +607,11 @@ The shape of newfmri_data is [nx, ny, nz]. nx, ny, nz represent the size of the 
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt id="neurora.stuff.show_progressbar">
+<code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">show_progressbar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">str</span></em>, <em class="sig-param"><span class="n">cur</span></em>, <em class="sig-param"><span class="n">total</span><span class="o">=</span><span class="default_value">100</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.show_progressbar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 </div>
 
@@ -365,7 +666,7 @@ The shape of newfmri_data is [nx, ny, nz]. nx, ny, nz represent the size of the 
         <li class="right" >
           <a href="rsa_plot.html" title="Visualization for Results"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.4.8 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Others</a></li> 
       </ul>
     </div>

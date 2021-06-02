@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculate the Inter-Subject Correlation (ISC) &#8212; NeuroRA 1.1.4.8 documentation</title>
+    <title>Calculate the Inter-Subject Correlation (ISC) &#8212; NeuroRA 1.1.5.0 documentation</title>
     <link rel="stylesheet" href="static/classic.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     
@@ -35,7 +35,7 @@
         <li class="right" >
           <a href="nps_cal.html" title="Calculate the Neural Pattern Similarity (NPS)"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.4.8 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Calculate the Inter-Subject Correlation (ISC)</a></li> 
       </ul>
     </div>  
@@ -75,6 +75,8 @@ r-value and a p-value.</p>
 <dd class="field-odd"><p>array</p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>In ISC, correlation computing process will be done for each pair of subjects.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -88,7 +90,8 @@ r-value and a p-value.</p>
 The shape of fmri_data must be [n_ts, n_subs, nx, ny, nz]. n_ts, nx, ny, nz represent the number of time-points,
 the number of subs &amp; the size of fMRI-img, respectively.</p></li>
 <li><p><strong>ksize</strong> (<em>array</em><em> or </em><em>list</em><em> [</em><em>kx</em><em>, </em><em>ky</em><em>, </em><em>kz</em><em>]</em><em> Default is</em><em> [</em><em>3</em><em>, </em><em>3</em><em>, </em><em>3</em><em>]</em><em></em>) – The size of the calculation unit for searchlight.
-kx, ky, kz represent the number of voxels along the x, y, z axis.</p></li>
+kx, ky, kz represent the number of voxels along the x, y, z axis.
+kx, ky, kz should be odd.</p></li>
 <li><p><strong>strides</strong> (<em>array</em><em> or </em><em>list</em><em> [</em><em>sx</em><em>, </em><em>sy</em><em>, </em><em>sz</em><em>]</em><em> Default is</em><em> [</em><em>1</em><em>, </em><em>1</em><em>, </em><em>1</em><em>]</em><em></em>) – The strides for calculating along the x, y, z axis.</p></li>
 </ul>
 </dd>
@@ -103,7 +106,8 @@ y, z axis. 2 represent a r-value and a p-value.</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>The size of the calculation units should at least be [3, 3, 3].</p>
+<p>The size of the calculation units should at least be [3, 3, 3].
+In ISC, correlation computing process will be done for each pair of subjects.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -131,6 +135,8 @@ the number of subjects. 2 represent a r-value and a p-value.</p>
 </dl>
 <p class="rubric">Notes</p>
 <p>The size of the calculation units should at least be [3, 3, 3].</p>
+<p class="rubric">Notes</p>
+<p>In ISC, correlation computing process will be done for each pair of subjects.</p>
 </dd></dl>
 
 </div>
@@ -193,7 +199,7 @@ the number of subjects. 2 represent a r-value and a p-value.</p>
         <li class="right" >
           <a href="nps_cal.html" title="Calculate the Neural Pattern Similarity (NPS)"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.4.8 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Calculate the Inter-Subject Correlation (ISC)</a></li> 
       </ul>
     </div>
