@@ -1,120 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f96de87-b4a9-466e-9c57-851a40404f91" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/source/decoding.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/.ipynb_checkpoints/NeuroRA_Demo1_colab-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/demo/.ipynb_checkpoints/NeuroRA_Demo1_colab-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/.ipynb_checkpoints/NeuroRA_Demo2_colab-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/demo/.ipynb_checkpoints/NeuroRA_Demo2_colab-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/.ipynb_checkpoints/NeuroRA_Demo3-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/demo/.ipynb_checkpoints/NeuroRA_Demo3-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/.ipynb_checkpoints/NeuroRA_Demo3_colab-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/demo/.ipynb_checkpoints/NeuroRA_Demo3_colab-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/.ipynb_checkpoints/Untitled-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/NeuroRA_Demo1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/demo/NeuroRA_Demo1.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/NeuroRA_Demo1_colab.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/demo/NeuroRA_Demo1_colab.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/NeuroRA_Demo2_colab.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/demo/NeuroRA_Demo2_colab.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/NeuroRA_Demo3.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/demo/NeuroRA_Demo3.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/NeuroRA_Demo3_colab.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/demo/NeuroRA_Demo3_colab.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/NeuroRA_Handbook_for_EEG:MEG.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/NeuroRA_Handbook_for_fMRI.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/classification_results/ERP_ori.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/classification_results/ERP_pos.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo1_figures/01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo1_figures/02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo1_figures/03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo1_figures/04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo1_figures/05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo1_figures/06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo1_figures/07.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo1_figures/08.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo1_figures/09.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo1_figures/10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo1_figures/11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo1_figures/12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo1_figures/13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo1_figures/14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_figures/01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_figures/02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_figures/03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_figures/04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_figures/05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_figures/06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_figures/07.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_figures/08.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_figures/09.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_figures/10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_figures/11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_figures/12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_figures/13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_figures/14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_figures/15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_figures/Thumbs.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_nps_img.nii" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo2_rsarlt_img.nii" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Lu_fninf_NeuroRA.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/download.doctree" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/environment.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/index.doctree" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/isc_cal.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/doctrees/isc_cal.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/nii_save.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/doctrees/nii_save.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/nps_cal.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/doctrees/nps_cal.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/rdm_cal.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/doctrees/rdm_cal.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/rsa.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/doctrees/rsa.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/rsa_plot.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/doctrees/rsa_plot.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/stats_cal.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/doctrees/stats_cal.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/stps_cal.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/doctrees/stps_cal.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/stuff.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/doctrees/stuff.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/.buildinfo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/download.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/genindex.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/isc_cal.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/isc_cal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/nii_save.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/nii_save.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/nps_cal.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/nps_cal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/objects.inv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/overview.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/overview.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/py-modindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/py-modindex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/rdm_cal.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/rdm_cal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/rsa.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/rsa.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/rsa_plot.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/rsa_plot.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/search.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/searchindex.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/sources/index.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/index.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/static/documentation_options.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/documentation_options.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/stats_cal.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/stats_cal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/stps_cal.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/stps_cal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/stuff.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/stuff.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/make.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/source/conf.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/source/index.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/source/logo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/Overview.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/logo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/logo.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/road-map.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/Tutorial.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/Tutorial.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/corr_cal.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/corr_cal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/corr_cal_by_rdm.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/corr_cal_by_rdm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/decoding.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/decoding.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/isc_cal.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/isc_cal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/nii_save.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/nii_save.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/nps_cal.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/nps_cal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/rdm_cal.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/rdm_cal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/rdm_corr.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/rdm_corr.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/rsa_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/rsa_plot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/stats_cal.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/stats_cal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/stps_cal.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/stps_cal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/stuff.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/stuff.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-    </list>
+    <list default="true" id="6f96de87-b4a9-466e-9c57-851a40404f91" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -302,8 +189,8 @@
         <entry file="file://$PROJECT_DIR$/index.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="347">
-                <caret line="25" column="128" lean-forward="true" selection-start-line="25" selection-start-column="128" selection-end-line="25" selection-end-column="187" />
+              <first_editor relative-caret-position="686">
+                <caret line="46" column="47" selection-start-line="46" selection-start-column="47" selection-end-line="46" selection-end-column="47" />
               </first_editor>
               <second_editor />
             </state>
@@ -398,8 +285,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="35" />
-    <option name="y" value="23" />
+    <option name="x" value="-1852" />
+    <option name="y" value="159" />
     <option name="width" value="1240" />
     <option name="height" value="777" />
   </component>
@@ -419,26 +306,7 @@
             <path>
               <item name="NeuroRA-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="NeuroRA-master" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NeuroRA-master" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NeuroRA-master" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NeuroRA-master" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NeuroRA-master" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NeuroRA-master" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NeuroRA-master" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NeuroRA-master" type="b2602c69:ProjectViewProjectNode" />
@@ -750,7 +618,7 @@
       <workItem from="1621410244813" duration="93104000" />
       <workItem from="1622200807622" duration="698000" />
       <workItem from="1622431502210" duration="33360000" />
-      <workItem from="1622568524226" duration="23991000" />
+      <workItem from="1622568524226" duration="24646000" />
     </task>
     <servers />
   </component>
@@ -787,11 +655,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1275166000" />
+    <option name="totallyTimeSpent" value="1275821000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="35" y="23" width="1240" height="777" extended-state="0" />
-    <editor active="true" />
+    <frame x="-1852" y="159" width="1240" height="777" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21202004" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1178,8 +1045,8 @@
     <entry file="file://$PROJECT_DIR$/index.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="347">
-            <caret line="25" column="128" lean-forward="true" selection-start-line="25" selection-start-column="128" selection-end-line="25" selection-end-column="187" />
+          <first_editor relative-caret-position="686">
+            <caret line="46" column="47" selection-start-line="46" selection-start-column="47" selection-end-line="46" selection-end-column="47" />
           </first_editor>
           <second_editor />
         </state>
