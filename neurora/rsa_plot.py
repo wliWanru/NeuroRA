@@ -11,7 +11,7 @@ from scipy import signal
 from scipy.stats import ttest_1samp
 from nilearn import plotting, datasets, surface
 import nibabel as nib
-from neurora.stuff import get_affine, correct_by_threshold, get_bg_ch2, get_bg_ch2bet, \
+from neurora.stuff import get_affine, get_bg_ch2, get_bg_ch2bet, \
     clusterbased_permutation_1d_1samp_1sided, clusterbased_permutation_2d_1samp_1sided
 from decimal import Decimal
 
