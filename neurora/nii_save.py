@@ -475,7 +475,7 @@ affine = get_affine("/Users/zitonglu/Downloads/isc_results_p0.001_fdr1.nii")
 
 import h5py
 
-stats = np.array(h5py.File("/Users/zitonglu/Downloads/all_tom1.h5", "r")["stats"])
+stats = np.array(h5py.File("/Users/zitonglu/Downloads/all_sty.h5", "r")["stats"])
 
-stats_save_nii(stats, affine, filename="all_0.05", corr_mask=get_HOcort(), size=[79, 95, 68], ksize=[3, 3, 3], strides=[1, 1, 1], p=0.05, correct_method="Cluster-FDR", clusterp=0.05, smooth=False, plotrlt=True, img_background=None)"""
-
+stats_save_nii(stats, affine, filename="all_sty_0.05", corr_mask=get_HOcort(), size=[79, 95, 68], ksize=[3, 3, 3], strides=[1, 1, 1], p=0.05, correct_method="Cluster-FDR", clusterp=0.05, smooth=False, plotrlt=True, img_background=None)
+"""

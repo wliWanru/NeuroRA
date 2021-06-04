@@ -15,7 +15,7 @@ np.seterr(divide='ignore', invalid='ignore')
 ' a function for time-by-time decoding for EEG-like data (cross validation) '
 
 def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, nfolds=5, nrepeats=2,
-                        smooth=True):
+                        normalization=False, smooth=True):
 
     """
     Conduct time-by-time decoding for EEG-like data (cross validation)
@@ -48,6 +48,8 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
         k should be at least 2.
     nrepeats : int. Default is 2.
         The times for iteration.
+    normalization : boolean True or False. Default is False.
+        Normalize the data or not.
     smooth : boolean True or False. Default is True.
         Smooth the decoding result or not.
 
@@ -151,11 +153,18 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
                     fold_index = 0
                     for train_index, test_index in kf.split(xt, y):
 
-                        scaler = StandardScaler()
-                        x_train = scaler.fit_transform(xt[train_index])
-                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                        svm.fit(x_train, y[train_index])
-                        subacc[i, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
+                        if normalization is False:
+
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(xt[train_index], y[train_index])
+                            subacc[i, t, fold_index] = svm.score(xt[test_index], y[test_index])
+
+                        if normalization is True:
+                            scaler = StandardScaler()
+                            x_train = scaler.fit_transform(xt[train_index])
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(x_train, y[train_index])
+                            subacc[i, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
 
                         percent = (sub * nrepeats * newnts * nfolds + i * newnts * nfolds + t * nfolds + fold_index + 1) / total * 100
                         show_progressbar("Calculating", percent)
@@ -230,11 +239,17 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
                     fold_index = 0
                     for train_index, test_index in kf.split(xt, y):
 
-                        scaler = StandardScaler()
-                        x_train = scaler.fit_transform(xt[train_index])
-                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                        svm.fit(x_train, y[train_index])
-                        subacc[i, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
+                        if normalization is True:
+                            scaler = StandardScaler()
+                            x_train = scaler.fit_transform(xt[train_index])
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(x_train, y[train_index])
+                            subacc[i, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
+
+                        if normalization is False:
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(xt[train_index], y[train_index])
+                            subacc[i, t, fold_index] = svm.score(xt[test_index], y[test_index])
 
                         percent = (sub * nrepeats * newnts * nfolds + i * newnts * nfolds + t * nfolds + fold_index + 1) / total * 100
                         show_progressbar("Calculating", percent)
@@ -270,7 +285,7 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
 ' a function for time-by-time decoding for EEG-like data (hold out) '
 
 def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, iter=10,
-                          test_size=0.3, smooth=True):
+                          test_size=0.3, normalization=False, smooth=True):
 
     """
     Conduct time-by-time decoding for EEG-like data (hold out)
@@ -303,6 +318,8 @@ def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_wi
     test_size : float. Default is 0.3.
         The proportion of the test set.
         test_size should be between 0.0 and 1.0.
+    normalization : boolean True or False. Default is False.
+        Normalize the data or not.
     smooth : boolean True or False. Default is True.
         Smooth the decoding result or not.
 
@@ -404,14 +421,25 @@ def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_wi
                     percent = (sub * iter * newnts + i * newnts + t + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
-                    state = np.random.randint(0, 100)
-                    xt = x[:, :, t]
-                    x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size, random_state=state)
-                    scaler = StandardScaler()
-                    x_train = scaler.fit_transform(x_train)
-                    svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                    svm.fit(x_train, y_train)
-                    subacc[i, t] = svm.score(scaler.transform(x_test), y_test)
+                    if normalization is True:
+                        state = np.random.randint(0, 100)
+                        xt = x[:, :, t]
+                        x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                            random_state=state)
+                        scaler = StandardScaler()
+                        x_train = scaler.fit_transform(x_train)
+                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                        svm.fit(x_train, y_train)
+                        subacc[i, t] = svm.score(scaler.transform(x_test), y_test)
+
+                    if normalization is False:
+                        state = np.random.randint(0, 100)
+                        xt = x[:, :, t]
+                        x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                            random_state=state)
+                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                        svm.fit(x_train, y_train)
+                        subacc[i, t] = svm.score(x_test, y_test)
 
                     if sub == (nsubs - 1) and i == (iter - 1) and t == (newnts - 1):
                         print("\nDecoding finished!\n")
@@ -478,14 +506,25 @@ def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_wi
                     percent = (sub * iter * newnts + i * newnts + t + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
-                    state = np.random.randint(0, 100)
-                    xt = x[:, :, t]
-                    x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size, random_state=state)
-                    scaler = StandardScaler()
-                    x_train = scaler.fit_transform(x_train)
-                    svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                    svm.fit(x_train, y_train)
-                    subacc[i, t] = svm.score(scaler.transform(x_test), y_test)
+                    if normalization is True:
+                        state = np.random.randint(0, 100)
+                        xt = x[:, :, t]
+                        x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                            random_state=state)
+                        scaler = StandardScaler()
+                        x_train = scaler.fit_transform(x_train)
+                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                        svm.fit(x_train, y_train)
+                        subacc[i, t] = svm.score(scaler.transform(x_test), y_test)
+
+                    if normalization is False:
+                        state = np.random.randint(0, 100)
+                        xt = x[:, :, t]
+                        x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                            random_state=state)
+                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                        svm.fit(x_train, y_train)
+                        subacc[i, t] = svm.score(x_test, y_test)
 
                     if sub == (nsubs - 1) and i == (iter - 1) and t == (newnts - 1):
                         print("\nDecoding finished!\n")
@@ -514,7 +553,8 @@ def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_wi
 
 ' a function for cross-temporal decoding for EEG-like data (cross validation) '
 
-def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, nfolds=5, nrepeats=2, smooth=True):
+def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, nfolds=5, nrepeats=2,
+                      normalization=False, smooth=True):
 
     """
     Conduct cross-temporal decoding for EEG-like data (cross validation)
@@ -547,6 +587,8 @@ def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5,
         nfolds should be at least 2.
     nrepeats : int. Default is 2.
         The times for iteration.
+    normalization : boolean True or False. Default is False.
+        Normalize the data or not.
     smooth : boolean True or False. Default is True.
         Smooth the decoding result or not.
 
@@ -652,24 +694,38 @@ def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5,
                     fold_index = 0
                     for train_index, test_index in kf.split(xt, y):
 
-                        scaler = StandardScaler()
-                        x_train = scaler.fit_transform(xt[train_index])
-                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                        svm.fit(x_train, y[train_index])
-                        subacc[i, t, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
-
                         percent = (sub * nrepeats * newnts * nfolds + i * newnts * nfolds + t * nfolds + fold_index + 1) / total * 100
                         show_progressbar("Calculating", percent)
 
-                        for tt in range(newnts - 1):
-                            if tt < t:
-                                xtt = x[:, :, tt]
-                                subacc[i, t, tt, fold_index] = svm.score(scaler.transform(xtt[test_index]),
-                                                                         y[test_index])
-                            if tt >= t:
-                                xtt = x[:, :, tt + 1]
-                                subacc[i, t, tt + 1, fold_index] = svm.score(scaler.transform(xtt[test_index]),
+                        if normalization is True:
+                            scaler = StandardScaler()
+                            x_train = scaler.fit_transform(xt[train_index])
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(x_train, y[train_index])
+                            subacc[i, t, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
+
+                            for tt in range(newnts - 1):
+                                if tt < t:
+                                    xtt = x[:, :, tt]
+                                    subacc[i, t, tt, fold_index] = svm.score(scaler.transform(xtt[test_index]),
                                                                              y[test_index])
+                                if tt >= t:
+                                    xtt = x[:, :, tt + 1]
+                                    subacc[i, t, tt + 1, fold_index] = svm.score(scaler.transform(xtt[test_index]),
+                                                                                 y[test_index])
+
+                        if normalization is False:
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(xt[train_index], y[train_index])
+                            subacc[i, t, t, fold_index] = svm.score(xt[test_index], y[test_index])
+
+                            for tt in range(newnts - 1):
+                                if tt < t:
+                                    xtt = x[:, :, tt]
+                                    subacc[i, t, tt, fold_index] = svm.score(xtt[test_index], y[test_index])
+                                if tt >= t:
+                                    xtt = x[:, :, tt + 1]
+                                    subacc[i, t, tt + 1, fold_index] = svm.score(xtt[test_index], y[test_index])
 
                         if sub == (nsubs - 1) and i == (nrepeats - 1) and t == (newnts - 1) and fold_index == (
                                 nfolds - 1):
@@ -743,24 +799,38 @@ def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5,
                     fold_index = 0
                     for train_index, test_index in kf.split(xt, y):
 
-                        scaler = StandardScaler()
-                        x_train = scaler.fit_transform(xt[train_index])
-                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                        svm.fit(x_train, y[train_index])
-                        subacc[i, t, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
-
                         percent = (sub * nrepeats * newnts * nfolds + i * newnts * nfolds + t * nfolds + fold_index + 1) / total * 100
                         show_progressbar("Calculating", percent)
 
-                        for tt in range(newnts - 1):
-                            if tt < t:
-                                xtt = x[:, :, tt]
-                                subacc[i, t, tt, fold_index] = svm.score(scaler.transform(xtt[test_index]),
-                                                                         y[test_index])
-                            if tt >= t:
-                                xtt = x[:, :, tt + 1]
-                                subacc[i, t, tt + 1, fold_index] = svm.score(scaler.transform(xtt[test_index]),
+                        if normalization is True:
+                            scaler = StandardScaler()
+                            x_train = scaler.fit_transform(xt[train_index])
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(x_train, y[train_index])
+                            subacc[i, t, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
+
+                            for tt in range(newnts - 1):
+                                if tt < t:
+                                    xtt = x[:, :, tt]
+                                    subacc[i, t, tt, fold_index] = svm.score(scaler.transform(xtt[test_index]),
                                                                              y[test_index])
+                                if tt >= t:
+                                    xtt = x[:, :, tt + 1]
+                                    subacc[i, t, tt + 1, fold_index] = svm.score(scaler.transform(xtt[test_index]),
+                                                                                 y[test_index])
+
+                        if normalization is False:
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(xt[train_index], y[train_index])
+                            subacc[i, t, t, fold_index] = svm.score(xt[test_index], y[test_index])
+
+                            for tt in range(newnts - 1):
+                                if tt < t:
+                                    xtt = x[:, :, tt]
+                                    subacc[i, t, tt, fold_index] = svm.score(xtt[test_index], y[test_index])
+                                if tt >= t:
+                                    xtt = x[:, :, tt + 1]
+                                    subacc[i, t, tt + 1, fold_index] = svm.score(xtt[test_index], y[test_index])
 
                         if sub == (nsubs - 1) and i == (nrepeats - 1) and t == (newnts - 1) and fold_index == (
                                 nfolds - 1):
@@ -805,7 +875,8 @@ def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5,
 
 ' a function for cross-temporal decoding for EEG-like data (hold-out) '
 
-def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, iter=10, test_size=0.3, smooth=True):
+def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, iter=10, test_size=0.3,
+                        normalization=False, smooth=True):
 
     """
     Conduct cross-temporal decoding for EEG-like data (hold-out)
@@ -838,6 +909,8 @@ def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=
     test_size : float. Default is 0.3.
         The proportion of the test set.
         test_size should be between 0.0 and 1.0.
+    normalization : boolean True or False. Default is False.
+        Normalize the data or not.
     smooth : boolean True or False. Default is True.
         Smooth the decoding result or not.
 
@@ -939,25 +1012,47 @@ def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=
                     percent = (sub * iter * newnts + i * newnts + t + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
-                    state = np.random.randint(0, 100)
-                    xt = x[:, :, t]
-                    x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size, random_state=state)
-                    scaler = StandardScaler()
-                    x_train = scaler.fit_transform(x_train)
-                    svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                    svm.fit(x_train, y_train)
-                    subacc[i, t, t] = svm.score(scaler.transform(x_test), y_test)
-                    for tt in range(newnts - 1):
-                        if tt < t:
-                            xtt = x[:, :, tt]
-                            x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
-                                                                                 random_state=state)
-                            subacc[i, t, tt] = svm.score(scaler.transform(x_testt), y_test)
-                        if tt >= t:
-                            xtt = x[:, :, tt + 1]
-                            x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
-                                                                                 random_state=state)
-                            subacc[i, t, tt + 1] = svm.score(scaler.transform(x_testt), y_test)
+                    if normalization is True:
+                        state = np.random.randint(0, 100)
+                        xt = x[:, :, t]
+                        x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                            random_state=state)
+                        scaler = StandardScaler()
+                        x_train = scaler.fit_transform(x_train)
+                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                        svm.fit(x_train, y_train)
+                        subacc[i, t, t] = svm.score(scaler.transform(x_test), y_test)
+                        for tt in range(newnts - 1):
+                            if tt < t:
+                                xtt = x[:, :, tt]
+                                x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                     random_state=state)
+                                subacc[i, t, tt] = svm.score(scaler.transform(x_testt), y_test)
+                            if tt >= t:
+                                xtt = x[:, :, tt + 1]
+                                x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                     random_state=state)
+                                subacc[i, t, tt + 1] = svm.score(scaler.transform(x_testt), y_test)
+
+                    if normalization is False:
+                        state = np.random.randint(0, 100)
+                        xt = x[:, :, t]
+                        x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                            random_state=state)
+                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                        svm.fit(x_train, y_train)
+                        subacc[i, t, t] = svm.score(x_test, y_test)
+                        for tt in range(newnts - 1):
+                            if tt < t:
+                                xtt = x[:, :, tt]
+                                x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                     random_state=state)
+                                subacc[i, t, tt] = svm.score(x_testt, y_test)
+                            if tt >= t:
+                                xtt = x[:, :, tt + 1]
+                                x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                     random_state=state)
+                                subacc[i, t, tt + 1] = svm.score(x_testt, y_test)
 
                     if sub == (nsubs - 1) and i == (iter - 1) and t == (newnts - 1):
                         print("\nDecoding finished!\n")
@@ -1024,25 +1119,47 @@ def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=
                     percent = (sub * iter * newnts + i * newnts + t + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
-                    state = np.random.randint(0, 100)
-                    xt = x[:, :, t]
-                    x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size, random_state=state)
-                    scaler = StandardScaler()
-                    x_train = scaler.fit_transform(x_train)
-                    svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                    svm.fit(x_train, y_train)
-                    subacc[i, t, t] = svm.score(scaler.transform(x_test), y_test)
-                    for tt in range(newnts - 1):
-                        if tt < t:
-                            xtt = x[:, :, tt]
-                            x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
-                                                                                 random_state=state)
-                            subacc[i, t, tt] = svm.score(scaler.transform(x_testt), y_test)
-                        if tt >= t:
-                            xtt = x[:, :, tt + 1]
-                            x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
-                                                                                 random_state=state)
-                            subacc[i, t, tt + 1] = svm.score(scaler.transform(x_testt), y_test)
+                    if normalization is True:
+                        state = np.random.randint(0, 100)
+                        xt = x[:, :, t]
+                        x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                            random_state=state)
+                        scaler = StandardScaler()
+                        x_train = scaler.fit_transform(x_train)
+                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                        svm.fit(x_train, y_train)
+                        subacc[i, t, t] = svm.score(scaler.transform(x_test), y_test)
+                        for tt in range(newnts - 1):
+                            if tt < t:
+                                xtt = x[:, :, tt]
+                                x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                     random_state=state)
+                                subacc[i, t, tt] = svm.score(scaler.transform(x_testt), y_test)
+                            if tt >= t:
+                                xtt = x[:, :, tt + 1]
+                                x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                     random_state=state)
+                                subacc[i, t, tt + 1] = svm.score(scaler.transform(x_testt), y_test)
+
+                    if normalization is False:
+                        state = np.random.randint(0, 100)
+                        xt = x[:, :, t]
+                        x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                            random_state=state)
+                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                        svm.fit(x_train, y_train)
+                        subacc[i, t, t] = svm.score(x_test, y_test)
+                        for tt in range(newnts - 1):
+                            if tt < t:
+                                xtt = x[:, :, tt]
+                                x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                     random_state=state)
+                                subacc[i, t, tt] = svm.score(x_testt, y_test)
+                            if tt >= t:
+                                xtt = x[:, :, tt + 1]
+                                x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                     random_state=state)
+                                subacc[i, t, tt + 1] = svm.score(x_testt, y_test)
 
                     if sub == (nsubs - 1) and i == (iter - 1) and t == (newnts - 1):
                         print("\nDecoding finished!\n")
@@ -1085,7 +1202,7 @@ def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=
 ' a function for unidirectional transfer decoding for EEG-like data '
 
 def unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5, time_opt="average", time_win=5,
-                                     time_step=5, iter=10, smooth=True):
+                                     time_step=5, iter=10, normalization=False, smooth=True):
 
     """
     Conduct unidirectional transfer decoding for EEG-like data
@@ -1119,6 +1236,8 @@ def unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5
         The time step size for each time of decoding.
     iter : int. Default is 10.
         The times for iteration.
+    normalization : boolean True or False. Default is False.
+        Normalize the data or not.
     smooth : boolean True or False. Default is True.
         Smooth the decoding result or not.
 
@@ -1453,7 +1572,7 @@ def unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5
 ' a function for bidirectional transfer decoding for EEG-like data '
 
 def bidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5, time_opt="average", time_win=5,
-                                    time_step=5, iter=10, smooth=True):
+                                    time_step=5, iter=10, normalization=False, smooth=True):
 
     """
     Conduct bidirectional transfer decoding for EEG-like data
@@ -1487,6 +1606,8 @@ def bidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5,
         The time step size for each time of decoding.
     iter : int. Default is 10.
         The times for iteration.
+    normalization : boolean True or False. Default is False.
+        Normalize the data or not.
     smooth : boolean True or False. Default is True.
         Smooth the decoding result or not.
 
@@ -1502,8 +1623,9 @@ def bidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5,
 
     Con1toCon2_accuracies, Con2toCon1_accuracies = unidirectional_transfer_decoding(data1, labels1, data2,
                                     labels2, n=n, navg=navg, time_opt=time_opt, time_win=time_win, time_step=time_step,
-                                    iter=iter, smooth=smooth), unidirectional_transfer_decoding(data1, labels1,
-                                    data2, labels2, n=n, navg=navg, time_opt=time_opt, time_win=time_win,
-                                    time_step=time_step, iter=iter, smooth=smooth)
+                                    iter=iter, normalization=normalization, smooth=smooth), \
+                                    unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=n, navg=navg,
+                                    time_opt=time_opt, time_win=time_win, time_step=time_step, iter=iter,
+                                    normalization=normalization, smooth=smooth)
 
     return Con1toCon2_accuracies, Con2toCon1_accuracies
