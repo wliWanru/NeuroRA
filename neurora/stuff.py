@@ -65,6 +65,99 @@ def get_affine(file_name):
     return img.affine
 
 
+' a function for fMRI RSA results correction by threshold '
+
+def correct_by_threshold(img, threshold):
+
+    """
+    correct the fMRI RSA results by threshold
+
+    Parameters
+    ----------
+    img : array
+        A 3-D array of the fMRI RSA results.
+        The shape of img should be [nx, ny, nz]. nx, ny, nz represent the shape of the fMRI-img.
+    threshold : int
+        The number of voxels used in correction.
+        If threshold=n, only the similarity clusters consisting more than n voxels will be visualized.
+
+    Returns
+    -------
+    img : array
+        A 3-D array of the fMRI RSA results after correction.
+        The shape of img should be [nx, ny, nz]. nx, ny, nz represent the shape of the fMRI-img.
+    """
+
+    if len(np.shape(img)) != 3:
+
+        return "Invalid input"
+
+    sx = np.shape(img)[0]
+    sy = np.shape(img)[1]
+    sz = np.shape(img)[2]
+
+    nsmall = 1
+
+    while nsmall*nsmall*nsmall < threshold:
+        nsmall = nsmall + 1
+
+    nlarge = nsmall + 2
+
+    for i in range(sx-nlarge+1):
+        for j in range(sy-nlarge+1):
+            for k in range(sz-nlarge+1):
+
+                listlarge = list(np.reshape(img[i:i+nlarge, j:j+nlarge, k:k+nlarge], [nlarge*nlarge*nlarge]))
+
+                if listlarge.count(0) < nlarge*nlarge*nlarge:
+
+                    index1 = 0
+
+                    for l in range(nlarge):
+                        for m in range(nlarge):
+
+                            if img[i + l, j + m, k] == 0:
+                                index1 = index1 + 1
+
+                            if img[i + l, j + m, k + nlarge - 1] == 0:
+                                index1 = index1 + 1
+
+                    for l in range(nlarge-1):
+                        for m in range(nlarge-2):
+
+                            if img[i + l, j, k + m] == 0:
+                                index1 = index1 + 1
+
+                            if img[i, j + l + 1, k + m] == 0:
+                                index1 = index1 + 1
+
+                            if img[i + nlarge - 1, j + l, k + m] == 0:
+                                index1 = index1 + 1
+
+                            if img[i + l + 1, j + nlarge - 1, k + m] == 0:
+                                index1 = index1 + 1
+
+                    nex = nlarge * nlarge * nlarge - nsmall * nsmall * nsmall
+
+                    if index1 == nex:
+                        unit = img[i+1:i+1+nsmall, j+1:j+1+nsmall, k+1:k+1+nsmall]
+                        unit = np.reshape(unit, [nsmall*nsmall*nsmall])
+                        list_internal = list(unit)
+                        index2 = nsmall*nsmall*nsmall-list_internal.count(0)
+
+                        if index2 < threshold:
+                            img[i+1:i+1+nsmall, j]
+
+                            for l in range(nsmall):
+                                for m in range(nsmall):
+                                    for p in range(nsmall):
+                                        img[i+1:i+1+nsmall, j+1:j+1+nsmall, k+1:k+1+nsmall] = np.zeros([nsmall, nsmall, nsmall])
+
+    print("finished correction")
+
+    return img
+
+
 ' a function for FWE-correction for fMRI RSA results '
 
 def fwe_correct(p, p_threshold):
