@@ -8,7 +8,7 @@ import numpy as np
 from scipy.stats import spearmanr
 from scipy.stats import pearsonr
 from scipy.stats import kendalltau
-from neurora.stuff import permutation_corr, fisherz_rdm
+from neurora.stuff import permutation_corr
 
 
 ' a function for calculating the Spearman correlation coefficient between two RDMs '
