@@ -468,14 +468,3 @@ def stats_save_nii(stats, affine, filename=None, corr_mask=get_HOcort(), size=[6
         plot_brainrsa_rlts(filename, background=img_background, type='t')
 
     return newimg_nii
-
-"""from neurora.stuff import get_affine
-
-affine = get_affine("/Users/zitonglu/Downloads/isc_results_p0.001_fdr1.nii")
-
-import h5py
-
-stats = np.array(h5py.File("/Users/zitonglu/Downloads/all_sty.h5", "r")["stats"])
-
-stats_save_nii(stats, affine, filename="all_sty_0.05", corr_mask=get_HOcort(), size=[79, 95, 68], ksize=[3, 3, 3], strides=[1, 1, 1], p=0.05, correct_method="Cluster-FDR", clusterp=0.05, smooth=False, plotrlt=True, img_background=None)
-"""
