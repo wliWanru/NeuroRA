@@ -434,7 +434,7 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
         err[t] = np.std(similarities[:, t], ddof=1)/np.sqrt(nsubs)
 
     if cbpt == True:
-        ps_stats = clusterbased_permutation_1d_1samp_1sided(similarities, level=0, p_threshold=p)
+        ps_stats = clusterbased_permutation_1d_1samp_1sided(similarities[:, stats_time1:stats_time2], level=0, p_threshold=p)
         ps = np.zeros([nts])
         ps[stats_time1:stats_time2] = ps_stats
     else:
