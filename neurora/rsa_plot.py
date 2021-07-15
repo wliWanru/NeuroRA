@@ -343,8 +343,8 @@ def plot_corrs_by_time(corrs, labels=None, time_unit=[0, 0.1]):
 ' a function for plotting the time-by-time Similarities with statistical results'
 
 def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval=0.01, smooth=True, p=0.05, cbpt=True,
-                           stats_time=[0, 1], color='r', xlim=[0, 1], ylim=[-0.1, 0.8], figsize=[6.4, 3.6], x0=0,
-                           fontsize=16, avgshow=False):
+                           clusterp=0.05, stats_time=[0, 1], color='r', xlim=[0, 1], ylim=[-0.1, 0.8],
+                           figsize=[6.4, 3.6], x0=0, fontsize=16, avgshow=False):
 
     """
     Plot the time-by-time Similarities with statistical results
@@ -369,6 +369,8 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
         The threshold of p-values.
     cbpt : bool True or False. Default is True.
         Conduct cluster-based permutation test or not.
+    clusterp : float. Default is 0.05.
+        The threshold of cluster-defining p-values.
     stats_time : array or list [stats_time1, stats_time2]. Default os [0, 1].
         Time period for statistical analysis.
     color : matplotlib color or None. Default is 'r'.
@@ -434,7 +436,8 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
         err[t] = np.std(similarities[:, t], ddof=1)/np.sqrt(nsubs)
 
     if cbpt == True:
-        ps_stats = clusterbased_permutation_1d_1samp_1sided(similarities[:, stats_time1:stats_time2], level=0, p_threshold=p)
+        ps_stats = clusterbased_permutation_1d_1samp_1sided(similarities[:, stats_time1:stats_time2], level=0,
+                                                            p_threshold=p, clusterp_threshold=clusterp)
         ps = np.zeros([nts])
         ps[stats_time1:stats_time2] = ps_stats
     else:
@@ -481,8 +484,8 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
 ' a function for plotting the time-by-time decoding accuracies '
 
 def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, chance=0.5, p=0.05, cbpt=True,
-                           stats_time=[0, 1], color='r', xlim=[0, 1], ylim=[0.4, 0.8], figsize=[6.4, 3.6], x0=0,
-                           fontsize=16, avgshow=False):
+                           clusterp=0.05, stats_time=[0, 1], color='r', xlim=[0, 1], ylim=[0.4, 0.8],
+                           figsize=[6.4, 3.6], x0=0, fontsize=16, avgshow=False):
 
     """
     Plot the time-by-time decoding accuracies
@@ -505,6 +508,8 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
         The threshold of p-values.
     cbpt : bool True or False. Default is True.
         Conduct cluster-based permutation test or not.
+    clusterp : float. Default is 0.05.
+        The threshold of cluster-defining p-values.
     stats_time : array or list [stats_time1, stats_time2]. Default os [0, 1].
         Time period for statistical analysis.
     color : matplotlib color or None. Default is 'r'.
@@ -556,7 +561,7 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
     if cbpt == True:
 
         ps_stats = clusterbased_permutation_1d_1samp_1sided(acc[:, stats_time1:stats_time2], level=chance,
-                                                            p_threshold=p, iter=1000)
+                                                            p_threshold=p, clusterp_threshold=clusterp, iter=1000)
         ps = np.zeros([nts])
         ps[stats_time1:stats_time2] = ps_stats
 
