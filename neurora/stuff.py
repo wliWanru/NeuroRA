@@ -1086,7 +1086,7 @@ def get_cluster_index_2d_2sided(m):
 
 ' a function for 1-sample & 1-sided cluster based permutation test for 1-D results '
 
-def clusterbased_permutation_1d_1samp_1sided(results, level=0, p_threshold=0.05, iter=1000):
+def clusterbased_permutation_1d_1samp_1sided(results, level=0, p_threshold=0.05, clusterp_threshold=0.05, iter=1000):
 
     """
     1-sample & 1-sided cluster based permutation test for 2-D results
@@ -1100,6 +1100,8 @@ def clusterbased_permutation_1d_1samp_1sided(results, level=0, p_threshold=0.05,
         An expected value in null hypothesis. (Here, results > level)
     p_threshold : float. Default is 0.05.
         The threshold of p-values.
+    clusterp_threshold : float. Default is 0.05.
+        The threshold of cluster-defining p-values.
     iter : int. Default is 1000.
         The times for iteration.
 
@@ -1123,7 +1125,6 @@ def clusterbased_permutation_1d_1samp_1sided(results, level=0, p_threshold=0.05,
             ps[t] = 0
 
     cluster_index, cluster_n = get_cluster_index_1d_1sided(ps)
-    print(cluster_n)
 
     if cluster_n != 0:
         cluster_ts = np.zeros([cluster_n])
@@ -1156,7 +1157,7 @@ def clusterbased_permutation_1d_1samp_1sided(results, level=0, p_threshold=0.05,
             for j in range(iter):
                 if cluster_ts[i] > permu_ts[j]:
                     index = index + 1
-            if index < iter * (1-p_threshold):
+            if index < iter * (1-clusterp_threshold):
                 for t in range(x):
                     if cluster_index[t] == i + 1:
                         ps[t] = 0
@@ -1166,7 +1167,7 @@ def clusterbased_permutation_1d_1samp_1sided(results, level=0, p_threshold=0.05,
 
 ' a function for 1-sample & 2-sided cluster based permutation test for 1-D results '
 
-def clusterbased_permutation_1d_1samp_2sided(results, level=0, p_threshold=0.05, iter=1000):
+def clusterbased_permutation_1d_1samp_2sided(results, level=0, p_threshold=0.05, clusterp_threshold=0.05, iter=1000):
 
     """
     1-sample & 2-sided cluster based permutation test for 2-D results
@@ -1180,6 +1181,8 @@ def clusterbased_permutation_1d_1samp_2sided(results, level=0, p_threshold=0.05,
         An expected value in null hypothesis. (Here, results > level)
     p_threshold : float. Default is 0.05.
         The threshold of p-values.
+    clusterp_threshold : float. Default is 0.05.
+        The threshold of cluster-defining p-values.
     iter : int. Default is 1000.
         The times for iteration.
 
@@ -1204,7 +1207,6 @@ def clusterbased_permutation_1d_1samp_2sided(results, level=0, p_threshold=0.05,
             ps[t] = -1
 
     cluster_index1, cluster_n1, cluster_index2, cluster_n2 = get_cluster_index_1d_2sided(ps)
-    print(cluster_n1, cluster_n2)
 
     if cluster_n1 != 0:
         cluster_ts = np.zeros([cluster_n1])
@@ -1238,7 +1240,7 @@ def clusterbased_permutation_1d_1samp_2sided(results, level=0, p_threshold=0.05,
             for j in range(iter):
                 if cluster_ts[i] > permu_ts[j]:
                     index = index + 1
-            if index < iter * (1-p_threshold):
+            if index < iter * (1-clusterp_threshold):
                 for t in range(x):
                     if cluster_index1[t] == i + 1:
                         ps[t] = 0
@@ -1275,7 +1277,7 @@ def clusterbased_permutation_1d_1samp_2sided(results, level=0, p_threshold=0.05,
             for j in range(iter):
                 if cluster_ts[i] < permu_ts[j]:
                     index = index + 1
-            if index < iter * (1-p_threshold):
+            if index < iter * (1-clusterp_threshold):
                 for t in range(x):
                     if cluster_index2[t] == i + 1:
                         ps[t] = 0
@@ -1285,7 +1287,7 @@ def clusterbased_permutation_1d_1samp_2sided(results, level=0, p_threshold=0.05,
 
 ' a function for 1-sample & 1-sided cluster based permutation test for 2-D results '
 
-def clusterbased_permutation_2d_1samp_1sided(results, level=0, p_threshold=0.05, iter=1000):
+def clusterbased_permutation_2d_1samp_1sided(results, level=0, p_threshold=0.05, clusterp_threshold=0.05, iter=1000):
 
     """
     1-sample & 1-sided cluster based permutation test for 2-D results
@@ -1299,6 +1301,8 @@ def clusterbased_permutation_2d_1samp_1sided(results, level=0, p_threshold=0.05,
         An expected value in null hypothesis. (Here, results > level)
     p_threshold : float. Default is 0.05.
         The threshold of p-values.
+    clusterp_threshold : float. Default is 0.05.
+        The threshold of cluster-defining p-values.
     iter : int. Default is 1000.
         The times for iteration.
 
@@ -1358,7 +1362,7 @@ def clusterbased_permutation_2d_1samp_1sided(results, level=0, p_threshold=0.05,
             for j in range(iter):
                 if cluster_ts[i] > permu_ts[j]:
                     index = index + 1
-            if index < iter * (1-p_threshold):
+            if index < iter * (1-clusterp_threshold):
                 for t1 in range(x1):
                     for t2 in range(x2):
                         if cluster_index[t1, t2] == i + 1:
@@ -1369,7 +1373,7 @@ def clusterbased_permutation_2d_1samp_1sided(results, level=0, p_threshold=0.05,
 
 ' a function for 1-sample & 2-sided cluster based permutation test for 2-D results '
 
-def clusterbased_permutation_2d_1samp_2sided(results, level=0, p_threshold=0.05, iter=1000):
+def clusterbased_permutation_2d_1samp_2sided(results, level=0, p_threshold=0.05, clusterp_threshold=0.05, iter=1000):
 
     """
     1-sample & 2-sided cluster based permutation test for 2-D results
@@ -1383,6 +1387,8 @@ def clusterbased_permutation_2d_1samp_2sided(results, level=0, p_threshold=0.05,
         A expected value in null hypothesis. (Here, results > level)
     p_threshold : float. Default is 0.05.
         The threshold of p-values.
+    clusterp_threshold : float. Default is 0.05.
+        The threshold of cluster-defining p-values.
     iter : int. Default is 1000.
         The times for iteration.
 
@@ -1443,7 +1449,7 @@ def clusterbased_permutation_2d_1samp_2sided(results, level=0, p_threshold=0.05,
             for j in range(iter):
                 if cluster_ts[i] > permu_ts[j]:
                     index = index + 1
-            if index < iter * (1-p_threshold):
+            if index < iter * (1-clusterp_threshold):
                 for t1 in range(x1):
                     for t2 in range(x2):
                         if cluster_index1[t1, t2] == i + 1:
@@ -1482,7 +1488,7 @@ def clusterbased_permutation_2d_1samp_2sided(results, level=0, p_threshold=0.05,
             for j in range(iter):
                 if cluster_ts[i] < permu_ts[j]:
                     index = index + 1
-            if index < iter * (1-p_threshold):
+            if index < iter * (1-clusterp_threshold):
                 for t1 in range(x1):
                     for t2 in range(x2):
                         if cluster_index2[t1, t2] == i + 1:
@@ -1493,7 +1499,7 @@ def clusterbased_permutation_2d_1samp_2sided(results, level=0, p_threshold=0.05,
 
 ' a function for 1-sided cluster based permutation test for 2-D results '
 
-def clusterbased_permutation_2d_1sided(results1, results2, p_threshold=0.05, iter=1000):
+def clusterbased_permutation_2d_1sided(results1, results2, p_threshold=0.05, clusterp_threshold=0.05, iter=1000):
 
     """
     1-sided cluster based permutation test for 2-D results
@@ -1508,6 +1514,8 @@ def clusterbased_permutation_2d_1sided(results1, results2, p_threshold=0.05, ite
         The shape of results should be [n_subs, x1, x2]. n_subs represents the number of subjects. (results1 > results2)
     p_threshold : float. Default is 0.05.
         The threshold of p-values.
+    clusterp_threshold : float. Default is 0.05.
+        The threshold of cluster-defining p-values.
     iter : int. Default is 1000.
         The times for iteration.
 
@@ -1575,7 +1583,7 @@ def clusterbased_permutation_2d_1sided(results1, results2, p_threshold=0.05, ite
             for j in range(iter):
                 if cluster_ts[i] > permu_ts[j]:
                     index = index + 1
-            if index < iter * (1 - p_threshold):
+            if index < iter * (1 - clusterp_threshold):
                 for t1 in range(x1):
                     for t2 in range(x2):
                         if cluster_index[t1, t2] == i + 1:
@@ -1586,7 +1594,7 @@ def clusterbased_permutation_2d_1sided(results1, results2, p_threshold=0.05, ite
 
 ' a function for 2-sided cluster based permutation test for 2-D results '
 
-def clusterbased_permutation_2d_2sided(results1, results2, p_threshold=0.05, iter=1000):
+def clusterbased_permutation_2d_2sided(results1, results2, p_threshold=0.05, clusterp_threshold=0.05, iter=1000):
 
     """
     2-sided cluster based permutation test for 2-D results
@@ -1601,6 +1609,8 @@ def clusterbased_permutation_2d_2sided(results1, results2, p_threshold=0.05, ite
         The shape of results should be [n_subs, x1, x2]. n_subs represents the number of subjects. (results1 > results2)
     p_threshold : float. Default is 0.05.
         The threshold of p-values.
+    clusterp_threshold : float. Default is 0.05.
+        The threshold of cluster-defining p-values.
     iter : int. Default is 1000.
         The times for iteration.
 
@@ -1670,7 +1680,7 @@ def clusterbased_permutation_2d_2sided(results1, results2, p_threshold=0.05, ite
             for j in range(iter):
                 if cluster_ts[i] > permu_ts[j]:
                     index = index + 1
-            if index < iter * (1 - p_threshold):
+            if index < iter * (1 - clusterp_threshold):
                 for t1 in range(x1):
                     for t2 in range(x2):
                         if cluster_index1[t1, t2] == i + 1:
@@ -1709,7 +1719,7 @@ def clusterbased_permutation_2d_2sided(results1, results2, p_threshold=0.05, ite
             for j in range(iter):
                 if cluster_ts[i] < permu_ts[j]:
                     index = index + 1
-            if index < iter * (1 - p_threshold):
+            if index < iter * (1 - clusterp_threshold):
                 for t1 in range(x1):
                     for t2 in range(x2):
                         if cluster_index2[t1, t2] == i + 1:
