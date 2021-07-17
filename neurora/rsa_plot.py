@@ -451,7 +451,7 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
 
     for t in range(nts):
         if ps[t] == 1:
-            plt.plot(t*tstep+start_time, (ymaxlim-yminlim)*0.9+yminlim, 's', color=color, alpha=1)
+            plt.plot(t*tstep+start_time, (ymaxlim-yminlim)*0.9+yminlim, 's', color=color, alpha=0.8, markersize=3)
             xi = [t*tstep+start_time, t*tstep+tstep+start_time]
             ymin = [0]
             ymax = [avg[t]-err[t]]
@@ -577,7 +577,7 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
 
     for t in range(nts):
         if ps[t] == 1:
-            plt.plot(t*tstep+start_time+0.5*tstep, (ymaxlim-yminlim)*0.9+yminlim, 's', color=color, alpha=0.8)
+            plt.plot(t*tstep+start_time+0.5*tstep, (ymaxlim-yminlim)*0.9+yminlim, 's', color=color, alpha=0.8, markersize=3)
             xi = [t*tstep+start_time, t*tstep+tstep+start_time]
             ymin = [chance]
             ymax = [avg[t] - err[t]]
@@ -723,9 +723,9 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
 
     for t in range(nts):
         if ps1[t] == 1:
-            plt.plot(t*tstep+start_time+0.5*tstep, (ymaxlim-yminlim)*0.9+yminlim, 's', color=color1, alpha=0.8)
+            plt.plot(t*tstep+start_time+0.5*tstep, (ymaxlim-yminlim)*0.9+yminlim, 's', color=color1, alpha=0.8, markersize=3)
         if ps2[t] == 1:
-            plt.plot(t*tstep+start_time+0.5*tstep, (ymaxlim-yminlim)*0.9+yminlim, 's', color=color2, alpha=0.8)
+            plt.plot(t*tstep+start_time+0.5*tstep, (ymaxlim-yminlim)*0.9+yminlim, 's', color=color2, alpha=0.8, markersize=3)
         if ps[t] == 1:
             xi = [t*tstep+start_time, t*tstep+tstep+start_time]
             ymin = [avg2[t] + err2[t]]
@@ -817,8 +817,6 @@ def plot_ct_decoding_acc(acc, start_timex=0, end_timex=1, start_timey=0, end_tim
 
     tstepx = float(Decimal((end_timex - start_timex) / nx).quantize(Decimal(str(time_intervalx))))
     tstepy = float(Decimal((end_timey - start_timey) / ny).quantize(Decimal(str(time_intervaly))))
-    print(tstepx, tstepy)
-    print(time_intervalx, time_intervaly)
 
     if tstepx != time_intervalx or tstepy != time_intervaly:
         return "Invalid input!"
@@ -956,8 +954,6 @@ def plot_ct_diff_decoding_acc(acc1, acc2, start_timex=0, end_timex=1, start_time
 
     tstepx = float(Decimal((end_timex - start_timex) / nx).quantize(Decimal(str(time_intervalx))))
     tstepy = float(Decimal((end_timey - start_timey) / ny).quantize(Decimal(str(time_intervaly))))
-    print(tstepx, tstepy)
-    print(time_intervalx, time_intervaly)
 
     if tstepx != time_intervalx or tstepy != time_intervaly:
         return "Invalid input!"
@@ -1083,8 +1079,6 @@ def plot_corrs_hotmap(corrs, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], smo
     # calculate the end time
     end_t = start_t + ts * tstep
 
-    print(start_t, tstep, end_t)
-
     # initialize the x
     x = np.arange(start_t, end_t, tstep)
 
@@ -1134,8 +1128,6 @@ def plot_corrs_hotmap(corrs, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], smo
             rlts = corrs[:, :, 0]
         elif len(corrs.shape) == 2:
             rlts = corrs
-
-    print(rlts.shape)
 
     # get min of lims & max of lims
     limmin = lim[0]
@@ -1238,8 +1230,6 @@ def plot_corrs_hotmap_stats(corrs, stats, chllabels=None, time_unit=[0, 0.1], li
     # calculate the end time
     end_t = start_t + ts * tstep
 
-    print(start_t, tstep, end_t)
-
     # initialize the x
     x = np.arange(start_t, end_t, tstep)
 
@@ -1288,9 +1278,7 @@ def plot_corrs_hotmap_stats(corrs, stats, chllabels=None, time_unit=[0, 0.1], li
         if len(corrs.shape) == 3:
             rlts = corrs[:, :, 0]
         elif len(corrs.shape) == 2:
-            rlts = corrs
-
-    print(rlts.shape)
+            rlts = corrsu
 
     statscopy = stats.copy()
 

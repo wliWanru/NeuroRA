@@ -499,7 +499,8 @@ def eegRDM_bydecoding(EEG_data, sub_opt=1, time_win=5, time_step=5, navg=5, time
                       normalization=False):
 
     """
-    Calculate the Representational Dissimilarity Matrix(Matrices) - RDM(s) based on EEG-like data
+    Calculate the Representational Dissimilarity Matrix(Matrices) - RDM(s) using classification-based neural decoding
+    based on EEG-like data
 
     Parameters
     ----------
