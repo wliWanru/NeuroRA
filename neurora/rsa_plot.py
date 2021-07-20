@@ -451,7 +451,8 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
 
     for t in range(nts):
         if ps[t] == 1:
-            plt.plot(t*tstep+start_time, (ymaxlim-yminlim)*0.9+yminlim, 's', color=color, alpha=0.8, markersize=3)
+            plt.plot(t*tstep+start_time+0.5*tstep, (ymaxlim-yminlim)*0.9+yminlim, 's',
+                     color=color, alpha=0.8, markersize=3)
             xi = [t*tstep+start_time, t*tstep+tstep+start_time]
             ymin = [0]
             ymax = [avg[t]-err[t]]
@@ -607,7 +608,7 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
 ' a function for plotting the differences of time-by-time decoding accuracies between two conditions '
 
 def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_interval=0.01, chance=0.5, p=0.05, cbpt=True,
-                                stats_time=[0, 1], color1='r', color2='b', xlim=[0, 1], ylim=[0.4, 0.8],
+                                clusterp=0.05, stats_time=[0, 1], color1='r', color2='b', xlim=[0, 1], ylim=[0.4, 0.8],
                                 figsize=[6.4, 3.6], x0=0, fontsize=16, avgshow=False):
 
     """
@@ -635,6 +636,8 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
         The threshold of p-values.
     cbpt : bool True or False. Default is True.
         Conduct cluster-based permutation test or not.
+    clusterp : float. Default is 0.05.
+        The threshold of cluster-defining p-values.
     stats_time : array or list [stats_time1, stats_time2]. Default os [0, 1].
         Time period for statistical analysis.
     color1 : matplotlib color or None. Default is 'r'.
@@ -694,7 +697,7 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
 
         ps_stats = clusterbased_permutation_1d_1samp_2sided(acc1[:, stats_time1:stats_time2]-
                                                             acc2[:, stats_time1:stats_time2], level=0, p_threshold=p,
-                                                            iter=1000)
+                                                            clusterp_threshold=clusterp, iter=1000)
         ps = np.zeros([nts])
         ps[stats_time1:stats_time2] = ps_stats
 
@@ -763,8 +766,9 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
 ' a function for plotting cross-temporal decoding accuracies '
 
 def plot_ct_decoding_acc(acc, start_timex=0, end_timex=1, start_timey=0, end_timey=1, time_intervalx=0.01,
-                         time_intervaly=0.01, chance=0.5, p=0.05, cbpt=True, stats_timex=[0, 1], stats_timey=[0, 1],
-                         xlim=[0, 1], ylim=[0, 1], clim=[0.4, 0.8], figsize=[6.4, 4.8], cmap="viridis", fontsize=16):
+                         time_intervaly=0.01, chance=0.5, p=0.05, cbpt=True, clusterp=0.05, stats_timex=[0, 1],
+                         stats_timey=[0, 1], xlim=[0, 1], ylim=[0, 1], clim=[0.4, 0.8], figsize=[6.4, 4.8],
+                         cmap="viridis", fontsize=16):
 
     """
     Plot the cross-temporal decoding accuracies
@@ -793,6 +797,8 @@ def plot_ct_decoding_acc(acc, start_timex=0, end_timex=1, start_timey=0, end_tim
         The threshold of p-values.
     cbpt : bool True or False. Default is True.
         Conduct cluster-based permutation test or not.
+    clusterp : float. Default is 0.05.
+        The threshold of cluster-defining p-values.
     stats_timex : array or list [stats_timex1, stats_timex2]. Default os [0, 1].
         Trainning time period for statistical analysis.
     stats_timey : array or list [stats_timey1, stats_timey2]. Default os [0, 1].
@@ -846,7 +852,8 @@ def plot_ct_decoding_acc(acc, start_timex=0, end_timex=1, start_timey=0, end_tim
     if cbpt is True:
 
         ps_stats = clusterbased_permutation_2d_1samp_1sided(
-            acc[:, stats_timex1:stats_timex2, stats_timey1:stats_timey2], level=chance, p_threshold=p, iter=1000)
+            acc[:, stats_timex1:stats_timex2, stats_timey1:stats_timey2], level=chance, p_threshold=p,
+            clusterp_threshold=clusterp, iter=1000)
         ps = np.zeros([nx, ny])
         ps[stats_timex1:stats_timex2, stats_timey1:stats_timey2] = ps_stats
 
@@ -895,8 +902,8 @@ def plot_ct_decoding_acc(acc, start_timex=0, end_timex=1, start_timey=0, end_tim
 ' a function for plotting the differences of cross-temporal decoding accuracies between two conditions '
 
 def plot_ct_diff_decoding_acc(acc1, acc2, start_timex=0, end_timex=1, start_timey=0, end_timey=1, time_intervalx=0.01,
-                         time_intervaly=0.01, p=0.05, cbpt=True, stats_timex=[0, 1], stats_timey=[0, 1], xlim=[0, 1],
-                         ylim=[0, 1], clim=[0.4, 0.8], figsize=[6.4, 4.8], cmap="viridis", fontsize=16):
+                         time_intervaly=0.01, p=0.05, cbpt=True, clusterp=0.05, stats_timex=[0, 1], stats_timey=[0, 1],
+                         xlim=[0, 1], ylim=[0, 1], clim=[0.4, 0.8], figsize=[6.4, 4.8], cmap="viridis", fontsize=16):
 
     """
     Plot the differences of cross-temporal decoding accuracies between two conditions
@@ -929,6 +936,8 @@ def plot_ct_diff_decoding_acc(acc1, acc2, start_timex=0, end_timex=1, start_time
         The threshold of p-values.
     cbpt : bool True or False. Default is True.
         Conduct cluster-based permutation test or not.
+    clusterp : float. Default is 0.05.
+        The threshold of cluster-defining p-values.
     stats_timex : array or list [stats_timex1, stats_timex2]. Default os [0, 1].
         Trainning time period for statistical analysis.
     stats_timey : array or list [stats_timey1, stats_timey2]. Default os [0, 1].
@@ -984,7 +993,7 @@ def plot_ct_diff_decoding_acc(acc1, acc2, start_timex=0, end_timex=1, start_time
 
         ps_stats = clusterbased_permutation_2d_2sided(acc1[:, stats_timex1:stats_timex2, stats_timey1:stats_timey2],
                                                       acc2[:, stats_timex1:stats_timex2, stats_timey1:stats_timey2],
-                                                      p_threshold=p, iter=1000)
+                                                      p_threshold=p, clusterp_threshold=clusterp, iter=1000)
         ps = np.zeros([nx, ny])
         ps[stats_timex1:stats_timex2, stats_timey1:stats_timey2] = ps_stats
 
