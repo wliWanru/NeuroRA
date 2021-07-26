@@ -2058,6 +2058,105 @@ def clusterbased_permutation_2d_2sided(results1, results2, p_threshold=0.05, clu
     return ps
 
 
+' a function for smoothing the 1-D results'
+
+def smooth_1d(x, n=5):
+
+    """
+    smoothing for 1-D results
+
+    Parameters
+    ----------
+    x : array
+        The results.
+        The shape of x should be [n_sub, n_ts]. n_subs, n_ts represent the number of subjects and the number of
+        time-points.
+    n : int. Default is 5.
+        The smoothing step is n.
+
+    Returns
+    -------
+    x_smooth : array
+        The results after smoothing.
+        The shape of x_smooth should be [n_subs, n_ts]. n_subs, n_ts represent the number of subjects and the number of
+        time-points.
+    """
+
+    nsubs, nts = np.shape(x)
+
+    x_smooth = np.zeros([nsubs, nts])
+
+    ts1 = int(n / 2)
+    ts2 = n - ts1
+
+    for t in range(nts):
+
+        if t >= ts1 and t < (nts - ts1):
+            x_smooth[:, t] = np.average(x[:, t - ts1:t + ts2], axis=1)
+        elif t < ts1:
+            x_smooth[:, t] = np.average(x[:, :t + ts2], axis=1)
+        else:
+            x_smooth[:, t] = np.average(x[:, t - ts1:], axis=1)
+
+    return x_smooth
+
+
+' a function for smoothing the 2-D results'
+
+def smooth_2d(x, n=5):
+
+    """
+    smoothing for 2-D results
+
+    Parameters
+    ----------
+    x : array
+        The results.
+        The shape of x should be [n_sub, n_ts1, n_ts2]. n_subs represents the number of subjects. n_ts1 & n_ts2
+        represent the numbers of time-points.
+    n : int. Default is 5.
+        The smoothing step is n.
+
+    Returns
+    -------
+    x_smooth : array
+        The results after smoothing.
+        The shape of x should be [n_sub, n_ts1, n_ts2]. n_subs represents the number of subjects. n_ts1 & n_ts2
+        represent the numbers of time-points.
+    """
+
+    nsubs, nts1, nts2 = np.shape(x)
+
+    x_smooth = np.zeros([nsubs, nts1, nts2])
+
+    ts1 = int(n / 2)
+    ts2 = n - ts1
+
+    for t1 in range(nts1):
+        for t2 in range(nts2):
+
+            if t1 < ts1 and t2 < ts1:
+                x_smooth[:, t1, t2] = np.average(x[:, :t1 + ts2, :t2 + ts2], axis=(1, 2))
+            elif t1 < ts1 and t2 >= ts1 and t2 < (nts2 - ts1):
+                x_smooth[:, t1, t2] = np.average(x[:, :t1 + ts2, t2 - ts1:t2 + ts2], axis=(1, 2))
+            elif t1 < ts1 and t2 >= (nts2 - ts1):
+                x_smooth[:, t1, t2] = np.average(x[:, :t1 + ts2, t2 - ts1:], axis=(1, 2))
+            elif t1 >= ts1 and t1 < (nts1 - ts1) and t2 < ts1:
+                x_smooth[:, t1, t2] = np.average(x[:, t1 - ts1:t1 + ts2, :t2 + ts2], axis=(1, 2))
+            elif t1 >= ts1 and t1 < (nts1 - ts1) and t2 >= ts1 and t2 < (nts2 - ts1):
+                x_smooth[:, t1, t2] = np.average(x[:, t1 - ts1:t1 + ts2, t2 - ts1:t2 + ts2], axis=(1, 2))
+            elif t1 >= ts1 and t1 < (nts1 - ts1) and t2 >= (nts2 - ts1):
+                x_smooth[:, t1, t2] = np.average(x[:, t1 - ts1:t1 + ts2, t2 - ts1:], axis=(1, 2))
+            elif t1 >= (nts1 - ts1) and t2 >= (nts2 - ts1):
+                x_smooth[:, t1, t2] = np.average(x[:, t1 - ts1:, t2 - ts1:], axis=(1, 2))
+            elif t1 >= (nts1 - ts1) and t2 >= ts1 and t2 < (nts2 - ts1):
+                x_smooth[:, t1, t2] = np.average(x[:, t1 - ts1:, t2 - ts1:t2 + ts2], axis=(1, 2))
+            elif t1 >= (nts1 - ts1) and t2 <= ts1:
+                x_smooth[:, t1, t2] = np.average(x[:, t1 - ts1:, :t2 + ts2], axis=(1, 2))
+
+    return x_smooth
+
+
 ' a function for showing the progress bar '
 
 def show_progressbar(str, cur, total=100):

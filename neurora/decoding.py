@@ -8,7 +8,7 @@ import numpy as np
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.preprocessing import StandardScaler
-from neurora.stuff import show_progressbar
+from neurora.stuff import show_progressbar, smooth_1d, smooth_2d
 
 np.seterr(divide='ignore', invalid='ignore')
 
@@ -50,8 +50,9 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
         The times for iteration.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
-    smooth : boolean True or False. Default is True.
+    smooth : boolean True or False, or int. Default is True.
         Smooth the decoding result or not.
+        If smooth = True, the default smoothing step is 5. If smooth = n (type of n: int), the smoothing step is n.
 
     Returns
     -------
@@ -262,24 +263,21 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
 
             acc[sub] = np.average(subacc, axis=(0, 2))
 
+    if smooth is False:
+
+        return acc
+
     if smooth is True:
 
-        smooth_acc = np.zeros([nsubs, newnts])
-
-        for t in range(newnts):
-
-            if t >= 2 and t < (newnts - 2):
-                smooth_acc[:, t] = np.average(acc[:, t - 2:t + 3], axis=1)
-            elif t < 2:
-                smooth_acc[:, t] = np.average(acc[:, :t + 3], axis=1)
-            else:
-                smooth_acc[:, t] = np.average(acc[:, t - 2:], axis=1)
+        smooth_acc = smooth_1d(acc)
 
         return smooth_acc
 
     else:
 
-        return acc
+        smooth_acc = smooth_1d(acc, n=smooth)
+
+        return smooth_acc
 
 
 ' a function for time-by-time decoding for EEG-like data (hold out) '
@@ -320,8 +318,9 @@ def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_wi
         test_size should be between 0.0 and 1.0.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
-    smooth : boolean True or False. Default is True.
+    smooth : boolean True or False, or int. Default is True.
         Smooth the decoding result or not.
+        If smooth = True, the default smoothing step is 5. If smooth = n (type of n: int), the smoothing step is n.
 
     Returns
     -------
@@ -531,24 +530,20 @@ def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_wi
 
             acc[sub] = np.average(subacc, axis=0)
 
+    if smooth is False:
+        return acc
+
     if smooth is True:
 
-        smooth_acc = np.zeros([nsubs, newnts])
-
-        for t in range(newnts):
-
-            if t >= 2 and t < (newnts-2):
-                smooth_acc[:, t] = np.average(acc[:, t-2:t+3], axis=1)
-            elif t < 2:
-                smooth_acc[:, t] = np.average(acc[:, :t+3], axis=1)
-            else:
-                smooth_acc[:, t] = np.average(acc[:, t-2:], axis=1)
+        smooth_acc = smooth_1d(acc)
 
         return smooth_acc
 
     else:
 
-        return acc
+        smooth_acc = smooth_1d(acc, n=smooth)
+
+        return smooth_acc
 
 
 ' a function for cross-temporal decoding for EEG-like data (cross validation) '
@@ -589,8 +584,9 @@ def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5,
         The times for iteration.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
-    smooth : boolean True or False. Default is True.
+    smooth : boolean True or False, or int. Default is True.
         Smooth the decoding result or not.
+        If smooth = True, the default smoothing step is 5. If smooth = n (type of n: int), the smoothing step is n.
 
     Returns
     -------
@@ -840,37 +836,20 @@ def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5,
 
             acc[sub] = np.average(subacc, axis=(0, 3))
 
-    if smooth == True:
+    if smooth is False:
+        return acc
 
-        smooth_acc = np.zeros([nsubs, newnts, newnts])
+    if smooth is True:
 
-        for t1 in range(newnts):
-            for t2 in range(newnts):
-
-                if t1 < 2 and t2 < 2:
-                    smooth_acc[:, t1, t2] = np.average(acc[:, :t1 + 3, :t2 + 3], axis=(1, 2))
-                elif t1 < 2 and t2 >= 2 and t2 < (newnts - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, :t1 + 3, t2 - 2:t2 + 3], axis=(1, 2))
-                elif t1 < 2 and t2 >= (newnts - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, :t1 + 3, t2 - 2:], axis=(1, 2))
-                elif t1 >= 2 and t1 < (newnts - 2) and t2 < 2:
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:t1 + 3, :t2 + 3], axis=(1, 2))
-                elif t1 >= 2 and t1 < (newnts - 2) and t2 >= 2 and t2 < (newnts - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:t1 + 3, t2 - 2:t2 + 3], axis=(1, 2))
-                elif t1 >= 2 and t1 < (newnts - 2) and t2 >= (newnts - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:t1 + 3, t2 - 2:], axis=(1, 2))
-                elif t1 >= (newnts - 2) and t2 >= (newnts - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:, t2 - 2:], axis=(1, 2))
-                elif t1 >= (newnts - 2) and t2 >= 2 and t2 < (newnts - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:, t2 - 2:t2 + 3], axis=(1, 2))
-                elif t1 >= (newnts - 2) and t2 <= 2:
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:, :t2 + 3], axis=(1, 2))
+        smooth_acc = smooth_2d(acc)
 
         return smooth_acc
 
     else:
 
-        return acc
+        smooth_acc = smooth_2d(acc, n=smooth)
+
+        return smooth_acc
 
 
 ' a function for cross-temporal decoding for EEG-like data (hold-out) '
@@ -911,8 +890,9 @@ def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=
         test_size should be between 0.0 and 1.0.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
-    smooth : boolean True or False. Default is True.
+    smooth : boolean True or False, or int. Default is True.
         Smooth the decoding result or not.
+        If smooth = True, the default smoothing step is 5. If smooth = n (type of n: int), the smoothing step is n.
 
     Returns
     -------
@@ -1166,37 +1146,20 @@ def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=
 
             acc[sub] = np.average(subacc, axis=0)
 
+    if smooth is False:
+        return acc
+
     if smooth is True:
 
-        smooth_acc = np.zeros([nsubs, newnts, newnts])
-
-        for t1 in range(newnts):
-            for t2 in range(newnts):
-
-                if t1 < 2 and t2 < 2:
-                    smooth_acc[:, t1, t2] = np.average(acc[:, :t1 + 3, :t2 + 3], axis=(1, 2))
-                elif t1 < 2 and t2 >= 2 and t2 < (newnts - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, :t1 + 3, t2 - 2:t2 + 3], axis=(1, 2))
-                elif t1 < 2 and t2 >= (newnts - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, :t1 + 3, t2 - 2:], axis=(1, 2))
-                elif t1 >= 2 and t1 < (newnts - 2) and t2 < 2:
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:t1 + 3, :t2 + 3], axis=(1, 2))
-                elif t1 >= 2 and t1 < (newnts - 2) and t2 >= 2 and t2 < (newnts - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:t1 + 3, t2 - 2:t2 + 3], axis=(1, 2))
-                elif t1 >= 2 and t1 < (newnts - 2) and t2 >= (newnts - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:t1 + 3, t2 - 2:], axis=(1, 2))
-                elif t1 >= (newnts - 2) and t2 >= (newnts - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:, t2 - 2:], axis=(1, 2))
-                elif t1 >= (newnts - 2) and t2 >= 2 and t2 < (newnts - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:, t2 - 2:t2 + 3], axis=(1, 2))
-                elif t1 >= (newnts - 2) and t2 <= 2:
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:, :t2 + 3], axis=(1, 2))
+        smooth_acc = smooth_2d(acc)
 
         return smooth_acc
 
     else:
 
-        return acc
+        smooth_acc = smooth_2d(acc, n=smooth)
+
+        return smooth_acc
 
 
 ' a function for unidirectional transfer decoding for EEG-like data '
@@ -1238,8 +1201,9 @@ def unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5
         The times for iteration.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
-    smooth : boolean True or False. Default is True.
+    smooth : boolean True or False, or int. Default is True.
         Smooth the decoding result or not.
+        If smooth = True, the default smoothing step is 5. If smooth = n (type of n: int), the smoothing step is n.
 
     Returns
     -------
@@ -1536,37 +1500,20 @@ def unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5
 
             acc[sub] = np.average(subacc, axis=0)
 
+    if smooth is False:
+        return acc
+
     if smooth is True:
 
-        smooth_acc = np.zeros([nsubs, newnts1, newnts2])
-
-        for t1 in range(newnts1):
-            for t2 in range(newnts2):
-
-                if t1 < 2 and t2 < 2:
-                    smooth_acc[:, t1, t2] = np.average(acc[:, :t1 + 3, :t2 + 3], axis=(1, 2))
-                elif t1 < 2 and t2 >= 2 and t2 < (newnts2 - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, :t1 + 3, t2 - 2:t2 + 3], axis=(1, 2))
-                elif t1 < 2 and t2 >= (newnts2 - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, :t1 + 3, t2 - 2:], axis=(1, 2))
-                elif t1 >= 2 and t1 < (newnts1 - 2) and t2 < 2:
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:t1 + 3, :t2 + 3], axis=(1, 2))
-                elif t1 >= 2 and t1 < (newnts1 - 2) and t2 >= 2 and t2 < (newnts2 - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:t1 + 3, t2 - 2:t2 + 3], axis=(1, 2))
-                elif t1 >= 2 and t1 < (newnts1 - 2) and t2 >= (newnts2 - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:t1 + 3, t2 - 2:], axis=(1, 2))
-                elif t1 >= (newnts1 - 2) and t2 >= (newnts2 - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:, t2 - 2:], axis=(1, 2))
-                elif t1 >= (newnts1 - 2) and t2 >= 2 and t2 < (newnts2 - 2):
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:, t2 - 2:t2 + 3], axis=(1, 2))
-                elif t1 >= (newnts1 - 2) and t2 <= 2:
-                    smooth_acc[:, t1, t2] = np.average(acc[:, t1 - 2:, :t2 + 3], axis=(1, 2))
+        smooth_acc = smooth_2d(acc)
 
         return smooth_acc
 
     else:
 
-        return acc
+        smooth_acc = smooth_2d(acc, n=smooth)
+
+        return smooth_acc
 
 
 ' a function for bidirectional transfer decoding for EEG-like data '
@@ -1608,8 +1555,9 @@ def bidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5,
         The times for iteration.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
-    smooth : boolean True or False. Default is True.
+    smooth : boolean True or False, or int. Default is True.
         Smooth the decoding result or not.
+        If smooth = True, the default smoothing step is 5. If smooth = n (type of n: int), the smoothing step is n.
 
     Returns
     -------
@@ -1624,7 +1572,7 @@ def bidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5,
     Con1toCon2_accuracies, Con2toCon1_accuracies = unidirectional_transfer_decoding(data1, labels1, data2,
                                     labels2, n=n, navg=navg, time_opt=time_opt, time_win=time_win, time_step=time_step,
                                     iter=iter, normalization=normalization, smooth=smooth), \
-                                    unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=n, navg=navg,
+                                    unidirectional_transfer_decoding(data2, labels2, data1, labels1, n=n, navg=navg,
                                     time_opt=time_opt, time_win=time_win, time_step=time_step, iter=iter,
                                     normalization=normalization, smooth=smooth)
 
