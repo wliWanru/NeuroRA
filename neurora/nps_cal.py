@@ -177,7 +177,7 @@ def nps_fmri(fmri_data, ksize=[3, 3, 3], strides=[1, 1, 1]):
                         for k2 in range(ky):
                             for k3 in range(kz):
                                 for j in range(nsubs):
-                                    data[x, y, z, i, index, j] = fmri_data[i, j, x+k1, y+k2, z+k3]
+                                    data[x, y, z, i, index, j] = fmri_data[i, j, x*sx+k1, y*sy+k2, z*sz+k3]
 
                                 index = index + 1
 
