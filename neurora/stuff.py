@@ -1266,7 +1266,7 @@ def clusterbased_permutation_1d_1samp_2sided(results, level=0, p_threshold=0.05,
                     if cluster_index1[t] == i + 1:
                         ps[t] = 0
 
-    if cluster_n1 != 0:
+    if cluster_n2 != 0:
         cluster_ts = np.zeros([cluster_n2])
         for i in range(cluster_n2):
             for t in range(x):
@@ -1508,7 +1508,7 @@ def clusterbased_permutation_1d_2sided(results1, results2, p_threshold=0.05, clu
                     if cluster_index1[t] == i + 1:
                         ps[t] = 0
 
-    if cluster_n1 != 0:
+    if cluster_n2 != 0:
         cluster_ts = np.zeros([cluster_n2])
         for i in range(cluster_n2):
             for t in range(x):

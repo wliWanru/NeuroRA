@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='neurora',
-    version='1.1.5.14',
+    version='1.1.5.15',
     description=(
         'A Python Toolbox for Multimodal Neural Data Representation Analysis'
     ),
