@@ -696,6 +696,14 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
 
     if cbpt == True:
 
+        ps1_stats = clusterbased_permutation_2d_1samp_1sided(acc1[:, stats_time1:stats_time2], level=chance,
+                                                             p_threshold=p, clusterp_threshold=clusterp, iter=1000)
+        ps1 = np.zeros([nts])
+        ps1[stats_time1:stats_time2] = ps1_stats
+        ps2_stats = clusterbased_permutation_2d_1samp_1sided(acc2[:, stats_time1:stats_time2], level=chance,
+                                                             p_threshold=p, clusterp_threshold=clusterp, iter=1000)
+        ps2 = np.zeros([nts])
+        ps2[stats_time1:stats_time2] = ps2_stats
         ps_stats = clusterbased_permutation_1d_1samp_2sided(acc1[:, stats_time1:stats_time2]-
                                                             acc2[:, stats_time1:stats_time2], level=0, p_threshold=p,
                                                             clusterp_threshold=clusterp, iter=1000)

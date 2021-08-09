@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statistical Analysis &#8212; NeuroRA 1.1.5.0 documentation</title>
+    <title>Statistical Analysis &#8212; NeuroRA 1.1.5.13 documentation</title>
     <link rel="stylesheet" href="static/classic.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     
@@ -35,7 +35,7 @@
         <li class="right" >
           <a href="decoding.html" title="Conduct Classification-based EEG Decoding"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.13 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Statistical Analysis</a></li> 
       </ul>
     </div>  
@@ -52,7 +52,7 @@
 <p>a module for conducting the statistical analysis</p>
 <dl class="py function">
 <dt id="neurora.stats_cal.stats">
-<code class="sig-prename descclassname">neurora.stats_cal.</code><code class="sig-name descname">stats</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">corrs</span></em>, <em class="sig-param"><span class="n">fisherz</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">permutation</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">5000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stats_cal.stats" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.stats_cal.</code><code class="sig-name descname">stats</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">corrs</span></em>, <em class="sig-param"><span class="n">fisherz</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">permutation</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">1000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stats_cal.stats" title="Permalink to this definition">¶</a></dt>
 <dd><p>Conduct the statistical analysis for results of EEG-like data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -62,7 +62,7 @@ The shape of corrs must be [n_subs, n_chls, n_ts, 2]. n_subs, n_chls, n_ts repre
 number of channels and the number of time-points. 2 represents a r-value and a p-value.</p></li>
 <li><p><strong>fisherz</strong> (<em>bool True</em><em> or </em><em>False. Default is True.</em>) – Conduct Fisher-Z transform.</p></li>
 <li><p><strong>permutation</strong> (<em>bool True</em><em> or </em><em>False. Default is False.</em>) – Use permutation test or not.</p></li>
-<li><p><strong>iter</strong> (<em>int. Default is 5000.</em>) – The times for iteration.</p></li>
+<li><p><strong>iter</strong> (<em>int. Default is 1000.</em>) – The times for iteration.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -81,7 +81,7 @@ This function can be used for the correlation results of NPS, ISC, eeg-like RDMs
 
 <dl class="py function">
 <dt id="neurora.stats_cal.stats_fmri">
-<code class="sig-prename descclassname">neurora.stats_cal.</code><code class="sig-name descname">stats_fmri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">corrs</span></em>, <em class="sig-param"><span class="n">fisherz</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">permutation</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">5000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stats_cal.stats_fmri" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.stats_cal.</code><code class="sig-name descname">stats_fmri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">corrs</span></em>, <em class="sig-param"><span class="n">fisherz</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">permutation</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">1000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stats_cal.stats_fmri" title="Permalink to this definition">¶</a></dt>
 <dd><p>Conduct the statistical analysis for results of fMRI data (searchlight)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -91,7 +91,7 @@ The shape of corrs must be [n_subs, n_x, n_y, n_z, 2]. n_subs, n_x, n_y, n_z rep
 the number of calculation units for searchlight along the x, y, z axis and 2 represents a r-value and a p-value.</p></li>
 <li><p><strong>fisherz</strong> (<em>bool True</em><em> or </em><em>False. Default is True.</em>) – Conduct Fisher-Z transform.</p></li>
 <li><p><strong>permutation</strong> (<em>bool True</em><em> or </em><em>False. Default is False.</em>) – Use permutation test or not.</p></li>
-<li><p><strong>iter</strong> (<em>int. Default is 5000.</em>) – The times for iteration.</p></li>
+<li><p><strong>iter</strong> (<em>int. Default is 1000.</em>) – The times for iteration.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -142,7 +142,7 @@ This function can be used for the results of searchlight fMRI NPS and searchligh
 
 <dl class="py function">
 <dt id="neurora.stats_cal.stats_fmri_compare_withingroup">
-<code class="sig-prename descclassname">neurora.stats_cal.</code><code class="sig-name descname">stats_fmri_compare_withingroup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">corrs1</span></em>, <em class="sig-param"><span class="n">corrs2</span></em>, <em class="sig-param"><span class="n">fisherz</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">permutation</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">5000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stats_cal.stats_fmri_compare_withingroup" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.stats_cal.</code><code class="sig-name descname">stats_fmri_compare_withingroup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">corrs1</span></em>, <em class="sig-param"><span class="n">corrs2</span></em>, <em class="sig-param"><span class="n">fisherz</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">permutation</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">1000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stats_cal.stats_fmri_compare_withingroup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Conduct the statistical analysis for results of fMRI data (searchlight) (within group: corrs1 &gt; corrs2)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -155,7 +155,7 @@ The shape of corrs must be [n_subs, n_x, n_y, n_z, 2]. n_subs, n_x, n_y, n_z rep
 the number of calculation units for searchlight along the x, y, z axis and 2 represents a r-value and a p-value.</p></li>
 <li><p><strong>fisherz</strong> (<em>bool True</em><em> or </em><em>False. Default is True.</em>) – Conduct Fisher-Z transform.</p></li>
 <li><p><strong>permutation</strong> (<em>bool True</em><em> or </em><em>False. Default is False.</em>) – Use permutation test or not.</p></li>
-<li><p><strong>iter</strong> (<em>int. Default is 5000.</em>) – The times for iteration.</p></li>
+<li><p><strong>iter</strong> (<em>int. Default is 1000.</em>) – The times for iteration.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -174,7 +174,7 @@ This function can be used for the results of searchlight fMRI NPS and searchligh
 
 <dl class="py function">
 <dt id="neurora.stats_cal.stats_iscfmri">
-<code class="sig-prename descclassname">neurora.stats_cal.</code><code class="sig-name descname">stats_iscfmri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">corrs</span></em>, <em class="sig-param"><span class="n">fisherz</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">permutation</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">5000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stats_cal.stats_iscfmri" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.stats_cal.</code><code class="sig-name descname">stats_iscfmri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">corrs</span></em>, <em class="sig-param"><span class="n">fisherz</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">permutation</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">1000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stats_cal.stats_iscfmri" title="Permalink to this definition">¶</a></dt>
 <dd><p>Conduct the statistical analysis for results of fMRI data (ISC searchlight)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -185,7 +185,7 @@ represent the number of subjects, the number of calculation units for searchligh
 represents a r-value and a p-value.</p></li>
 <li><p><strong>fisherz</strong> (<em>bool True</em><em> or </em><em>False. Default is True.</em>) – Conduct Fisher-Z transform.</p></li>
 <li><p><strong>permutation</strong> (<em>bool True</em><em> or </em><em>False. Default is False.</em>) – Use permutation test or not.</p></li>
-<li><p><strong>iter</strong> (<em>int. Default is 5000.</em>) – The times for iteration.</p></li>
+<li><p><strong>iter</strong> (<em>int. Default is 1000.</em>) – The times for iteration.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -203,7 +203,7 @@ number of calculation units for searchlight along the x, y, z axis and 2 represe
 
 <dl class="py function">
 <dt id="neurora.stats_cal.stats_stps">
-<code class="sig-prename descclassname">neurora.stats_cal.</code><code class="sig-name descname">stats_stps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">corrs1</span></em>, <em class="sig-param"><span class="n">corrs2</span></em>, <em class="sig-param"><span class="n">fisherz</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">permutation</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">5000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stats_cal.stats_stps" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.stats_cal.</code><code class="sig-name descname">stats_stps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">corrs1</span></em>, <em class="sig-param"><span class="n">corrs2</span></em>, <em class="sig-param"><span class="n">fisherz</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">permutation</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">1000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stats_cal.stats_stps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Conduct the statistical analysis for results of EEG-like data（for STPS）</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -216,7 +216,7 @@ The shape of corrs2 must be [n_subs, n_chls, n_ts]. n_subs, n_chls, n_ts represe
 number of channels and the number of time-points.</p></li>
 <li><p><strong>fisherz</strong> (<em>bool True</em><em> or </em><em>False. Default is True.</em>) – Conduct Fisher-Z transform.</p></li>
 <li><p><strong>permutation</strong> (<em>bool True</em><em> or </em><em>False. Default is False.</em>) – Use permutation test or not.</p></li>
-<li><p><strong>iter</strong> (<em>int. Default is 5000.</em>) – The times for iteration.</p></li>
+<li><p><strong>iter</strong> (<em>int. Default is 1000.</em>) – The times for iteration.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -234,7 +234,7 @@ time-points. 2 represents a t-value and a p-value.</p>
 
 <dl class="py function">
 <dt id="neurora.stats_cal.stats_stpsfmri">
-<code class="sig-prename descclassname">neurora.stats_cal.</code><code class="sig-name descname">stats_stpsfmri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">corrs1</span></em>, <em class="sig-param"><span class="n">corrs2</span></em>, <em class="sig-param"><span class="n">fisherz</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">permutation</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">5000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stats_cal.stats_stpsfmri" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.stats_cal.</code><code class="sig-name descname">stats_stpsfmri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">corrs1</span></em>, <em class="sig-param"><span class="n">corrs2</span></em>, <em class="sig-param"><span class="n">fisherz</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">permutation</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">1000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stats_cal.stats_stpsfmri" title="Permalink to this definition">¶</a></dt>
 <dd><p>Conduct the statistical analysis for results of fMRI data (STPS searchlight)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -247,7 +247,7 @@ The shape of corrs2 must be [n_subs, n_x, n_y, n_z]. n_subs, n_x, n_y, n_z repre
 the number of calculation units for searchlight along the x, y, z axis.</p></li>
 <li><p><strong>fisherz</strong> (<em>bool True</em><em> or </em><em>False. Default is True.</em>) – Conduct Fisher-Z transform.</p></li>
 <li><p><strong>permutation</strong> (<em>bool True</em><em> or </em><em>False. Default is False.</em>) – Use permutation test or not.</p></li>
-<li><p><strong>iter</strong> (<em>int. Default is 5000.</em>) – The times for iteration.</p></li>
+<li><p><strong>iter</strong> (<em>int. Default is 1000.</em>) – The times for iteration.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -323,7 +323,7 @@ searchlight along the x, y, z axis and 2 represents a t-value and a p-value.</p>
         <li class="right" >
           <a href="decoding.html" title="Conduct Classification-based EEG Decoding"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.13 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Statistical Analysis</a></li> 
       </ul>
     </div>

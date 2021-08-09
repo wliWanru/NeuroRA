@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Representational Similarity Analysis (RSA) &#8212; NeuroRA 1.1.5.0 documentation</title>
+    <title>Representational Similarity Analysis (RSA) &#8212; NeuroRA 1.1.5.13 documentation</title>
     <link rel="stylesheet" href="static/classic.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     
@@ -35,7 +35,7 @@
         <li class="right" >
           <a href="rdm_cal.html" title="Calculate the RDM"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.13 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Representational Similarity Analysis (RSA)</a></li> 
       </ul>
     </div>  
@@ -77,8 +77,6 @@ The shape of corr is [2], including a r-value and a p-value.</p>
 <dd class="field-odd"><p>array [r, p]</p>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>Don’t set both fisherz=True and rescale=True.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -108,8 +106,6 @@ The shape of corr is [2], including a r-value and a p-value.</p>
 <dd class="field-odd"><p>array [r, p]</p>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>Don’t set both fisherz=True and rescale=True.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -139,8 +135,6 @@ The shape of corr is [2], including a r-value and a p-value.</p>
 <dd class="field-odd"><p>array [r, p]</p>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>Don’t set both fisherz=True and rescale=True.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -203,7 +197,7 @@ The shape of corr is [2], corr[0] is the Cosine Similarity result and corr[1] is
 <p>a module for calculating the similarity between two different modes’ data</p>
 <dl class="py function">
 <dt id="neurora.corr_cal.bhvANDeeg_corr">
-<code class="sig-prename descclassname">neurora.corr_cal.</code><code class="sig-name descname">bhvANDeeg_corr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bhv_data</span></em>, <em class="sig-param"><span class="n">eeg_data</span></em>, <em class="sig-param"><span class="n">sub_opt</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">chl_opt</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">time_opt</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'spearman'</span></em>, <em class="sig-param"><span class="n">rescale</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">permutation</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">5000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.corr_cal.bhvANDeeg_corr" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.corr_cal.</code><code class="sig-name descname">bhvANDeeg_corr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bhv_data</span></em>, <em class="sig-param"><span class="n">eeg_data</span></em>, <em class="sig-param"><span class="n">sub_opt</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">chl_opt</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">time_opt</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'spearman'</span></em>, <em class="sig-param"><span class="n">rescale</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">permutation</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">1000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.corr_cal.bhvANDeeg_corr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the Similarities between behavioral data and EEG/MEG/fNIRS data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -238,7 +232,7 @@ Cosine Similarities. If method=’distance’, calculate the Euclidean Distances
 Here, the maximum-minimum method is used to rescale the values except for the
 values on the diagonal.</p></li>
 <li><p><strong>permutation</strong> (<em>bool True</em><em> or </em><em>False. Default is False.</em>) – Use permutation test or not.</p></li>
-<li><p><strong>iter</strong> (<em>int. Default is 5000.</em>) – The times for iteration.</p></li>
+<li><p><strong>iter</strong> (<em>int. Default is 1000.</em>) – The times for iteration.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -281,7 +275,7 @@ p-value. If method=’similarity’ or method=’distance’, the p-values are a
 
 <dl class="py function">
 <dt id="neurora.corr_cal.bhvANDfmri_corr">
-<code class="sig-prename descclassname">neurora.corr_cal.</code><code class="sig-name descname">bhvANDfmri_corr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bhv_data</span></em>, <em class="sig-param"><span class="n">fmri_data</span></em>, <em class="sig-param"><span class="n">ksize</span><span class="o">=</span><span class="default_value">[3, 3, 3]</span></em>, <em class="sig-param"><span class="n">strides</span><span class="o">=</span><span class="default_value">[1, 1, 1]</span></em>, <em class="sig-param"><span class="n">sub_opt</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'spearman'</span></em>, <em class="sig-param"><span class="n">rescale</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">permutation</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">5000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.corr_cal.bhvANDfmri_corr" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.corr_cal.</code><code class="sig-name descname">bhvANDfmri_corr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bhv_data</span></em>, <em class="sig-param"><span class="n">fmri_data</span></em>, <em class="sig-param"><span class="n">ksize</span><span class="o">=</span><span class="default_value">[3, 3, 3]</span></em>, <em class="sig-param"><span class="n">strides</span><span class="o">=</span><span class="default_value">[1, 1, 1]</span></em>, <em class="sig-param"><span class="n">sub_opt</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'spearman'</span></em>, <em class="sig-param"><span class="n">rescale</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">permutation</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">1000</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.corr_cal.bhvANDfmri_corr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the Similarities between behavioral data and fMRI data for searchlight</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -308,7 +302,7 @@ Cosine Similarities. If method=’distance’, calculate the Euclidean Distances
 Here, the maximum-minimum method is used to rescale the values except for the
 values on the diagonal.</p></li>
 <li><p><strong>permutation</strong> (<em>bool True</em><em> or </em><em>False. Default is False.</em>) – Use permutation test or not.</p></li>
-<li><p><strong>iter</strong> (<em>int. Default is 5000.</em>) – The times for iteration.</p></li>
+<li><p><strong>iter</strong> (<em>int. Default is 1000.</em>) – The times for iteration.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -514,7 +508,7 @@ and a p-value.</p>
         <li class="right" >
           <a href="rdm_cal.html" title="Calculate the RDM"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.13 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Representational Similarity Analysis (RSA)</a></li> 
       </ul>
     </div>

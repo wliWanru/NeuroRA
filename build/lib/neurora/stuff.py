@@ -445,7 +445,8 @@ def cluster_fdr_correct(p, p_threshold1, p_threshold2):
 
     clusterp = np.zeros([nclusters])
     for i in range(nclusters):
-        clusterp[i] = (1000 - np.max(np.array(np.where(np.sort(np.append(permutation_voxels, voxelsinluster[i])) == voxelsinluster[i])))) / 1000
+        clusterp[i] = (1000 - np.max(np.array(np.where(np.sort(np.append(permutation_voxels, voxelsinluster[i])) ==
+                                                       voxelsinluster[i])))) / 1000
 
     index = np.argsort(clusterp)
 
@@ -459,7 +460,8 @@ def cluster_fdr_correct(p, p_threshold1, p_threshold2):
             for k in range(pz):
 
                 if (math.isnan(p[i, j, k]) == False) and labels[i, j, k] != 0\
-                        and clusterp[labels[i, j, k]-1] < p_threshold1 and voxelsinluster[labels[i, j, k]-1] >= voxels_threshold:
+                        and clusterp[labels[i, j, k]-1] < p_threshold1 and voxelsinluster[labels[i, j, k]-1] >= \
+                        voxels_threshold:
                     clusterfdrp[i, j, k] = clusterp[labels[i, j, k]-1]
 
     print("finished Cluster-wise FDR correction")

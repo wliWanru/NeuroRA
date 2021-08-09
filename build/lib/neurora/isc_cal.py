@@ -175,7 +175,7 @@ def isc_fmri(fmri_data, ksize=[3, 3, 3], strides=[1, 1, 1]):
                         for k1 in range(kx):
                             for k2 in range(ky):
                                 for k3 in range(kz):
-                                    data[t, sub, x, y, z, index] = fmri_data[t, sub, x + k1, y + k2, z + k3]
+                                    data[t, sub, x, y, z, index] = fmri_data[t, sub, x*sx + k1, y*sy + k2, z*sz + k3]
 
                                     index = index + 1
 
@@ -204,7 +204,8 @@ def isc_fmri(fmri_data, ksize=[3, 3, 3], strides=[1, 1, 1]):
                             for z in range(n_z):
 
                                 # show the progressbar
-                                percent = (t * n * n_x * n_y * n_z + nindex * n_x * n_y * n_z + x * n_y * n_z + y * n_z + z + 1) / total * 100
+                                percent = (t * n * n_x * n_y * n_z + nindex * n_x * n_y * n_z + x * n_y * n_z +
+                                           y * n_z + z + 1) / total * 100
                                 show_progressbar("Calculating", percent)
 
                                 # no NaN

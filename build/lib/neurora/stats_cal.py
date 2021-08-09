@@ -285,7 +285,7 @@ def stats_fmri_compare_betweengroups(corrs1, corrs2, fisherz=True, permutation=F
     rs1 = corrs1[:, :, :, :, 0]
     rs2 = corrs2[:, :, :, :, 0]
 
-    if fisherz is True:
+    if fisherz == True:
         rs1 = 0.5 * np.log((1 + rs1) / (1 - rs1))
         rs2 = 0.5 * np.log((1 + rs2) / (1 - rs2))
 
@@ -356,7 +356,7 @@ def stats_iscfmri(corrs, fisherz=True, permutation=False, iter=1000):
     # get r-map
     rs = corrs[:, :, :, :, :, 0]
 
-    if fisherz is True:
+    if fisherz == True:
         # Fisher r to z
         rs = 0.5 * np.log((1 + rs) / (1 - rs))
 
@@ -431,7 +431,7 @@ def stats_stps(corrs1, corrs2, fisherz=True, permutation=True, iter=1000):
     rs1 = corrs1
     rs2 = corrs2
 
-    if fisherz is True:
+    if fisherz == True:
         # Fisher r to z
         rs1 = 0.5 * np.log((1 + rs1) / (1 - rs1))
         rs2 = 0.5 * np.log((1 + rs2) / (1 - rs2))

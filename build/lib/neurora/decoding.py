@@ -63,6 +63,12 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
 
     if np.shape(data)[0] != np.shape(labels)[0]:
 
+        print("\nThe number of subjects of data doesn't match the number of subjects of labels.\n")
+
+        return "Invalid input!"
+
+    if np.shape(data)[1] != np.shape(labels)[1]:
+
         print("\nThe number of epochs doesn't match the number of labels.\n")
 
         return "Invalid input!"
@@ -331,6 +337,12 @@ def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_wi
 
     if np.shape(data)[0] != np.shape(labels)[0]:
 
+        print("\nThe number of subjects of data doesn't match the number of subjects of labels.\n")
+
+        return "Invalid input!"
+
+    if np.shape(data)[1] != np.shape(labels)[1]:
+
         print("\nThe number of epochs doesn't match the number of labels.\n")
 
         return "Invalid input!"
@@ -596,6 +608,12 @@ def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5,
     """
 
     if np.shape(data)[0] != np.shape(labels)[0]:
+
+        print("\nThe number of subjects of data doesn't match the number of subjects of labels.\n")
+
+        return "Invalid input!"
+
+    if np.shape(data)[1] != np.shape(labels)[1]:
 
         print("\nThe number of epochs doesn't match the number of labels.\n")
 
@@ -902,6 +920,12 @@ def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=
     """
 
     if np.shape(data)[0] != np.shape(labels)[0]:
+
+        print("\nThe number of subjects of data doesn't match the number of subjects of labels.\n")
+
+        return "Invalid input!"
+
+    if np.shape(data)[1] != np.shape(labels)[1]:
 
         print("\nThe number of epochs doesn't match the number of labels.\n")
 
@@ -1214,13 +1238,13 @@ def unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5
 
     if np.shape(data1)[0] != np.shape(labels1)[0]:
 
-        print("\nThe number of epochs doesn't match the number of labels.\n")
+        print("\nThe number of subjects of data doesn't match the number of subjects of labels.\n")
 
         return "Invalid input!"
 
     if np.shape(data2)[0] != np.shape(labels2)[0]:
 
-        print("\nThe number of epochs doesn't match the number of labels.\n")
+        print("\nThe number of subjects of data doesn't match the number of subjects of labels.\n")
 
         return "Invalid input!"
 
@@ -1233,6 +1257,18 @@ def unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5
     if np.shape(data1)[2] != np.shape(data2)[2]:
 
         print("\nThe number of channels of data1 doesn't match the number of channels of data2.\n")
+
+        return "Invalid input!"
+
+    if np.shape(data1)[1] != np.shape(labels1)[1]:
+
+        print("\nThe number of epochs doesn't match the number of labels.\n")
+
+        return "Invalid input!"
+
+    if np.shape(data2)[1] != np.shape(labels2)[1]:
+
+        print("\nThe number of epochs doesn't match the number of labels.\n")
 
         return "Invalid input!"
 

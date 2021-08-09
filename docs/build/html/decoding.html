@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conduct Classification-based EEG Decoding &#8212; NeuroRA 1.1.5.0 documentation</title>
+    <title>Conduct Classification-based EEG Decoding &#8212; NeuroRA 1.1.5.13 documentation</title>
     <link rel="stylesheet" href="static/classic.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     
@@ -35,7 +35,7 @@
         <li class="right" >
           <a href="rsa.html" title="Representational Similarity Analysis (RSA)"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.13 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Conduct Classification-based EEG Decoding</a></li> 
       </ul>
     </div>  
@@ -52,7 +52,7 @@
 <p>a module for classification-based neural decoding</p>
 <dl class="py function">
 <dt id="neurora.decoding.bidirectional_transfer_decoding">
-<code class="sig-prename descclassname">neurora.decoding.</code><code class="sig-name descname">bidirectional_transfer_decoding</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data1</span></em>, <em class="sig-param"><span class="n">labels1</span></em>, <em class="sig-param"><span class="n">data2</span></em>, <em class="sig-param"><span class="n">labels2</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">navg</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_opt</span><span class="o">=</span><span class="default_value">'average'</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">smooth</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.decoding.bidirectional_transfer_decoding" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.decoding.</code><code class="sig-name descname">bidirectional_transfer_decoding</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data1</span></em>, <em class="sig-param"><span class="n">labels1</span></em>, <em class="sig-param"><span class="n">data2</span></em>, <em class="sig-param"><span class="n">labels2</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">navg</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_opt</span><span class="o">=</span><span class="default_value">'average'</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">normalization</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">smooth</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.decoding.bidirectional_transfer_decoding" title="Permalink to this definition">¶</a></dt>
 <dd><p>Conduct bidirectional transfer decoding for EEG-like data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -74,6 +74,7 @@ If time_opt=”features”, the time-points in a certain time-window will be use
 If time_win=5, that means each decoding process based on 5 time-points.</p></li>
 <li><p><strong>time_step</strong> (<em>int. Default is 5.</em>) – The time step size for each time of decoding.</p></li>
 <li><p><strong>iter</strong> (<em>int. Default is 10.</em>) – The times for iteration.</p></li>
+<li><p><strong>normalization</strong> (<em>boolean True</em><em> or </em><em>False. Default is False.</em>) – Normalize the data or not.</p></li>
 <li><p><strong>smooth</strong> (<em>boolean True</em><em> or </em><em>False. Default is True.</em>) – Smooth the decoding result or not.</p></li>
 </ul>
 </dd>
@@ -91,7 +92,7 @@ The shape of accuracies is [n_subs, int((n_ts2-time_win)/time_step)+1, int((n_ts
 
 <dl class="py function">
 <dt id="neurora.decoding.ct_decoding_holdout">
-<code class="sig-prename descclassname">neurora.decoding.</code><code class="sig-name descname">ct_decoding_holdout</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">labels</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">navg</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_opt</span><span class="o">=</span><span class="default_value">'average'</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">test_size</span><span class="o">=</span><span class="default_value">0.3</span></em>, <em class="sig-param"><span class="n">smooth</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.decoding.ct_decoding_holdout" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.decoding.</code><code class="sig-name descname">ct_decoding_holdout</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">labels</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">navg</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_opt</span><span class="o">=</span><span class="default_value">'average'</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">test_size</span><span class="o">=</span><span class="default_value">0.3</span></em>, <em class="sig-param"><span class="n">normalization</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">smooth</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.decoding.ct_decoding_holdout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Conduct cross-temporal decoding for EEG-like data (hold-out)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -99,7 +100,7 @@ The shape of accuracies is [n_subs, int((n_ts2-time_win)/time_step)+1, int((n_ts
 <li><p><strong>data</strong> (<em>array</em>) – The neural data.
 The shape of data must be [n_subs, n_trials, n_chls, n_ts]. n_subs, n_trials, n_chls and n_ts represent the
 number of subjects, the number of trails, the number of channels and the number of time-points.</p></li>
-<li><p><strong>labels</strong> (<em>array</em>) – The labels of each trials.
+<li><p><strong>labels</strong> (<em>array</em>) – The labels of each trial.
 The shape of labels must be [n_subs, n_trials]. n_subs and n_trials represent the number of subjects and the
 number of trials.</p></li>
 <li><p><strong>n</strong> (<em>int. Default is 2.</em>) – The number of categories for classification.</p></li>
@@ -113,6 +114,7 @@ If time_win=5, that means each decoding process based on 5 time-points.</p></li>
 <li><p><strong>iter</strong> (<em>int. Default is 10.</em>) – The times for iteration.</p></li>
 <li><p><strong>test_size</strong> (<em>float. Default is 0.3.</em>) – The proportion of the test set.
 test_size should be between 0.0 and 1.0.</p></li>
+<li><p><strong>normalization</strong> (<em>boolean True</em><em> or </em><em>False. Default is False.</em>) – Normalize the data or not.</p></li>
 <li><p><strong>smooth</strong> (<em>boolean True</em><em> or </em><em>False. Default is True.</em>) – Smooth the decoding result or not.</p></li>
 </ul>
 </dd>
@@ -128,7 +130,7 @@ The shape of accuracies is [n_subs, int((n_ts-time_win)/time_step)+1, int((n_ts-
 
 <dl class="py function">
 <dt id="neurora.decoding.ct_decoding_kfold">
-<code class="sig-prename descclassname">neurora.decoding.</code><code class="sig-name descname">ct_decoding_kfold</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">labels</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">navg</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_opt</span><span class="o">=</span><span class="default_value">'average'</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">nfolds</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">nrepeats</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">smooth</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.decoding.ct_decoding_kfold" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.decoding.</code><code class="sig-name descname">ct_decoding_kfold</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">labels</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">navg</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_opt</span><span class="o">=</span><span class="default_value">'average'</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">nfolds</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">nrepeats</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">normalization</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">smooth</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.decoding.ct_decoding_kfold" title="Permalink to this definition">¶</a></dt>
 <dd><p>Conduct cross-temporal decoding for EEG-like data (cross validation)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -136,7 +138,7 @@ The shape of accuracies is [n_subs, int((n_ts-time_win)/time_step)+1, int((n_ts-
 <li><p><strong>data</strong> (<em>array</em>) – The neural data.
 The shape of data must be [n_subs, n_trials, n_chls, n_ts]. n_subs, n_trials, n_chls and n_ts represent the
 number of subjects, the number of trails, the number of channels and the number of time-points.</p></li>
-<li><p><strong>labels</strong> (<em>array</em>) – The labels of each trials.
+<li><p><strong>labels</strong> (<em>array</em>) – The labels of each trial.
 The shape of labels must be [n_subs, n_trials]. n_subs and n_trials represent the number of subjects and the
 number of trials.</p></li>
 <li><p><strong>n</strong> (<em>int. Default is 2.</em>) – The number of categories for classification.</p></li>
@@ -147,9 +149,10 @@ If time_opt=”features”, the time-points in a certain time-window will be use
 <li><p><strong>time_win</strong> (<em>int. Default is 5.</em>) – Set a time-window for decoding for different time-points.
 If time_win=5, that means each decoding process based on 5 time-points.</p></li>
 <li><p><strong>time_step</strong> (<em>int. Default is 5.</em>) – The time step size for each time of decoding.</p></li>
-<li><p><strong>nfolds</strong> (<em>int. Default is 5.</em>) – Number of folds.
+<li><p><strong>nfolds</strong> (<em>int. Default is 5.</em>) – The number of folds.
 nfolds should be at least 2.</p></li>
 <li><p><strong>nrepeats</strong> (<em>int. Default is 2.</em>) – The times for iteration.</p></li>
+<li><p><strong>normalization</strong> (<em>boolean True</em><em> or </em><em>False. Default is False.</em>) – Normalize the data or not.</p></li>
 <li><p><strong>smooth</strong> (<em>boolean True</em><em> or </em><em>False. Default is True.</em>) – Smooth the decoding result or not.</p></li>
 </ul>
 </dd>
@@ -165,7 +168,7 @@ The shape of accuracies is [n_subs, int((n_ts-time_win)/time_step)+1, int((n_ts-
 
 <dl class="py function">
 <dt id="neurora.decoding.tbyt_decoding_holdout">
-<code class="sig-prename descclassname">neurora.decoding.</code><code class="sig-name descname">tbyt_decoding_holdout</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">labels</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">navg</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_opt</span><span class="o">=</span><span class="default_value">'average'</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">test_size</span><span class="o">=</span><span class="default_value">0.3</span></em>, <em class="sig-param"><span class="n">smooth</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.decoding.tbyt_decoding_holdout" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.decoding.</code><code class="sig-name descname">tbyt_decoding_holdout</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">labels</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">navg</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_opt</span><span class="o">=</span><span class="default_value">'average'</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">test_size</span><span class="o">=</span><span class="default_value">0.3</span></em>, <em class="sig-param"><span class="n">normalization</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">smooth</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.decoding.tbyt_decoding_holdout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Conduct time-by-time decoding for EEG-like data (hold out)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -173,7 +176,7 @@ The shape of accuracies is [n_subs, int((n_ts-time_win)/time_step)+1, int((n_ts-
 <li><p><strong>data</strong> (<em>array</em>) – The neural data.
 The shape of data must be [n_subs, n_trials, n_chls, n_ts]. n_subs, n_trials, n_chls and n_ts represent the
 number of subjects, the number of trails, the number of channels and the number of time-points.</p></li>
-<li><p><strong>labels</strong> (<em>array</em>) – The labels of each trials.
+<li><p><strong>labels</strong> (<em>array</em>) – The labels of each trial.
 The shape of labels must be [n_subs, n_trials]. n_subs and n_trials represent the number of subjects and the
 number of trials.</p></li>
 <li><p><strong>n</strong> (<em>int. Default is 2.</em>) – The number of categories for classification.</p></li>
@@ -187,6 +190,7 @@ If time_win=5, that means each decoding process based on 5 time-points.</p></li>
 <li><p><strong>iter</strong> (<em>int. Default is 10.</em>) – The times for iteration.</p></li>
 <li><p><strong>test_size</strong> (<em>float. Default is 0.3.</em>) – The proportion of the test set.
 test_size should be between 0.0 and 1.0.</p></li>
+<li><p><strong>normalization</strong> (<em>boolean True</em><em> or </em><em>False. Default is False.</em>) – Normalize the data or not.</p></li>
 <li><p><strong>smooth</strong> (<em>boolean True</em><em> or </em><em>False. Default is True.</em>) – Smooth the decoding result or not.</p></li>
 </ul>
 </dd>
@@ -202,7 +206,7 @@ The shape of accuracies is [n_subs, int((n_ts-time_win)/time_step)+1].</p>
 
 <dl class="py function">
 <dt id="neurora.decoding.tbyt_decoding_kfold">
-<code class="sig-prename descclassname">neurora.decoding.</code><code class="sig-name descname">tbyt_decoding_kfold</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">labels</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">navg</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_opt</span><span class="o">=</span><span class="default_value">'average'</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">nfolds</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">nrepeats</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">smooth</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.decoding.tbyt_decoding_kfold" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">neurora.decoding.</code><code class="sig-name descname">tbyt_decoding_kfold</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">labels</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">navg</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_opt</span><span class="o">=</span><span class="default_value">'average'</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">nfolds</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">nrepeats</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">normalization</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">smooth</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.decoding.tbyt_decoding_kfold" title="Permalink to this definition">¶</a></dt>
 <dd><p>Conduct time-by-time decoding for EEG-like data (cross validation)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -210,7 +214,7 @@ The shape of accuracies is [n_subs, int((n_ts-time_win)/time_step)+1].</p>
 <li><p><strong>data</strong> (<em>array</em>) – The neural data.
 The shape of data must be [n_subs, n_trials, n_chls, n_ts]. n_subs, n_trials, n_chls and n_ts represent the
 number of subjects, the number of trails, the number of channels and the number of time-points.</p></li>
-<li><p><strong>labels</strong> (<em>array</em>) – The labels of each trials.
+<li><p><strong>labels</strong> (<em>array</em>) – The labels of each trial.
 The shape of labels must be [n_subs, n_trials]. n_subs and n_trials represent the number of subjects and the
 number of trials.</p></li>
 <li><p><strong>n</strong> (<em>int. Default is 2.</em>) – The number of categories for classification.</p></li>
@@ -221,9 +225,10 @@ If time_opt=”features”, the time-points in a certain time-window will be use
 <li><p><strong>time_win</strong> (<em>int. Default is 5.</em>) – Set a time-window for decoding for different time-points.
 If time_win=5, that means each decoding process based on 5 time-points.</p></li>
 <li><p><strong>time_step</strong> (<em>int. Default is 5.</em>) – The time step size for each time of decoding.</p></li>
-<li><p><strong>nfolds</strong> (<em>int. Default is 5.</em>) – Number of folds.
+<li><p><strong>nfolds</strong> (<em>int. Default is 5.</em>) – The number of folds.
 k should be at least 2.</p></li>
 <li><p><strong>nrepeats</strong> (<em>int. Default is 2.</em>) – The times for iteration.</p></li>
+<li><p><strong>normalization</strong> (<em>boolean True</em><em> or </em><em>False. Default is False.</em>) – Normalize the data or not.</p></li>
 <li><p><strong>smooth</strong> (<em>boolean True</em><em> or </em><em>False. Default is True.</em>) – Smooth the decoding result or not.</p></li>
 </ul>
 </dd>
@@ -238,8 +243,8 @@ The shape of accuracies is [n_subs, int((n_ts-time_win)/time_step)+1].</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="neurora.decoding.unidirectional_transfer_decoding_holdout">
-<code class="sig-prename descclassname">neurora.decoding.</code><code class="sig-name descname">unidirectional_transfer_decoding_holdout</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data1</span></em>, <em class="sig-param"><span class="n">labels1</span></em>, <em class="sig-param"><span class="n">data2</span></em>, <em class="sig-param"><span class="n">labels2</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">navg</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_opt</span><span class="o">=</span><span class="default_value">'average'</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">smooth</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.decoding.unidirectional_transfer_decoding_holdout" title="Permalink to this definition">¶</a></dt>
+<dt id="neurora.decoding.unidirectional_transfer_decoding">
+<code class="sig-prename descclassname">neurora.decoding.</code><code class="sig-name descname">unidirectional_transfer_decoding</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data1</span></em>, <em class="sig-param"><span class="n">labels1</span></em>, <em class="sig-param"><span class="n">data2</span></em>, <em class="sig-param"><span class="n">labels2</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">navg</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_opt</span><span class="o">=</span><span class="default_value">'average'</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">iter</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">normalization</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">smooth</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.decoding.unidirectional_transfer_decoding" title="Permalink to this definition">¶</a></dt>
 <dd><p>Conduct unidirectional transfer decoding for EEG-like data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -247,11 +252,11 @@ The shape of accuracies is [n_subs, int((n_ts-time_win)/time_step)+1].</p>
 <li><p><strong>data1</strong> (<em>array</em>) – The neural data under condition1.
 The shape of data must be [n_subs, n_trials, n_chls, n_ts]. n_subs, n_trials, n_chls and n_ts represent the
 number of subjects, the number of trails, the number of channels and the number of time-points.</p></li>
-<li><p><strong>labels1</strong> (<em>array</em>) – The labels of each trials under condition1.
+<li><p><strong>labels1</strong> (<em>array</em>) – The labels of each trial under condition1.
 The shape of labels must be [n_subs, n_trials]. n_subs and n_trials represent the number of subjects and the
 number of trials.</p></li>
 <li><p><strong>data2</strong> (<em>array</em>) – The neural data under condition2.</p></li>
-<li><p><strong>labels2</strong> (<em>array</em>) – The labels of each trials under condition2.</p></li>
+<li><p><strong>labels2</strong> (<em>array</em>) – The labels of each trial under condition2.</p></li>
 <li><p><strong>n</strong> (<em>int. Default is 2.</em>) – The number of categories for classification.</p></li>
 <li><p><strong>navg</strong> (<em>int. Default is 5.</em>) – The number of trials used to average.</p></li>
 <li><p><strong>time_opt</strong> (<em>string &quot;average&quot;</em><em> or </em><em>&quot;features&quot;. Default is &quot;average&quot;.</em>) – Average the time-points or regard the time points as features for classification
@@ -261,6 +266,7 @@ If time_opt=”features”, the time-points in a certain time-window will be use
 If time_win=5, that means each decoding process based on 5 time-points.</p></li>
 <li><p><strong>time_step</strong> (<em>int. Default is 5.</em>) – The time step size for each time of decoding.</p></li>
 <li><p><strong>iter</strong> (<em>int. Default is 10.</em>) – The times for iteration.</p></li>
+<li><p><strong>normalization</strong> (<em>boolean True</em><em> or </em><em>False. Default is False.</em>) – Normalize the data or not.</p></li>
 <li><p><strong>smooth</strong> (<em>boolean True</em><em> or </em><em>False. Default is True.</em>) – Smooth the decoding result or not.</p></li>
 </ul>
 </dd>
@@ -334,7 +340,7 @@ The shape of accuracies is [n_subs, int((n_ts1-time_win)/time_step)+1, int((n_ts
         <li class="right" >
           <a href="rsa.html" title="Representational Similarity Analysis (RSA)"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.13 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Conduct Classification-based EEG Decoding</a></li> 
       </ul>
     </div>

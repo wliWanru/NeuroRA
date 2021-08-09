@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculate the RDM &#8212; NeuroRA 1.1.5.0 documentation</title>
+    <title>Calculate the RDM &#8212; NeuroRA 1.1.5.13 documentation</title>
     <link rel="stylesheet" href="static/classic.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     
@@ -35,7 +35,7 @@
         <li class="right" >
           <a href="stps_cal.html" title="Calculate the Spatiotemporal Pattern Similarity (STPS)"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.13 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Calculate the RDM</a></li> 
       </ul>
     </div>  
@@ -122,7 +122,7 @@ If method=’mahalanobis’, the dissimilarity is calculated by Mahalanobis Dist
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p><strong>RDM(s)</strong> – The EEG/MEG/fNIR RDM.
+<dd class="field-even"><p><p><strong>RDM(s)</strong> – The EEG/MEG/fNIR/other EEG-like RDM.
 If sub_opt=0 &amp; chl_opt=0 &amp; time_opt=0, return only one RDM.</p>
 <blockquote>
 <div><p>The shape is [n_cons, n_cons].</p>
@@ -153,6 +153,58 @@ If sub_opt=0 &amp; chl_opt=0 &amp; time_opt=0, return only one RDM.</p>
 <p>Sometimes, the numbers of trials under different conditions are not same. In NeuroRA, we recommend users to average
 the trials under a same condition firstly in this situation. Thus, the shape of input (EEG_data) should be
 [n_cons, n_subs, 1, n_chls, n_ts].</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="neurora.rdm_cal.eegRDM_bydecoding">
+<code class="sig-prename descclassname">neurora.rdm_cal.</code><code class="sig-name descname">eegRDM_bydecoding</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">EEG_data</span></em>, <em class="sig-param"><span class="n">sub_opt</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">navg</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_opt</span><span class="o">=</span><span class="default_value">'average'</span></em>, <em class="sig-param"><span class="n">nfolds</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">nrepeats</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">normalization</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.rdm_cal.eegRDM_bydecoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the Representational Dissimilarity Matrix(Matrices) - RDM(s) using classification-based neural decoding
+based on EEG-like data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>EEG_data</strong> (<em>array</em>) – The EEG/MEG/fNIRS data.
+The shape of EEGdata must be [n_cons, n_subs, n_trials, n_chls, n_ts].
+n_cons, n_subs, n_trials, n_chls &amp; n_ts represent the number of conidtions, the number of subjects, the number
+of trials, the number of channels &amp; the number of time-points, respectively.</p></li>
+<li><p><strong>sub_opt</strong> (<em>int 0</em><em> or </em><em>1. Default is 1.</em>) – Return the subject-result or average-result.
+If sub_opt=0, return the average result.
+If sub_opt=1, return the results of each subject.</p></li>
+<li><p><strong>time_win</strong> (<em>int. Default is 5.</em>) – Set a time-window for calculating the RDM for different time-points.
+Only when time_opt=1, time_win works.
+If time_win=5, that means each calculation process based on 5 time-points.</p></li>
+<li><p><strong>time_step</strong> (<em>int. Default is 5.</em>) – The time step size for each time of calculating.
+Only when time_opt=1, time_step works.</p></li>
+<li><p><strong>navg</strong> (<em>int. Default is 5.</em>) – The number of trials used to average.</p></li>
+<li><p><strong>time_opt</strong> (<em>string &quot;average&quot;</em><em> or </em><em>&quot;features&quot;. Default is &quot;average&quot;.</em>) – Average the time-points or regard the time points as features for classification
+If time_opt=”average”, the time-points in a certain time-window will be averaged.
+If time_opt=”features”, the time-points in a certain time-window will be used as features for classification.</p></li>
+<li><p><strong>nfolds</strong> (<em>int. Default is 5.</em>) – The number of folds.
+k should be at least 2.</p></li>
+<li><p><strong>nrepeats</strong> (<em>int. Default is 2.</em>) – The times for iteration.</p></li>
+<li><p><strong>normalization</strong> (<em>boolean True</em><em> or </em><em>False. Default is False.</em>) – Normalize the data or not.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><strong>RDM(s)</strong> – The EEG/MEG/fNIR/other EEG-like RDM.
+If sub_opt=0, return int((n_ts-time_win)/time_step)+1 RDMs.</p>
+<blockquote>
+<div><p>The shape is [int((n_ts-time_win)/time_step)+1, n_cons, n_cons].</p>
+</div></blockquote>
+<dl class="simple">
+<dt>If sub_opt=1, return n_subs*int((n_ts-time_win)/time_step)+1 RDM.</dt><dd><p>The shape is [n_subs, int((n_ts-time_win)/time_step)+1, n_cons, n_cons].</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Sometimes, the numbers of trials under different conditions are not same. In NeuroRA, we recommend users to sample
+randomly from the trials under each conditions to keep the numbers of trials under different conditions same, and
+you can iterate multiple times.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -287,7 +339,7 @@ If sub_opt=1, the shape of RDM is [n_subs, n_cons, n_cons].</p>
         <li class="right" >
           <a href="stps_cal.html" title="Calculate the Spatiotemporal Pattern Similarity (STPS)"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.13 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Calculate the RDM</a></li> 
       </ul>
     </div>
