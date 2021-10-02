@@ -2,12 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f96de87-b4a9-466e-9c57-851a40404f91" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/decoding.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/doctrees/decoding.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/doctrees/environment.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/rdm_cal.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/doctrees/rdm_cal.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/rsa_plot.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/doctrees/rsa_plot.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/stuff.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/doctrees/stuff.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/decoding.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/decoding.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/download.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/download.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/index.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/index.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/isc_cal.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/isc_cal.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/nii_save.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/nii_save.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/nps_cal.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/nps_cal.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/overview.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/overview.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/rdm_cal.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/rdm_cal.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/rsa.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/rsa.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/rsa_plot.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/rsa_plot.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/stats_cal.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/stats_cal.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/stps_cal.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/stps_cal.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/stuff.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/stuff.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/basic.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/basic.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/classic.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/classic.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/doctools.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/doctools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/documentation_options.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/documentation_options.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/file.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/file.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/jquery-3.5.1.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/jquery-3.5.1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/language_data.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/language_data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/minus.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/minus.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/plus.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/plus.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/pygments.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/pygments.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/searchtools.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/searchtools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/underscore-1.3.1.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/underscore-1.3.1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/underscore.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/underscore.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/build/html/decoding.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/decoding.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/build/html/download.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/download.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/build/html/genindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/genindex.html" afterDir="false" />
@@ -15,49 +37,15 @@
       <change beforePath="$PROJECT_DIR$/docs/build/html/isc_cal.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/isc_cal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/build/html/nii_save.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/nii_save.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/build/html/nps_cal.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/nps_cal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/objects.inv" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/objects.inv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/build/html/overview.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/overview.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/build/html/py-modindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/py-modindex.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/build/html/rdm_cal.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/rdm_cal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/build/html/rsa.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/rsa.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/build/html/rsa_plot.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/rsa_plot.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/build/html/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/searchindex.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/sources/decoding.rst.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/sources/download.rst.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/sources/index.rst.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/sources/isc_cal.rst.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/sources/nii_save.rst.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/sources/nps_cal.rst.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/sources/overview.rst.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/sources/rdm_cal.rst.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/sources/rsa.rst.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/sources/rsa_plot.rst.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/sources/stats_cal.rst.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/sources/stps_cal.rst.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/sources/stuff.rst.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/static/basic.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/static/classic.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/static/doctools.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/static/documentation_options.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/static/file.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/static/jquery-3.5.1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/static/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/static/language_data.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/static/minus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/static/plus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/static/pygments.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/static/searchtools.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/static/sidebar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/static/underscore-1.3.1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/static/underscore.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/build/html/stats_cal.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/stats_cal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/build/html/stps_cal.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/stps_cal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/build/html/stuff.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/stuff.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/source/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/conf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/Tutorial.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/Tutorial.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/rsa_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/rsa_plot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -198,8 +186,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/docs/source/conf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+            <state relative-caret-position="437">
+              <caret line="32" column="69" selection-start-line="32" selection-start-column="69" selection-end-line="32" selection-end-column="69" />
               <folding>
                 <element signature="e#232#241#0" expanded="true" />
               </folding>
@@ -428,6 +416,21 @@
               <item name="NeuroRA-master" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
               <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NeuroRA-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NeuroRA-master" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NeuroRA-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NeuroRA-master" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+              <item name="sources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NeuroRA-master" type="b2602c69:ProjectViewProjectNode" />
@@ -763,7 +766,7 @@
       <workItem from="1628784211293" duration="1671000" />
       <workItem from="1628870412760" duration="2555000" />
       <workItem from="1631754110332" duration="950000" />
-      <workItem from="1632158673682" duration="9901000" />
+      <workItem from="1632158673682" duration="10521000" />
     </task>
     <servers />
   </component>
@@ -800,11 +803,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1411473000" />
+    <option name="totallyTimeSpent" value="1412093000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="28" y="25" width="1244" height="777" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17304492" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1171,8 +1173,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/source/conf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+        <state relative-caret-position="437">
+          <caret line="32" column="69" selection-start-line="32" selection-start-column="69" selection-end-line="32" selection-end-column="69" />
           <folding>
             <element signature="e#232#241#0" expanded="true" />
           </folding>
