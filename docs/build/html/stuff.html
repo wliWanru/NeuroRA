@@ -5,15 +5,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Others &#8212; NeuroRA 1.1.5.15 documentation</title>
-    <link rel="stylesheet" href="static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <title>Others &#8212; NeuroRA 1.1.5.16 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
-    <script id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
-    <script src="static/jquery.js"></script>
-    <script src="static/underscore.js"></script>
-    <script src="static/doctools.js"></script>
-    <script src="static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -31,7 +31,7 @@
         <li class="right" >
           <a href="rsa_plot.html" title="Visualization for Results"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.15 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.16 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Others</a></li> 
       </ul>
     </div>  
@@ -671,6 +671,54 @@ Cosine Similarities. If method=’distance’, calculate the Euclidean Distances
 <code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">show_progressbar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">str</span></em>, <em class="sig-param"><span class="n">cur</span></em>, <em class="sig-param"><span class="n">total</span><span class="o">=</span><span class="default_value">100</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.show_progressbar" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py function">
+<dt id="neurora.stuff.smooth_1d">
+<code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">smooth_1d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.smooth_1d" title="Permalink to this definition">¶</a></dt>
+<dd><p>smoothing for 1-D results</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array</em>) – The results.
+The shape of x should be [n_sub, n_ts]. n_subs, n_ts represent the number of subjects and the number of
+time-points.</p></li>
+<li><p><strong>n</strong> (<em>int. Default is 5.</em>) – The smoothing step is n.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>x_smooth</strong> – The results after smoothing.
+The shape of x_smooth should be [n_subs, n_ts]. n_subs, n_ts represent the number of subjects and the number of
+time-points.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="neurora.stuff.smooth_2d">
+<code class="sig-prename descclassname">neurora.stuff.</code><code class="sig-name descname">smooth_2d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.stuff.smooth_2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>smoothing for 2-D results</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array</em>) – The results.
+The shape of x should be [n_sub, n_ts1, n_ts2]. n_subs represents the number of subjects. n_ts1 &amp; n_ts2
+represent the numbers of time-points.</p></li>
+<li><p><strong>n</strong> (<em>int. Default is 5.</em>) – The smoothing step is n.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>x_smooth</strong> – The results after smoothing.
+The shape of x should be [n_sub, n_ts1, n_ts2]. n_subs represents the number of subjects. n_ts1 &amp; n_ts2
+represent the numbers of time-points.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 </div>
 
@@ -695,7 +743,7 @@ Cosine Similarities. If method=’distance’, calculate the Euclidean Distances
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="sources/stuff.rst.txt"
+      <li><a href="_sources/stuff.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -725,7 +773,7 @@ Cosine Similarities. If method=’distance’, calculate the Euclidean Distances
         <li class="right" >
           <a href="rsa_plot.html" title="Visualization for Results"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.15 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.16 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Others</a></li> 
       </ul>
     </div>

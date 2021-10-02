@@ -5,15 +5,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculate the RDM &#8212; NeuroRA 1.1.5.15 documentation</title>
-    <link rel="stylesheet" href="static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <title>Calculate the RDM &#8212; NeuroRA 1.1.5.16 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
-    <script id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
-    <script src="static/jquery.js"></script>
-    <script src="static/underscore.js"></script>
-    <script src="static/doctools.js"></script>
-    <script src="static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -35,7 +35,7 @@
         <li class="right" >
           <a href="stps_cal.html" title="Calculate the Spatiotemporal Pattern Similarity (STPS)"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.15 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.16 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Calculate the RDM</a></li> 
       </ul>
     </div>  
@@ -62,12 +62,11 @@ The shape of bhv_data must be [n_cons, n_subs, n_trials].
 n_cons, n_subs &amp; n_trials represent the number of conidtions, the number of subjects &amp; the number of trials,
 respectively.</p></li>
 <li><p><strong>sub_opt</strong> (<em>int 0</em><em> or </em><em>1. Default is 1.</em>) – Return the results for each subject or after averaging.
-If sub_opt=1, return the results of each subject.
-If sub_opt=0, return the average result.</p></li>
-<li><p><strong>method</strong> (<em>string 'correlation'</em><em> or </em><em>'euclidean'</em><em> or </em><em>'mahalanobis'. Default is 'correlation'.</em>) – The method to calculate the dissimilarities.
+If sub_opt=1, calculate the results of each subject (using the absolute distance).
+If sub_opt=0, calculate the results averaging the trials and taking the subjects as the features.</p></li>
+<li><p><strong>method</strong> (<em>string 'correlation'</em><em> or </em><em>'euclidean'. Default is 'correlation'.</em>) – The method to calculate the dissimilarities.
 If method=’correlation’, the dissimilarity is calculated by Pearson Correlation.
-If method=’euclidean’, the dissimilarity is calculated by Euclidean Distance, the results will be normalized.
-If method=’mahalanobis’, the dissimilarity is calculated by Mahalanobis Distance, the results will be normalized.</p></li>
+If method=’euclidean’, the dissimilarity is calculated by Euclidean Distance, the results will be normalized.</p></li>
 <li><p><strong>abs</strong> (<em>boolean True</em><em> or </em><em>False. Default is True.</em>) – Calculate the absolute value of Pearson r or not. Only works when method=’correlation’.</p></li>
 </ul>
 </dd>
@@ -83,7 +82,7 @@ If sub_opt=0, return only one RDM. The shape is [n_cons, n_cons].</p>
 <p class="rubric">Notes</p>
 <dl class="simple">
 <dt>This function can also be used to calculate the RDM for computational simulation data.</dt><dd><p>For example, users can extract the activations for a certain layer i which includes Nn nodes in a deep
-convolutional neural network (DCNN) corresponding to Ni images. Thus, the input could be a [Ni, 1, Nn] matrix, M.
+convolutional neural network (DCNN) corresponding to Ni images. Thus, the input could be a [Ni, 1, Nn] matrix M.
 Using “bhvRDM(M, sub_opt=0)”, users can obtain the DCNN RDM for layer i.</p>
 </dd>
 </dl>
@@ -114,10 +113,9 @@ Only when time_opt=1, time_win works.
 If time_win=5, that means each calculation process based on 5 time-points.</p></li>
 <li><p><strong>time_step</strong> (<em>int. Default is 5.</em>) – The time step size for each time of calculating.
 Only when time_opt=1, time_step works.</p></li>
-<li><p><strong>method</strong> (<em>string 'correlation'</em><em> or </em><em>'euclidean'</em><em> or </em><em>'mahalanobis'. Default is 'correlation'.</em>) – The method to calculate the dissimilarities.
+<li><p><strong>method</strong> (<em>string 'correlation'</em><em> or </em><em>'euclidean'. Default is 'correlation'.</em>) – The method to calculate the dissimilarities.
 If method=’correlation’, the dissimilarity is calculated by Pearson Correlation.
-If method=’euclidean’, the dissimilarity is calculated by Euclidean Distance, the results will be normalized.
-If method=’mahalanobis’, the dissimilarity is calculated by Mahalanobis Distance, the results will be normalized.</p></li>
+If method=’euclidean’, the dissimilarity is calculated by Euclidean Distance, the results will be normalized.</p></li>
 <li><p><strong>abs</strong> (<em>boolean True</em><em> or </em><em>False. Default is True.</em>) – Calculate the absolute value of Pearson r or not.</p></li>
 </ul>
 </dd>
@@ -224,10 +222,9 @@ kx, ky, kz should be odd.</p></li>
 <li><p><strong>sub_opt</strong> (<em>int 0</em><em> or </em><em>1. Default is 1.</em>) – Return the subject-result or average-result.
 If sub_opt=0, return the average result.
 If sub_opt=1, return the results of each subject.</p></li>
-<li><p><strong>method</strong> (<em>string 'correlation'</em><em> or </em><em>'euclidean'</em><em> or </em><em>'mahalanobis'. Default is 'correlation'.</em>) – The method to calculate the dissimilarities.
+<li><p><strong>method</strong> (<em>string 'correlation'</em><em> or </em><em>'euclidean'. Default is 'correlation'.</em>) – The method to calculate the dissimilarities.
 If method=’correlation’, the dissimilarity is calculated by Pearson Correlation.
-If method=’euclidean’, the dissimilarity is calculated by Euclidean Distance, the results will be normalized.
-If method=’mahalanobis’, the dissimilarity is calculated by Mahalanobis Distance, the results will be normalized.</p></li>
+If method=’euclidean’, the dissimilarity is calculated by Euclidean Distance, the results will be normalized.</p></li>
 <li><p><strong>abs</strong> (<em>boolean True</em><em> or </em><em>False. Default is True.</em>) – Calculate the absolute value of Pearson r or not.</p></li>
 </ul>
 </dd>
@@ -259,10 +256,9 @@ The size of the fMRI-img. nx, ny, nz represent the number of voxels along the x,
 <li><p><strong>sub_opt</strong> (<em>int 0</em><em> or </em><em>1. Default is 1.</em>) – Return the subject-result or average-result.
 If sub_opt=0, return the average result.
 If sub_opt=1, return the results of each subject.</p></li>
-<li><p><strong>method</strong> (<em>string 'correlation'</em><em> or </em><em>'euclidean'</em><em> or </em><em>'mahalanobis'. Default is 'correlation'.</em>) – The method to calculate the dissimilarities.
+<li><p><strong>method</strong> (<em>string 'correlation'</em><em> or </em><em>'euclidean'. Default is 'correlation'.</em>) – The method to calculate the dissimilarities.
 If method=’correlation’, the dissimilarity is calculated by Pearson Correlation.
-If method=’euclidean’, the dissimilarity is calculated by Euclidean Distance, the results will be normalized.
-If method=’mahalanobis’, the dissimilarity is calculated by Mahalanobis Distance, the results will be normalized.</p></li>
+If method=’euclidean’, the dissimilarity is calculated by Euclidean Distance, the results will be normalized.</p></li>
 <li><p><strong>abs</strong> (<em>boolean True</em><em> or </em><em>False. Default is True.</em>) – Calculate the absolute value of Pearson r or not.</p></li>
 </ul>
 </dd>
@@ -306,7 +302,7 @@ If sub_opt=1, the shape of RDM is [n_subs, n_cons, n_cons].</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="sources/rdm_cal.rst.txt"
+      <li><a href="_sources/rdm_cal.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -339,7 +335,7 @@ If sub_opt=1, the shape of RDM is [n_subs, n_cons, n_cons].</p>
         <li class="right" >
           <a href="stps_cal.html" title="Calculate the Spatiotemporal Pattern Similarity (STPS)"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.15 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.5.16 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Calculate the RDM</a></li> 
       </ul>
     </div>
