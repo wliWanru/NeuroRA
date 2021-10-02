@@ -344,7 +344,7 @@ def plot_corrs_by_time(corrs, labels=None, time_unit=[0, 0.1]):
 
 def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval=0.01, smooth=True, p=0.05, cbpt=True,
                            clusterp=0.05, stats_time=[0, 1], color='r', xlim=[0, 1], ylim=[-0.1, 0.8],
-                           figsize=[6.4, 3.6], x0=0, fontsize=16, avgshow=False):
+                           figsize=[6.4, 3.6], x0=0, ticksize=12, fontsize=16, markersize=2, avgshow=False):
 
     """
     Plot the time-by-time Similarities with statistical results
@@ -383,8 +383,12 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
         The size of the figure.
     x0 : float. Default is 0.
         The Y-axis is at x=x0.
+    ticksize : int or float. Default is 12.
+        The size of the ticks.
     fontsize : int or float. Default is 16.
         The fontsize of the labels.
+    markersize : int or float. Default is 2.
+        The size of significant marker.
     avgshow : boolen True or False. Default is False.
         Show the averaging decoding accuracies or not.
     """
@@ -452,7 +456,7 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
     for t in range(nts):
         if ps[t] == 1:
             plt.plot(t*tstep+start_time+0.5*tstep, (ymaxlim-yminlim)*0.95+yminlim, 's',
-                     color=color, alpha=0.8, markersize=2)
+                     color=color, alpha=0.8, markersize=markersize)
             xi = [t*tstep+start_time, t*tstep+tstep+start_time]
             ymin = [0]
             ymax = [avg[t]-err[t]]
@@ -474,7 +478,7 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
     plt.fill_between(x, avg + err, avg - err, facecolor=color, alpha=0.8)
     plt.ylim(yminlim, ymaxlim)
     plt.xlim(xlim[0], xlim[1])
-    plt.tick_params(labelsize=12)
+    plt.tick_params(labelsize=ticksize)
     plt.xlabel("Time (s)", fontsize=fontsize)
     plt.ylabel("Representational Similarity", fontsize=fontsize)
     plt.show()
@@ -486,7 +490,7 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
 
 def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, chance=0.5, p=0.05, cbpt=True,
                            clusterp=0.05, stats_time=[0, 1], color='r', xlim=[0, 1], ylim=[0.4, 0.8],
-                           figsize=[6.4, 3.6], x0=0, fontsize=16, avgshow=False):
+                           figsize=[6.4, 3.6], x0=0, ticksize=12, fontsize=16, markersize=2, avgshow=False):
 
     """
     Plot the time-by-time decoding accuracies
@@ -523,8 +527,12 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
         The size of the figure.
     x0 : float. Default is 0.
         The Y-axis is at x=x0.
+    ticksize : int or float. Default is 12.
+        The size of the ticks.
     fontsize : int or float. Default is 16.
         The fontsize of the labels.
+    markersize : int or float. Default is 2.
+        The size of significant marker.
     avgshow : boolen True or False. Default is False.
         Show the averaging decoding accuracies or not.
     """
@@ -579,7 +587,7 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
     for t in range(nts):
         if ps[t] == 1:
             plt.plot(t*tstep+start_time+0.5*tstep, (ymaxlim-yminlim)*0.95+yminlim, 's', color=color, alpha=0.8,
-                     markersize=2)
+                     markersize=markersize)
             xi = [t*tstep+start_time, t*tstep+tstep+start_time]
             ymin = [chance]
             ymax = [avg[t] - err[t]]
@@ -600,7 +608,7 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
     plt.fill_between(x, avg+err, avg-err, facecolor=color, alpha=0.8)
     plt.ylim(yminlim, ymaxlim)
     plt.xlim(xlim[0], xlim[1])
-    plt.tick_params(labelsize=12)
+    plt.tick_params(labelsize=ticksize)
     plt.xlabel("Time (s)", fontsize=fontsize)
     plt.ylabel("Decoding Accuracy", fontsize=fontsize)
     plt.show()
@@ -610,7 +618,7 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
 
 def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_interval=0.01, chance=0.5, p=0.05, cbpt=True,
                                 clusterp=0.05, stats_time=[0, 1], color1='r', color2='b', xlim=[0, 1], ylim=[0.4, 0.8],
-                                figsize=[6.4, 3.6], x0=0, fontsize=16, avgshow=False):
+                                figsize=[6.4, 3.6], x0=0, ticksize=12, fontsize=16, markersize=2, avgshow=False):
 
     """
     Plot the differences of time-by-time decoding accuracies between two conditions
@@ -653,8 +661,12 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
         The size of the figure.
     x0 : float. Default is 0.
         The Y-axis is at x=x0.
+    ticksize : int or float. Default is 12.
+        The size of the ticks.
     fontsize : int or float. Default is 16.
         The fontsize of the labels.
+    markersize : int or float. Default is 2.
+        The size of significant marker.
     avgshow : boolen True or False. Default is False.
         Show the averaging decoding accuracies or not.
     """
@@ -736,10 +748,10 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
     for t in range(nts):
         if ps1[t] == 1:
             plt.plot(t*tstep+start_time+0.5*tstep, (ymaxlim-yminlim)*0.95+yminlim, 's', color=color1, alpha=0.8,
-                     markersize=2)
+                     markersize=markersize)
         if ps2[t] == 1:
             plt.plot(t*tstep+start_time+0.5*tstep, (ymaxlim-yminlim)*0.91+yminlim, 's', color=color2, alpha=0.8,
-                     markersize=2)
+                     markersize=markersize)
         if ps[t] == 1:
             xi = [t*tstep+start_time, t*tstep+tstep+start_time]
             ymin = [avg2[t] + err2[t]]
@@ -768,7 +780,7 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
     plt.fill_between(x, avg2+err2, avg2-err2, facecolor=color2, alpha=0.8)
     plt.ylim(yminlim, ymaxlim)
     plt.xlim(xlim[0], xlim[1])
-    plt.tick_params(labelsize=12)
+    plt.tick_params(labelsize=ticksize)
     plt.xlabel("Time (s)", fontsize=fontsize)
     plt.ylabel("Decoding Accuracy", fontsize=fontsize)
     plt.show()
@@ -779,7 +791,7 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
 def plot_ct_decoding_acc(acc, start_timex=0, end_timex=1, start_timey=0, end_timey=1, time_intervalx=0.01,
                          time_intervaly=0.01, chance=0.5, p=0.05, cbpt=True, clusterp=0.05, stats_timex=[0, 1],
                          stats_timey=[0, 1], xlim=[0, 1], ylim=[0, 1], clim=[0.4, 0.8], figsize=[6.4, 4.8],
-                         cmap="viridis", fontsize=16):
+                         cmap="viridis", ticksize=12, fontsize=16):
 
     """
     Plot the cross-temporal decoding accuracies
@@ -824,6 +836,8 @@ def plot_ct_decoding_acc(acc, start_timex=0, end_timex=1, start_timey=0, end_tim
         The size of the figure.
     cmap : matplotlib colormap or None. Default is None.
         The colormap for the figure.
+    ticksize : int or float. Default is 12.
+        The size of the ticks.
     fontsize : int or float. Default is 16.
         The fontsize of the labels.
     """
@@ -899,12 +913,12 @@ def plot_ct_decoding_acc(acc, start_timex=0, end_timex=1, start_timey=0, end_tim
     plt.imshow(avg, extent=(start_timex, end_timex, start_timey, end_timey), cmap=cmap, origin="lower",
                clim=(cminlim, cmaxlim))
     cb = plt.colorbar()
-    cb.ax.tick_params(labelsize=12)
-    font = {'size': 15}
+    cb.ax.tick_params(labelsize=ticksize)
+    font = {'size': ticksize+2}
     cb.set_label("Decoding Accuracy", fontdict=font)
     plt.xlim(xlim[0], xlim[1])
     plt.ylim(ylim[0], ylim[1])
-    plt.tick_params(labelsize=12)
+    plt.tick_params(labelsize=ticksize)
     plt.xlabel("Training Time (s)", fontsize=fontsize)
     plt.ylabel("Test Time (s)", fontsize=fontsize)
     plt.show()
@@ -913,8 +927,9 @@ def plot_ct_decoding_acc(acc, start_timex=0, end_timex=1, start_timey=0, end_tim
 ' a function for plotting the differences of cross-temporal decoding accuracies between two conditions '
 
 def plot_ct_diff_decoding_acc(acc1, acc2, start_timex=0, end_timex=1, start_timey=0, end_timey=1, time_intervalx=0.01,
-                         time_intervaly=0.01, p=0.05, cbpt=True, clusterp=0.05, stats_timex=[0, 1], stats_timey=[0, 1],
-                         xlim=[0, 1], ylim=[0, 1], clim=[0.4, 0.8], figsize=[6.4, 4.8], cmap="viridis", fontsize=16):
+                              time_intervaly=0.01, p=0.05, cbpt=True, clusterp=0.05, stats_timex=[0, 1],
+                              stats_timey=[0, 1], xlim=[0, 1], ylim=[0, 1], clim=[0.4, 0.8], figsize=[6.4, 4.8],
+                              cmap="viridis", ticksize=12, fontsize=16):
 
     """
     Plot the differences of cross-temporal decoding accuracies between two conditions
@@ -963,6 +978,8 @@ def plot_ct_diff_decoding_acc(acc1, acc2, start_timex=0, end_timex=1, start_time
         The size of the figure.
     cmap : matplotlib colormap or None. Default is None.
         The colormap for the figure.
+    ticksize : int or float. Default is 12.
+        The size of the ticks.
     fontsize : int or float. Default is 16.
         The fontsize of the labels.
     """
@@ -1040,12 +1057,12 @@ def plot_ct_diff_decoding_acc(acc1, acc2, start_timex=0, end_timex=1, start_time
     plt.imshow(avg, extent=(start_timex, end_timex, start_timey, end_timey), cmap=cmap, origin="lower",
                clim=(cminlim, cmaxlim))
     cb = plt.colorbar()
-    cb.ax.tick_params(labelsize=12)
-    font = {'size': 15}
+    cb.ax.tick_params(labelsize=ticksize)
+    font = {'size': ticksize+2}
     cb.set_label("Differences of Decoding Accuracies", fontdict=font)
     plt.xlim(xlim[0], xlim[1])
     plt.ylim(ylim[0], ylim[1])
-    plt.tick_params(labelsize=12)
+    plt.tick_params(labelsize=ticksize)
     plt.xlabel("Training Time (s)", fontsize=fontsize)
     plt.ylabel("Test Time (s)", fontsize=fontsize)
     plt.show()
@@ -1149,26 +1166,28 @@ def plot_corrs_hotmap(corrs, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], smo
         elif len(corrs.shape) == 2:
             rlts = corrs
 
-    # get min of lims & max of lims
-    limmin = lim[0]
-    limmax = lim[1]
-
-    if cmap == None:
-        plt.imshow(rlts, extent=(start_t, end_t, 0, nchls*0.16), clim=(limmin, limmax), origin='lower', cmap='inferno')
-    else:
-        plt.imshow(rlts, extent=(start_t, end_t, 0, nchls * 0.16), clim=(limmin, limmax), origin='lower', cmap=cmap)
-
     fig = plt.gcf()
     size = fig.get_size_inches()
 
     if figsize == None:
-        size_x = ts*tstep*(size[0]-2)+2
-        size_y = nchls*0.2*(size[1]-1.5)+1.5
+        size_x = ts * tstep * (size[0] - 2) + 2
+        size_y = nchls * 0.2 * (size[1] - 1.5) + 1.5
     else:
         size_x = figsize[0]
         size_y = figsize[1]
 
     fig.set_size_inches(size_x, size_y)
+
+    delta = (size_y * 3) / (size_x * 4)
+
+    # get min of lims & max of lims
+    limmin = lim[0]
+    limmax = lim[1]
+
+    if cmap == None:
+        plt.imshow(rlts, extent=(start_t, end_t, 0, nchls*0.16*delta), clim=(limmin, limmax), origin='lower', cmap='inferno')
+    else:
+        plt.imshow(rlts, extent=(start_t, end_t, 0, nchls * 0.16*delta), clim=(limmin, limmax), origin='lower', cmap=cmap)
 
     cb = plt.colorbar()
     cb.ax.tick_params(labelsize=16)
@@ -1178,7 +1197,7 @@ def plot_corrs_hotmap(corrs, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], smo
     xi = []
 
     for i in range(nchls):
-        xi.append(0.16*i + 0.08)
+        xi.append(0.16*delta*i + 0.08*delta)
 
     yi = chllabels
 
@@ -1195,7 +1214,7 @@ def plot_corrs_hotmap(corrs, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], smo
 ' a function for plotting the hotmap of correlations coefficients for channels/regions by time sequence with the significant outline '
 
 def plot_corrs_hotmap_withstats(corrs, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], p=0.05, cbpt=False,
-                                clusterp=0.05, stats_time=[0, 1], smooth=False, figsize=None, cmap=None):
+                                clusterp=0.05, stats_time=[0, 1], smooth=False, ticksize=18, figsize=None, cmap=None):
 
     """
     plot the hotmap of correlation coefficients for channels/regions by time sequence with the significant outline
@@ -1225,6 +1244,8 @@ def plot_corrs_hotmap_withstats(corrs, chllabels=None, time_unit=[0, 0.1], lim=[
         The time period for statistical analysis.
     smooth : bool True or False. Default is False.
         Smooth the results or not.
+    ticksize : int or float. Default is 18.
+        The size of the ticks.
     figsize : array or list, [size_X, size_Y]
         The size of the figure.
         If figsize=None, the size of the figure will be ajusted automatically.
@@ -1289,6 +1310,20 @@ def plot_corrs_hotmap_withstats(corrs, chllabels=None, time_unit=[0, 0.1], lim=[
         for chl in range(nchls):
             rlts[:, chl] = smooth_1d(rlts[:, chl])
 
+    fig = plt.gcf()
+    size = fig.get_size_inches()
+
+    if figsize == None:
+        size_x = nts * tstep * (size[0] - 2) + 2
+        size_y = nchls * 0.2 * (size[1] - 1.5) + 1.5
+    else:
+        size_x = figsize[0]
+        size_y = figsize[1]
+
+    fig.set_size_inches(size_x, size_y)
+
+    delta = (size_y * 3) / (size_x * 4)
+
     avg = np.average(rlts, axis=0)
 
     ps = np.zeros([nchls, nts])
@@ -1316,7 +1351,7 @@ def plot_corrs_hotmap_withstats(corrs, chllabels=None, time_unit=[0, 0.1], lim=[
     newps[1:nchls + 1, 1:nts + 1] = ps
 
     x = np.linspace(start_time - 0.5 * tstep, end_time + 0.5 * tstep, nts + 2)
-    y = np.linspace(-0.08, 0.16 * nchls + 0.08, nchls + 2)
+    y = np.linspace(-0.08*delta, 0.16*delta * nchls + 0.08*delta, nchls + 2)
     X, Y = np.meshgrid(x, y)
     plt.contour(X, Y, newps, [0.5], linewidths=2, linestyles="dashed")
     plt.contour(X, Y, newps, [-0.5], linewidths=2, linestyles="dashed")
@@ -1326,36 +1361,24 @@ def plot_corrs_hotmap_withstats(corrs, chllabels=None, time_unit=[0, 0.1], lim=[
     limmax = lim[1]
 
     if cmap == None:
-        plt.imshow(avg, extent=(start_time, end_time, 0, nchls*0.16), clim=(limmin, limmax), origin='lower', cmap='inferno')
+        plt.imshow(avg, extent=(start_time, end_time, 0, nchls*delta*0.16), clim=(limmin, limmax), origin='lower', cmap='inferno')
     else:
-        plt.imshow(avg, extent=(start_time, end_time, 0, nchls * 0.16), clim=(limmin, limmax), origin='lower', cmap=cmap)
-
-    fig = plt.gcf()
-    size = fig.get_size_inches()
-
-    if figsize == None:
-        size_x = nts*tstep*(size[0]-2)+2
-        size_y = nchls*0.2*(size[1]-1.5)+1.5
-    else:
-        size_x = figsize[0]
-        size_y = figsize[1]
-
-    fig.set_size_inches(size_x, size_y)
+        plt.imshow(avg, extent=(start_time, end_time, 0, nchls*delta * 0.16), clim=(limmin, limmax), origin='lower', cmap=cmap)
 
     cb = plt.colorbar()
-    cb.ax.tick_params(labelsize=16)
-    font = {'size': 18}
+    cb.ax.tick_params(labelsize=ticksize-2)
+    font = {'size': ticksize}
     cb.set_label("Similarity", fontdict=font)
 
     xi = []
 
     for i in range(nchls):
-        xi.append(0.16*i + 0.08)
+        xi.append(0.16*delta*i + 0.08*delta)
 
     yi = chllabels
 
-    plt.tick_params(labelsize=18)
-    plt.yticks(xi, yi, fontsize=18)
+    plt.tick_params(labelsize=ticksize)
+    plt.yticks(xi, yi, fontsize=ticksize)
     plt.ylabel("Channel", fontsize=20)
     plt.xlabel("Time (s)", fontsize=20)
 
@@ -1457,26 +1480,28 @@ def plot_nps_hotmap(similarities, chllabels=None, time_unit=[0, 0.1], lim=[0, 1]
     if smooth == False:
         rlts = similarities
 
-    # get min of lims & max of lims
-    limmin = lim[0]
-    limmax = lim[1]
-
-    if cmap == None:
-        plt.imshow(rlts, extent=(start_t, end_t, 0, nchls*0.16), clim=(limmin, limmax), origin='lower')
-    else:
-        plt.imshow(rlts, extent=(start_t, end_t, 0, nchls*0.16), clim=(limmin, limmax), origin='lower', cmap=cmap)
-
     fig = plt.gcf()
     size = fig.get_size_inches()
 
     if figsize == None:
-        size_x = ts*tstep*(size[0]-2)+2
-        size_y = nchls*0.2*(size[1]-1.5)+1.5
+        size_x = ts * tstep * (size[0] - 2) + 2
+        size_y = nchls * 0.2 * (size[1] - 1.5) + 1.5
     else:
         size_x = figsize[0]
         size_y = figsize[1]
 
     fig.set_size_inches(size_x, size_y)
+
+    delta = (size_y * 3) / (size_x * 4)
+
+    # get min of lims & max of lims
+    limmin = lim[0]
+    limmax = lim[1]
+
+    if cmap == None:
+        plt.imshow(rlts, extent=(start_t, end_t, 0, nchls*delta*0.16), clim=(limmin, limmax), origin='lower')
+    else:
+        plt.imshow(rlts, extent=(start_t, end_t, 0, nchls*delta*0.16), clim=(limmin, limmax), origin='lower', cmap=cmap)
 
     cb = plt.colorbar()
     cb.ax.tick_params(labelsize=16)
@@ -1486,7 +1511,7 @@ def plot_nps_hotmap(similarities, chllabels=None, time_unit=[0, 0.1], lim=[0, 1]
     xi = []
 
     for i in range(nchls):
-        xi.append(0.16*i + 0.08)
+        xi.append(0.16*delta*i + 0.08*delta)
 
     yi = chllabels
 
@@ -1503,7 +1528,7 @@ def plot_nps_hotmap(similarities, chllabels=None, time_unit=[0, 0.1], lim=[0, 1]
 ' a function for plotting the hotmap of statistical results for channels/regions by time sequence '
 
 def plot_t_hotmap_withstats(results, chllabels=None, time_unit=[0, 0.1], lim=[-7, 7], p=0.05, cbpt=False,
-                            clusterp=0.05, stats_time=[0, 1], smooth=False, figsize=None, cmap=None):
+                            clusterp=0.05, stats_time=[0, 1], smooth=False, ticksize=18, figsize=None, cmap=None):
 
     """
     plot the hotmap of statistical results for channels/regions by time sequence
@@ -1533,6 +1558,8 @@ def plot_t_hotmap_withstats(results, chllabels=None, time_unit=[0, 0.1], lim=[-7
         The time period for statistical analysis.
     smooth : bool True or False. Default is False.
         Smooth the results or not.
+    ticksize : int or float. Default is 18.
+        The size of the ticks.
     figsize : array or list, [size_X, size_Y]
         The size of the figure.
         If figsize=None, the size of the figure will be ajusted automatically.
@@ -1596,6 +1623,20 @@ def plot_t_hotmap_withstats(results, chllabels=None, time_unit=[0, 0.1], lim=[-7
         for chl in range(nchls):
             rlts[:, chl] = smooth_1d(rlts[:, chl])
 
+    fig = plt.gcf()
+    size = fig.get_size_inches()
+
+    if figsize == None:
+        size_x = nts * tstep * (size[0] - 2) + 2
+        size_y = nchls * 0.2 * (size[1] - 1.5) + 1.5
+    else:
+        size_x = figsize[0]
+        size_y = figsize[1]
+
+    fig.set_size_inches(size_x, size_y)
+
+    delta = (size_y * 3) / (size_x * 4)
+
     ts = ttest_1samp(rlts, 0, axis=0)[:, :, 0]
 
     ps = np.zeros([nchls, nts])
@@ -1622,7 +1663,7 @@ def plot_t_hotmap_withstats(results, chllabels=None, time_unit=[0, 0.1], lim=[-7
     newps[1:nchls + 1, 1:nts + 1] = ps
 
     x = np.linspace(start_time - 0.5 * tstep, end_time + 0.5 * tstep, nts + 2)
-    y = np.linspace(-0.08, 0.16 * nchls + 0.08, nchls + 2)
+    y = np.linspace(-0.08*delta, 0.16*delta * nchls + 0.08*delta, nchls + 2)
     X, Y = np.meshgrid(x, y)
     plt.contour(X, Y, newps, [0.5], linewidths=2, linestyles="dashed")
     plt.contour(X, Y, newps, [-0.5], linewidths=2, linestyles="dashed")
@@ -1632,38 +1673,26 @@ def plot_t_hotmap_withstats(results, chllabels=None, time_unit=[0, 0.1], lim=[-7
     limmax = lim[1]
 
     if cmap == None:
-        plt.imshow(ts, extent=(start_time, end_time, 0, nchls * 0.16), clim=(limmin, limmax), origin='lower',
+        plt.imshow(ts, extent=(start_time, end_time, 0, nchls * 0.16*delta), clim=(limmin, limmax), origin='lower',
                    cmap='bwr')
     else:
-        plt.imshow(ts, extent=(start_time, end_time, 0, nchls * 0.16), clim=(limmin, limmax), origin='lower',
+        plt.imshow(ts, extent=(start_time, end_time, 0, nchls * 0.16*delta), clim=(limmin, limmax), origin='lower',
                    cmap=cmap)
 
-    fig = plt.gcf()
-    size = fig.get_size_inches()
-
-    if figsize == None:
-        size_x = nts * tstep * (size[0] - 2) + 2
-        size_y = nchls * 0.2 * (size[1] - 1.5) + 1.5
-    else:
-        size_x = figsize[0]
-        size_y = figsize[1]
-
-    fig.set_size_inches(size_x, size_y)
-
     cb = plt.colorbar()
-    cb.ax.tick_params(labelsize=16)
-    font = {'size': 18}
+    cb.ax.tick_params(labelsize=ticksize-2)
+    font = {'size': ticksize}
     cb.set_label("t", fontdict=font)
 
     xi = []
 
     for i in range(nchls):
-        xi.append(0.16 * i + 0.08)
+        xi.append(0.16*delta * i + 0.08*delta)
 
     yi = chllabels
 
-    plt.tick_params(labelsize=18)
-    plt.yticks(xi, yi, fontsize=18)
+    plt.tick_params(labelsize=ticksize)
+    plt.yticks(xi, yi, fontsize=ticksize)
     plt.ylabel("Channel", fontsize=20)
     plt.xlabel("Time (s)", fontsize=20)
 
