@@ -5,6 +5,7 @@
 __author__ = 'Zitong Lu'
 
 import numpy as np
+import copy
 import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
 from scipy import signal
@@ -53,6 +54,8 @@ def plot_rdm(rdm, percentile=False, rescale=False, lim=[0, 1], conditions=None, 
     # get the number of conditions
     cons = rdm.shape[0]
 
+    crdm = copy.deepcopy(rdm)
+
     # if cons=2, the RDM cannot be plotted.
     if cons == 2:
         print("The shape of RDM cannot be 2*2. Here NeuroRA cannot plot this RDM.")
@@ -60,7 +63,7 @@ def plot_rdm(rdm, percentile=False, rescale=False, lim=[0, 1], conditions=None, 
         return None
 
     # determine if it's a square
-    a, b = np.shape(rdm)
+    a, b = np.shape(crdm)
     if a != b:
         return None
 
@@ -69,7 +72,7 @@ def plot_rdm(rdm, percentile=False, rescale=False, lim=[0, 1], conditions=None, 
         v = np.zeros([cons * cons, 2], dtype=np.float)
         for i in range(cons):
             for j in range(cons):
-                v[i * cons + j, 0] = rdm[i, j]
+                v[i * cons + j, 0] = crdm[i, j]
 
         index = np.argsort(v[:, 0])
         m = 0
@@ -83,7 +86,7 @@ def plot_rdm(rdm, percentile=False, rescale=False, lim=[0, 1], conditions=None, 
 
         for i in range(cons):
             for j in range(cons):
-                rdm[i, j] = v[i * cons + j, 0]
+                crdm[i, j] = v[i * cons + j, 0]
 
         if cmap == None:
             plt.imshow(rdm, extent=(0, 1, 0, 1), cmap=plt.cm.jet, clim=(0, 100))
@@ -112,15 +115,15 @@ def plot_rdm(rdm, percentile=False, rescale=False, lim=[0, 1], conditions=None, 
 
                     # not on the diagnal
                     if i != j:
-                        rdm[i, j] = float((rdm[i, j] - minvalue) / (maxvalue - minvalue))
+                        crdm[i, j] = float((crdm[i, j] - minvalue) / (maxvalue - minvalue))
 
         # plot the RDM
         min = lim[0]
         max = lim[1]
         if cmap == None:
-            plt.imshow(rdm, extent=(0, 1, 0, 1), cmap=plt.cm.jet, clim=(min, max))
+            plt.imshow(crdm, extent=(0, 1, 0, 1), cmap=plt.cm.jet, clim=(min, max))
         else:
-            plt.imshow(rdm, extent=(0, 1, 0, 1), cmap=cmap, clim=(min, max))
+            plt.imshow(crdm, extent=(0, 1, 0, 1), cmap=cmap, clim=(min, max))
 
     else:
 
@@ -128,9 +131,9 @@ def plot_rdm(rdm, percentile=False, rescale=False, lim=[0, 1], conditions=None, 
         min = lim[0]
         max = lim[1]
         if cmap == None:
-            plt.imshow(rdm, extent=(0, 1, 0, 1), cmap=plt.cm.jet, clim=(min, max))
+            plt.imshow(crdm, extent=(0, 1, 0, 1), cmap=plt.cm.jet, clim=(min, max))
         else:
-            plt.imshow(rdm, extent=(0, 1, 0, 1), cmap=cmap, clim=(min, max))
+            plt.imshow(crdm, extent=(0, 1, 0, 1), cmap=cmap, clim=(min, max))
 
     # plt.axis("off")
     cb = plt.colorbar()
@@ -197,8 +200,10 @@ def plot_rdm_withvalue(rdm, lim=[0, 1], value_fontsize=10, conditions=None, con_
 
         return None
 
+    crdm = copy.deepcopy(rdm)
+
     # determine if it's a square
-    a, b = np.shape(rdm)
+    a, b = np.shape(crdm)
     if a != b:
         return None
 
@@ -206,9 +211,9 @@ def plot_rdm_withvalue(rdm, lim=[0, 1], value_fontsize=10, conditions=None, con_
     min = lim[0]
     max = lim[1]
     if cmap == None:
-        plt.imshow(rdm, extent=(0, 1, 0, 1), cmap=plt.cm.Greens, clim=(min, max))
+        plt.imshow(crdm, extent=(0, 1, 0, 1), cmap=plt.cm.Greens, clim=(min, max))
     else:
-        plt.imshow(rdm, extent=(0, 1, 0, 1), cmap=cmap, clim=(min, max))
+        plt.imshow(crdm, extent=(0, 1, 0, 1), cmap=cmap, clim=(min, max))
 
     # plt.axis("off")
     cb = plt.colorbar()
@@ -405,7 +410,9 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
     if n == 3:
         similarities = similarities[:, :, 0]
 
-    nsubs, nts = np.shape(similarities)
+    csimilarities = copy.deepcopy(similarities)
+
+    nsubs, nts = np.shape(csimilarities)
     tstep = float(Decimal((end_time - start_time) / nts).quantize(Decimal(str(time_interval))))
 
     if tstep != time_interval:
@@ -427,27 +434,27 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
             for t in range(nts):
 
                 if t<=1:
-                    similarities[sub, t] = np.average(similarities[sub, :t+3])
+                    csimilarities[sub, t] = np.average(csimilarities[sub, :t+3])
                 if t>1 and t<(nts-2):
-                    similarities[sub, t] = np.average(similarities[sub, t-2:t+3])
+                    csimilarities[sub, t] = np.average(csimilarities[sub, t-2:t+3])
                 if t>=(nts-2):
-                    similarities[sub, t] = np.average(similarities[sub, t-2:])
+                    csimilarities[sub, t] = np.average(csimilarities[sub, t-2:])
 
-    avg = np.average(similarities, axis=0)
+    avg = np.average(csimilarities, axis=0)
     err = np.zeros([nts], dtype=np.float)
 
     for t in range(nts):
-        err[t] = np.std(similarities[:, t], ddof=1)/np.sqrt(nsubs)
+        err[t] = np.std(csimilarities[:, t], ddof=1)/np.sqrt(nsubs)
 
     if cbpt == True:
-        ps_stats = clusterbased_permutation_1d_1samp_1sided(similarities[:, stats_time1:stats_time2], level=0,
+        ps_stats = clusterbased_permutation_1d_1samp_1sided(csimilarities[:, stats_time1:stats_time2], level=0,
                                                             p_threshold=p, clusterp_threshold=clusterp)
         ps = np.zeros([nts])
         ps[stats_time1:stats_time2] = ps_stats
     else:
         ps = np.zeros([nts])
         for t in range(nts):
-            ps[t] = ttest_1samp(similarities[:, t], 0, alternative="greater")[1]
+            ps[t] = ttest_1samp(csimilarities[:, t], 0, alternative="greater")[1]
             if ps[t] < p:
                 ps[t] = 1
             else:

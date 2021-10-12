@@ -2,50 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f96de87-b4a9-466e-9c57-851a40404f91" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/decoding.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/decoding.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/download.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/download.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/index.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/index.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/isc_cal.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/isc_cal.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/nii_save.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/nii_save.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/nps_cal.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/nps_cal.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/overview.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/overview.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/rdm_cal.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/rdm_cal.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/rsa.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/rsa.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/rsa_plot.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/rsa_plot.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/stats_cal.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/stats_cal.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/stps_cal.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/stps_cal.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/stuff.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/sources/stuff.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/basic.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/basic.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/classic.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/classic.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/doctools.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/doctools.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/documentation_options.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/documentation_options.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/file.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/file.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/jquery-3.5.1.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/jquery-3.5.1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/language_data.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/language_data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/minus.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/minus.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/plus.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/plus.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/pygments.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/pygments.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/searchtools.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/searchtools.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/underscore-1.3.1.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/underscore-1.3.1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_static/underscore.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/static/underscore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/decoding.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/decoding.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/download.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/download.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/genindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/genindex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/isc_cal.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/isc_cal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/nii_save.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/nii_save.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/nps_cal.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/nps_cal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/overview.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/overview.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/py-modindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/py-modindex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/rdm_cal.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/rdm_cal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/rsa.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/rsa.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/rsa_plot.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/rsa_plot.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/stats_cal.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/stats_cal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/stps_cal.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/stps_cal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/stuff.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/build/html/stuff.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurora/rsa_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/rsa_plot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -113,6 +71,7 @@
     <SUITE FILE_PATH="coverage/NeuroRAtoolbox$eegANDfmri_corr_cal.coverage" NAME="eegANDfmri_corr_cal Coverage Results" MODIFIED="1556595190095" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_stuff_test_stuff_test_correct_by_threshold.coverage" NAME="pytest for t_stuff.test_stuff.test_correct_by_threshold Coverage Results" MODIFIED="1603000532799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_corr_cal_test_bhvANDeeg_corr.coverage" NAME="pytest for t_corr_cal.test_bhvANDeeg_corr Coverage Results" MODIFIED="1602943002582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/NeuroRA_master$test.coverage" NAME="test Coverage Results" MODIFIED="1633989033561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neurora" />
     <SUITE FILE_PATH="coverage/NeuroRAtoolbox$test04.coverage" NAME="test04 Coverage Results" MODIFIED="1555846700636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_rsa_plot_test_rsa_plot_test_plot_rdm.coverage" NAME="pytest for t_rsa_plot.test_rsa_plot.test_plot_rdm Coverage Results" MODIFIED="1602997073114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/NeuroRAtoolbox$pytest_for_t_nps_cal_test_nps_cal_test_nps_fmri_roi.coverage" NAME="pytest for t_nps_cal.test_nps_cal.test_nps_fmri_roi Coverage Results" MODIFIED="1602954610268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
@@ -183,7 +142,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/source/conf.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="437">
@@ -196,22 +155,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/neurora/corr_cal_by_rdm.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
-              <folding>
-                <element signature="e#152#170#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/neurora/rsa_plot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13321">
-              <caret line="1246" column="42" selection-start-line="1246" selection-start-column="42" selection-end-line="1246" selection-end-column="42" />
+            <state relative-caret-position="23040">
+              <caret line="1536" column="35" selection-start-line="1536" selection-start-column="28" selection-end-line="1536" selection-end-column="35" />
               <folding>
                 <element signature="e#98#116#0" expanded="true" />
               </folding>
@@ -219,23 +166,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/neurora/stps_cal.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
-              <folding>
-                <element signature="e#140#158#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="225">
+              <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/setup.py">
+        <entry file="file://$PROJECT_DIR$/neurora/nii_save.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+            <state relative-caret-position="203">
+              <caret line="446" lean-forward="true" selection-start-line="446" selection-end-line="446" />
+              <folding>
+                <element signature="e#116#134#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -322,6 +269,7 @@
       <find>== False</find>
       <find>mask_data</find>
       <find>is False</find>
+      <find>c</find>
     </findStrings>
     <replaceStrings>
       <replace>sources</replace>
@@ -360,7 +308,6 @@
         <option value="$PROJECT_DIR$/test/t_corr_cal.py" />
         <option value="$PROJECT_DIR$/test01.py" />
         <option value="$PROJECT_DIR$/neurora/nii_save1、.py" />
-        <option value="$PROJECT_DIR$/neurora/test.py" />
         <option value="$PROJECT_DIR$/test/t_rdm_cal.py" />
         <option value="$PROJECT_DIR$/neurora/corr_cal.py" />
         <option value="$PROJECT_DIR$/neurora/corr_cal_by_rdm.py" />
@@ -381,15 +328,16 @@
         <option value="$PROJECT_DIR$/neurora/rdm_cal.py" />
         <option value="$PROJECT_DIR$/docs/build/html/index.html" />
         <option value="$PROJECT_DIR$/neurora/stuff.py" />
-        <option value="$PROJECT_DIR$/neurora/rsa_plot.py" />
-        <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/docs/source/conf.py" />
+        <option value="$PROJECT_DIR$/neurora/rsa_plot.py" />
+        <option value="$PROJECT_DIR$/neurora/test.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="36" />
-    <option name="y" value="23" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="28" />
+    <option name="y" value="25" />
     <option name="width" value="1244" />
     <option name="height" value="777" />
   </component>
@@ -484,7 +432,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.rsa_plot">
+  <component name="RunManager" selected="Python.test">
     <configuration name="aa" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="NeuroRA-master" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -499,28 +447,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neurora/aa.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="nii_save1" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="NeuroRA-master" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neurora" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neurora/nii_save1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -595,13 +521,35 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="NeuroRA-master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neurora" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neurora/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.rsa_plot" />
         <item itemvalue="Python.stuff" />
         <item itemvalue="Python.aa" />
         <item itemvalue="Python.rdm_cal" />
-        <item itemvalue="Python.nii_save1" />
       </list>
     </recent_temporary>
   </component>
@@ -766,7 +714,7 @@
       <workItem from="1628784211293" duration="1671000" />
       <workItem from="1628870412760" duration="2555000" />
       <workItem from="1631754110332" duration="950000" />
-      <workItem from="1632158673682" duration="10521000" />
+      <workItem from="1632158673682" duration="16390000" />
     </task>
     <servers />
   </component>
@@ -803,17 +751,18 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1412093000" />
+    <option name="totallyTimeSpent" value="1417962000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="28" y="25" width="1244" height="777" extended-state="6" />
+    <frame x="28" y="25" width="1244" height="777" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17304492" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32884902" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49916527" weight="0.32554746" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49916527" visible="true" weight="0.20875913" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39854014" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -949,7 +898,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/neurora/nii_save1、.py" />
-    <entry file="file://$PROJECT_DIR$/neurora/test.py" />
     <entry file="file://$PROJECT_DIR$/test/t_rdm_cal.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -1006,16 +954,6 @@
             <caret line="70" selection-start-line="70" selection-end-line="70" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neurora/nii_save.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5015">
-          <caret line="469" column="21" selection-start-line="469" selection-start-column="21" selection-end-line="469" selection-end-column="21" />
-          <folding>
-            <element signature="e#116#134#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1154,10 +1092,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/docs/source/conf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="32" column="69" selection-start-line="32" selection-start-column="69" selection-end-line="32" selection-end-column="69" />
+          <folding>
+            <element signature="e#232#241#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/nii_save.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="446" lean-forward="true" selection-start-line="446" selection-end-line="446" />
+          <folding>
+            <element signature="e#116#134#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="27" lean-forward="true" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding>
+            <element signature="e#147#165#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/neurora/rsa_plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13321">
-          <caret line="1246" column="42" selection-start-line="1246" selection-start-column="42" selection-end-line="1246" selection-end-column="42" />
+        <state relative-caret-position="23040">
+          <caret line="1536" column="35" selection-start-line="1536" selection-start-column="28" selection-end-line="1536" selection-end-column="35" />
           <folding>
             <element signature="e#98#116#0" expanded="true" />
           </folding>
@@ -1166,18 +1134,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/source/conf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="32" column="69" selection-start-line="32" selection-start-column="69" selection-end-line="32" selection-end-column="69" />
-          <folding>
-            <element signature="e#232#241#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
         </state>
       </provider>
     </entry>
