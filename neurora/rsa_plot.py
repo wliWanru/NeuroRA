@@ -89,9 +89,9 @@ def plot_rdm(rdm, percentile=False, rescale=False, lim=[0, 1], conditions=None, 
                 crdm[i, j] = v[i * cons + j, 0]
 
         if cmap == None:
-            plt.imshow(rdm, extent=(0, 1, 0, 1), cmap=plt.cm.jet, clim=(0, 100))
+            plt.imshow(crdm, extent=(0, 1, 0, 1), cmap=plt.cm.jet, clim=(0, 100))
         else:
-            plt.imshow(rdm, extent=(0, 1, 0, 1), cmap=cmap, clim=(0, 100))
+            plt.imshow(crdm, extent=(0, 1, 0, 1), cmap=cmap, clim=(0, 100))
 
     # rescale the RDM
     elif rescale == True:
@@ -1993,3 +1993,6 @@ def plot_brainrsa_rlts(img, threshold=None, slice=[6, 6, 6], background=None, ty
             plot_brainrsa_surface(img, threshold=threshold, type=type)
 
     return 0
+
+rdm = np.random.rand(7, 7)
+plot_rdm(rdm, percentile=True)
