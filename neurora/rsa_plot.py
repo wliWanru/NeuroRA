@@ -1993,6 +1993,3 @@ def plot_brainrsa_rlts(img, threshold=None, slice=[6, 6, 6], background=None, ty
             plot_brainrsa_surface(img, threshold=threshold, type=type)
 
     return 0
-
-rdm = np.random.rand(7, 7)
-plot_rdm(rdm, percentile=True)
