@@ -366,9 +366,8 @@ def rdm_similarity(RDM1, RDM2, rescale=False):
 
     Returns
     -------
-    corr : array [r, p].
+    similarity : float.
         The Cosine Similarity result.
-        The shape of corr is [2], corr[0] is the Cosine Similarity result and corr[1] is 0.
     """
 
     if len(np.shape(RDM1)) != 2 or len(np.shape(RDM2)) != 2 or np.shape(RDM1)[0] != np.shape(RDM1)[1] or \
@@ -474,9 +473,8 @@ def rdm_distance(RDM1, RDM2, rescale=False):
 
     Returns
     -------
-    corr : array [r, p].
+    dist : float.
         The Euclidean Distance result.
-        The shape of corr is [2], corr[0] is the Euclidean Distance result and corr[1] is 0.
     """
 
     if len(np.shape(RDM1)) != 2 or len(np.shape(RDM2)) != 2 or np.shape(RDM1)[0] != np.shape(RDM1)[1] or np.shape(RDM2)[0] != np.shape(RDM2)[1]:

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Overview &#8212; NeuroRA 1.1.6.0 documentation</title>
+    <title>Cross-Temporal Representational Similarity Analysis (CTRSA) &#8212; NeuroRA 1.1.6.0 documentation</title>
     <link rel="stylesheet" href="static/classic.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     
@@ -17,8 +17,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Download" href="download.html" />
-    <link rel="prev" title="NeuroRA" href="index.html" /> 
+    <link rel="next" title="Conduct Classification-based EEG Decoding" href="decoding.html" />
+    <link rel="prev" title="Representational Similarity Analysis (RSA)" href="rsa.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -30,13 +30,13 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="download.html" title="Download"
+          <a href="decoding.html" title="Conduct Classification-based EEG Decoding"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="NeuroRA"
+          <a href="rsa.html" title="Representational Similarity Analysis (RSA)"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.6.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Overview</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Cross-Temporal Representational Similarity Analysis (CTRSA)</a></li> 
       </ul>
     </div>  
 
@@ -45,31 +45,17 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<p>Representational Similarity Analysis (RSA) has become a popular and effective method to measure the representation of multivariable neural activity in different modes.</p>
-<p>NeuroRA is an easy-to-use toolbox based on Python, which can do some works about RSA among nearly all kinds of neural data, including behavioral, EEG, MEG, fNIRS, sEEG, ECoG, fMRI and some other neuroelectrophysiological data. In addition, users can do Neural Pattern Similarity (NPS), Spatiotemporal Pattern Similarity (STPS) &amp; Inter-Subject Correlation (ISC) on NeuroRA.</p>
-<p>NeuroRA includes some typical features below:</p>
-<ul class="simple">
-<li><p>Calculate the Neural Pattern Similarity (NPS)</p></li>
-<li><p>Calculate the Spatiotemporal Neural Pattern Similarity (STPS)</p></li>
-<li><p>Calculate the Inter-Subject Correlation (ISC)</p></li>
-<li><p>Calculate the Representational Dissimilarity Matrix (RDM)</p></li>
-<li><p>Calculate the Representational Similarity based on RDMs</p></li>
-<li><p>One-Step Realize Representational Similarity Analysis (RSA)</p></li>
-<li><p>Statistical Analysis</p></li>
-<li><p>Save the RSA result as a NIfTI file for fMRI</p></li>
-<li><p>Visualization for RSA results</p></li>
-</ul>
-<p>Required Dependencies:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="http://www.numpy.org">Numpy</a>: a fundamental package for scientific computing.</p></li>
-<li><p><a class="reference external" href="https://www.scipy.org/scipylib/index.html">SciPy</a>: a package that provides many user-friendly and efficient numerical routines.</p></li>
-<li><p><a class="reference external" href="https://matplotlib.org">Matplotlib</a>: a Python 2D plotting library.</p></li>
-<li><p><a class="reference external" href="https://nipy.org/nibabel/">NiBabel</a>: a package prividing read +/- write access to some common medical and neuroimaging file formats.</p></li>
-<li><p><a class="reference external" href="https://nilearn.github.io/">Nilearn</a>: a Python module for fast and easy statistical learning on NeuroImaging data.</p></li>
-<li><p><a class="reference external" href="https://mne.tools/">MNE-Python</a>: a Python software for exploring, visualizing, and analyzing human neurophysiological data.</p></li>
-</ul>
+  <div class="section" id="cross-temporal-representational-similarity-analysis-ctrsa">
+<h1>Cross-Temporal Representational Similarity Analysis (CTRSA)<a class="headerlink" href="#cross-temporal-representational-similarity-analysis-ctrsa" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="neurora-ctrdm-cal-module">
+<h2>neurora.ctrdm_cal module<a class="headerlink" href="#neurora-ctrdm-cal-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="neurora-ctrdm-corr-module">
+<h2>neurora.ctrdm_corr module<a class="headerlink" href="#neurora-ctrdm-corr-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="neurora-ctcorr-cal-module">
+<h2>neurora.ctcorr_cal module<a class="headerlink" href="#neurora-ctcorr-cal-module" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
@@ -79,16 +65,26 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Cross-Temporal Representational Similarity Analysis (CTRSA)</a><ul>
+<li><a class="reference internal" href="#neurora-ctrdm-cal-module">neurora.ctrdm_cal module</a></li>
+<li><a class="reference internal" href="#neurora-ctrdm-corr-module">neurora.ctrdm_corr module</a></li>
+<li><a class="reference internal" href="#neurora-ctcorr-cal-module">neurora.ctcorr_cal module</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">NeuroRA</a></p>
+  <p class="topless"><a href="rsa.html"
+                        title="previous chapter">Representational Similarity Analysis (RSA)</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="download.html"
-                        title="next chapter">Download</a></p>
+  <p class="topless"><a href="decoding.html"
+                        title="next chapter">Conduct Classification-based EEG Decoding</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="sources/overview.rst.txt"
+      <li><a href="sources/ctrsa.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -116,13 +112,13 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="download.html" title="Download"
+          <a href="decoding.html" title="Conduct Classification-based EEG Decoding"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="NeuroRA"
+          <a href="rsa.html" title="Representational Similarity Analysis (RSA)"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.6.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Overview</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Cross-Temporal Representational Similarity Analysis (CTRSA)</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

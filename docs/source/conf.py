@@ -25,7 +25,7 @@ copyright = '2021, Zitong Lu'
 author = 'Zitong Lu'
 
 # The full version, including alpha/beta/rc tags
-release = '1.1.5.16'
+release = '1.1.6.0'
 
 
 # -- General configuration ---------------------------------------------------

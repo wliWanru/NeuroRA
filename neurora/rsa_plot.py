@@ -349,7 +349,8 @@ def plot_corrs_by_time(corrs, labels=None, time_unit=[0, 0.1]):
 
 def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval=0.01, smooth=True, p=0.05, cbpt=True,
                            clusterp=0.05, stats_time=[0, 1], color='r', xlim=[0, 1], ylim=[-0.1, 0.8],
-                           figsize=[6.4, 3.6], x0=0, ticksize=12, fontsize=16, markersize=2, avgshow=False):
+                           xlabel='Time (s)', ylabel='Representational Similarity', figsize=[6.4, 3.6], x0=0,
+                           ticksize=12, fontsize=16, markersize=2, avgshow=False):
 
     """
     Plot the time-by-time Similarities with statistical results
@@ -384,6 +385,10 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
         The x-axis (time) view lims.
     ylim : array or list [ymin, ymax]. Default is [0.4, 0.8].
         The y-axis (decoding accuracy) view lims.
+    xlabel : string. Default is 'Time (s)'.
+        The label of x-axis.
+    ylabel : string. Default is 'Representational Similarity'.
+        The label of y-axis.
     figsize : array or list, [size_X, size_Y]. Default is [6.4, 3.6].
         The size of the figure.
     x0 : float. Default is 0.
@@ -486,8 +491,8 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
     plt.ylim(yminlim, ymaxlim)
     plt.xlim(xlim[0], xlim[1])
     plt.tick_params(labelsize=ticksize)
-    plt.xlabel("Time (s)", fontsize=fontsize)
-    plt.ylabel("Representational Similarity", fontsize=fontsize)
+    plt.xlabel(xlabel, fontsize=fontsize)
+    plt.ylabel(ylabel, fontsize=fontsize)
     plt.show()
 
     return 0
@@ -497,7 +502,8 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
 
 def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, chance=0.5, p=0.05, cbpt=True,
                            clusterp=0.05, stats_time=[0, 1], color='r', xlim=[0, 1], ylim=[0.4, 0.8],
-                           figsize=[6.4, 3.6], x0=0, ticksize=12, fontsize=16, markersize=2, avgshow=False):
+                           xlabel='Time (s)', ylabel='Decoding Accuracy', figsize=[6.4, 3.6], x0=0, ticksize=12,
+                           fontsize=16, markersize=2, avgshow=False):
 
     """
     Plot the time-by-time decoding accuracies
@@ -530,6 +536,10 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
         The x-axis (time) view lims.
     ylim : array or list [ymin, ymax]. Default is [0.4, 0.8].
         The y-axis (decoding accuracy) view lims.
+    xlabel : string. Default is 'Time (s)'.
+        The label of x-axis.
+    ylabel : string. Default is 'Decoding Accuracy'.
+        The label of y-axis.
     figsize : array or list, [size_X, size_Y]. Default is [6.4, 3.6].
         The size of the figure.
     x0 : float. Default is 0.
@@ -616,8 +626,8 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
     plt.ylim(yminlim, ymaxlim)
     plt.xlim(xlim[0], xlim[1])
     plt.tick_params(labelsize=ticksize)
-    plt.xlabel("Time (s)", fontsize=fontsize)
-    plt.ylabel("Decoding Accuracy", fontsize=fontsize)
+    plt.xlabel(xlabel, fontsize=fontsize)
+    plt.ylabel(ylabel, fontsize=fontsize)
     plt.show()
 
 
@@ -625,7 +635,8 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
 
 def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_interval=0.01, chance=0.5, p=0.05, cbpt=True,
                                 clusterp=0.05, stats_time=[0, 1], color1='r', color2='b', xlim=[0, 1], ylim=[0.4, 0.8],
-                                figsize=[6.4, 3.6], x0=0, ticksize=12, fontsize=16, markersize=2, avgshow=False):
+                                xlabel='Time (s)', ylabel='Decoding Accuracy', figsize=[6.4, 3.6], x0=0, ticksize=12,
+                                fontsize=16, markersize=2, avgshow=False):
 
     """
     Plot the differences of time-by-time decoding accuracies between two conditions
@@ -664,6 +675,10 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
         The x-axis (time) view lims.
     ylim : array or list [ymin, ymax]. Default is [0.4, 0.8].
         The y-axis (decoding accuracy) view lims.
+    xlabel : string. Default is 'Time (s)'.
+        The label of x-axis.
+    ylabel : string. Default is 'Decoding Accuracy'.
+        The label of y-axis.
     figsize : array or list, [size_X, size_Y]. Default is [6.4, 3.6].
         The size of the figure.
     x0 : float. Default is 0.
@@ -788,8 +803,8 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
     plt.ylim(yminlim, ymaxlim)
     plt.xlim(xlim[0], xlim[1])
     plt.tick_params(labelsize=ticksize)
-    plt.xlabel("Time (s)", fontsize=fontsize)
-    plt.ylabel("Decoding Accuracy", fontsize=fontsize)
+    plt.xlabel(xlabel, fontsize=fontsize)
+    plt.ylabel(ylabel, fontsize=fontsize)
     plt.show()
 
 
@@ -797,8 +812,9 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
 
 def plot_ct_decoding_acc(acc, start_timex=0, end_timex=1, start_timey=0, end_timey=1, time_intervalx=0.01,
                          time_intervaly=0.01, chance=0.5, p=0.05, cbpt=True, clusterp=0.05, stats_timex=[0, 1],
-                         stats_timey=[0, 1], xlim=[0, 1], ylim=[0, 1], clim=[0.4, 0.8], figsize=[6.4, 4.8],
-                         cmap="viridis", ticksize=12, fontsize=16):
+                         stats_timey=[0, 1], xlim=[0, 1], ylim=[0, 1], clim=[0.4, 0.8], xlabel='Training Time (s)',
+                         ylabel='Test Time (s)', clabel='Decoding Accuracy', figsize=[6.4, 4.8], cmap="viridis",
+                         ticksize=12, fontsize=16):
 
     """
     Plot the cross-temporal decoding accuracies
@@ -839,6 +855,12 @@ def plot_ct_decoding_acc(acc, start_timex=0, end_timex=1, start_timey=0, end_tim
         The y-axis (test time) view lims.
     clim : array or list [cmin, cmax]. Default is [0.4, 0.8].
         The color-bar (decoding accuracy) view lims.
+    xlabel : string. Default is 'Training Time (s)'.
+        The label of x-axis.
+    ylabel : string. Default is 'Test Time (s)'.
+        The label of y-axis.
+    clabel : string. Default is 'Decoding Accuracy'.
+        The label of color-bar.
     figsize : array or list, [size_X, size_Y]. Default is [6.4, 3.6].
         The size of the figure.
     cmap : matplotlib colormap or None. Default is None.
@@ -922,12 +944,12 @@ def plot_ct_decoding_acc(acc, start_timex=0, end_timex=1, start_timey=0, end_tim
     cb = plt.colorbar()
     cb.ax.tick_params(labelsize=ticksize)
     font = {'size': ticksize+2}
-    cb.set_label("Decoding Accuracy", fontdict=font)
+    cb.set_label(clabel, fontdict=font)
     plt.xlim(xlim[0], xlim[1])
     plt.ylim(ylim[0], ylim[1])
     plt.tick_params(labelsize=ticksize)
-    plt.xlabel("Training Time (s)", fontsize=fontsize)
-    plt.ylabel("Test Time (s)", fontsize=fontsize)
+    plt.xlabel(xlabel, fontsize=fontsize)
+    plt.ylabel(ylabel, fontsize=fontsize)
     plt.show()
 
 
@@ -935,7 +957,8 @@ def plot_ct_decoding_acc(acc, start_timex=0, end_timex=1, start_timey=0, end_tim
 
 def plot_ct_diff_decoding_acc(acc1, acc2, start_timex=0, end_timex=1, start_timey=0, end_timey=1, time_intervalx=0.01,
                               time_intervaly=0.01, p=0.05, cbpt=True, clusterp=0.05, stats_timex=[0, 1],
-                              stats_timey=[0, 1], xlim=[0, 1], ylim=[0, 1], clim=[0.4, 0.8], figsize=[6.4, 4.8],
+                              stats_timey=[0, 1], xlim=[0, 1], ylim=[0, 1], clim=[0.4, 0.8], xlabel='Training Time (s)',
+                              ylabel='Test Time (s)', clabel='Differences of Decoding Accuracies', figsize=[6.4, 4.8],
                               cmap="viridis", ticksize=12, fontsize=16):
 
     """
@@ -981,6 +1004,12 @@ def plot_ct_diff_decoding_acc(acc1, acc2, start_timex=0, end_timex=1, start_time
         The y-axis (test time) view lims.
     clim : array or list [cmin, cmax]. Default is [0.4, 0.8].
         The color-bar (decoding accuracy) view lims.
+    xlabel : string. Default is 'Training Time (s)'.
+        The label of x-axis.
+    ylabel : string. Default is 'Test Time (s)'.
+        The label of y-axis.
+    clabel : string. Default is 'Differences of Decoding Accuracies'.
+        The label of color-bar.
     figsize : array or list, [size_X, size_Y]. Default is [6.4, 3.6].
         The size of the figure.
     cmap : matplotlib colormap or None. Default is None.
@@ -1066,12 +1095,12 @@ def plot_ct_diff_decoding_acc(acc1, acc2, start_timex=0, end_timex=1, start_time
     cb = plt.colorbar()
     cb.ax.tick_params(labelsize=ticksize)
     font = {'size': ticksize+2}
-    cb.set_label("Differences of Decoding Accuracies", fontdict=font)
+    cb.set_label(clabel, fontdict=font)
     plt.xlim(xlim[0], xlim[1])
     plt.ylim(ylim[0], ylim[1])
     plt.tick_params(labelsize=ticksize)
-    plt.xlabel("Training Time (s)", fontsize=fontsize)
-    plt.ylabel("Test Time (s)", fontsize=fontsize)
+    plt.xlabel(xlabel, fontsize=fontsize)
+    plt.ylabel(ylabel, fontsize=fontsize)
     plt.show()
 
 
@@ -1221,7 +1250,8 @@ def plot_corrs_hotmap(corrs, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], smo
 ' a function for plotting the hotmap of correlations coefficients for channels/regions by time sequence with the significant outline '
 
 def plot_corrs_hotmap_withstats(corrs, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], p=0.05, cbpt=False,
-                                clusterp=0.05, stats_time=[0, 1], smooth=False, ticksize=18, figsize=None, cmap=None):
+                                clusterp=0.05, stats_time=[0, 1], smooth=False, xlabel='Time (s)', ylabel='Channel',
+                                clabel='Similarity', ticksize=18, figsize=None, cmap=None):
 
     """
     plot the hotmap of correlation coefficients for channels/regions by time sequence with the significant outline
@@ -1251,6 +1281,12 @@ def plot_corrs_hotmap_withstats(corrs, chllabels=None, time_unit=[0, 0.1], lim=[
         The time period for statistical analysis.
     smooth : bool True or False. Default is False.
         Smooth the results or not.
+    xlabel : string. Default is 'Time (s)'.
+        The label of x-axis.
+    ylabel : string. Default is 'Channel'.
+        The label of y-axis.
+    clabel : string. Default is 'Similarity'.
+        The label of color-bar.
     ticksize : int or float. Default is 18.
         The size of the ticks.
     figsize : array or list, [size_X, size_Y]
@@ -1375,7 +1411,7 @@ def plot_corrs_hotmap_withstats(corrs, chllabels=None, time_unit=[0, 0.1], lim=[
     cb = plt.colorbar()
     cb.ax.tick_params(labelsize=ticksize-2)
     font = {'size': ticksize}
-    cb.set_label("Similarity", fontdict=font)
+    cb.set_label(clabel, fontdict=font)
 
     xi = []
 
@@ -1386,8 +1422,8 @@ def plot_corrs_hotmap_withstats(corrs, chllabels=None, time_unit=[0, 0.1], lim=[
 
     plt.tick_params(labelsize=ticksize)
     plt.yticks(xi, yi, fontsize=ticksize)
-    plt.ylabel("Channel", fontsize=20)
-    plt.xlabel("Time (s)", fontsize=20)
+    plt.ylabel(ylabel, fontsize=20)
+    plt.xlabel(xlabel, fontsize=20)
 
     plt.show()
 
@@ -1535,7 +1571,8 @@ def plot_nps_hotmap(similarities, chllabels=None, time_unit=[0, 0.1], lim=[0, 1]
 ' a function for plotting the hotmap of statistical results for channels/regions by time sequence '
 
 def plot_t_hotmap_withstats(results, chllabels=None, time_unit=[0, 0.1], lim=[-7, 7], p=0.05, cbpt=False,
-                            clusterp=0.05, stats_time=[0, 1], smooth=False, ticksize=18, figsize=None, cmap=None):
+                            clusterp=0.05, stats_time=[0, 1], smooth=False, xlabel='Time (s)', ylabel='Channel',
+                            clabel='t', ticksize=18, figsize=None, cmap=None):
 
     """
     plot the hotmap of statistical results for channels/regions by time sequence
@@ -1565,6 +1602,12 @@ def plot_t_hotmap_withstats(results, chllabels=None, time_unit=[0, 0.1], lim=[-7
         The time period for statistical analysis.
     smooth : bool True or False. Default is False.
         Smooth the results or not.
+    xlabel : string. Default is 'Time (s)'.
+        The label of x-axis.
+    ylabel : string. Default is 'Channel'.
+        The label of y-axis.
+    clabel : string. Default is 'Similarity'.
+        The label of color-bar.
     ticksize : int or float. Default is 18.
         The size of the ticks.
     figsize : array or list, [size_X, size_Y]
@@ -1689,7 +1732,7 @@ def plot_t_hotmap_withstats(results, chllabels=None, time_unit=[0, 0.1], lim=[-7
     cb = plt.colorbar()
     cb.ax.tick_params(labelsize=ticksize-2)
     font = {'size': ticksize}
-    cb.set_label("t", fontdict=font)
+    cb.set_label(clabel, fontdict=font)
 
     xi = []
 
@@ -1700,8 +1743,8 @@ def plot_t_hotmap_withstats(results, chllabels=None, time_unit=[0, 0.1], lim=[-7
 
     plt.tick_params(labelsize=ticksize)
     plt.yticks(xi, yi, fontsize=ticksize)
-    plt.ylabel("Channel", fontsize=20)
-    plt.xlabel("Time (s)", fontsize=20)
+    plt.ylabel(ylabel, fontsize=20)
+    plt.xlabel(xlabel, fontsize=20)
 
     plt.show()
 
