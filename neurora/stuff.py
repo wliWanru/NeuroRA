@@ -1220,10 +1220,9 @@ def clusterbased_permutation_1d_1samp_2sided(results, level=0, p_threshold=0.05,
     ps = np.zeros([x])
     ts = np.zeros([x])
     for t in range(x):
-        ts[t], p = ttest_1samp(results[:, t], level, alternative='greater')
+        ts[t], p = ttest_1samp(results[:, t], level)
         if p < p_threshold and ts[t] > 0:
             ps[t] = 1
-        ts[t], p = ttest_1samp(results[:, t], level, alternative='less')
         if p < p_threshold and ts[t] < 0:
             ps[t] = -1
 
@@ -1463,10 +1462,9 @@ def clusterbased_permutation_1d_2sided(results1, results2, p_threshold=0.05, clu
     ps = np.zeros([x])
     ts = np.zeros([x])
     for t in range(x):
-        ts[t], p = ttest_1samp(results1[:, t], results2[:, t], alternative='greater')
+        ts[t], p = ttest_rel(results1[:, t], results2[:, t])
         if p < p_threshold and ts[t] > 0:
             ps[t] = 1
-        ts[t], p = ttest_1samp(results1[:, t], results2[:, t], alternative='less')
         if p < p_threshold and ts[t] < 0:
             ps[t] = -1
 
@@ -1703,10 +1701,9 @@ def clusterbased_permutation_2d_1samp_2sided(results, level=0, p_threshold=0.05,
     ts = np.zeros([x1, x2])
     for t1 in range(x1):
         for t2 in range(x2):
-            ts[t1, t2], p = ttest_1samp(results[:, t1, t2], level, alternative='greater')
+            ts[t1, t2], p = ttest_1samp(results[:, t1, t2], level)
             if p < p_threshold and ts[t1, t2] > 0:
                 ps[t1, t2] = 1
-            ts[t1, t2], p = ttest_1samp(results[:, t1, t2], level, alternative='less')
             if p < p_threshold and ts[t1, t2] < 0:
                 ps[t1, t2] = -1
 
@@ -1960,10 +1957,9 @@ def clusterbased_permutation_2d_2sided(results1, results2, p_threshold=0.05, clu
     ts = np.zeros([x1, x2])
     for t1 in range(x1):
         for t2 in range(x2):
-            ts[t1, t2], p = ttest_rel(results1[:, t1, t2], results2[:, t1, t2], alternative="greater")
+            ts[t1, t2], p = ttest_rel(results1[:, t1, t2], results2[:, t1, t2])
             if p < p_threshold and ts[t1, t2] > 0:
                 ps[t1, t2] = 1
-            ts[t1, t2], p = ttest_rel(results1[:, t1, t2], results2[:, t1, t2], alternative="less")
             if p < p_threshold and ts[t1, t2] < 0:
                 ps[t1, t2] = -1
 

@@ -486,8 +486,8 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
     ax.spines['bottom'].set_position(('data', 0))
     x = np.arange(start_time+0.5*tstep, end_time+0.5*tstep, tstep)
     if avgshow is True:
-        plt.plot(x, avg, color=color, alpha=0.9)
-    plt.fill_between(x, avg + err, avg - err, facecolor=color, alpha=0.8)
+        plt.plot(x, avg, color=color, alpha=0.95)
+    plt.fill_between(x, avg + err, avg - err, facecolor=color, alpha=0.75)
     plt.ylim(yminlim, ymaxlim)
     plt.xlim(xlim[0], xlim[1])
     plt.tick_params(labelsize=ticksize)
@@ -495,7 +495,7 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
     plt.ylabel(ylabel, fontsize=fontsize)
     plt.show()
 
-    return 0
+    return ps
 
 
 ' a function for plotting the time-by-time decoding accuracies '
@@ -621,8 +621,8 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
     ax.spines["bottom"].set_position(("data", chance))
     x = np.arange(start_time+0.5*tstep, end_time+0.5*tstep, tstep)
     if avgshow is True:
-        plt.plot(x, avg, color=color, alpha=0.9)
-    plt.fill_between(x, avg+err, avg-err, facecolor=color, alpha=0.8)
+        plt.plot(x, avg, color=color, alpha=0.95)
+    plt.fill_between(x, avg+err, avg-err, facecolor=color, alpha=0.75)
     plt.ylim(yminlim, ymaxlim)
     plt.xlim(xlim[0], xlim[1])
     plt.tick_params(labelsize=ticksize)
@@ -630,6 +630,7 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
     plt.ylabel(ylabel, fontsize=fontsize)
     plt.show()
 
+    return ps
 
 ' a function for plotting the differences of time-by-time decoding accuracies between two conditions '
 
@@ -760,9 +761,9 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
                     ps2[t] = 1
                 else:
                     ps2[t] = 0
-                if ttest_rel(acc1[:, t], acc1[:, t], alternative="greater")[1] < p:
+                if ttest_rel(acc1[:, t], acc1[:, t], alternative="greater")[1] < p/2:
                     ps[t] = 1
-                elif ttest_rel(acc1[:, t], acc1[:, t], alternative="less")[1] < p:
+                elif ttest_rel(acc1[:, t], acc1[:, t], alternative="less")[1] < p/2:
                     ps[t] = -1
                 else:
                     ps[t] = 0
@@ -796,16 +797,18 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
     ax.spines["bottom"].set_position(("data", chance))
     x = np.arange(start_time+0.5*tstep, end_time+0.5*tstep, tstep)
     if avgshow is True:
-        plt.plot(x, avg1, color=color1, alpha=0.9)
-        plt.plot(x, avg2, color=color2, alpha=0.9)
-    plt.fill_between(x, avg1+err1, avg1-err1, facecolor=color1, alpha=0.8)
-    plt.fill_between(x, avg2+err2, avg2-err2, facecolor=color2, alpha=0.8)
+        plt.plot(x, avg1, color=color1, alpha=0.95)
+        plt.plot(x, avg2, color=color2, alpha=0.95)
+    plt.fill_between(x, avg1+err1, avg1-err1, facecolor=color1, alpha=0.75)
+    plt.fill_between(x, avg2+err2, avg2-err2, facecolor=color2, alpha=0.75)
     plt.ylim(yminlim, ymaxlim)
     plt.xlim(xlim[0], xlim[1])
     plt.tick_params(labelsize=ticksize)
     plt.xlabel(xlabel, fontsize=fontsize)
     plt.ylabel(ylabel, fontsize=fontsize)
     plt.show()
+
+    return ps1, ps2, ps
 
 
 ' a function for plotting cross-temporal decoding accuracies '
@@ -952,6 +955,8 @@ def plot_ct_decoding_acc(acc, start_timex=0, end_timex=1, start_timey=0, end_tim
     plt.ylabel(ylabel, fontsize=fontsize)
     plt.show()
 
+    return ps
+
 
 ' a function for plotting the differences of cross-temporal decoding accuracies between two conditions '
 
@@ -1066,9 +1071,9 @@ def plot_ct_diff_decoding_acc(acc1, acc2, start_timex=0, end_timex=1, start_time
         for t1 in range(nx):
             for t2 in range(ny):
                 if t1 >= stats_timex1 and t1 < stats_timex2 and t2 >= stats_timey1 and t2 < stats_timey2:
-                    if ttest_1samp(acc[:, t1, t2], 0, alternative="greater")[1] < p:
+                    if ttest_1samp(acc[:, t1, t2], 0, alternative="greater")[1] < p/2:
                         ps[t1, t2] = 1
-                    elif ttest_1samp(acc[:, t1, t2], 0, alternative="less")[1] < p:
+                    elif ttest_1samp(acc[:, t1, t2], 0, alternative="less")[1] < p/2:
                         ps[t1, t2] = -1
                     else:
                         ps[t1, t2] = 0
@@ -1102,6 +1107,8 @@ def plot_ct_diff_decoding_acc(acc1, acc2, start_timex=0, end_timex=1, start_time
     plt.xlabel(xlabel, fontsize=fontsize)
     plt.ylabel(ylabel, fontsize=fontsize)
     plt.show()
+
+    return ps
 
 
 ' a function for plotting the hotmap of correlations coefficients for channels/regions by time sequence '
@@ -1427,7 +1434,7 @@ def plot_corrs_hotmap_withstats(corrs, chllabels=None, time_unit=[0, 0.1], lim=[
 
     plt.show()
 
-    return 0
+    return ps
 
 
 ' a function for plotting the hotmap of neural pattern similarities for channels/regions by time sequence '
@@ -1748,7 +1755,7 @@ def plot_t_hotmap_withstats(results, chllabels=None, time_unit=[0, 0.1], lim=[-7
 
     plt.show()
 
-    return 0
+    return ps
 
 
 ' a function for plotting the RSA-result regions by 3 cuts (frontal, axial & lateral) '
