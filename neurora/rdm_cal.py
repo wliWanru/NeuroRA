@@ -552,7 +552,7 @@ def eegRDM_bydecoding(EEG_data, sub_opt=1, time_win=5, time_step=5, navg=5, time
     for con1 in range(cons):
         for con2 in range(cons):
 
-            if con1 != con2:
+            if con1 >= con2:
 
                 data = np.concatenate((EEG_data[con1], EEG_data[con2]), axis=1)
                 print(data.shape)
@@ -563,6 +563,7 @@ def eegRDM_bydecoding(EEG_data, sub_opt=1, time_win=5, time_step=5, navg=5, time
                                                              time_win=time_win, time_step=time_step, nfolds=nfolds,
                                                              nrepeats=nrepeats, normalization=normalization,
                                                              smooth=True)
+                rdms[:, :, con2, con1] = rdms[:, :, con1, con2]
 
     if sub_opt == 0:
 
