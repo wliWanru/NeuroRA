@@ -376,6 +376,8 @@ def eegRDM(EEG_data, sub_opt=1, chl_opt=0, time_opt=0, time_win=5, time_step=5, 
         # average the trials
         data = np.average(EEG_data, axis=2)
 
+        print(data.shape)
+
         # initialize the RDMs
         rdms = np.zeros([subs, chls, cons, cons], dtype=np.float64)
 
@@ -400,7 +402,7 @@ def eegRDM(EEG_data, sub_opt=1, chl_opt=0, time_opt=0, time_win=5, time_step=5, 
                             else:
                                 rdms[i, j, k, l] = limtozero(1 - r)
                         elif method == 'euclidean':
-                            rdms[i, j, k, l] = np.linalg.norm(data[k, i, j] - data[k, i, j])
+                            rdms[i, j, k, l] = np.linalg.norm(data[k, i, j] - data[l, i, j])
                 if method == 'euclidean':
                     max = np.max(rdms[i, j])
                     min = np.min(rdms[i, j])

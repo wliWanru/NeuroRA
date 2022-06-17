@@ -20,7 +20,8 @@ from decimal import Decimal
 
 ' a function for plotting the RDM '
 
-def plot_rdm(rdm, percentile=False, rescale=False, lim=[0, 1], conditions=None, con_fontsize=12, cmap=None):
+def plot_rdm(rdm, percentile=False, rescale=False, lim=[0, 1], conditions=None, con_fontsize=12, cmap=None, title=None,
+             title_fontsize=16):
 
     """
     Plot the RDM
@@ -45,6 +46,10 @@ def plot_rdm(rdm, percentile=False, rescale=False, lim=[0, 1], conditions=None, 
     cmap : matplotlib colormap. Default is None.
         The colormap for RDM.
         If cmap=None, the ccolormap will be 'jet'.
+    title : string-array. Default is None.
+        The title of the figure.
+    title_fontsize : int or float. Default is 16.
+        The fontsize of the title.
     """
 
     if len(np.shape(rdm)) != 2 or np.shape(rdm)[0] != np.shape(rdm)[1]:
@@ -157,6 +162,8 @@ def plot_rdm(rdm, percentile=False, rescale=False, lim=[0, 1], conditions=None, 
     else:
         plt.axis("off")
 
+    plt.title(title, fontsize=title_fontsize)
+
     plt.show()
 
     return 0
@@ -164,7 +171,8 @@ def plot_rdm(rdm, percentile=False, rescale=False, lim=[0, 1], conditions=None, 
 
 ' a function for plotting the RDM with values '
 
-def plot_rdm_withvalue(rdm, lim=[0, 1], value_fontsize=10, conditions=None, con_fontsize=12, cmap=None):
+def plot_rdm_withvalue(rdm, lim=[0, 1], value_fontsize=10, conditions=None, con_fontsize=12, cmap=None, title=None,
+                       title_fontsize=16):
 
     """
     Plot the RDM with values
@@ -185,6 +193,10 @@ def plot_rdm_withvalue(rdm, lim=[0, 1], value_fontsize=10, conditions=None, con_
     cmap : matplotlib colormap or None. Default is None.
         The colormap for RDM.
         If cmap=None, the ccolormap will be 'Greens'.
+    title : string-array. Default is None.
+        The title of the figure.
+    title_fontsize : int or float. Default is 16.
+        The fontsize of the title.
     """
 
     if len(np.shape(rdm)) != 2 or np.shape(rdm)[0] != np.shape(rdm)[1]:
@@ -246,7 +258,7 @@ def plot_rdm_withvalue(rdm, lim=[0, 1], value_fontsize=10, conditions=None, con_
 
 ' a function for plotting the correlation coefficients by time sequence '
 
-def plot_corrs_by_time(corrs, labels=None, time_unit=[0, 0.1]):
+def plot_corrs_by_time(corrs, labels=None, time_unit=[0, 0.1], title=None, title_fontsize=16):
 
     """
     plot the correlation coefficients by time sequence
@@ -263,6 +275,10 @@ def plot_corrs_by_time(corrs, labels=None, time_unit=[0, 0.1]):
         The time information of corrs for plotting
         start_t represents the start time and t_step represents the time between two adjacent time-points. Default
         time_unit=[0, 0.1], which means the start time of corrs is 0 sec and the time step is 0.1 sec.
+    title : string-array. Default is None.
+        The title of the figure.
+    title_fontsize : int or float. Default is 16.
+        The fontsize of the title.
     """
 
     if len(np.shape(corrs)) < 2 or len(np.shape(corrs)) > 3:
@@ -350,7 +366,7 @@ def plot_corrs_by_time(corrs, labels=None, time_unit=[0, 0.1]):
 def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval=0.01, smooth=True, p=0.05, cbpt=True,
                            clusterp=0.05, stats_time=[0, 1], color='r', xlim=[0, 1], ylim=[-0.1, 0.8],
                            xlabel='Time (s)', ylabel='Representational Similarity', figsize=[6.4, 3.6], x0=0,
-                           ticksize=12, fontsize=16, markersize=2, avgshow=False):
+                           ticksize=12, fontsize=16, markersize=2, title=None, title_fontsize=16, avgshow=False):
 
     """
     Plot the time-by-time Similarities with statistical results
@@ -399,6 +415,10 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
         The fontsize of the labels.
     markersize : int or float. Default is 2.
         The size of significant marker.
+    title : string-array. Default is None.
+        The title of the figure.
+    title_fontsize : int or float. Default is 16.
+        The fontsize of the title.
     avgshow : boolen True or False. Default is False.
         Show the averaging decoding accuracies or not.
     """
@@ -503,7 +523,7 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
 def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, chance=0.5, p=0.05, cbpt=True,
                            clusterp=0.05, stats_time=[0, 1], color='r', xlim=[0, 1], ylim=[0.4, 0.8],
                            xlabel='Time (s)', ylabel='Decoding Accuracy', figsize=[6.4, 3.6], x0=0, ticksize=12,
-                           fontsize=16, markersize=2, avgshow=False):
+                           fontsize=16, markersize=2, title=None, title_fontsize=16, avgshow=False):
 
     """
     Plot the time-by-time decoding accuracies
@@ -550,6 +570,10 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
         The fontsize of the labels.
     markersize : int or float. Default is 2.
         The size of significant marker.
+    title : string-array. Default is None.
+        The title of the figure.
+    title_fontsize : int or float. Default is 16.
+        The fontsize of the title.
     avgshow : boolen True or False. Default is False.
         Show the averaging decoding accuracies or not.
     """
@@ -637,7 +661,7 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
 def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_interval=0.01, chance=0.5, p=0.05, cbpt=True,
                                 clusterp=0.05, stats_time=[0, 1], color1='r', color2='b', xlim=[0, 1], ylim=[0.4, 0.8],
                                 xlabel='Time (s)', ylabel='Decoding Accuracy', figsize=[6.4, 3.6], x0=0, ticksize=12,
-                                fontsize=16, markersize=2, avgshow=False):
+                                fontsize=16, markersize=2, title=None, title_fontsize=16, avgshow=False):
 
     """
     Plot the differences of time-by-time decoding accuracies between two conditions
@@ -690,6 +714,10 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
         The fontsize of the labels.
     markersize : int or float. Default is 2.
         The size of significant marker.
+    title : string-array. Default is None.
+        The title of the figure.
+    title_fontsize : int or float. Default is 16.
+        The fontsize of the title.
     avgshow : boolen True or False. Default is False.
         Show the averaging decoding accuracies or not.
     """
@@ -817,7 +845,7 @@ def plot_ct_decoding_acc(acc, start_timex=0, end_timex=1, start_timey=0, end_tim
                          time_intervaly=0.01, chance=0.5, p=0.05, cbpt=True, clusterp=0.05, stats_timex=[0, 1],
                          stats_timey=[0, 1], xlim=[0, 1], ylim=[0, 1], clim=[0.4, 0.8], xlabel='Training Time (s)',
                          ylabel='Test Time (s)', clabel='Decoding Accuracy', figsize=[6.4, 4.8], cmap="viridis",
-                         ticksize=12, fontsize=16):
+                         ticksize=12, fontsize=16, title=None, title_fontsize=16):
 
     """
     Plot the cross-temporal decoding accuracies
@@ -872,6 +900,10 @@ def plot_ct_decoding_acc(acc, start_timex=0, end_timex=1, start_timey=0, end_tim
         The size of the ticks.
     fontsize : int or float. Default is 16.
         The fontsize of the labels.
+    title : string-array. Default is None.
+        The title of the figure.
+    title_fontsize : int or float. Default is 16.
+        The fontsize of the title.
     """
 
     nsubs, nx, ny = np.shape(acc)
@@ -964,7 +996,7 @@ def plot_ct_diff_decoding_acc(acc1, acc2, start_timex=0, end_timex=1, start_time
                               time_intervaly=0.01, p=0.05, cbpt=True, clusterp=0.05, stats_timex=[0, 1],
                               stats_timey=[0, 1], xlim=[0, 1], ylim=[0, 1], clim=[0.4, 0.8], xlabel='Training Time (s)',
                               ylabel='Test Time (s)', clabel='Differences of Decoding Accuracies', figsize=[6.4, 4.8],
-                              cmap="viridis", ticksize=12, fontsize=16):
+                              cmap="viridis", ticksize=12, fontsize=16, title=None, title_fontsize=16):
 
     """
     Plot the differences of cross-temporal decoding accuracies between two conditions
@@ -1023,6 +1055,10 @@ def plot_ct_diff_decoding_acc(acc1, acc2, start_timex=0, end_timex=1, start_time
         The size of the ticks.
     fontsize : int or float. Default is 16.
         The fontsize of the labels.
+    title : string-array. Default is None.
+        The title of the figure.
+    title_fontsize : int or float. Default is 16.
+        The fontsize of the title.
     """
 
     acc = acc1 - acc2
@@ -1113,7 +1149,8 @@ def plot_ct_diff_decoding_acc(acc1, acc2, start_timex=0, end_timex=1, start_time
 
 ' a function for plotting the hotmap of correlations coefficients for channels/regions by time sequence '
 
-def plot_corrs_hotmap(corrs, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], smooth=False, figsize=None, cmap=None):
+def plot_corrs_hotmap(corrs, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], smooth=False, figsize=None, cmap=None,
+                      title=None, title_fontsize=16):
 
     """
     plot the hotmap of correlation coefficients for channels/regions by time sequence
@@ -1140,6 +1177,10 @@ def plot_corrs_hotmap(corrs, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], smo
     cmap : matplotlib colormap or None. Default is None.
         The colormap for the figure.
         If cmap=None, the ccolormap will be 'inferno'.
+    title : string-array. Default is None.
+        The title of the figure.
+    title_fontsize : int or float. Default is 16.
+        The fontsize of the title.
     """
 
     if len(np.shape(corrs)) < 2 or len(np.shape(corrs)) > 3:
@@ -1258,7 +1299,8 @@ def plot_corrs_hotmap(corrs, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], smo
 
 def plot_corrs_hotmap_withstats(corrs, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], p=0.05, cbpt=False,
                                 clusterp=0.05, stats_time=[0, 1], smooth=False, xlabel='Time (s)', ylabel='Channel',
-                                clabel='Similarity', ticksize=18, figsize=None, cmap=None):
+                                clabel='Similarity', ticksize=18, figsize=None, cmap=None, title=None,
+                                title_fontsize=16):
 
     """
     plot the hotmap of correlation coefficients for channels/regions by time sequence with the significant outline
@@ -1302,6 +1344,10 @@ def plot_corrs_hotmap_withstats(corrs, chllabels=None, time_unit=[0, 0.1], lim=[
     cmap : matplotlib colormap or None. Default is None.
         The colormap for the figure.
         If cmap=None, the colormap will be 'inferno'.
+    title : string-array. Default is None.
+        The title of the figure.
+    title_fontsize : int or float. Default is 16.
+        The fontsize of the title.
     """
 
     if len(np.shape(corrs)) < 3 or len(np.shape(corrs)) > 4:
@@ -1440,7 +1486,7 @@ def plot_corrs_hotmap_withstats(corrs, chllabels=None, time_unit=[0, 0.1], lim=[
 ' a function for plotting the hotmap of neural pattern similarities for channels/regions by time sequence '
 
 def plot_nps_hotmap(similarities, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], abs=False, smooth=False, figsize=None,
-                    cmap=None):
+                    cmap=None, title=None, title_fontsize=16):
 
     """
     plot the hotmap of neural pattern similarities for channels/regions by time sequence
@@ -1468,6 +1514,10 @@ def plot_nps_hotmap(similarities, chllabels=None, time_unit=[0, 0.1], lim=[0, 1]
     cmap : matplotlib colormap or None. Default is None.
         The colormap for the figure.
         If cmap=None, the ccolormap will be 'viridis'.
+    title : string-array. Default is None.
+        The title of the figure.
+    title_fontsize : int or float. Default is 16.
+        The fontsize of the title.
     """
 
     if len(np.shape(similarities)) != 2:
@@ -1579,7 +1629,7 @@ def plot_nps_hotmap(similarities, chllabels=None, time_unit=[0, 0.1], lim=[0, 1]
 
 def plot_t_hotmap_withstats(results, chllabels=None, time_unit=[0, 0.1], lim=[-7, 7], p=0.05, cbpt=False,
                             clusterp=0.05, stats_time=[0, 1], smooth=False, xlabel='Time (s)', ylabel='Channel',
-                            clabel='t', ticksize=18, figsize=None, cmap=None):
+                            clabel='t', ticksize=18, figsize=None, cmap=None, title=None, title_fontsize=16):
 
     """
     plot the hotmap of statistical results for channels/regions by time sequence
@@ -1623,6 +1673,10 @@ def plot_t_hotmap_withstats(results, chllabels=None, time_unit=[0, 0.1], lim=[-7
     cmap : matplotlib colormap or None. Default is None.
         The colormap for the figure.
         If cmap=None, the ccolormap will be 'bwr'.
+    title : string-array. Default is None.
+        The title of the figure.
+    title_fontsize : int or float. Default is 16.
+        The fontsize of the title.
     """
 
     if len(np.shape(results)) < 3 or len(np.shape(results)) > 4:

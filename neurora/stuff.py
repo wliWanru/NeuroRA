@@ -772,7 +772,7 @@ def permutation_corr(v1, v2, method="spearman", iter=1000):
             v2shuffle = np.random.permutation(v2)
             rperm = spearmanr(v1shuffle, v2shuffle)[0]
 
-            if rperm>rtest:
+            if rperm > rtest:
                 ni = ni + 1
 
     if method == "pearson":
