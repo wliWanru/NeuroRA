@@ -237,12 +237,10 @@ def plot_rdm_withvalue(rdm, lim=[0, 1], value_fontsize=10, conditions=None, con_
     step = float(1 / cons)
     for i in range(cons):
         for j in range(cons):
-            print(i, j)
-            text = plt.text(i * step + 0.5 * step, 1 - j * step - 0.5 * step, float('%.4f' % rdm[i, j]),
+            plt.text(i * step + 0.5 * step, 1 - j * step - 0.5 * step, float('%.4f' % rdm[i, j]),
                             ha="center", va="center", color="blue", fontsize=value_fontsize)
 
     if conditions != None:
-        print("1")
         step = float(1 / cons)
         x = np.arange(0.5 * step, 1 + 0.5 * step, step)
         y = np.arange(1 - 0.5 * step, -0.5 * step, -step)
@@ -250,6 +248,8 @@ def plot_rdm_withvalue(rdm, lim=[0, 1], value_fontsize=10, conditions=None, con_
         plt.yticks(y, conditions, fontsize=con_fontsize)
     else:
         plt.axis("off")
+
+    plt.title(title, fontsize=title_fontsize)
 
     plt.show()
 
@@ -355,6 +355,8 @@ def plot_corrs_by_time(corrs, labels=None, time_unit=[0, 0.1], title=None, title
 
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
+
+    plt.title(title, fontsize=title_fontsize)
 
     plt.show()
 
@@ -485,6 +487,17 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
             else:
                 ps[t] = 0
 
+    print('\nSignificant time-windows:')
+    for t in range(nts):
+        if t == 0 and ps[t] == 1:
+            print(str(int(start_time * 1000)) + 'ms to ', end='')
+        if t > 0 and ps[t] == 1 and ps[t - 1] == 0:
+            print(str(int((start_time + t * tstep) * 1000)) + 'ms to ', end='')
+        if t < nts - 1 and ps[t] == 1 and ps[t + 1] == 0:
+            print(str(int((start_time + (t + 1) * tstep) * 1000)) + 'ms')
+        if t == nts - 1 and ps[t] == 1:
+            print(str(int(stats_time[1] * 1000)) + 'ms')
+
     for t in range(nts):
         if ps[t] == 1:
             plt.plot(t*tstep+start_time+0.5*tstep, (ymaxlim-yminlim)*0.95+yminlim, 's',
@@ -513,6 +526,8 @@ def plot_tbytsim_withstats(similarities, start_time=0, end_time=1, time_interval
     plt.tick_params(labelsize=ticksize)
     plt.xlabel(xlabel, fontsize=fontsize)
     plt.ylabel(ylabel, fontsize=fontsize)
+
+    plt.title(title, fontsize=title_fontsize)
     plt.show()
 
     return ps
@@ -625,6 +640,17 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
                 else:
                     ps[t] = 0
 
+    print('\nSignificant time-windows:')
+    for t in range(nts):
+        if t == 0 and ps[t] == 1:
+            print(str(int(start_time * 1000)) + 'ms to ', end='')
+        if t > 0 and ps[t] == 1 and ps[t - 1] == 0:
+            print(str(int((start_time + t * tstep) * 1000)) + 'ms to ', end='')
+        if t < nts - 1 and ps[t] == 1 and ps[t + 1] == 0:
+            print(str(int((start_time + (t + 1) * tstep) * 1000)) + 'ms')
+        if t == nts - 1 and ps[t] == 1:
+            print(str(int(stats_time[1] * 1000)) + 'ms')
+
     for t in range(nts):
         if ps[t] == 1:
             plt.plot(t*tstep+start_time+0.5*tstep, (ymaxlim-yminlim)*0.95+yminlim, 's', color=color, alpha=0.8,
@@ -652,6 +678,8 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
     plt.tick_params(labelsize=ticksize)
     plt.xlabel(xlabel, fontsize=fontsize)
     plt.ylabel(ylabel, fontsize=fontsize)
+
+    plt.title(title, fontsize=title_fontsize)
     plt.show()
 
     return ps
@@ -789,12 +817,56 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
                     ps2[t] = 1
                 else:
                     ps2[t] = 0
-                if ttest_rel(acc1[:, t], acc1[:, t], alternative="greater")[1] < p/2:
+                if ttest_rel(acc1[:, t], acc2[:, t], alternative="greater")[1] < p/2:
                     ps[t] = 1
-                elif ttest_rel(acc1[:, t], acc1[:, t], alternative="less")[1] < p/2:
+                elif ttest_rel(acc1[:, t], acc2[:, t], alternative="less")[1] < p/2:
                     ps[t] = -1
                 else:
                     ps[t] = 0
+
+    print('\nSignificant time-windows for condition 1:')
+    for t in range(nts):
+        if t == 0 and ps1[t] == 1:
+            print(str(int(start_time * 1000)) + 'ms to ', end='')
+        if t > 0 and ps1[t] == 1 and ps1[t - 1] == 0:
+            print(str(int((start_time + t * tstep) * 1000)) + 'ms to ', end='')
+        if t < nts - 1 and ps1[t] == 1 and ps1[t + 1] == 0:
+            print(str(int((start_time + (t + 1) * tstep) * 1000)) + 'ms')
+        if t == nts - 1 and ps1[t] == 1:
+            print(str(int(stats_time[1] * 1000)) + 'ms')
+
+    print('\nSignificant time-windows for condition 2:')
+    for t in range(nts):
+        if t == 0 and ps2[t] == 1:
+            print(str(int(start_time * 1000)) + 'ms to ', end='')
+        if t > 0 and ps2[t] == 1 and ps2[t - 1] == 0:
+            print(str(int((start_time + t * tstep) * 1000)) + 'ms to ', end='')
+        if t < nts - 1 and ps2[t] == 1 and ps2[t + 1] == 0:
+            print(str(int((start_time + (t + 1) * tstep) * 1000)) + 'ms')
+        if t == nts - 1 and ps2[t] == 1:
+            print(str(int(stats_time[1] * 1000)) + 'ms')
+
+    print('\nSignificant time-windows for condition 1 > condition 2:')
+    for t in range(nts):
+        if t == 0 and ps[t] == 1:
+            print(str(int(start_time * 1000)) + 'ms to ', end='')
+        if t > 0 and ps[t] == 1 and ps2[t - 1] < 1:
+            print(str(int((start_time + t * tstep) * 1000)) + 'ms to ', end='')
+        if t < nts - 1 and ps[t] == 1 and ps[t + 1] < 1:
+            print(str(int((start_time + (t + 1) * tstep) * 1000)) + 'ms')
+        if t == nts - 1 and ps[t] == 1:
+            print(str(int(stats_time[1] * 1000)) + 'ms')
+
+    print('\nSignificant time-windows for condition 2 > condition 1:')
+    for t in range(nts):
+        if t == 0 and ps[t] == -1:
+            print(str(int(start_time * 1000)) + 'ms to ', end='')
+        if t > 0 and ps[t] == -1 and ps2[t - 1] > -1:
+            print(str(int((start_time + t * tstep) * 1000)) + 'ms to ', end='')
+        if t < nts - 1 and ps[t] == -1 and ps[t + 1] > -1:
+            print(str(int((start_time + (t + 1) * tstep) * 1000)) + 'ms')
+        if t == nts - 1 and ps[t] == -1:
+            print(str(int(stats_time[1] * 1000)) + 'ms')
 
     for t in range(nts):
         if ps1[t] == 1:
@@ -834,6 +906,8 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
     plt.tick_params(labelsize=ticksize)
     plt.xlabel(xlabel, fontsize=fontsize)
     plt.ylabel(ylabel, fontsize=fontsize)
+
+    plt.title(title, fontsize=title_fontsize)
     plt.show()
 
     return ps1, ps2, ps
@@ -985,6 +1059,8 @@ def plot_ct_decoding_acc(acc, start_timex=0, end_timex=1, start_timey=0, end_tim
     plt.tick_params(labelsize=ticksize)
     plt.xlabel(xlabel, fontsize=fontsize)
     plt.ylabel(ylabel, fontsize=fontsize)
+
+    plt.title(title, fontsize=title_fontsize)
     plt.show()
 
     return ps
@@ -1142,6 +1218,8 @@ def plot_ct_diff_decoding_acc(acc1, acc2, start_timex=0, end_timex=1, start_time
     plt.tick_params(labelsize=ticksize)
     plt.xlabel(xlabel, fontsize=fontsize)
     plt.ylabel(ylabel, fontsize=fontsize)
+
+    plt.title(title, fontsize=title_fontsize)
     plt.show()
 
     return ps
@@ -1290,6 +1368,7 @@ def plot_corrs_hotmap(corrs, chllabels=None, time_unit=[0, 0.1], lim=[0, 1], smo
     plt.ylabel("Channel", fontsize=20)
     plt.xlabel("Time (s)", fontsize=20)
 
+    plt.title(title, fontsize=title_fontsize)
     plt.show()
 
     return 0
@@ -1478,6 +1557,7 @@ def plot_corrs_hotmap_withstats(corrs, chllabels=None, time_unit=[0, 0.1], lim=[
     plt.ylabel(ylabel, fontsize=20)
     plt.xlabel(xlabel, fontsize=20)
 
+    plt.title(title, fontsize=title_fontsize)
     plt.show()
 
     return ps
@@ -1620,6 +1700,7 @@ def plot_nps_hotmap(similarities, chllabels=None, time_unit=[0, 0.1], lim=[0, 1]
     plt.ylabel("Channel", fontsize=20)
     plt.xlabel("Time (s)", fontsize=20)
 
+    plt.title(title, fontsize=title_fontsize)
     plt.show()
 
     return 0
@@ -1807,6 +1888,7 @@ def plot_t_hotmap_withstats(results, chllabels=None, time_unit=[0, 0.1], lim=[-7
     plt.ylabel(ylabel, fontsize=20)
     plt.xlabel(xlabel, fontsize=20)
 
+    plt.title(title, fontsize=title_fontsize)
     plt.show()
 
     return ps
