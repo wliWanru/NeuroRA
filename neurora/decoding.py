@@ -8,6 +8,7 @@ import numpy as np
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
 from neurora.stuff import show_progressbar, smooth_1d, smooth_2d
 
 np.seterr(divide='ignore', invalid='ignore')
@@ -15,7 +16,7 @@ np.seterr(divide='ignore', invalid='ignore')
 ' a function for time-by-time decoding for EEG-like data (cross validation) '
 
 def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, nfolds=5, nrepeats=2,
-                        normalization=False, smooth=True):
+                        normalization=False, pca=True, pca_components=0.95, smooth=True):
 
     """
     Conduct time-by-time decoding for EEG-like data (cross validation)
@@ -50,6 +51,11 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
         The times for iteration.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
+    pca : boolean True or False. Default is True.
+        Apply principal component analysis (PCA).
+    pca_components : int or float. Default is 0.95.
+        Number of components for PCA to keep. If 0<pca_components<1, select the numbder of components such that the
+        amount of variance that needs to be explained is greater than the percentage specified by pca_components.
     smooth : boolean True or False, or int. Default is True.
         Smooth the decoding result or not.
         If smooth = True, the default smoothing step is 5. If smooth = n (type of n: int), the smoothing step is n.
@@ -160,18 +166,23 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
                     fold_index = 0
                     for train_index, test_index in kf.split(xt, y):
 
-                        if normalization is False:
-
-                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                            svm.fit(xt[train_index], y[train_index])
-                            subacc[i, t, fold_index] = svm.score(xt[test_index], y[test_index])
+                        x_train = xt[train_index]
+                        x_test = xt[test_index]
 
                         if normalization is True:
                             scaler = StandardScaler()
-                            x_train = scaler.fit_transform(xt[train_index])
-                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                            svm.fit(x_train, y[train_index])
-                            subacc[i, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
+                            x_train = scaler.fit_transform(x_train)
+                            x_test = scaler.transform(x_test)
+
+                        if pca is True:
+
+                            Pca = PCA(n_components=pca_components)
+                            x_train = Pca.fit_transform(x_train)
+                            x_test = Pca.transform(x_test)
+
+                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                        svm.fit(x_train, y[train_index])
+                        subacc[i, t, fold_index] = svm.score(x_test, y[test_index])
 
                         percent = (sub * nrepeats * newnts * nfolds + i * newnts * nfolds + t * nfolds + fold_index + 1) / total * 100
                         show_progressbar("Calculating", percent)
@@ -246,17 +257,23 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
                     fold_index = 0
                     for train_index, test_index in kf.split(xt, y):
 
+                        x_train = xt[train_index]
+                        x_test = xt[test_index]
+
                         if normalization is True:
                             scaler = StandardScaler()
-                            x_train = scaler.fit_transform(xt[train_index])
-                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                            svm.fit(x_train, y[train_index])
-                            subacc[i, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
+                            x_train = scaler.fit_transform(x_train)
+                            x_test = scaler.transform(x_test)
 
-                        if normalization is False:
-                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                            svm.fit(xt[train_index], y[train_index])
-                            subacc[i, t, fold_index] = svm.score(xt[test_index], y[test_index])
+                        if pca is True:
+
+                            Pca = PCA(n_components=pca_components)
+                            x_train = Pca.fit_transform(x_train)
+                            x_test = Pca.transform(x_test)
+
+                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                        svm.fit(x_train, y[train_index])
+                        subacc[i, t, fold_index] = svm.score(x_test, y[test_index])
 
                         percent = (sub * nrepeats * newnts * nfolds + i * newnts * nfolds + t * nfolds + fold_index + 1) / total * 100
                         show_progressbar("Calculating", percent)
@@ -289,7 +306,7 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
 ' a function for time-by-time decoding for EEG-like data (hold out) '
 
 def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, iter=10,
-                          test_size=0.3, normalization=False, smooth=True):
+                          test_size=0.3, normalization=False, pca=True, pca_components=0.95, smooth=True):
 
     """
     Conduct time-by-time decoding for EEG-like data (hold out)
@@ -324,6 +341,11 @@ def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_wi
         test_size should be between 0.0 and 1.0.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
+    pca : boolean True or False. Default is True.
+        Apply principal component analysis (PCA).
+    pca_components : int or float. Default is 0.95.
+        Number of components for PCA to keep. If 0<pca_components<1, select the numbder of components such that the
+        amount of variance that needs to be explained is greater than the percentage specified by pca_components.
     smooth : boolean True or False, or int. Default is True.
         Smooth the decoding result or not.
         If smooth = True, the default smoothing step is 5. If smooth = n (type of n: int), the smoothing step is n.
@@ -432,25 +454,25 @@ def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_wi
                     percent = (sub * iter * newnts + i * newnts + t + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
+                    state = np.random.randint(0, 100)
+                    xt = x[:, :, t]
+                    x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                        random_state=state)
+
                     if normalization is True:
-                        state = np.random.randint(0, 100)
-                        xt = x[:, :, t]
-                        x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
-                                                                            random_state=state)
+
                         scaler = StandardScaler()
                         x_train = scaler.fit_transform(x_train)
-                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                        svm.fit(x_train, y_train)
-                        subacc[i, t] = svm.score(scaler.transform(x_test), y_test)
+                        x_test = scaler.transform(x_test)
 
-                    if normalization is False:
-                        state = np.random.randint(0, 100)
-                        xt = x[:, :, t]
-                        x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
-                                                                            random_state=state)
-                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                        svm.fit(x_train, y_train)
-                        subacc[i, t] = svm.score(x_test, y_test)
+                    if pca is True:
+                        Pca = PCA(n_components=pca_components)
+                        x_train = Pca.fit_transform(x_train)
+                        x_test = Pca.transform(x_test)
+
+                    svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                    svm.fit(x_train, y_train)
+                    subacc[i, t] = svm.score(x_test, y_test)
 
                     if sub == (nsubs - 1) and i == (iter - 1) and t == (newnts - 1):
                         print("\nDecoding finished!\n")
@@ -517,25 +539,24 @@ def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_wi
                     percent = (sub * iter * newnts + i * newnts + t + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
+                    state = np.random.randint(0, 100)
+                    xt = x[:, :, t]
+                    x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                        random_state=state)
+
                     if normalization is True:
-                        state = np.random.randint(0, 100)
-                        xt = x[:, :, t]
-                        x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
-                                                                            random_state=state)
                         scaler = StandardScaler()
                         x_train = scaler.fit_transform(x_train)
-                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                        svm.fit(x_train, y_train)
-                        subacc[i, t] = svm.score(scaler.transform(x_test), y_test)
+                        x_test = scaler.transform(x_test)
 
-                    if normalization is False:
-                        state = np.random.randint(0, 100)
-                        xt = x[:, :, t]
-                        x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
-                                                                            random_state=state)
-                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                        svm.fit(x_train, y_train)
-                        subacc[i, t] = svm.score(x_test, y_test)
+                    if pca is True:
+                        Pca = PCA(n_components=pca_components)
+                        x_train = Pca.fit_transform(x_train)
+                        x_test = Pca.transform(x_test)
+
+                    svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                    svm.fit(x_train, y_train)
+                    subacc[i, t] = svm.score(x_test, y_test)
 
                     if sub == (nsubs - 1) and i == (iter - 1) and t == (newnts - 1):
                         print("\nDecoding finished!\n")
@@ -561,7 +582,7 @@ def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_wi
 ' a function for cross-temporal decoding for EEG-like data (cross validation) '
 
 def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, nfolds=5, nrepeats=2,
-                      normalization=False, smooth=True):
+                      normalization=False, pca=True, pca_components=0.95, smooth=True):
 
     """
     Conduct cross-temporal decoding for EEG-like data (cross validation)
@@ -596,6 +617,11 @@ def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5,
         The times for iteration.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
+    pca : boolean True or False. Default is True.
+        Apply principal component analysis (PCA).
+    pca_components : int or float. Default is 0.95.
+        Number of components for PCA to keep. If 0<pca_components<1, select the numbder of components such that the
+        amount of variance that needs to be explained is greater than the percentage specified by pca_components.
     smooth : boolean True or False, or int. Default is True.
         Smooth the decoding result or not.
         If smooth = True, the default smoothing step is 5. If smooth = n (type of n: int), the smoothing step is n.
@@ -712,34 +738,77 @@ def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5,
                         show_progressbar("Calculating", percent)
 
                         if normalization is True:
-                            scaler = StandardScaler()
-                            x_train = scaler.fit_transform(xt[train_index])
-                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                            svm.fit(x_train, y[train_index])
-                            subacc[i, t, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
+                            if pca is True:
 
-                            for tt in range(newnts - 1):
-                                if tt < t:
-                                    xtt = x[:, :, tt]
-                                    subacc[i, t, tt, fold_index] = svm.score(scaler.transform(xtt[test_index]),
-                                                                             y[test_index])
-                                if tt >= t:
-                                    xtt = x[:, :, tt + 1]
-                                    subacc[i, t, tt + 1, fold_index] = svm.score(scaler.transform(xtt[test_index]),
+                                scaler = StandardScaler()
+                                x_train = scaler.fit_transform(xt[train_index])
+                                x_test = scaler.transform(xt[test_index])
+                                Pca = PCA(n_components=pca_components)
+                                x_train = Pca.fit_transform(x_train)
+                                x_test = Pca.transform(x_test)
+                                svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                                svm.fit(x_train, y[train_index])
+                                subacc[i, t, t, fold_index] = svm.score(x_test, y[test_index])
+
+                                for tt in range(newnts - 1):
+                                    if tt < t:
+                                        xtt = x[:, :, tt]
+                                        subacc[i, t, tt, fold_index] = svm.score(
+                                            Pca.transform(scaler.transform(xtt[test_index])), y[test_index])
+                                    if tt >= t:
+                                        xtt = x[:, :, tt + 1]
+                                        subacc[i, t, tt + 1, fold_index] = svm.score(
+                                            Pca.transform(scaler.transform(xtt[test_index])), y[test_index])
+
+                            if pca is False:
+
+                                scaler = StandardScaler()
+                                x_train = scaler.fit_transform(xt[train_index])
+                                svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                                svm.fit(x_train, y[train_index])
+                                subacc[i, t, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
+
+                                for tt in range(newnts - 1):
+                                    if tt < t:
+                                        xtt = x[:, :, tt]
+                                        subacc[i, t, tt, fold_index] = svm.score(scaler.transform(xtt[test_index]),
                                                                                  y[test_index])
+                                    if tt >= t:
+                                        xtt = x[:, :, tt + 1]
+                                        subacc[i, t, tt + 1, fold_index] = svm.score(scaler.transform(xtt[test_index]),
+                                                                                     y[test_index])
 
                         if normalization is False:
-                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                            svm.fit(xt[train_index], y[train_index])
-                            subacc[i, t, t, fold_index] = svm.score(xt[test_index], y[test_index])
+                            if pca is False:
 
-                            for tt in range(newnts - 1):
-                                if tt < t:
-                                    xtt = x[:, :, tt]
-                                    subacc[i, t, tt, fold_index] = svm.score(xtt[test_index], y[test_index])
-                                if tt >= t:
-                                    xtt = x[:, :, tt + 1]
-                                    subacc[i, t, tt + 1, fold_index] = svm.score(xtt[test_index], y[test_index])
+                                svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                                svm.fit(xt[train_index], y[train_index])
+                                subacc[i, t, t, fold_index] = svm.score(xt[test_index], y[test_index])
+
+                                for tt in range(newnts - 1):
+                                    if tt < t:
+                                        xtt = x[:, :, tt]
+                                        subacc[i, t, tt, fold_index] = svm.score(xtt[test_index], y[test_index])
+                                    if tt >= t:
+                                        xtt = x[:, :, tt + 1]
+                                        subacc[i, t, tt + 1, fold_index] = svm.score(xtt[test_index], y[test_index])
+
+                            if pca is True:
+
+                                Pca = PCA(n_components=pca_components)
+                                x_train = Pca.fit_transform(xt[train_index])
+                                x_test = Pca.transform(xt[test_index])
+                                svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                                svm.fit(x_train, y[train_index])
+                                subacc[i, t, t, fold_index] = svm.score(x_test, y[test_index])
+
+                                for tt in range(newnts - 1):
+                                    if tt < t:
+                                        xtt = x[:, :, tt]
+                                        subacc[i, t, tt, fold_index] = svm.score(Pca.transform(xtt[test_index]), y[test_index])
+                                    if tt >= t:
+                                        xtt = x[:, :, tt + 1]
+                                        subacc[i, t, tt + 1, fold_index] = svm.score(Pca.transform(xtt[test_index]), y[test_index])
 
                         if sub == (nsubs - 1) and i == (nrepeats - 1) and t == (newnts - 1) and fold_index == (
                                 nfolds - 1):
@@ -817,34 +886,79 @@ def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5,
                         show_progressbar("Calculating", percent)
 
                         if normalization is True:
-                            scaler = StandardScaler()
-                            x_train = scaler.fit_transform(xt[train_index])
-                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                            svm.fit(x_train, y[train_index])
-                            subacc[i, t, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
+                            if pca is True:
 
-                            for tt in range(newnts - 1):
-                                if tt < t:
-                                    xtt = x[:, :, tt]
-                                    subacc[i, t, tt, fold_index] = svm.score(scaler.transform(xtt[test_index]),
-                                                                             y[test_index])
-                                if tt >= t:
-                                    xtt = x[:, :, tt + 1]
-                                    subacc[i, t, tt + 1, fold_index] = svm.score(scaler.transform(xtt[test_index]),
+                                scaler = StandardScaler()
+                                x_train = scaler.fit_transform(xt[train_index])
+                                x_test = scaler.transform(xt[test_index])
+                                Pca = PCA(n_components=pca_components)
+                                x_train = Pca.fit_transform(x_train)
+                                x_test = Pca.transform(x_test)
+                                svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                                svm.fit(x_train, y[train_index])
+                                subacc[i, t, t, fold_index] = svm.score(x_test, y[test_index])
+
+                                for tt in range(newnts - 1):
+                                    if tt < t:
+                                        xtt = x[:, :, tt]
+                                        subacc[i, t, tt, fold_index] = svm.score(
+                                            Pca.transform(scaler.transform(xtt[test_index])), y[test_index])
+                                    if tt >= t:
+                                        xtt = x[:, :, tt + 1]
+                                        subacc[i, t, tt + 1, fold_index] = svm.score(
+                                            Pca.transform(scaler.transform(xtt[test_index])), y[test_index])
+
+                            if pca is False:
+
+                                scaler = StandardScaler()
+                                x_train = scaler.fit_transform(xt[train_index])
+                                svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                                svm.fit(x_train, y[train_index])
+                                subacc[i, t, t, fold_index] = svm.score(scaler.transform(xt[test_index]), y[test_index])
+
+                                for tt in range(newnts - 1):
+                                    if tt < t:
+                                        xtt = x[:, :, tt]
+                                        subacc[i, t, tt, fold_index] = svm.score(scaler.transform(xtt[test_index]),
                                                                                  y[test_index])
+                                    if tt >= t:
+                                        xtt = x[:, :, tt + 1]
+                                        subacc[i, t, tt + 1, fold_index] = svm.score(scaler.transform(xtt[test_index]),
+                                                                                     y[test_index])
 
                         if normalization is False:
-                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                            svm.fit(xt[train_index], y[train_index])
-                            subacc[i, t, t, fold_index] = svm.score(xt[test_index], y[test_index])
+                            if pca is False:
 
-                            for tt in range(newnts - 1):
-                                if tt < t:
-                                    xtt = x[:, :, tt]
-                                    subacc[i, t, tt, fold_index] = svm.score(xtt[test_index], y[test_index])
-                                if tt >= t:
-                                    xtt = x[:, :, tt + 1]
-                                    subacc[i, t, tt + 1, fold_index] = svm.score(xtt[test_index], y[test_index])
+                                svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                                svm.fit(xt[train_index], y[train_index])
+                                subacc[i, t, t, fold_index] = svm.score(xt[test_index], y[test_index])
+
+                                for tt in range(newnts - 1):
+                                    if tt < t:
+                                        xtt = x[:, :, tt]
+                                        subacc[i, t, tt, fold_index] = svm.score(xtt[test_index], y[test_index])
+                                    if tt >= t:
+                                        xtt = x[:, :, tt + 1]
+                                        subacc[i, t, tt + 1, fold_index] = svm.score(xtt[test_index], y[test_index])
+
+                            if pca is True:
+
+                                Pca = PCA(n_components=pca_components)
+                                x_train = Pca.fit_transform(xt[train_index])
+                                x_test = Pca.transform(xt[test_index])
+                                svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                                svm.fit(x_train, y[train_index])
+                                subacc[i, t, t, fold_index] = svm.score(x_test, y[test_index])
+
+                                for tt in range(newnts - 1):
+                                    if tt < t:
+                                        xtt = x[:, :, tt]
+                                        subacc[i, t, tt, fold_index] = svm.score(Pca.transform(xtt[test_index]),
+                                                                                 y[test_index])
+                                    if tt >= t:
+                                        xtt = x[:, :, tt + 1]
+                                        subacc[i, t, tt + 1, fold_index] = svm.score(Pca.transform(xtt[test_index]),
+                                                                                     y[test_index])
 
                         if sub == (nsubs - 1) and i == (nrepeats - 1) and t == (newnts - 1) and fold_index == (
                                 nfolds - 1):
@@ -873,7 +987,7 @@ def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5,
 ' a function for cross-temporal decoding for EEG-like data (hold-out) '
 
 def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, iter=10, test_size=0.3,
-                        normalization=False, smooth=True):
+                        normalization=False, pca=True, pca_components=0.95, smooth=True):
 
     """
     Conduct cross-temporal decoding for EEG-like data (hold-out)
@@ -908,6 +1022,11 @@ def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=
         test_size should be between 0.0 and 1.0.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
+    pca : boolean True or False. Default is True.
+        Apply principal component analysis (PCA).
+    pca_components : int or float. Default is 0.95.
+        Number of components for PCA to keep. If 0<pca_components<1, select the numbder of components such that the
+        amount of variance that needs to be explained is greater than the percentage specified by pca_components.
     smooth : boolean True or False, or int. Default is True.
         Smooth the decoding result or not.
         If smooth = True, the default smoothing step is 5. If smooth = n (type of n: int), the smoothing step is n.
@@ -1017,46 +1136,99 @@ def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=
                     show_progressbar("Calculating", percent)
 
                     if normalization is True:
-                        state = np.random.randint(0, 100)
-                        xt = x[:, :, t]
-                        x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
-                                                                            random_state=state)
-                        scaler = StandardScaler()
-                        x_train = scaler.fit_transform(x_train)
-                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                        svm.fit(x_train, y_train)
-                        subacc[i, t, t] = svm.score(scaler.transform(x_test), y_test)
-                        for tt in range(newnts - 1):
-                            if tt < t:
-                                xtt = x[:, :, tt]
-                                x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
-                                                                                     random_state=state)
-                                subacc[i, t, tt] = svm.score(scaler.transform(x_testt), y_test)
-                            if tt >= t:
-                                xtt = x[:, :, tt + 1]
-                                x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
-                                                                                     random_state=state)
-                                subacc[i, t, tt + 1] = svm.score(scaler.transform(x_testt), y_test)
+                        if pca is True:
+                            state = np.random.randint(0, 100)
+                            xt = x[:, :, t]
+                            x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                                random_state=state)
+                            scaler = StandardScaler()
+                            x_train = scaler.fit_transform(x_train)
+                            x_test = scaler.transform(x_test)
+                            Pca = PCA(n_components=pca_components)
+                            x_train = Pca.fit_transform(x_train)
+                            x_test = Pca.transform(x_test)
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(x_train, y_train)
+                            subacc[i, t, t] = svm.score(x_test, y_test)
+                            for tt in range(newnts - 1):
+                                if tt < t:
+                                    xtt = x[:, :, tt]
+                                    x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                         random_state=state)
+                                    subacc[i, t, tt] = svm.score(Pca.transform(scaler.transform(x_testt)), y_test)
+                                if tt >= t:
+                                    xtt = x[:, :, tt + 1]
+                                    x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                         random_state=state)
+                                    subacc[i, t, tt + 1] = svm.score(Pca.transform(scaler.transform(x_testt)), y_test)
+
+                        if pca is False:
+                            state = np.random.randint(0, 100)
+                            xt = x[:, :, t]
+                            x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                                random_state=state)
+                            scaler = StandardScaler()
+                            x_train = scaler.fit_transform(x_train)
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(x_train, y_train)
+                            subacc[i, t, t] = svm.score(scaler.transform(x_test), y_test)
+                            for tt in range(newnts - 1):
+                                if tt < t:
+                                    xtt = x[:, :, tt]
+                                    x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                         random_state=state)
+                                    subacc[i, t, tt] = svm.score(scaler.transform(x_testt), y_test)
+                                if tt >= t:
+                                    xtt = x[:, :, tt + 1]
+                                    x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                         random_state=state)
+                                    subacc[i, t, tt + 1] = svm.score(scaler.transform(x_testt), y_test)
 
                     if normalization is False:
-                        state = np.random.randint(0, 100)
-                        xt = x[:, :, t]
-                        x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
-                                                                            random_state=state)
-                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                        svm.fit(x_train, y_train)
-                        subacc[i, t, t] = svm.score(x_test, y_test)
-                        for tt in range(newnts - 1):
-                            if tt < t:
-                                xtt = x[:, :, tt]
-                                x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
-                                                                                     random_state=state)
-                                subacc[i, t, tt] = svm.score(x_testt, y_test)
-                            if tt >= t:
-                                xtt = x[:, :, tt + 1]
-                                x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
-                                                                                     random_state=state)
-                                subacc[i, t, tt + 1] = svm.score(x_testt, y_test)
+                        if pca is False:
+
+                            state = np.random.randint(0, 100)
+                            xt = x[:, :, t]
+                            x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                                random_state=state)
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(x_train, y_train)
+                            subacc[i, t, t] = svm.score(x_test, y_test)
+                            for tt in range(newnts - 1):
+                                if tt < t:
+                                    xtt = x[:, :, tt]
+                                    x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                         random_state=state)
+                                    subacc[i, t, tt] = svm.score(x_testt, y_test)
+                                if tt >= t:
+                                    xtt = x[:, :, tt + 1]
+                                    x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                         random_state=state)
+                                    subacc[i, t, tt + 1] = svm.score(x_testt, y_test)
+
+                        if pca is True:
+
+                            state = np.random.randint(0, 100)
+                            xt = x[:, :, t]
+                            x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                                random_state=state)
+                            Pca = PCA(n_components=pca_components)
+                            x_train = Pca.fit_transform(x_train)
+                            x_test = Pca.transform(x_test)
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(x_train, y_train)
+                            subacc[i, t, t] = svm.score(x_test, y_test)
+                            for tt in range(newnts - 1):
+                                if tt < t:
+                                    xtt = x[:, :, tt]
+                                    x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                         random_state=state)
+                                    subacc[i, t, tt] = svm.score(Pca.transform(x_testt), y_test)
+                                if tt >= t:
+                                    xtt = x[:, :, tt + 1]
+                                    x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                         random_state=state)
+                                    subacc[i, t, tt + 1] = svm.score(Pca.transform(x_testt), y_test)
 
                     if sub == (nsubs - 1) and i == (iter - 1) and t == (newnts - 1):
                         print("\nDecoding finished!\n")
@@ -1124,46 +1296,101 @@ def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=
                     show_progressbar("Calculating", percent)
 
                     if normalization is True:
-                        state = np.random.randint(0, 100)
-                        xt = x[:, :, t]
-                        x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
-                                                                            random_state=state)
-                        scaler = StandardScaler()
-                        x_train = scaler.fit_transform(x_train)
-                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                        svm.fit(x_train, y_train)
-                        subacc[i, t, t] = svm.score(scaler.transform(x_test), y_test)
-                        for tt in range(newnts - 1):
-                            if tt < t:
-                                xtt = x[:, :, tt]
-                                x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
-                                                                                     random_state=state)
-                                subacc[i, t, tt] = svm.score(scaler.transform(x_testt), y_test)
-                            if tt >= t:
-                                xtt = x[:, :, tt + 1]
-                                x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
-                                                                                     random_state=state)
-                                subacc[i, t, tt + 1] = svm.score(scaler.transform(x_testt), y_test)
+                        if pca is True:
+
+                            state = np.random.randint(0, 100)
+                            xt = x[:, :, t]
+                            x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                                random_state=state)
+                            scaler = StandardScaler()
+                            x_train = scaler.fit_transform(x_train)
+                            x_test = scaler.transform(x_test)
+                            Pca = PCA(n_components=pca_components)
+                            x_train = Pca.fit_transform(x_train)
+                            x_test = Pca.transform(x_test)
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(x_train, y_train)
+                            subacc[i, t, t] = svm.score(x_test, y_test)
+                            for tt in range(newnts - 1):
+                                if tt < t:
+                                    xtt = x[:, :, tt]
+                                    x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                         random_state=state)
+                                    subacc[i, t, tt] = svm.score(Pca.transform(scaler.transform(x_testt)), y_test)
+                                if tt >= t:
+                                    xtt = x[:, :, tt + 1]
+                                    x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                         random_state=state)
+                                    subacc[i, t, tt + 1] = svm.score(Pca.transform(scaler.transform(x_testt)), y_test)
+
+                        if pca is False:
+
+                            state = np.random.randint(0, 100)
+                            xt = x[:, :, t]
+                            x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                                random_state=state)
+                            scaler = StandardScaler()
+                            x_train = scaler.fit_transform(x_train)
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(x_train, y_train)
+                            subacc[i, t, t] = svm.score(scaler.transform(x_test), y_test)
+                            for tt in range(newnts - 1):
+                                if tt < t:
+                                    xtt = x[:, :, tt]
+                                    x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                         random_state=state)
+                                    subacc[i, t, tt] = svm.score(scaler.transform(x_testt), y_test)
+                                if tt >= t:
+                                    xtt = x[:, :, tt + 1]
+                                    x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                         random_state=state)
+                                    subacc[i, t, tt + 1] = svm.score(scaler.transform(x_testt), y_test)
 
                     if normalization is False:
-                        state = np.random.randint(0, 100)
-                        xt = x[:, :, t]
-                        x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
-                                                                            random_state=state)
-                        svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                        svm.fit(x_train, y_train)
-                        subacc[i, t, t] = svm.score(x_test, y_test)
-                        for tt in range(newnts - 1):
-                            if tt < t:
-                                xtt = x[:, :, tt]
-                                x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
-                                                                                     random_state=state)
-                                subacc[i, t, tt] = svm.score(x_testt, y_test)
-                            if tt >= t:
-                                xtt = x[:, :, tt + 1]
-                                x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
-                                                                                     random_state=state)
-                                subacc[i, t, tt + 1] = svm.score(x_testt, y_test)
+                        if pca is False:
+
+                            state = np.random.randint(0, 100)
+                            xt = x[:, :, t]
+                            x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                                random_state=state)
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(x_train, y_train)
+                            subacc[i, t, t] = svm.score(x_test, y_test)
+                            for tt in range(newnts - 1):
+                                if tt < t:
+                                    xtt = x[:, :, tt]
+                                    x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                         random_state=state)
+                                    subacc[i, t, tt] = svm.score(x_testt, y_test)
+                                if tt >= t:
+                                    xtt = x[:, :, tt + 1]
+                                    x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                         random_state=state)
+                                    subacc[i, t, tt + 1] = svm.score(x_testt, y_test)
+
+                        if pca is True:
+
+                            state = np.random.randint(0, 100)
+                            xt = x[:, :, t]
+                            x_train, x_test, y_train, y_test = train_test_split(xt, y, test_size=test_size,
+                                                                                random_state=state)
+                            Pca = PCA(n_components=pca_components)
+                            x_train = Pca.fit_transform(x_train)
+                            x_test = Pca.transform(x_test)
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(x_train, y_train)
+                            subacc[i, t, t] = svm.score(x_test, y_test)
+                            for tt in range(newnts - 1):
+                                if tt < t:
+                                    xtt = x[:, :, tt]
+                                    x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                         random_state=state)
+                                    subacc[i, t, tt] = svm.score(Pca.transform(x_testt), y_test)
+                                if tt >= t:
+                                    xtt = x[:, :, tt + 1]
+                                    x_train, x_testt, y_train, y_test = train_test_split(xtt, y, test_size=test_size,
+                                                                                         random_state=state)
+                                    subacc[i, t, tt + 1] = svm.score(Pca.transform(x_testt), y_test)
 
                     if sub == (nsubs - 1) and i == (iter - 1) and t == (newnts - 1):
                         print("\nDecoding finished!\n")
@@ -1189,7 +1416,7 @@ def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=
 ' a function for unidirectional transfer decoding for EEG-like data '
 
 def unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5, time_opt="average", time_win=5,
-                                     time_step=5, iter=10, normalization=False, smooth=True):
+                                     time_step=5, iter=10, normalization=False, pca=True, pca_components=0.95, smooth=True):
 
     """
     Conduct unidirectional transfer decoding for EEG-like data
@@ -1225,6 +1452,11 @@ def unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5
         The times for iteration.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
+    pca : boolean True or False. Default is True.
+        Apply principal component analysis (PCA).
+    pca_components : int or float. Default is 0.95.
+        Number of components for PCA to keep. If 0<pca_components<1, select the numbder of components such that the
+        amount of variance that needs to be explained is greater than the percentage specified by pca_components.
     smooth : boolean True or False, or int. Default is True.
         Smooth the decoding result or not.
         If smooth = True, the default smoothing step is 5. If smooth = n (type of n: int), the smoothing step is n.
@@ -1417,13 +1649,50 @@ def unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5
                     percent = (sub * iter * newnts1 + i * newnts1 + t + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
-                    scaler = StandardScaler()
-                    xt1 = scaler.fit_transform(x1[:, :, t])
-                    svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                    svm.fit(xt1, y1)
-                    for tt in range(newnts2):
-                        xt2 = x2[:, :, tt]
-                        subacc[i, t, tt] = svm.score(scaler.transform(xt2), y2)
+                    if normalization is False:
+                        if pca is False:
+
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            xt1 = x1[:, :, t]
+                            svm.fit(xt1, y1)
+                            for tt in range(newnts2):
+                                xt2 = x2[:, :, tt]
+                                subacc[i, t, tt] = svm.score(xt2, y2)
+
+                        if pca is True:
+
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            xt1 = x1[:, :, t]
+                            Pca = PCA(n_components=pca_components)
+                            xt1 = Pca.fit_transform(xt1)
+                            svm.fit(xt1, y1)
+                            for tt in range(newnts2):
+                                xt2 = x2[:, :, tt]
+                                subacc[i, t, tt] = svm.score(Pca.transform(xt2), y2)
+
+                    if normalization is True:
+                        if pca is True:
+
+                            scaler = StandardScaler()
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            xt1 = scaler.fit_transform(x1[:, :, t])
+                            Pca = PCA(n_components=pca_components)
+                            xt1 = Pca.fit_transform(xt1)
+                            svm.fit(xt1, y1)
+                            for tt in range(newnts2):
+                                xt2 = x2[:, :, tt]
+                                subacc[i, t, tt] = svm.score(Pca.transform(scaler.transform(xt2)), y2)
+
+                        if pca is False:
+
+                            scaler = StandardScaler()
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            xt1 = scaler.fit_transform(x1[:, :, t])
+
+                            svm.fit(xt1, y1)
+                            for tt in range(newnts2):
+                                xt2 = x2[:, :, tt]
+                                subacc[i, t, tt] = svm.score(scaler.transform(xt2), y2)
 
                     if sub == (nsubs - 1) and i == (iter - 1) and t == (newnts1 - 1):
                         print("\nDecoding finished!\n")
@@ -1523,13 +1792,50 @@ def unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5
                     percent = (sub * iter * newnts1 + i * newnts1 + t + 1) / total * 100
                     show_progressbar("Calculating", percent)
 
-                    scaler = StandardScaler()
-                    xt1 = scaler.fit_transform(x1[:, :, t])
-                    svm = SVC(kernel='linear', tol=1e-4, probability=False)
-                    svm.fit(xt1, y1)
-                    for tt in range(newnts2):
-                        xt2 = x2[:, :, tt]
-                        subacc[i, t, tt] = svm.score(scaler.transform(xt2), y2)
+                    if normalization is False:
+                        if pca is False:
+
+                            xt1 = x1[:, :, t]
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(xt1, y1)
+                            for tt in range(newnts2):
+                                xt2 = x2[:, :, tt]
+                                subacc[i, t, tt] = svm.score(xt2, y2)
+
+                        if pca is True:
+
+                            xt1 = x1[:, :, t]
+                            Pca = PCA(n_components=pca_components)
+                            xt1 = Pca.fit_transform(xt1)
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(xt1, y1)
+                            for tt in range(newnts2):
+                                xt2 = x2[:, :, tt]
+                                subacc[i, t, tt] = svm.score(Pca.transform(xt2), y2)
+
+
+                    if normalization is True:
+                        if pca is True:
+
+                            scaler = StandardScaler()
+                            xt1 = scaler.fit_transform(x1[:, :, t])
+                            Pca = PCA(n_components=pca_components)
+                            xt1 = Pca.fit_transform(xt1)
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(xt1, y1)
+                            for tt in range(newnts2):
+                                xt2 = x2[:, :, tt]
+                                subacc[i, t, tt] = svm.score(Pca.transform(scaler.transform(xt2)), y2)
+
+                        if pca is False:
+
+                            scaler = StandardScaler()
+                            xt1 = scaler.fit_transform(x1[:, :, t])
+                            svm = SVC(kernel='linear', tol=1e-4, probability=False)
+                            svm.fit(xt1, y1)
+                            for tt in range(newnts2):
+                                xt2 = x2[:, :, tt]
+                                subacc[i, t, tt] = svm.score(scaler.transform(xt2), y2)
 
                     if sub == (nsubs - 1) and i == (iter - 1) and t == (newnts1 - 1):
                         print("\nDecoding finished!\n")
@@ -1555,7 +1861,7 @@ def unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5
 ' a function for bidirectional transfer decoding for EEG-like data '
 
 def bidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5, time_opt="average", time_win=5,
-                                    time_step=5, iter=10, normalization=False, smooth=True):
+                                    time_step=5, iter=10, normalization=False, pca=True, pca_components=0.95, smooth=True):
 
     """
     Conduct bidirectional transfer decoding for EEG-like data
@@ -1591,6 +1897,11 @@ def bidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5,
         The times for iteration.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
+    pca : boolean True or False. Default is True.
+        Apply principal component analysis (PCA).
+    pca_components : int or float. Default is 0.95.
+        Number of components for PCA to keep. If 0<pca_components<1, select the numbder of components such that the
+        amount of variance that needs to be explained is greater than the percentage specified by pca_components.
     smooth : boolean True or False, or int. Default is True.
         Smooth the decoding result or not.
         If smooth = True, the default smoothing step is 5. If smooth = n (type of n: int), the smoothing step is n.
@@ -1607,9 +1918,10 @@ def bidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5,
 
     Con1toCon2_accuracies, Con2toCon1_accuracies = unidirectional_transfer_decoding(data1, labels1, data2,
                                     labels2, n=n, navg=navg, time_opt=time_opt, time_win=time_win, time_step=time_step,
-                                    iter=iter, normalization=normalization, smooth=smooth), \
-                                    unidirectional_transfer_decoding(data2, labels2, data1, labels1, n=n, navg=navg,
-                                    time_opt=time_opt, time_win=time_win, time_step=time_step, iter=iter,
-                                    normalization=normalization, smooth=smooth)
+                                    iter=iter, normalization=normalization, pca=pca, pca_components=pca_components,
+                                    smooth=smooth), unidirectional_transfer_decoding(data2, labels2, data1, labels1,
+                                    n=n, navg=navg, time_opt=time_opt, time_win=time_win, time_step=time_step,
+                                    iter=iter, normalization=normalization, pca=pca, pca_components=pca_components,
+                                    smooth=smooth)
 
     return Con1toCon2_accuracies, Con2toCon1_accuracies

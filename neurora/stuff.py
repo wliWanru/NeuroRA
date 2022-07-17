@@ -56,7 +56,7 @@ def get_affine(file_name):
         The position information of the fMRI-image array data in a reference space.
     """
 
-    if file_name is "":
+    if file_name == "":
 
         return "Invalid input"
 
