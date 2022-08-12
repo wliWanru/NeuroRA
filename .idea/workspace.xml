@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f96de87-b4a9-466e-9c57-851a40404f91" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/NeuroRA-master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/NeuroRA-master.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/decoding.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/decoding.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/stuff.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/stuff.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurora/rdm_corr.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/rdm_corr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -151,8 +149,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/neurora/stuff.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="50" column="60" selection-start-line="50" selection-start-column="60" selection-end-line="50" selection-end-column="60" />
+            <state relative-caret-position="158">
+              <caret line="2138" column="64" selection-start-line="2138" selection-start-column="64" selection-end-line="2138" selection-end-column="64" />
               <folding>
                 <element signature="e#105#126#0" expanded="true" />
               </folding>
@@ -160,10 +158,19 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/setup.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="6" lean-forward="true" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/neurora/stats_cal.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6465">
+            <state relative-caret-position="-847">
               <caret line="433" column="17" selection-start-line="433" selection-start-column="17" selection-end-line="433" selection-end-column="17" />
               <folding>
                 <element signature="e#105#123#0" expanded="true" />
@@ -173,33 +180,48 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/setup.py">
+        <entry file="file://$PROJECT_DIR$/neurora/stps_cal.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/source/conf.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="13" column="79" selection-start-line="13" selection-start-column="79" selection-end-line="13" selection-end-column="79" />
+            <state relative-caret-position="-7057">
+              <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
               <folding>
-                <element signature="e#232#241#0" expanded="true" />
+                <element signature="e#140#158#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/neurora/decoding.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/neurora/isc_cal.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1170">
-              <caret line="1827" column="97" selection-start-line="1827" selection-start-column="97" selection-end-line="1827" selection-end-column="97" />
+            <state relative-caret-position="2610">
+              <caret line="177" column="111" selection-start-line="177" selection-start-column="111" selection-end-line="177" selection-end-column="111" />
               <folding>
-                <element signature="e#106#124#0" expanded="true" />
+                <element signature="e#132#150#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/neurora/nii_save.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="4" selection-end-column="24" />
+              <folding>
+                <element signature="e#116#134#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/neurora/nps_cal.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2640">
+              <caret line="179" column="103" selection-start-line="179" selection-start-column="103" selection-end-line="179" selection-end-column="103" />
+              <folding>
+                <element signature="e#132#150#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -208,29 +230,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/neurora/rsa_plot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5190">
+            <state relative-caret-position="-26797">
               <caret line="357" selection-start-line="357" selection-end-line="357" />
               <folding>
                 <element signature="e#98#116#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/neurora/ctrdm_corr.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3195">
-              <caret line="217" column="96" selection-start-line="217" selection-start-column="96" selection-end-line="217" selection-end-column="96" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/neurora/ctcorr_cal.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3765">
-              <caret line="257" selection-start-line="257" selection-end-line="257" />
             </state>
           </provider>
         </entry>
@@ -248,12 +252,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/neurora/corr_cal_by_rdm.py">
+        <entry file="file://$PROJECT_DIR$/neurora/rdm_corr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+            <state relative-caret-position="7935">
+              <caret line="533" column="78" selection-start-line="533" selection-start-column="78" selection-end-line="533" selection-end-column="78" />
               <folding>
-                <element signature="e#152#170#0" expanded="true" />
+                <element signature="e#137#155#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -337,20 +341,20 @@
         <option value="$PROJECT_DIR$/docs/source/index.rst" />
         <option value="$PROJECT_DIR$/docs/source/ctrdm_cal.rst" />
         <option value="$USER_HOME$/Dropbox/Shared Lab Folder/Experiments/SCB_saccades/Analysis/expt03new.py" />
-        <option value="$PROJECT_DIR$/neurora/rdm_corr.py" />
         <option value="$PROJECT_DIR$/neurora/rdm_cal.py" />
         <option value="$PROJECT_DIR$/neurora/rsa_plot.py" />
-        <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/../PyTorch-VAE-master/experiment.py" />
         <option value="$PROJECT_DIR$/neurora/stuff.py" />
         <option value="$PROJECT_DIR$/neurora/decoding.py" />
+        <option value="$PROJECT_DIR$/neurora/rdm_corr.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="37" />
+    <option name="x" value="39" />
     <option name="y" value="23" />
-    <option name="width" value="1243" />
+    <option name="width" value="1241" />
     <option name="height" value="777" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -738,7 +742,13 @@
       <workItem from="1657412486396" duration="1195000" />
       <workItem from="1657926363916" duration="955000" />
       <workItem from="1657998671289" duration="5030000" />
-      <workItem from="1658074187007" duration="5965000" />
+      <workItem from="1658074187007" duration="6576000" />
+      <workItem from="1658412016961" duration="586000" />
+      <workItem from="1658463872336" duration="77000" />
+      <workItem from="1658464214268" duration="595000" />
+      <workItem from="1658636209557" duration="596000" />
+      <workItem from="1660007830058" duration="2406000" />
+      <workItem from="1660194051179" duration="617000" />
     </task>
     <servers />
   </component>
@@ -775,18 +785,18 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1532947000" />
+    <option name="totallyTimeSpent" value="1538435000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="37" y="23" width="1243" height="777" extended-state="6" />
+    <frame x="39" y="23" width="1241" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27310574" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3002502" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32884902" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49873844" visible="true" weight="0.34160584" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49873844" visible="true" weight="0.34160584" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39854014" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -883,54 +893,7 @@
     <entry file="file://$PROJECT_DIR$/docs/source/download.rst">
       <provider selected="true" editor-type-id="restructured-text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/neurora/stps_cal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
-          <folding>
-            <element signature="e#140#158#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/neurora/test.py" />
-    <entry file="file://$PROJECT_DIR$/neurora/isc_cal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2610">
-          <caret line="177" column="111" selection-start-line="177" selection-start-column="111" selection-end-line="177" selection-end-column="111" />
-          <folding>
-            <element signature="e#132#150#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neurora/nii_save.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="4" selection-end-column="24" />
-          <folding>
-            <element signature="e#116#134#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neurora/nps_cal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2630">
-          <caret line="179" column="103" selection-start-line="179" selection-start-column="103" selection-end-line="179" selection-end-column="103" />
-          <folding>
-            <element signature="e#132#150#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neurora/corr_cal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="10" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/demo/Decoding_Classification_VS_CTRSA.ipynb" />
     <entry file="file://$PROJECT_DIR$/demo/NeuroRA_Demo1.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
@@ -946,16 +909,6 @@
             <caret line="10" column="224" selection-start-line="10" selection-start-column="224" selection-end-line="10" selection-end-column="224" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neurora/ctrdm_cal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
-          <folding>
-            <element signature="e#127#145#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1018,43 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neurora/rdm_corr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8025">
-          <caret line="539" column="29" selection-start-line="539" selection-start-column="29" selection-end-line="539" selection-end-column="29" />
-          <folding>
-            <element signature="e#137#155#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neurora/stuff.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="50" column="60" selection-start-line="50" selection-start-column="60" selection-end-line="50" selection-end-column="60" />
-          <folding>
-            <element signature="e#105#126#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neurora/stats_cal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6465">
-          <caret line="433" column="17" selection-start-line="433" selection-start-column="17" selection-end-line="433" selection-end-column="17" />
-          <folding>
-            <element signature="e#105#123#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/source/conf.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1065,27 +981,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neurora/rsa_plot.py">
+    <entry file="file://$PROJECT_DIR$/neurora/corr_cal.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5190">
-          <caret line="357" selection-start-line="357" selection-end-line="357" />
+        <state relative-caret-position="-11992">
+          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="10" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/corr_cal_by_rdm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3037">
+          <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
           <folding>
-            <element signature="e#98#116#0" expanded="true" />
+            <element signature="e#152#170#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/ctcorr_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3577">
+          <caret line="257" selection-start-line="257" selection-end-line="257" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/ctrdm_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1027">
+          <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
+          <folding>
+            <element signature="e#127#145#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/neurora/ctrdm_corr.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3195">
+        <state relative-caret-position="98">
           <caret line="217" column="96" selection-start-line="217" selection-start-column="96" selection-end-line="217" selection-end-column="96" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neurora/ctcorr_cal.py">
+    <entry file="file://$PROJECT_DIR$/neurora/decoding.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3765">
-          <caret line="257" selection-start-line="257" selection-end-line="257" />
+        <state relative-caret-position="27330">
+          <caret line="1827" column="97" selection-start-line="1827" selection-start-column="97" selection-end-line="1827" selection-end-column="97" />
+          <folding>
+            <element signature="e#106#124#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/isc_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2610">
+          <caret line="177" column="111" selection-start-line="177" selection-start-column="111" selection-end-line="177" selection-end-column="111" />
+          <folding>
+            <element signature="e#132#150#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/nii_save.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="4" selection-end-column="24" />
+          <folding>
+            <element signature="e#116#134#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/nps_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2640">
+          <caret line="179" column="103" selection-start-line="179" selection-start-column="103" selection-end-line="179" selection-end-column="103" />
+          <folding>
+            <element signature="e#132#150#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1099,23 +1072,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neurora/corr_cal_by_rdm.py">
+    <entry file="file://$PROJECT_DIR$/neurora/rdm_corr.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+        <state relative-caret-position="7935">
+          <caret line="533" column="78" selection-start-line="533" selection-start-column="78" selection-end-line="533" selection-end-column="78" />
           <folding>
-            <element signature="e#152#170#0" expanded="true" />
+            <element signature="e#137#155#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neurora/decoding.py">
+    <entry file="file://$PROJECT_DIR$/neurora/rsa_plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1170">
-          <caret line="1827" column="97" selection-start-line="1827" selection-start-column="97" selection-end-line="1827" selection-end-column="97" />
+        <state relative-caret-position="-26797">
+          <caret line="357" selection-start-line="357" selection-end-line="357" />
           <folding>
-            <element signature="e#106#124#0" expanded="true" />
+            <element signature="e#98#116#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/stats_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-847">
+          <caret line="433" column="17" selection-start-line="433" selection-start-column="17" selection-end-line="433" selection-end-column="17" />
+          <folding>
+            <element signature="e#105#123#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/stps_cal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7057">
+          <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+          <folding>
+            <element signature="e#140#158#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/stuff.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="2138" column="64" selection-start-line="2138" selection-start-column="64" selection-end-line="2138" selection-end-column="64" />
+          <folding>
+            <element signature="e#105#126#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="6" lean-forward="true" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
         </state>
       </provider>
     </entry>

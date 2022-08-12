@@ -547,7 +547,3 @@ def rdm_distance(RDM1, RDM2, rescale=False):
     dist = np.linalg.norm(v1 - v2)
 
     return dist
-
-A = np.random.rand(6, 6)
-B = np.random.rand(6, 6)
-print(rdm_distance(A, B))
