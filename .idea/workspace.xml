@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f96de87-b4a9-466e-9c57-851a40404f91" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neurora/rdm_corr.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurora/rdm_corr.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-    </list>
+    <list default="true" id="6f96de87-b4a9-466e-9c57-851a40404f91" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,10 +155,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/neurora/decoding.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="27397">
+              <caret line="1827" column="97" selection-start-line="1827" selection-start-column="97" selection-end-line="1827" selection-end-column="97" />
+              <folding>
+                <element signature="e#106#124#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
-              <caret line="26" column="6" lean-forward="true" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+              <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -186,18 +194,6 @@
               <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
               <folding>
                 <element signature="e#140#158#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/neurora/isc_cal.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2610">
-              <caret line="177" column="111" selection-start-line="177" selection-start-column="111" selection-end-line="177" selection-end-column="111" />
-              <folding>
-                <element signature="e#132#150#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -230,8 +226,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/neurora/rsa_plot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-26797">
-              <caret line="357" selection-start-line="357" selection-end-line="357" />
+            <state relative-caret-position="10125">
+              <caret line="900" column="34" selection-start-line="900" selection-start-column="34" selection-end-line="900" selection-end-column="34" />
               <folding>
                 <element signature="e#98#116#0" expanded="true" />
               </folding>
@@ -748,7 +744,7 @@
       <workItem from="1658464214268" duration="595000" />
       <workItem from="1658636209557" duration="596000" />
       <workItem from="1660007830058" duration="2406000" />
-      <workItem from="1660194051179" duration="617000" />
+      <workItem from="1660194051179" duration="1889000" />
     </task>
     <servers />
   </component>
@@ -785,7 +781,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1538435000" />
+    <option name="totallyTimeSpent" value="1539707000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="39" y="23" width="1241" height="777" extended-state="0" />
@@ -1022,16 +1018,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neurora/decoding.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27330">
-          <caret line="1827" column="97" selection-start-line="1827" selection-start-column="97" selection-end-line="1827" selection-end-column="97" />
-          <folding>
-            <element signature="e#106#124#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/neurora/isc_cal.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2610">
@@ -1082,16 +1068,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neurora/rsa_plot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26797">
-          <caret line="357" selection-start-line="357" selection-end-line="357" />
-          <folding>
-            <element signature="e#98#116#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/neurora/stats_cal.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-847">
@@ -1125,7 +1101,27 @@
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
-          <caret line="26" column="6" lean-forward="true" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/rsa_plot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10125">
+          <caret line="900" column="34" selection-start-line="900" selection-start-column="34" selection-end-line="900" selection-end-column="34" />
+          <folding>
+            <element signature="e#98#116#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neurora/decoding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27397">
+          <caret line="1827" column="97" selection-start-line="1827" selection-start-column="97" selection-end-line="1827" selection-end-column="97" />
+          <folding>
+            <element signature="e#106#124#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

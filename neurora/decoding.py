@@ -16,7 +16,7 @@ np.seterr(divide='ignore', invalid='ignore')
 ' a function for time-by-time decoding for EEG-like data (cross validation) '
 
 def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, nfolds=5, nrepeats=2,
-                        normalization=False, pca=True, pca_components=0.95, smooth=True):
+                        normalization=False, pca=False, pca_components=0.95, smooth=True):
 
     """
     Conduct time-by-time decoding for EEG-like data (cross validation)
@@ -51,7 +51,7 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
         The times for iteration.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
-    pca : boolean True or False. Default is True.
+    pca : boolean True or False. Default is False.
         Apply principal component analysis (PCA).
     pca_components : int or float. Default is 0.95.
         Number of components for PCA to keep. If 0<pca_components<1, select the numbder of components such that the
@@ -306,7 +306,7 @@ def tbyt_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=
 ' a function for time-by-time decoding for EEG-like data (hold out) '
 
 def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, iter=10,
-                          test_size=0.3, normalization=False, pca=True, pca_components=0.95, smooth=True):
+                          test_size=0.3, normalization=False, pca=False, pca_components=0.95, smooth=True):
 
     """
     Conduct time-by-time decoding for EEG-like data (hold out)
@@ -341,7 +341,7 @@ def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_wi
         test_size should be between 0.0 and 1.0.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
-    pca : boolean True or False. Default is True.
+    pca : boolean True or False. Default is False.
         Apply principal component analysis (PCA).
     pca_components : int or float. Default is 0.95.
         Number of components for PCA to keep. If 0<pca_components<1, select the numbder of components such that the
@@ -582,7 +582,7 @@ def tbyt_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_wi
 ' a function for cross-temporal decoding for EEG-like data (cross validation) '
 
 def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, nfolds=5, nrepeats=2,
-                      normalization=False, pca=True, pca_components=0.95, smooth=True):
+                      normalization=False, pca=False, pca_components=0.95, smooth=True):
 
     """
     Conduct cross-temporal decoding for EEG-like data (cross validation)
@@ -617,7 +617,7 @@ def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5,
         The times for iteration.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
-    pca : boolean True or False. Default is True.
+    pca : boolean True or False. Default is False.
         Apply principal component analysis (PCA).
     pca_components : int or float. Default is 0.95.
         Number of components for PCA to keep. If 0<pca_components<1, select the numbder of components such that the
@@ -987,7 +987,7 @@ def ct_decoding_kfold(data, labels, n=2, navg=5, time_opt="average", time_win=5,
 ' a function for cross-temporal decoding for EEG-like data (hold-out) '
 
 def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=5, time_step=5, iter=10, test_size=0.3,
-                        normalization=False, pca=True, pca_components=0.95, smooth=True):
+                        normalization=False, pca=False, pca_components=0.95, smooth=True):
 
     """
     Conduct cross-temporal decoding for EEG-like data (hold-out)
@@ -1022,7 +1022,7 @@ def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=
         test_size should be between 0.0 and 1.0.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
-    pca : boolean True or False. Default is True.
+    pca : boolean True or False. Default is False.
         Apply principal component analysis (PCA).
     pca_components : int or float. Default is 0.95.
         Number of components for PCA to keep. If 0<pca_components<1, select the numbder of components such that the
@@ -1416,7 +1416,7 @@ def ct_decoding_holdout(data, labels, n=2, navg=5, time_opt="average", time_win=
 ' a function for unidirectional transfer decoding for EEG-like data '
 
 def unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5, time_opt="average", time_win=5,
-                                     time_step=5, iter=10, normalization=False, pca=True, pca_components=0.95, smooth=True):
+                                     time_step=5, iter=10, normalization=False, pca=False, pca_components=0.95, smooth=True):
 
     """
     Conduct unidirectional transfer decoding for EEG-like data
@@ -1452,7 +1452,7 @@ def unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5
         The times for iteration.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
-    pca : boolean True or False. Default is True.
+    pca : boolean True or False. Default is False.
         Apply principal component analysis (PCA).
     pca_components : int or float. Default is 0.95.
         Number of components for PCA to keep. If 0<pca_components<1, select the numbder of components such that the
@@ -1861,7 +1861,7 @@ def unidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5
 ' a function for bidirectional transfer decoding for EEG-like data '
 
 def bidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5, time_opt="average", time_win=5,
-                                    time_step=5, iter=10, normalization=False, pca=True, pca_components=0.95, smooth=True):
+                                    time_step=5, iter=10, normalization=False, pca=False, pca_components=0.95, smooth=True):
 
     """
     Conduct bidirectional transfer decoding for EEG-like data
@@ -1897,7 +1897,7 @@ def bidirectional_transfer_decoding(data1, labels1, data2, labels2, n=2, navg=5,
         The times for iteration.
     normalization : boolean True or False. Default is False.
         Normalize the data or not.
-    pca : boolean True or False. Default is True.
+    pca : boolean True or False. Default is False.
         Apply principal component analysis (PCA).
     pca_components : int or float. Default is 0.95.
         Number of components for PCA to keep. If 0<pca_components<1, select the numbder of components such that the
