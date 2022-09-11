@@ -4,16 +4,16 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculate the Neural Pattern Similarity (NPS) &#8212; NeuroRA 1.1.6.0 documentation</title>
-    <link rel="stylesheet" href="static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Calculate the Neural Pattern Similarity (NPS) &#8212; NeuroRA 1.1.6.8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="static/classic.css" />
     
-    <script id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="static/documentation_options.js"></script>
     <script src="static/jquery.js"></script>
     <script src="static/underscore.js"></script>
     <script src="static/doctools.js"></script>
-    <script src="static/language_data.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -35,7 +35,7 @@
         <li class="right" >
           <a href="download.html" title="Download"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.6.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.6.8 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Calculate the Neural Pattern Similarity (NPS)</a></li> 
       </ul>
     </div>  
@@ -45,14 +45,14 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="calculate-the-neural-pattern-similarity-nps">
+  <section id="calculate-the-neural-pattern-similarity-nps">
 <h1>Calculate the Neural Pattern Similarity (NPS)<a class="headerlink" href="#calculate-the-neural-pattern-similarity-nps" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-neurora.nps_cal">
+<section id="module-neurora.nps_cal">
 <span id="neurora-nps-cal-module"></span><h2>neurora.nps_cal module<a class="headerlink" href="#module-neurora.nps_cal" title="Permalink to this headline">¶</a></h2>
 <p>a module for calculating the neural pattern similarity based on neural data</p>
 <dl class="py function">
-<dt id="neurora.nps_cal.nps">
-<code class="sig-prename descclassname">neurora.nps_cal.</code><code class="sig-name descname">nps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">time_win</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">sub_opt</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.nps_cal.nps" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="neurora.nps_cal.nps">
+<span class="sig-prename descclassname"><span class="pre">neurora.nps_cal.</span></span><span class="sig-name descname"><span class="pre">nps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_win</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.nps_cal.nps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the Neural Representational Similarity (NPS) for EEG-like data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -82,8 +82,8 @@ If sub_opt=1, the shape of NPS is [n_subs, n_chls, int((n_ts-time_win)/time_step
 </dd></dl>
 
 <dl class="py function">
-<dt id="neurora.nps_cal.nps_fmri">
-<code class="sig-prename descclassname">neurora.nps_cal.</code><code class="sig-name descname">nps_fmri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fmri_data</span></em>, <em class="sig-param"><span class="n">ksize</span><span class="o">=</span><span class="default_value">[3, 3, 3]</span></em>, <em class="sig-param"><span class="n">strides</span><span class="o">=</span><span class="default_value">[1, 1, 1]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.nps_cal.nps_fmri" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="neurora.nps_cal.nps_fmri">
+<span class="sig-prename descclassname"><span class="pre">neurora.nps_cal.</span></span><span class="sig-name descname"><span class="pre">nps_fmri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmri_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ksize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[3,</span> <span class="pre">3,</span> <span class="pre">3]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1,</span> <span class="pre">1,</span> <span class="pre">1]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.nps_cal.nps_fmri" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the Neural Representational Similarity (NPS) for fMRI data (searchlight)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -91,10 +91,10 @@ If sub_opt=1, the shape of NPS is [n_subs, n_chls, int((n_ts-time_win)/time_step
 <li><p><strong>fmri_data</strong> (<em>array</em>) – The fmri data.
 The shape of fmri_data must be [2, n_subs, nx, ny, nz].
 2 presents 2 different conditions. nx, ny, nz represent the size of fMRI-img, respectively.</p></li>
-<li><p><strong>ksize</strong> (<em>array</em><em> or </em><em>list</em><em> [</em><em>kx</em><em>, </em><em>ky</em><em>, </em><em>kz</em><em>]</em><em> Default is</em><em> [</em><em>3</em><em>, </em><em>3</em><em>, </em><em>3</em><em>]</em><em></em>) – The size of the calculation unit for searchlight.
+<li><p><strong>ksize</strong> (<em>array</em><em> or </em><em>list</em><em> [</em><em>kx</em><em>, </em><em>ky</em><em>, </em><em>kz</em><em>]</em><em>. Default is</em><em> [</em><em>3</em><em>, </em><em>3</em><em>, </em><em>3</em><em>]</em><em>.</em>) – The size of the calculation unit for searchlight.
 kx, ky, kz represent the number of voxels along the x, y, z axis.
 kx, ky, kz should be odd.</p></li>
-<li><p><strong>strides</strong> (<em>array</em><em> or </em><em>list</em><em> [</em><em>sx</em><em>, </em><em>sy</em><em>, </em><em>sz</em><em>]</em><em> Default is</em><em> [</em><em>1</em><em>, </em><em>1</em><em>, </em><em>1</em><em>]</em><em></em>) – The strides for calculating along the x, y, z axis.</p></li>
+<li><p><strong>strides</strong> (<em>array</em><em> or </em><em>list</em><em> [</em><em>sx</em><em>, </em><em>sy</em><em>, </em><em>sz</em><em>]</em><em>. Default is</em><em> [</em><em>1</em><em>, </em><em>1</em><em>, </em><em>1</em><em>]</em><em>.</em>) – The strides for calculating along the x, y, z axis.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -111,8 +111,8 @@ number of calculation units for searchlight along the x, y, z axis. 2 represent 
 </dd></dl>
 
 <dl class="py function">
-<dt id="neurora.nps_cal.nps_fmri_roi">
-<code class="sig-prename descclassname">neurora.nps_cal.</code><code class="sig-name descname">nps_fmri_roi</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fmri_data</span></em>, <em class="sig-param"><span class="n">mask_data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.nps_cal.nps_fmri_roi" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="neurora.nps_cal.nps_fmri_roi">
+<span class="sig-prename descclassname"><span class="pre">neurora.nps_cal.</span></span><span class="sig-name descname"><span class="pre">nps_fmri_roi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmri_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#neurora.nps_cal.nps_fmri_roi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the Neural Representational Similarity (NPS) for fMRI data for ROI</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -121,7 +121,7 @@ number of calculation units for searchlight along the x, y, z axis. 2 represent 
 The shape of fmri_data must be [2, n_subs, nx, ny, nz].
 2 presents 2 different conditions. n_subs, nx, ny, nz represent the number of channels &amp; the size of fMRI-img,
 respectively.</p></li>
-<li><p><strong>mask_data</strong> (<em>array</em><em> [</em><em>nx</em><em>, </em><em>ny</em><em>, </em><em>nz</em><em>]</em><em></em>) – The mask data for region of interest (ROI)
+<li><p><strong>mask_data</strong> (<em>array</em><em> [</em><em>nx</em><em>, </em><em>ny</em><em>, </em><em>nz</em><em>]</em><em>.</em>) – The mask data for region of interest (ROI)
 The size of the fMRI-img. nx, ny, nz represent the number of voxels along the x, y, z axis</p></li>
 </ul>
 </dd>
@@ -137,8 +137,8 @@ The shape of NPS is [n_subs, 2]. n_subs represents the number of subjects. 2 rep
 <p>The size of the calculation units should at least be [3, 3, 3].</p>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -147,20 +147,26 @@ The shape of NPS is [n_subs, 2]. n_subs represents the number of subjects. 2 rep
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Calculate the Neural Pattern Similarity (NPS)</a><ul>
 <li><a class="reference internal" href="#module-neurora.nps_cal">neurora.nps_cal module</a></li>
 </ul>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="download.html"
-                        title="previous chapter">Download</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="isc_cal.html"
-                        title="next chapter">Calculate the Inter-Subject Correlation (ISC)</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="download.html"
+                          title="previous chapter">Download</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="isc_cal.html"
+                          title="next chapter">Calculate the Inter-Subject Correlation (ISC)</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -172,7 +178,7 @@ The shape of NPS is [n_subs, 2]. n_subs represents the number of subjects. 2 rep
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -197,13 +203,13 @@ The shape of NPS is [n_subs, 2]. n_subs represents the number of subjects. 2 rep
         <li class="right" >
           <a href="download.html" title="Download"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.6.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">NeuroRA 1.1.6.8 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Calculate the Neural Pattern Similarity (NPS)</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Zitong Lu.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>
