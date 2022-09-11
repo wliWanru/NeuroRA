@@ -687,9 +687,10 @@ def plot_tbyt_decoding_acc(acc, start_time=0, end_time=1, time_interval=0.01, ch
 ' a function for plotting the differences of time-by-time decoding accuracies between two conditions '
 
 def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_interval=0.01, chance=0.5, p=0.05, cbpt=True,
-                                clusterp=0.05, stats_time=[0, 1], color1='r', color2='b', xlim=[0, 1], ylim=[0.4, 0.8],
-                                xlabel='Time (s)', ylabel='Decoding Accuracy', figsize=[6.4, 3.6], x0=0, ticksize=12,
-                                fontsize=16, markersize=2, title=None, title_fontsize=16, avgshow=False):
+                                clusterp=0.05, stats_time=[0, 1], color1='r', color2='b', label1='Condition1',
+                                label2='Condition2', xlim=[0, 1], ylim=[0.4, 0.8], xlabel='Time (s)',
+                                ylabel='Decoding Accuracy', figsize=[6.4, 3.6], x0=0, ticksize=12, fontsize=16,
+                                markersize=2, legend_fontsize=14, title=None, title_fontsize=16, avgshow=False):
 
     """
     Plot the differences of time-by-time decoding accuracies between two conditions
@@ -724,6 +725,10 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
         The color for the curve under condition1.
     color2 : matplotlib color or None. Default is 'r'.
         The color for the curve under condition2.
+    label1 : string-array. Default is 'Condition1'.
+        The Label of acc1's condition.
+    label2 : string-array. Default is 'Condition2'.
+        The Label of acc2's condition.
     xlim : array or list [xmin, xmax]. Default is [0, 1].
         The x-axis (time) view lims.
     ylim : array or list [ymin, ymax]. Default is [0.4, 0.8].
@@ -742,6 +747,8 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
         The fontsize of the labels.
     markersize : int or float. Default is 2.
         The size of significant marker.
+    legend_fontsize : int or float. Default is 14.
+        The fontsize of the legend.
     title : string-array. Default is None.
         The title of the figure.
     title_fontsize : int or float. Default is 16.
@@ -899,14 +906,18 @@ def plot_tbyt_diff_decoding_acc(acc1, acc2, start_time=0, end_time=1, time_inter
     if avgshow is True:
         plt.plot(x, avg1, color=color1, alpha=0.95)
         plt.plot(x, avg2, color=color2, alpha=0.95)
-    plt.fill_between(x, avg1+err1, avg1-err1, facecolor=color1, alpha=0.75)
-    plt.fill_between(x, avg2+err2, avg2-err2, facecolor=color2, alpha=0.75)
+    plt.fill_between(x, avg1+err1, avg1-err1, facecolor=color1, alpha=0.75, label=label1)
+    plt.fill_between(x, avg2+err2, avg2-err2, facecolor=color2, alpha=0.75, label=label2)
     plt.ylim(yminlim, ymaxlim)
     plt.xlim(xlim[0], xlim[1])
     plt.tick_params(labelsize=ticksize)
     plt.xlabel(xlabel, fontsize=fontsize)
     plt.ylabel(ylabel, fontsize=fontsize)
-
+    plt.legend()
+    ax = plt.gca()
+    leg = ax.get_legend()
+    ltext = leg.get_texts()
+    plt.setp(ltext, fontsize=legend_fontsize)
     plt.title(title, fontsize=title_fontsize)
     plt.show()
 
