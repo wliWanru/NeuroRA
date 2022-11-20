@@ -564,7 +564,7 @@ def eegRDM_bydecoding(EEG_data, sub_opt=1, time_win=5, time_step=5, navg=5, time
                 rdms[:, :, con1, con2] = tbyt_decoding_kfold(data, labels, n=2, navg=navg, time_opt=time_opt,
                                                              time_win=time_win, time_step=time_step, nfolds=nfolds,
                                                              nrepeats=nrepeats, normalization=normalization,
-                                                             smooth=True)
+                                                             pca=False, smooth=True)
                 rdms[:, :, con2, con1] = rdms[:, :, con1, con2]
 
     if sub_opt == 0:
