@@ -544,6 +544,6 @@ def rdm_distance(RDM1, RDM2, rescale=False):
             nn = nn + 1
 
     # calculate the Euclidean Distance
-    dist = np.linalg.norm(v1 - v2)
+    dist = np.linalg.norm(v1 - v2, ord=2)
 
     return dist

@@ -156,7 +156,7 @@ def bhvRDM(bhv_data, sub_opt=1, method="correlation", abs=False):
                 else:
                     rdm[i, j] = limtozero(1 - r)
             elif method == 'euclidean':
-                rdm[i, j] = np.linalg.norm(data[i]-data[j])
+                rdm[i, j] = np.linalg.norm(data[i]-data[j], ord=2)
     if method == 'euclidean':
         max = np.max(rdm)
         min = np.min(rdm)
@@ -290,7 +290,7 @@ def eegRDM(EEG_data, sub_opt=1, chl_opt=0, time_opt=0, time_win=5, time_step=5, 
                                     else:
                                         rdms[i, j, k, l, m] = limtozero(1 - r)
                                 elif method == 'euclidean':
-                                    rdms[i, j, k, l, m] = np.linalg.norm(data[i, j, k, l] - data[i, j, k, m])
+                                    rdms[i, j, k, l, m] = np.linalg.norm(data[i, j, k, l] - data[i, j, k, m], ord=2)
                                 """elif method == 'mahalanobis':
                                     X = np.transpose(np.vstack((data[i, j, k, l], data[i, j, k, m])), (1, 0))
                                     X = np.dot(X, np.linalg.inv(np.cov(X, rowvar=False)))
@@ -344,7 +344,7 @@ def eegRDM(EEG_data, sub_opt=1, chl_opt=0, time_opt=0, time_win=5, time_step=5, 
                             else:
                                 rdms[i, k, l, m] = limtozero(1 - r)
                         elif method == 'euclidean':
-                            rdms[i, k, l, m] = np.linalg.norm(data[i, k, l] - data[i, k, m])
+                            rdms[i, k, l, m] = np.linalg.norm(data[i, k, l] - data[i, k, m], ord=2)
                 if method == 'euclidean':
                     max = np.max(rdms[i, k])
                     min = np.min(rdms[i, k])
@@ -402,7 +402,7 @@ def eegRDM(EEG_data, sub_opt=1, chl_opt=0, time_opt=0, time_win=5, time_step=5, 
                             else:
                                 rdms[i, j, k, l] = limtozero(1 - r)
                         elif method == 'euclidean':
-                            rdms[i, j, k, l] = np.linalg.norm(data[k, i, j] - data[l, i, j])
+                            rdms[i, j, k, l] = np.linalg.norm(data[k, i, j] - data[l, i, j], ord=2)
                 if method == 'euclidean':
                     max = np.max(rdms[i, j])
                     min = np.min(rdms[i, j])
@@ -456,7 +456,7 @@ def eegRDM(EEG_data, sub_opt=1, chl_opt=0, time_opt=0, time_win=5, time_step=5, 
                     else:
                         rdms[i, j, k] = limtozero(1 - r)
                 elif method == 'euclidean':
-                    rdms[i, j, k] = np.linalg.norm(data[j, i] - data[k, i])
+                    rdms[i, j, k] = np.linalg.norm(data[j, i] - data[k, i], ord=2)
                 """elif method == 'mahalanobis':
                     X = np.transpose(np.vstack((data[j, i], data[k, i])), (1, 0))
                     X = np.dot(X, np.linalg.inv(np.cov(X, rowvar=False)))
@@ -698,7 +698,7 @@ def fmriRDM(fmri_data, ksize=[3, 3, 3], strides=[1, 1, 1], sub_opt=1, method="co
                                         subrdms[sub, x, y, z, i, j] = limtozero(1 - r)
                                 elif method == 'euclidean':
                                     subrdms[sub, x, y, z, i, j] = np.linalg.norm(data[sub, x, y, z, i] -
-                                                                                 data[sub, x, y, z, j])
+                                                                                 data[sub, x, y, z, j], ord=2)
                                 """elif method == 'mahalanobis':
                                     X = np.transpose(np.vstack((data[sub, x, y, z, i], data[sub, x, y, z, j])), (1, 0))
                                     X = np.dot(X, np.linalg.inv(np.cov(X, rowvar=False)))
@@ -825,7 +825,7 @@ def fmriRDM_roi(fmri_data, mask_data, sub_opt=1, method="correlation", abs=False
                         else:
                             subrdms[sub, i, j] = limtozero(1 - r)
                     elif method == 'euclidean':
-                        subrdms[sub, i, j] = np.linalg.norm(data[sub, i] - data[sub, j])
+                        subrdms[sub, i, j] = np.linalg.norm(data[sub, i] - data[sub, j], ord=2)
                     """elif method == 'mahalanobis':
                         X = np.transpose(np.vstack((data[sub, i], data[sub, j])), (1, 0))
                         X = np.dot(X, np.linalg.inv(np.cov(X, rowvar=False)))

@@ -243,6 +243,6 @@ def ctrdm_distance(CTRDM1, CTRDM2):
                 nn = nn + 1
 
     # calculate the Euclidean Distance
-    dist = np.linalg.norm(v1 - v2)
+    dist = np.linalg.norm(v1 - v2, ord=2)
 
     return dist
